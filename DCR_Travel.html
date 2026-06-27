@@ -90,38 +90,6 @@
             text-align: center;
         }
 
-        .cloud-badge {
-            position: absolute;
-            right: 16px;
-            top: 18px;
-            font-size: 0.65rem;
-            font-weight: 600;
-            color: var(--gold);
-            background-color: var(--gold-light);
-            border: 1px solid rgba(201, 168, 76, 0.2);
-            padding: 3px 8px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .cloud-spinner {
-            width: 8px;
-            height: 8px;
-            border: 1.5px solid var(--gold);
-            border-top: 1.5px solid transparent;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            display: none;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
         /* Content screens */
         .screen-wrapper {
             position: relative;
@@ -1045,10 +1013,6 @@
         <!-- Header -->
         <header>
             <div class="logo-text">DCR Sabbatical</div>
-            <div id="cloud-status" class="cloud-badge">
-                <span id="cloud-spinner" class="cloud-spinner"></span>
-                <span id="cloud-text">Connecting...</span>
-            </div>
         </header>
 
         <!-- Toast Notification -->
@@ -2377,13 +2341,15 @@
             }
 
             updateProgressPercent(cityId);
+            
+            // Save local cache for offline reliability
+            localStorage.setItem('dcr_sabbatical_state', JSON.stringify(currentState));
 
             if (navigator.onLine) {
                 saveStateToGitHub();
             } else {
                 // Offline queueing
                 offlineChecklistQueue.push({ cityId, category, index });
-                updateCloudStatus("Queued (Offline)");
                 showToast("Offline: Check queued to sync");
             }
         }
@@ -2528,7 +2494,6 @@
 
         // --- GITHUB CLOUD DATABASE SYNCING ---
         function fetchStateFromGitHub() {
-            updateCloudStatus("Connecting...");
             const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/state.json?t=${Date.now()}`;
             
             fetch(url, {
@@ -2546,29 +2511,17 @@
                 githubFileSha = data.sha;
                 const decodedText = decodeURIComponent(escape(atob(data.content)));
                 currentState = JSON.parse(decodedText);
-                updateCloudStatus("Cloud Synced");
+                localStorage.setItem('dcr_sabbatical_state', decodedText);
                 renderChecklists();
             })
             .catch(err => {
                 console.error("Cloud fetching issue:", err);
-                updateCloudStatus("Offline Mode");
+                const localState = localStorage.getItem('dcr_sabbatical_state');
+                if (localState) {
+                    currentState = JSON.parse(localState);
+                }
                 renderChecklists();
             });
-        }
-
-        // Update PWA connection status
-        function updateCloudStatus(statusStr) {
-            const txt = document.getElementById('cloud-text');
-            const spinner = document.getElementById('cloud-spinner');
-            
-            if (txt) txt.innerText = statusStr;
-            if (spinner) {
-                if (statusStr === "Syncing..." || statusStr === "Connecting...") {
-                    spinner.style.display = "inline-block";
-                } else {
-                    spinner.style.display = "none";
-                }
-            }
         }
 
         function saveStateToGitHub() {
@@ -2577,7 +2530,6 @@
                 return;
             }
 
-            updateCloudStatus("Syncing...");
             const raw = JSON.stringify(currentState, null, 2);
             const encoded = btoa(unescape(encodeURIComponent(raw)));
 
@@ -2600,14 +2552,12 @@
             })
             .then(data => {
                 githubFileSha = data.content.sha;
-                updateCloudStatus("Cloud Synced");
                 showToast("Synced to Cloud");
                 offlineChecklistQueue = [];
             })
             .catch(err => {
                 console.error("Cloud push failed:", err);
-                updateCloudStatus("Save Failed");
-                showToast("Sync failed: stored offline");
+                showToast("Sync offline backup saved");
             });
         }
 

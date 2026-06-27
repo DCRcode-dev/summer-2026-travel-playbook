@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dcr-travel-v1';
+const CACHE_NAME = 'dcr-travel-v2';
 const ASSETS = [
   './',
   './DCR_Travel.html',
@@ -6,6 +6,7 @@ const ASSETS = [
   './manifest.json',
   './icon-192.png',
   './icon-512.png',
+  './Passport.jpg',
   './turkey_sepia_cover.jpg',
   './romania_sepia_cover.jpg',
   './greece_sepia_cover.jpg',
