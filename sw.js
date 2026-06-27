@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dcr-travel-v4';
+const CACHE_NAME = 'dcr-travel-v5';
 const ASSETS = [
   './',
   './DCR_Travel.html',
@@ -41,7 +41,7 @@ self.addEventListener('message', (event) => {
 
 self.addEventListener('fetch', (e) => {
   e.respondWith(
-    caches.match(e.request).then((cachedResponse) => {
+    caches.match(e.request, { ignoreSearch: true }).then((cachedResponse) => {
       return cachedResponse || fetch(e.request).then((networkResponse) => {
         // Cache new successful requests on the fly
         if (networkResponse.status === 200 && e.request.method === 'GET') {
