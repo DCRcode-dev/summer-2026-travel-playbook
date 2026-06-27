@@ -210,84 +210,93 @@
             color: var(--text-muted);
         }
 
-        /* Visual Country Segment Cards */
-        .country-deck {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-
-        .country-card {
+        /* Interactive SVG Globe Silhouette */
+        .globe-container {
             background-color: var(--bg-card);
             border: 1px solid var(--border-ios);
-            border-radius: 16px;
+            border-radius: 20px;
+            padding: 20px 10px;
+            margin-bottom: 25px;
             box-shadow: var(--shadow-ios);
-            cursor: pointer;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: var(--transition);
+            align-items: center;
         }
 
-        .country-card:active {
-            transform: scale(0.96);
-        }
-
-        .country-image {
-            height: 100px;
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-            border-bottom: 1px solid var(--border-ios);
-        }
-
-        .country-content {
-            padding: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            flex: 1;
-        }
-
-        .country-name {
+        .globe-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--text-main);
-            line-height: 1.1;
-        }
-
-        .country-dates {
-            font-size: 0.62rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-top: 2px;
+            margin-bottom: 12px;
+            text-transform: capitalize;
             letter-spacing: 0.02em;
         }
 
-        .country-meta {
-            font-size: 0.72rem;
-            color: var(--text-main);
-            margin-top: 6px;
-            font-weight: 500;
-        }
-
-        .country-progress-bar-bg {
-            height: 4px;
-            background-color: var(--bg-ios);
-            border-radius: 2px;
-            margin-top: 10px;
-            overflow: hidden;
+        .globe-svg {
             width: 100%;
+            max-width: 320px;
+            height: auto;
+            display: block;
         }
 
-        .country-progress-bar-fill {
-            height: 100%;
-            background-color: var(--gold);
-            border-radius: 2px;
-            transition: width 0.3s ease;
+        /* Continent paths and styles */
+        .continent-fill {
+            fill: var(--gold-light);
+            stroke: rgba(201, 168, 76, 0.15);
+            stroke-width: 1.5;
+        }
+
+        .flight-path {
+            stroke: var(--gold);
+            stroke-dasharray: 4, 3;
+            stroke-width: 1.5;
+            fill: none;
+            opacity: 0.65;
+            animation: dash 20s linear infinite;
+        }
+
+        @keyframes dash {
+            to { stroke-dashoffset: -40; }
+        }
+
+        /* Pulsing node styles */
+        .globe-node {
+            cursor: pointer;
+        }
+
+        .globe-node circle.core {
+            fill: var(--gold);
+            stroke: #FFFFFF;
+            stroke-width: 1.2;
+            transition: var(--transition);
+        }
+
+        .globe-node circle.glow {
+            fill: var(--gold);
+            opacity: 0.35;
+            animation: pulse-glow 2s infinite ease-in-out;
+            transform-origin: center;
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.6); opacity: 0; }
+            100% { transform: scale(1); opacity: 0.4; }
+        }
+
+        .globe-node:hover circle.core {
+            fill: var(--text-main);
+        }
+
+        .globe-label {
+            font-size: 0.58rem;
+            font-weight: 700;
+            fill: var(--text-main);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            pointer-events: none;
+            font-family: 'Inter', sans-serif;
         }
 
         /* --- DESTINATION VIEWS --- */
@@ -1147,59 +1156,77 @@
 
                 <div class="section-header">Trip Segments</div>
                 
-                <!-- Visual Country Cards Grid -->
-                <div class="country-deck">
-                    <!-- Turkey -->
-                    <div class="country-card" onclick="switchTab('bodrum')">
-                        <div class="country-image" style="background-image: url('./turkey_sepia_cover.jpg');"></div>
-                        <div class="country-content">
-                            <div class="country-name">Türkiye</div>
-                            <div class="country-dates">Jul 1 - Jul 9 • 2 Stops</div>
-                            <div class="country-meta">Bodrum, Istanbul</div>
-                            <div class="country-progress-bar-bg">
-                                <div class="country-progress-bar-fill" id="prog-bar-turkey" style="width: 0%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Romania -->
-                    <div class="country-card" onclick="switchTab('bucharest')">
-                        <div class="country-image" style="background-image: url('./romania_sepia_cover.jpg');"></div>
-                        <div class="country-content">
-                            <div class="country-name">Romania</div>
-                            <div class="country-dates">Jul 9 - Jul 15 • 2 Stops</div>
-                            <div class="country-meta">Bucharest, Braşov</div>
-                            <div class="country-progress-bar-bg">
-                                <div class="country-progress-bar-fill" id="prog-bar-romania" style="width: 0%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Greece -->
-                    <div class="country-card" onclick="switchTab('spetses')">
-                        <div class="country-image" style="background-image: url('./greece_sepia_cover.jpg');"></div>
-                        <div class="country-content">
-                            <div class="country-name">Greece</div>
-                            <div class="country-dates">Jul 22 - Jul 27 • 1 Stop</div>
-                            <div class="country-meta">Spetses Island</div>
-                            <div class="country-progress-bar-bg">
-                                <div class="country-progress-bar-fill" style="width: 100%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Japan -->
-                    <div class="country-card" onclick="switchTab('tokyo')">
-                        <div class="country-image" style="background-image: url('./japan_sepia_cover.jpg');"></div>
-                        <div class="country-content">
-                            <div class="country-name">Japan</div>
-                            <div class="country-dates">Jul 30 - Aug 20 • 1 Stop</div>
-                            <div class="country-meta">Tokyo (Shibuya)</div>
-                            <div class="country-progress-bar-bg">
-                                <div class="country-progress-bar-fill" id="prog-bar-japan" style="width: 0%"></div>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Interactive SVG Globe Silhouette -->
+                <div class="globe-container">
+                    <div class="globe-title">Interactive Route Map</div>
+                    <svg class="globe-svg" viewBox="0 0 400 400">
+                        <!-- Outer sphere boundary ring -->
+                        <circle cx="200" cy="200" r="180" stroke="var(--border-ios)" stroke-width="1.2" fill="none" />
+                        <circle cx="200" cy="200" r="180" fill="var(--bg-card)" opacity="0.3" />
+                        
+                        <!-- Latitudes & Longitudes grid curves -->
+                        <path d="M 200,20 A 180,180 0 0,0 200,380" stroke="rgba(201, 168, 76, 0.12)" stroke-width="1" fill="none" />
+                        <path d="M 200,20 A 90,180 0 0,0 200,380" stroke="rgba(201, 168, 76, 0.12)" stroke-width="1" fill="none" />
+                        <path d="M 200,20 A 90,180 0 0,1 200,380" stroke="rgba(201, 168, 76, 0.12)" stroke-width="1" fill="none" />
+                        <path d="M 200,20 A 45,180 0 0,0 200,380" stroke="rgba(201, 168, 76, 0.08)" stroke-width="1" fill="none" />
+                        <path d="M 200,20 A 45,180 0 0,1 200,380" stroke="rgba(201, 168, 76, 0.08)" stroke-width="1" fill="none" />
+                        
+                        <path d="M 20,200 A 180,180 0 0,0 380,200" stroke="rgba(201, 168, 76, 0.12)" stroke-width="1" fill="none" />
+                        <path d="M 56,110 A 144,90 0 0,0 344,110" stroke="rgba(201, 168, 76, 0.06)" stroke-width="1" fill="none" />
+                        <path d="M 56,290 A 144,90 0 0,1 344,290" stroke="rgba(201, 168, 76, 0.06)" stroke-width="1" fill="none" />
+                        
+                        <!-- Europe / Asia Continent Silhouette -->
+                        <path class="continent-fill" d="M 90,95 Q 110,95 125,100 T 135,115 T 125,135 T 135,150 T 150,158 T 170,165 T 185,160 T 215,180 T 240,195 T 265,200 T 290,190 T 300,160 T 295,120 T 280,95 T 240,75 T 170,75 Z" />
+                        <!-- Japan Silhouette -->
+                        <path class="continent-fill" d="M 315,130 Q 320,150 322,165 T 318,185 Q 314,165 311,145 Z" />
+                        <!-- UK / Ireland Silhouette -->
+                        <path class="continent-fill" d="M 125,92 Q 130,96 128,102 T 123,100 Z" />
+
+                        <!-- Flight Path Routes (London ➔ Bodrum ➔ Istanbul ➔ Bucharest ➔ London, etc) -->
+                        <!-- London ➔ Bodrum -->
+                        <path class="flight-path" d="M 130,95 Q 145,130 170,160" />
+                        <!-- Istanbul ➔ Bucharest -->
+                        <path class="flight-path" d="M 170,160 Q 168,150 166,138" />
+                        <!-- London ➔ Spetses -->
+                        <path class="flight-path" d="M 130,95 Q 148,138 158,168" />
+                        <!-- London ➔ Tokyo -->
+                        <path class="flight-path" d="M 130,95 Q 210,90 315,155" />
+
+                        <!-- Interactive Destination Nodes -->
+                        <!-- London Home Node (Static anchor) -->
+                        <g class="globe-anchor">
+                            <circle cx="130" cy="95" r="4" fill="var(--text-main)" stroke="#FFF" stroke-width="1" />
+                            <text x="126" y="86" class="globe-label" style="text-anchor: end; font-size: 0.5rem; fill: var(--text-muted);">LDN</text>
+                        </g>
+
+                        <!-- Türkiye Node -->
+                        <g class="globe-node" onclick="switchTab('bodrum')">
+                            <circle class="glow" cx="170" cy="160" r="10" />
+                            <circle class="core" cx="170" cy="160" r="5" />
+                            <text x="180" y="164" class="globe-label">TURKEY</text>
+                        </g>
+
+                        <!-- Romania Node -->
+                        <g class="globe-node" onclick="switchTab('bucharest')">
+                            <circle class="glow" cx="166" cy="138" r="10" />
+                            <circle class="core" cx="166" cy="138" r="5" />
+                            <text x="176" y="141" class="globe-label">ROMANIA</text>
+                        </g>
+
+                        <!-- Greece Node -->
+                        <g class="globe-node" onclick="switchTab('spetses')">
+                            <circle class="glow" cx="158" cy="168" r="10" />
+                            <circle class="core" cx="158" cy="168" r="5" />
+                            <text x="150" y="180" class="globe-label" style="text-anchor: middle;">GREECE</text>
+                        </g>
+
+                        <!-- Japan Node -->
+                        <g class="globe-node" onclick="switchTab('tokyo')">
+                            <circle class="glow" cx="315" cy="155" r="10" />
+                            <circle class="core" cx="315" cy="155" r="5" />
+                            <text x="315" y="143" class="globe-label" style="text-anchor: middle;">JAPAN</text>
+                        </g>
+                    </svg>
                 </div>
 
                 <!-- Calendar Section -->
@@ -1317,7 +1344,7 @@
                                     <td><span class="calendar-day-num">30</span><span class="calendar-dest-badge badge-transition">Corsica</span></td>
                                 </tr>
                                 <tr>
-                                    <td><span class="calendar-day-num">31</span><span class="calendar-dest-badge badge-transition">Corsica</span></td>
+                                    <td><span class="calendar-day-num">31</span><span class="calendar-dest-badge badge-transition">London</span></td>
                                     <td class="calendar-empty"></td>
                                     <td class="calendar-empty"></td>
                                     <td class="calendar-empty"></td>
@@ -1654,7 +1681,7 @@
                 <div class="gourmet-card">
                     <div class="gourmet-title">
                         <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                        Saronic Island Specials
+                        Saronic Island Specialties
                     </div>
                     <div class="gourmet-dish">
                         <div class="dish-name">Fish à la Spetsiota (Ψάρι Σπετσιώτα)</div>
@@ -2032,7 +2059,7 @@
                     "Wander Cărturești Carusel spiral bookshop.",
                     "Spend an afternoon bathing at Therme București.",
                     "Sip pioneer specialty filter coffee at Origo.",
-                    "Eat grilled *mici* with mustard at Terasa Obor.",
+                    "Eat grilled *mici* with mustard at Terase Obor.",
                     "Stroll the leafy Cotroceni residential district.",
                     "Relax in a secret garden backyard like Eden.",
                     "Eat pork knuckle in Gothic-revival Caru' cu Bere.",
@@ -2543,34 +2570,6 @@
 
             if (pageBadge) pageBadge.innerText = `${percent}%`;
             if (pageFill) pageFill.style.width = `${percent}%`;
-
-            // Update regional cards
-            updateRegionalProgress();
-        }
-
-        function updateRegionalProgress() {
-            // 1. Turkey (Istanbul progress, Bodrum doesn't have checks)
-            const trTotal = checklistData.istanbul.sights.length + checklistData.istanbul.local.length;
-            const trCompleted = (currentState.istanbul?.sights?.length || 0) + (currentState.istanbul?.local?.length || 0);
-            const trPercent = trTotal > 0 ? Math.round((trCompleted / trTotal) * 100) : 0;
-            const trBar = document.getElementById('prog-bar-turkey');
-            if (trBar) trBar.style.width = `${trPercent}%`;
-
-            // 2. Romania (Bucharest + Brasov progress)
-            const roTotal = (checklistData.bucharest.sights.length + checklistData.bucharest.local.length) +
-                            (checklistData.brasov.sights.length + checklistData.brasov.local.length);
-            const roCompleted = (currentState.bucharest?.sights?.length || 0) + (currentState.bucharest?.local?.length || 0) +
-                               (currentState.brasov?.sights?.length || 0) + (currentState.brasov?.local?.length || 0);
-            const roPercent = roTotal > 0 ? Math.round((roCompleted / roTotal) * 100) : 0;
-            const roBar = document.getElementById('prog-bar-romania');
-            if (roBar) roBar.style.width = `${roPercent}%`;
-
-            // 3. Japan (Tokyo progress)
-            const jpTotal = checklistData.tokyo.sights.length + checklistData.tokyo.local.length;
-            const jpCompleted = (currentState.tokyo?.sights?.length || 0) + (currentState.tokyo?.local?.length || 0);
-            const jpPercent = jpTotal > 0 ? Math.round((jpCompleted / jpTotal) * 100) : 0;
-            const jpBar = document.getElementById('prog-bar-japan');
-            if (jpBar) jpBar.style.width = `${jpPercent}%`;
         }
 
         // Checklist Search Filter
@@ -2618,6 +2617,17 @@
                 `;
                 container.appendChild(el);
             });
+        }
+
+        function togglePackingItem(index) {
+            let savedState = JSON.parse(localStorage.getItem('dcr_packing')) || [];
+            const idx = savedState.indexOf(index);
+            if (idx === -1) {
+                savedState.push(index);
+            } else {
+                savedState.splice(idx, 1);
+            }
+            localStorage.setItem('dcr_packing', JSON.stringify(savedState));
         }
 
         // Passport toggler
@@ -2688,7 +2698,7 @@
                         icon: './icon-192.png',
                         badge: './icon-192.png',
                         vibrate: [100, 50, 100]
-                    });
+                    });Reg
                 });
             }
         }
