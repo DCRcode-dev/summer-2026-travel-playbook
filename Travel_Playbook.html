@@ -56,6 +56,19 @@
             letter-spacing: -0.02em;
         }
 
+        a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px dotted var(--accent-gold);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-gold-hover);
+            border-bottom-style: solid;
+        }
+
         /* Cover Page / Header */
         .cover {
             text-align: center;
@@ -221,7 +234,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .vibe-card {
@@ -241,6 +254,9 @@
             margin-bottom: 12px;
             color: var(--accent-navy);
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .vibe-card p {
@@ -260,6 +276,7 @@
             margin-bottom: 12px;
             position: relative;
             padding-left: 20px;
+            line-height: 1.5;
         }
 
         .vibe-card li::before {
@@ -270,6 +287,67 @@
             position: absolute;
             left: 0;
             top: -2px;
+        }
+
+        /* Bucket List Expanded Sections */
+        .bucket-list-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            border-top: 3px solid var(--accent-gold);
+        }
+        
+        .bucket-list-title {
+            font-size: 1.4rem;
+            color: var(--accent-navy);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .bucket-list-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .bucket-list-col h4 {
+            font-size: 1.15rem;
+            color: var(--accent-gold);
+            margin-bottom: 18px;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .bucket-list-col ol {
+            padding-left: 20px;
+        }
+
+        .bucket-list-col li {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        .bucket-list-col li strong {
+            color: var(--text-main);
         }
 
         /* Action Alert Box */
@@ -325,119 +403,6 @@
         .print-btn:hover {
             background-color: #0b2041;
             transform: translateY(-2px);
-        }
-
-        /* Print Mode Optimizations (Mobile Phone PDF Friendly) */
-        @media print {
-            @page {
-                size: 108mm 192mm; /* Mobile phone aspect ratio (9:16) */
-                margin: 6mm;
-            }
-            body {
-                background-color: #FFFFFF;
-                color: #000000;
-                font-size: 10px;
-            }
-            .container {
-                max-width: 100%;
-                padding: 0;
-            }
-            .cover {
-                padding: 40px 0 20px 0;
-                page-break-after: always;
-            }
-            .cover-title {
-                font-size: 2.2rem;
-            }
-            .cover-meta {
-                margin-top: 20px;
-                gap: 10px;
-                font-size: 0.75rem;
-            }
-            .calendar-section {
-                page-break-after: always;
-            }
-            .calendar-container {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            .calendar-month {
-                padding: 12px;
-                box-shadow: none;
-                border: 1px solid #CCCCCC;
-                page-break-after: always;
-            }
-            .calendar-month:last-child {
-                page-break-after: avoid;
-            }
-            .calendar-table td {
-                height: 48px;
-                padding: 2px;
-                font-size: 0.65rem;
-            }
-            .calendar-dest-badge {
-                font-size: 0.5rem;
-                padding: 1px 2px;
-            }
-            .destination {
-                page-break-after: always;
-                padding-top: 10px;
-            }
-            .destination:last-child {
-                page-break-after: avoid;
-            }
-            .dest-title {
-                font-size: 1.8rem;
-            }
-            .table-container {
-                margin-bottom: 20px;
-                box-shadow: none;
-                border: 1px solid #CCCCCC;
-            }
-            table {
-                font-size: 0.75rem;
-            }
-            th, td {
-                padding: 8px 10px;
-            }
-            .vibe-container {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            .vibe-card {
-                padding: 15px 20px;
-                box-shadow: none;
-                border: 1px solid #CCCCCC;
-                border-left: 4px solid #C5A059;
-                background-color: #FFFFFF !important;
-            }
-            .action-alert {
-                border: 1px solid #D9534F;
-                background-color: #FFFDFD !important;
-            }
-            .print-btn-container {
-                display: none;
-            }
-        }
-
-        /* Responsive Layout adjustments */
-        @media (max-width: 768px) {
-            .vibe-container {
-                grid-template-columns: 1fr;
-            }
-
-            .cover-title {
-                font-size: 2.8rem;
-            }
-
-            .container {
-                padding: 30px 20px;
-            }
-
-            .cover-meta {
-                flex-direction: column;
-                gap: 15px;
-            }
         }
 
         /* Calendar Styles */
@@ -533,16 +498,136 @@
             background-color: #FCFBF9;
         }
 
-        /* Print Media Additions */
+        /* Print Mode Optimizations (Mobile Phone PDF Friendly) */
         @media print {
-            .calendar-container {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            @page {
+                size: 108mm 192mm; /* Mobile phone aspect ratio (9:16) */
+                margin: 6mm;
+            }
+            body {
+                background-color: #FFFFFF;
+                color: #000000;
+                font-size: 10px;
+            }
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+            .cover {
+                padding: 40px 0 20px 0;
                 page-break-after: always;
             }
+            .cover-title {
+                font-size: 2.2rem;
+            }
+            .cover-meta {
+                margin-top: 20px;
+                gap: 10px;
+                font-size: 0.75rem;
+            }
+            .calendar-section {
+                page-break-after: always;
+            }
+            .calendar-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
             .calendar-month {
+                padding: 12px;
                 box-shadow: none;
-                border: 1px solid #000000;
+                border: 1px solid #CCCCCC;
+                page-break-after: always;
+            }
+            .calendar-month:last-child {
+                page-break-after: avoid;
+            }
+            .calendar-table td {
+                height: 48px;
+                padding: 2px;
+                font-size: 0.65rem;
+            }
+            .calendar-dest-badge {
+                font-size: 0.5rem;
+                padding: 1px 2px;
+            }
+            .destination {
+                page-break-after: always;
+                padding-top: 10px;
+            }
+            .destination:last-child {
+                page-break-after: avoid;
+            }
+            .dest-title {
+                font-size: 1.8rem;
+            }
+            .table-container {
+                margin-bottom: 20px;
+                box-shadow: none;
+                border: 1px solid #CCCCCC;
+            }
+            table {
+                font-size: 0.75rem;
+            }
+            th, td {
+                padding: 8px 10px;
+            }
+            .vibe-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .vibe-card {
+                padding: 15px 20px;
+                box-shadow: none;
+                border: 1px solid #CCCCCC;
+                border-left: 4px solid #C5A059;
+                background-color: #FFFFFF !important;
+            }
+            .bucket-list-section {
+                box-shadow: none;
+                border: 1px solid #CCCCCC;
+                border-top: 3px solid var(--accent-gold);
+                page-break-after: always;
+                padding: 15px 20px;
+            }
+            .bucket-list-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .action-alert {
+                border: 1px solid #D9534F;
+                background-color: #FFFDFD !important;
+            }
+            .print-btn-container {
+                display: none;
+            }
+        }
+
+        /* Responsive Layout adjustments */
+        @media (max-width: 768px) {
+            .vibe-container {
+                grid-template-columns: 1fr;
+            }
+
+            .calendar-container {
+                grid-template-columns: 1fr;
+            }
+
+            .bucket-list-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .cover-title {
+                font-size: 2.8rem;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            .cover-meta {
+                flex-direction: column;
+                gap: 15px;
             }
         }
     </style>
@@ -562,9 +647,9 @@
             <h1 class="cover-title">The Summer 2026<br>Grand Tour</h1>
             <div class="cover-details">Prepared exclusively for Daniel Cruz-Rosso (DCR)</div>
             <div class="cover-meta">
-                <div>Bodrum • Istanbul • Spetses • Tokyo</div>
+                <div>Bodrum • Istanbul • Bucharest • Braşov • Spetses • Tokyo</div>
                 <div>July 1 – August 20, 2026</div>
-                <div>4 Destinations • 51 Days</div>
+                <div>6 Destinations • 51 Days</div>
             </div>
         </header>
 
@@ -709,8 +794,6 @@
                 <h2 class="dest-title">BODRUM <span>Türkiye</span></h2>
             </div>
 
-            <!-- Logistical Alert if any -->
-
             <h3 class="logistics-title">✈️ Logistics & Bookings</h3>
             <div class="table-container">
                 <table>
@@ -813,8 +896,263 @@
                     <ul>
                         <li><strong>Golden Hour Bosphorus Ferry:</strong> Avoid city traffic. Take a ferry to Karaköy or Galataport at sunset. Silhouetting the domes of the Hagia Sophia against a deep golden sky is a classic experience.</li>
                         <li><strong>Tactical Transit:</strong> Istanbul Airport (IST) to Harbiye takes 45–60 minutes. Grab the comfortable <strong>Havaist shuttle</strong> to Taksim, then take a quick 10-minute taxi. If you take a cab from IST, expect a fixed-ish rate of <strong>€35–45</strong>.</li>
-                        <li><strong>Housekeeping Note:</strong> Your Soho House night on 6-7 July was successfully cancelled on 1 Feb, meaning your schedule is clear and clean with no overlaps.</li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- Gym Card -->
+            <div class="vibe-container" style="margin-bottom: 40px;">
+                <div class="vibe-card" style="grid-column: span 2;">
+                    <div class="vibe-card-title">🏋️ Recommended Gyms (Day Pass)</div>
+                    <p>Maintain your lean bulk. Here are premium gyms near Harbiye/Şişli offering day passes:</p>
+                    <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <li><strong><a href="https://www.instagram.com/weiderharbiyefitness/" target="_blank">Weider Harbiye Fitness Center</a>:</strong> A local hardcore gym right in Harbiye. Ideal for high-weight strength training and bodybuilding focus. Single entry pass available for ~350 TL.</li>
+                        <li><strong><a href="https://www.macfit.com.tr/" target="_blank">MAC G-Mall</a>:</strong> A high-end health club in Maçka/Harbiye. Offers cutting-edge resistance equipment, a pristine space, and flexible walk-in guest entry fees at the desk.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Explorer Checklist Section -->
+            <div class="bucket-list-section">
+                <div class="bucket-list-title">🎯 The Explorer's Checklist</div>
+                <div class="bucket-list-grid">
+                    <div class="bucket-list-col">
+                        <h4>🏛️ 10 Bucket List Tourist Highlights</h4>
+                        <ol>
+                            <li><strong>Hagia Sophia (Ayasofya):</strong> Gaze up at the legendary 6th-century golden dome and Byzantine mosaics.</li>
+                            <li><strong>The Blue Mosque:</strong> Marvel at the iconic hand-painted blue İznik tiles framing the prayer hall.</li>
+                            <li><strong>Topkapı Palace:</strong> Explore the imperial residence of Ottoman Sultans and the treasury.</li>
+                            <li><strong>The Basilica Cistern:</strong> Walk the dimly lit paths to find the mysterious carved Medusa heads.</li>
+                            <li><strong>The Grand Bazaar:</strong> Navigate one of the oldest covered markets in the world (4,000+ shops).</li>
+                            <li><strong>Galata Tower:</strong> Climb to the observation deck of this stone tower for 360-degree views.</li>
+                            <li><strong>Dolmabahçe Palace:</strong> Gaze at the European-style luxury and the world's largest crystal chandelier.</li>
+                            <li><strong>Süleymaniye Mosque:</strong> Appreciate Sinan’s masterwork sitting majestically on the city's third hill.</li>
+                            <li><strong>Chora Church (Kariye):</strong> Admire some of the finest Byzantine mosaics in the world.</li>
+                            <li><strong>Bosphorus Cruise:</strong> Take a classic yacht cruise to see the waterfront mansions (*yalı*).</li>
+                        </ol>
+                    </div>
+                    <div class="bucket-list-col">
+                        <h4>🍃 10 Unique Local Experiences</h4>
+                        <ol>
+                            <li><strong>Sunset Tea on Kadıköy Ferry:</strong> Ride the ferry at golden hour, drink hot tea, and feed seagulls.</li>
+                            <li><strong>Nişantaşı Espresso Crawl:</strong> Sip specialty coffee at Kronotrop or Petra in the chic back alleys.</li>
+                            <li><strong>Street Food in Kadıköy:</strong> Taste stuffed mussels (*midye dolma*), pickles, and kokoreç at the market.</li>
+                            <li><strong>Kılıç Ali Paşa Hamamı:</strong> Book a traditional bath, scrub, and massage in a Mimar Sinan dome.</li>
+                            <li><strong>Sunday Breakfast in Cihangir:</strong> Order a massive Turkish breakfast spread with menemen.</li>
+                            <li><strong>Stroll Balat & Fener:</strong> Explore the colorful, steep streets of the historic Greek and Jewish quarters.</li>
+                            <li><strong>Sunset Drinks at Sanat:</strong> Sip Turkish rakı or boutique wine at a terrace bar in Beyoğlu.</li>
+                            <li><strong>Bebek Waterfront Walk:</strong> Join locals for an evening stroll by the Bosphorus, followed by waffles.</li>
+                            <li><strong>Meyhane Night in Arnavutköy:</strong> Eat meze and drink Rakı at a traditional tavern in a wooden mansion.</li>
+                            <li><strong>Browse Antiques in Çukurcuma:</strong> Hunt for vintage Ottoman maps and objects in Beyoğlu's alleys.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Bucharest, Romania -->
+        <section class="destination">
+            <div class="dest-header">
+                <span class="dest-emoji">🇷🇴</span>
+                <h2 class="dest-title">BUCHAREST <span>Romania</span></h2>
+            </div>
+
+            <h3 class="logistics-title">✈️ Logistics & Bookings</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Date / Time</th>
+                            <th style="width: 25%;">Type (Flight/Stay)</th>
+                            <th style="width: 30%;">Details (Flight # / Property)</th>
+                            <th style="width: 25%;">Confirmation / Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight-text">Thu 9 Jul<br>13:20 – 14:35</td>
+                            <td>✈️ Inbound Flight</td>
+                            <td>Turkish Airlines <strong>TK1039</strong><br>Istanbul (IST) ➔ Bucharest (OTP)</td>
+                            <td>Ref: <strong>SQP33K</strong><br><small>Economy. Connects directly from your Istanbul stay.</small></td>
+                        </tr>
+                        <tr>
+                            <td class="highlight-text">Thu 9 Jul –<br>Sun 12 Jul</td>
+                            <td>🏨 Stay (3 Nights)</td>
+                            <td><strong>Airbnb (Old Town) — Host Andra</strong><br><small>Entire apartment</small></td>
+                            <td>via Airbnb App<br><strong>Calea Victoriei 2, Bucharest 030167</strong><br><small>Total: £193.57. Check-in after 15:00, Check-out by 11:00.</small></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="vibe-check-title">🗺️ The Vibe Check</h3>
+            <div class="vibe-container">
+                <div class="vibe-card">
+                    <div class="vibe-card-title">The Neighborhood</div>
+                    <p>Your flat is located right at the top of **Calea Victoriei**, Bucharest's most historic and elegant boulevard. You are steps away from the vibrant Old Town (Lipscani), Stavropoleos Monastery, and a wealth of excellent bistros.</p>
+                </div>
+                <div class="vibe-card">
+                    <div class="vibe-card-title">Local Know-How</div>
+                    <ul>
+                        <li><strong>Overland Departure:</strong> On Sunday, July 12, start your road trip to Braşov early. Weekend holiday traffic heading up into the Prahova Valley can add significant delays.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Gym Card -->
+            <div class="vibe-container" style="margin-bottom: 40px;">
+                <div class="vibe-card" style="grid-column: span 2;">
+                    <div class="vibe-card-title">🏋️ Recommended Gyms (Day Pass)</div>
+                    <p>Stay on track in Bucharest. These gyms near Calea Victoriei/Old Town offer day access:</p>
+                    <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <li><strong><a href="https://www.worldclass.ro/club/downtown/" target="_blank">World Class Downtown (Radisson Blu)</a>:</strong> Located directly in the hotel complex on Calea Victoriei. A premium wellness space featuring high-end strength equipment and pool. Single-entry passes are available.</li>
+                        <li><strong><a href="https://stayfit.ro/" target="_blank">Stay Fit Gym Cocor</a>:</strong> A large local chain fitness center near the Old Town. Modern equipment, with the option to purchase one-day entry tickets online.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Explorer Checklist Section -->
+            <div class="bucket-list-section">
+                <div class="bucket-list-title">🎯 The Explorer's Checklist</div>
+                <div class="bucket-list-grid">
+                    <div class="bucket-list-col">
+                        <h4>🏛️ 10 Bucket List Tourist Highlights</h4>
+                        <ol>
+                            <li><strong>Palace of the Parliament:</strong> Tour the world's second-largest administrative building, Nicolae Ceaușescu's giant monument.</li>
+                            <li><strong>Romanian Athenaeum:</strong> Attend a classical concert or tour the stunning, gold-leafed circular concert hall.</li>
+                            <li><strong>Village Museum:</strong> Walk through authentic, historic peasant homes from across Romania in Herăstrău Park.</li>
+                            <li><strong>Calea Victoriei:</strong> Stroll along the city's most elegant avenue, lined with belle-époque palaces.</li>
+                            <li><strong>Stavropoleos Monastery:</strong> Admire the delicate Brâncovenesc-style architecture and woodcarvings.</li>
+                            <li><strong>Arcul de Triumf:</strong> Gaze at Bucharest's Arc de Triomphe, built to honor Romania’s WWI victory.</li>
+                            <li><strong>Herăstrău Park:</strong> Rent a boat on the lake or walk the lush, forested paths.</li>
+                            <li><strong>CEC Palace:</strong> Photograph the grand, neoclassical dome of the oldest bank in Bucharest.</li>
+                            <li><strong>Revolution Square:</strong> Stand where Nicolae Ceaușescu gave his final speech before the 1989 revolution.</li>
+                            <li><strong>Old Town (Lipscani):</strong> Explore the historic, pedestrian-only heart of nightlife and dining.</li>
+                        </ol>
+                    </div>
+                    <div class="bucket-list-col">
+                        <h4>🍃 10 Unique Local Experiences</h4>
+                        <ol>
+                            <li><strong>Cărturești Carusel:</strong> Wander the six floors of the "Carousel of Light" spiral bookshop.</li>
+                            <li><strong>Therme București:</strong> Spend an afternoon in Europe's largest indoor botanical garden and thermal pool complex.</li>
+                            <li><strong>Coffee at Origo:</strong> Sip a custom-roasted filter coffee at Bucharest’s legendary pioneer specialty cafe.</li>
+                            <li><strong>Mici at Obor Market:</strong> Head to Terasa Obor for grilled Romanian minced meat rolls with mustard.</li>
+                            <li><strong>Cotroceni Neighborhood:</strong> Walk through Bucharest's most elegant, tree-lined residential district.</li>
+                            <li><strong>Secret Gardens:</strong> Relax with a local craft beer in a secret courtyard garden like Eden or Grădina Verona.</li>
+                            <li><strong>Dinner at Caru' cu Bere:</strong> Eat traditional pork knuckle in a spectacular 19th-century Gothic hall.</li>
+                            <li><strong>MNAC Art Museum:</strong> Check out the National Museum of Contemporary Art inside the Parliament Palace.</li>
+                            <li><strong>Fix Me a Drink:</strong> Try a botanical cocktail made with local sea buckthorn and lovage.</li>
+                            <li><strong>Sunset at Linea:</strong> Watch the sunset over the Dâmbovița river from a chic rooftop bar.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Braşov, Transylvania -->
+        <section class="destination">
+            <div class="dest-header">
+                <span class="dest-emoji">🏰</span>
+                <h2 class="dest-title">BRAȘOV <span>Transylvania, Romania</span></h2>
+            </div>
+
+            <h3 class="logistics-title">✈️ Logistics & Bookings</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Date / Time</th>
+                            <th style="width: 25%;">Type (Flight/Stay)</th>
+                            <th style="width: 30%;">Details (Flight # / Property)</th>
+                            <th style="width: 25%;">Confirmation / Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight-text">Sun 12 Jul –<br>Wed 15 Jul</td>
+                            <td>🚘 Overland Transfer</td>
+                            <td>Bucharest ➔ Braşov (Strada Lungă)<br><small>Duration: ~2h40 train or ~2h30 drive</small></td>
+                            <td>Ref: <strong>National/Emerald Club #670318950</strong><br><small>CFR InterRegio train or hire car. Transfer unbooked.</small></td>
+                        </tr>
+                        <tr>
+                            <td class="highlight-text">Sun 12 Jul –<br>Wed 15 Jul</td>
+                            <td>🏨 Stay (3 Nights)</td>
+                            <td><strong>Airbnb (Old Town) — Host Cristian</strong></td>
+                            <td>via Airbnb App<br><strong>Strada Lungă 39, Braşov 500035</strong><br><small>Total: £185.76. Check-out Wed 15 Jul.</small></td>
+                        </tr>
+                        <tr>
+                            <td class="highlight-text">Wed 15 Jul<br>16:15 – 17:40</td>
+                            <td>✈️ Outbound Flight</td>
+                            <td>British Airways <strong>BA875</strong><br>Bucharest (OTP) ➔ London Heathrow (LHR)<br><small>Duration: 3h25</small></td>
+                            <td>Ref: <strong>XK3V82</strong><br><small>Euro Traveller. Cost: €74.82.</small></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="vibe-check-title">🗺️ The Vibe Check</h3>
+            <div class="vibe-container">
+                <div class="vibe-card">
+                    <div class="vibe-card-title">The Neighborhood</div>
+                    <p>Your flat on **Strada Lungă** runs directly into the medieval core of Braşov. You are nestled inside a valley flanked by forested mountains, just a short walk from Council Square (Piața Sfatului) and the Black Church.</p>
+                </div>
+                <div class="vibe-card">
+                    <div class="vibe-card-title">Local Know-How</div>
+                    <ul>
+                        <li><strong>Return Run Buffer:</strong> For your return flight out of Bucharest (OTP) on July 15, allow 2h45 for the drive plus a 2-hour buffer. Ensure you leave Braşov by **11:00 AM**.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Gym Card -->
+            <div class="vibe-container" style="margin-bottom: 40px;">
+                <div class="vibe-card" style="grid-column: span 2;">
+                    <div class="vibe-card-title">🏋️ Recommended Gyms (Day Pass)</div>
+                    <p>Keep training in Transylvania:</p>
+                    <ul>
+                        <li><strong><a href="https://belaqva.ro/" target="_blank">Belaqva Active Wellness (Kronwell Hotel)</a>:</strong> Braşov's premier fitness club, a short taxi ride from the historic center. Features professional strength equipment, squat racks, and spa access. Day passes are **80 RON**.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Explorer Checklist Section -->
+            <div class="bucket-list-section">
+                <div class="bucket-list-title">🎯 The Explorer's Checklist</div>
+                <div class="bucket-list-grid">
+                    <div class="bucket-list-col">
+                        <h4>🏛️ 10 Bucket List Tourist Highlights</h4>
+                        <ol>
+                            <li><strong>The Black Church:</strong> Tour the largest Gothic church in Eastern Europe, housing historic Anatolian rugs.</li>
+                            <li><strong>Piața Sfatului:</strong> Relax in the colorful, cafe-lined medieval central council square.</li>
+                            <li><strong>Bran Castle:</strong> Take a day trip to the famous cliffside castle linked to the Dracula legend (45m drive).</li>
+                            <li><strong>Peleș Castle (Sinaia):</strong> Visit one of Europe's most breathtaking neo-Renaissance royal palaces (1h drive).</li>
+                            <li><strong>Râșnov Fortress:</strong> Hike up to the medieval hilltop fortress guarding the Transylvanian pass.</li>
+                            <li><strong>Black & White Towers:</strong> Climb these medieval watchtowers for views of the walled city.</li>
+                            <li><strong>Catherine’s Gate:</strong> View the last surviving original medieval city gate with its turreted towers.</li>
+                            <li><strong>Tâmpa Mountain Cable Car:</strong> Ride to the summit for a panoramic view of the old town.</li>
+                            <li><strong>Saint Nicholas Church:</strong> Admire the historic Romanian Orthodox church in the Schei district.</li>
+                            <li><strong>First Romanian School:</strong> Discover medieval Slavic books and the first Romanian printing press.</li>
+                        </ol>
+                    </div>
+                    <div class="bucket-list-col">
+                        <h4>🍃 10 Unique Local Experiences</h4>
+                        <ol>
+                            <li><strong>Rope Street (Strada Sforii):</strong> Walk through one of the narrowest medieval streets in Europe.</li>
+                            <li><strong>Coffee at La Birou:</strong> Sip specialty coffee at a cozy local cafe hidden off the main tourist paths.</li>
+                            <li><strong>Explore the Schei District:</strong> Walk the quiet, winding cobblestone streets of the old Romanian quarter.</li>
+                            <li><strong>Dinner at Bistro de l'Arte:</strong> Eat slow-food Transylvanian dishes in a 16th-century building.</li>
+                            <li><strong>Hike Tâmpa Mountain:</strong> Walk up through the dense forests of the nature reserve to reach the peak.</li>
+                            <li><strong>Gelato at Albert:</strong> Grab a cone of artisanal gelato and people-watch in the square.</li>
+                            <li><strong>Terroirs Boutique du Vin:</strong> Sample premium Romanian wines led by a local sommelier.</li>
+                            <li><strong>Libearty Bear Sanctuary:</strong> Take a morning tour of Europe’s largest brown bear sanctuary in Zărnești.</li>
+                            <li><strong>Medieval City Walls:</strong> Stroll along the old bastions (Weavers' and Graft Bastions) next to the forest.</li>
+                            <li><strong>Postăvarul Massif:</strong> Take the cable car from Poiana Brașov for Carpathian mountain vistas.</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </section>
@@ -898,8 +1236,6 @@
                 <h2 class="dest-title">TOKYO <span>Japan</span></h2>
             </div>
 
-            <!-- Logistical Alert if any -->
-
             <h3 class="logistics-title">✈️ Logistics & Bookings</h3>
             <div class="table-container">
                 <table>
@@ -928,7 +1264,7 @@
                             <td class="highlight-text">Fri 7 Aug –<br>Sun 16 Aug</td>
                             <td>🏠 Stay (Interlude - 9 Nights)</td>
                             <td><strong>Staying with Ben</strong></td>
-                            <td>Stay at friend Ben's residence (No booking required)</td>
+                            <td>Stay with friend Ben (No booking required)</td>
                         </tr>
                         <tr>
                             <td class="highlight-text">Sun 16 Aug –<br>Thu 20 Aug</td>
@@ -960,9 +1296,57 @@
                     <div class="vibe-card-title">Local Know-How</div>
                     <ul>
                         <li><strong>Digital Suica Card:</strong> Load a Suica card directly into your Apple Wallet before leaving Heathrow. It is the easiest way to navigate transit and pay at convenience stores.</li>
-                        <li><strong>Tokyu Food Show:</strong> Walk down to the food hall below Shibuya Station for a phenomenal gourmet spread—perfect for grabbing premium bento boxes or fresh sashimi.</li>
-                        <li><strong>Reservations Timeline:</strong> Book your tickets for **teamLab** (Planets or Borderless) and lock in high-end **omakase** sushi/yakitori reservations exactly **2–4 weeks in advance**.</li>
+                        <li><strong>Advanced Bookings:</strong> Book your tickets for **teamLab** (Planets or Borderless) and lock in high-end **omakase** sushi/yakitori reservations exactly **2–4 weeks in advance**.</li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- Gym Card -->
+            <div class="vibe-container" style="margin-bottom: 40px;">
+                <div class="vibe-card" style="grid-column: span 2;">
+                    <div class="vibe-card-title">🏋️ Recommended Gyms (Day Pass)</div>
+                    <p>Tokyo strength training close to Shinsen/Shibuya:</p>
+                    <ul>
+                        <li><strong><a href="https://www.goldsgym.jp/shop/13150" target="_blank">Gold's Gym Shibuya Tokyo</a>:</strong> Located on Meiji-dori (Metro Plaza building). Tokyo's absolute flagship gym for bodybuilding, featuring elite free weights and resistance machinery. Day pass is **¥3,900**.
+                        <br><small>⚠️ *Note: Requires physical passport, separate clean indoor athletic shoes, and visible tattoos must be covered.*</small></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Explorer Checklist Section -->
+            <div class="bucket-list-section">
+                <div class="bucket-list-title">🎯 The Explorer's Checklist</div>
+                <div class="bucket-list-grid">
+                    <div class="bucket-list-col">
+                        <h4>🏛️ 10 Bucket List Tourist Highlights</h4>
+                        <ol>
+                            <li><strong>Shibuya Crossing:</strong> Experience the rush of the world's busiest pedestrian intersection.</li>
+                            <li><strong>Senso-ji Temple (Asakusa):</strong> Walk through the Kaminarimon gate of Tokyo's oldest Buddhist temple.</li>
+                            <li><strong>teamLab Planets:</strong> Immerse yourself in the digital, water-filled art galleries in Toyosu.</li>
+                            <li><strong>Meiji Jingu Shrine:</strong> Walk through the towering torii gates into the cedar forest of Yoyogi Park.</li>
+                            <li><strong>Tokyo Skytree:</strong> Stand on the observation deck of the world's tallest freestanding tower.</li>
+                            <li><strong>Tsukiji Outer Market:</strong> Sample street food like sea urchin, wagyu skewers, and sweet tamagoyaki.</li>
+                            <li><strong>Akihabara Electric Town:</strong> Explore the neon buildings dedicated to anime, gaming, and electronics.</li>
+                            <li><strong>Shinjuku Gyoen Garden:</strong> Stroll through English landscape and traditional Japanese gardens.</li>
+                            <li><strong>Harajuku (Takeshita Street):</strong> Walk the colorful street known for teenage fashion and crepes.</li>
+                            <li><strong>Tokyo Tower:</strong> Photograph the classic red-and-white Eiffel-inspired tower at night.</li>
+                        </ol>
+                    </div>
+                    <div class="bucket-list-col">
+                        <h4>🍃 10 Unique Local Experiences</h4>
+                        <ol>
+                            <li><strong>Tokyu Food Show:</strong> Assemble a high-end picnic from the basement food hall below Shibuya Station.</li>
+                            <li><strong>Nonbei Yokocho (Drunkard's Alley):</strong> Grab a seat in a 4-person micro-bar for grilled skewers and highballs.</li>
+                            <li><strong>Coffee in Shinsen:</strong> Sip a pour-over coffee at Camelback or Coffee Supreme in your neighborhood.</li>
+                            <li><strong>Sake at Shinkawa Saketen:</strong> Visit a historic standing bar (*kaku-uchi*) in Kayabacho to sample local sakes.</li>
+                            <li><strong>Explore Daikanyama T-Site:</strong> Browse books and design magazines in Tokyo's most stunning bookstore.</li>
+                            <li><strong>Meguro River Walk:</strong> Walk the quiet, tree-lined paths of Nakameguro, stopping at boutique cafes.</li>
+                            <li><strong>Monjayaki in Tsukishima:</strong> Cook Tokyo's unique savory batter pancake on a tabletop grill on Monja Street.</li>
+                            <li><strong>Tuna Auction & Sushi Breakfast:</strong> Watch the morning frozen tuna auction at Toyosu, then eat sushi at Daiwa.</li>
+                            <li><strong>Stroll Yanaka Ginza:</strong> Explore one of Tokyo's few remaining *shitamachi* (old town) shopping streets.</li>
+                            <li><strong>Late-night Jazz Kissaten:</strong> Spend a quiet evening listening to classic vinyl jazz records at Lion Cafe in Shibuya.</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </section>
