@@ -1,6 +1,7 @@
 const CACHE_NAME = 'dcr-travel-v1';
 const ASSETS = [
   './',
+  './DCR_Travel.html',
   './index.html',
   './manifest.json',
   './icon-192.png',

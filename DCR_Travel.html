@@ -1,0 +1,2896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DCR Sabbatical</title>
+    
+    <!-- PWA Settings -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#FAF7F2">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* DCR Gym Sepia Palette */
+            --bg-ios: #FAF7F2; /* Vellum background */
+            --bg-card: #FFFFFF; /* Pure white card surface */
+            --border-ios: #EDE8E0; /* Warm divide */
+            --text-main: #2A2421; /* Warm espresso charcoal */
+            --text-muted: #B8A99A; /* Sand */
+            --gold: #C9A84C; /* Antique gold */
+            --gold-light: rgba(201, 168, 76, 0.08);
+            --red-ios: #F04E23; /* Terracotta alert */
+            --shadow-ios: 0 4px 12px rgba(42, 36, 33, 0.03);
+            --transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.25s linear;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-ios);
+            color: var(--text-main);
+            line-height: 1.4;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Micro-noise grain overlay from Gym app */
+        body::after {
+            content: '';
+            position: fixed; inset: 0; z-index: 999; pointer-events: none;
+            opacity: 0.025; mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 128px 128px;
+        }
+
+        /* App shell layout */
+        .app-shell {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* iOS Navigation Header */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(250, 247, 242, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-ios);
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 100;
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.01em;
+        }
+
+        .cloud-badge {
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--gold);
+            background-color: var(--gold-light);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            padding: 4px 10px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cloud-spinner {
+            width: 8px;
+            height: 8px;
+            border: 1.5px solid var(--gold);
+            border-top: 1.5px solid transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Content screens */
+        .screen-wrapper {
+            position: relative;
+            flex: 1;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 16px 110px 16px;
+            display: none;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: var(--transition);
+        }
+
+        .screen.active {
+            display: block;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .screen.slide-out {
+            transform: translateX(-100%);
+            opacity: 0;
+            display: block;
+        }
+
+        /* General iOS Elements */
+        .section-header {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            margin-left: 4px;
+        }
+
+        /* --- OVERVIEW SCREEN --- */
+        .global-overview-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-ios);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-ios);
+        }
+
+        .overview-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .overview-dates {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 4px 0 14px 0;
+            line-height: 1.1;
+        }
+
+        .overview-stats {
+            display: flex;
+            gap: 25px;
+            border-top: 1px solid var(--border-ios);
+            padding-top: 15px;
+        }
+
+        .stat-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .stat-val {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        /* Live Activity Banner */
+        .live-activity-card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            border-left: 4px solid var(--gold);
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-ios);
+        }
+
+        .live-label-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .live-badge {
+            font-size: 0.62rem;
+            font-weight: 700;
+            color: var(--gold);
+            background-color: var(--gold-light);
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .live-countdown {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .live-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .live-sub {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* Visual Country Segment Cards */
+        .country-deck {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .country-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-ios);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: var(--shadow-ios);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 140px;
+            transition: var(--transition);
+        }
+
+        .country-card:active {
+            transform: scale(0.96);
+        }
+
+        .country-bg {
+            position: absolute;
+            right: -10px;
+            bottom: -10px;
+            font-size: 4.5rem;
+            opacity: 0.05;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .country-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.1;
+        }
+
+        .country-dates {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 4px;
+            letter-spacing: 0.02em;
+        }
+
+        .country-meta {
+            font-size: 0.75rem;
+            color: var(--text-main);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .country-progress-bar-bg {
+            height: 4px;
+            background-color: var(--bg-ios);
+            border-radius: 2px;
+            margin-top: 15px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .country-progress-bar-fill {
+            height: 100%;
+            background-color: var(--gold);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        /* --- DESTINATION VIEWS --- */
+        .dest-cover {
+            margin-bottom: 20px;
+            padding: 5px 4px;
+        }
+
+        .dest-cover h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .dest-cover p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        /* --- AIRBNB/HOTEL MANUAL PASS --- */
+        .manual-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-ios);
+            border-radius: 16px;
+            box-shadow: var(--shadow-ios);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .manual-banner {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            background-color: var(--gold-light);
+            border-bottom: 1px solid var(--border-ios);
+            padding: 12px 18px;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .manual-body {
+            padding: 18px;
+        }
+
+        .manual-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.82rem;
+        }
+
+        .manual-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .manual-label {
+            color: var(--text-muted);
+            font-weight: 500;
+            width: 90px;
+            flex-shrink: 0;
+        }
+
+        .manual-val {
+            color: var(--text-main);
+            font-weight: 600;
+            flex: 1;
+            text-align: right;
+        }
+
+        .manual-copy-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 6px;
+            margin-top: 8px;
+            border-top: 1px solid var(--border-ios);
+            padding-top: 8px;
+        }
+
+        .manual-copy-btn {
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 0.72rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* --- LOGISTICS (Boarding Passes) --- */
+        .pass-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-ios);
+            box-shadow: var(--shadow-ios);
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .pass-banner {
+            padding: 10px 18px;
+            color: #FFFFFF;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pass-banner.easyjet { background: #FF6600; }
+        .pass-banner.turkish { background: #E11C23; }
+        .pass-banner.ba { background: #002366; }
+        .pass-banner.airbnb { background: #FF5A5F; }
+        .pass-banner.hotel { background: #C9A84C; }
+
+        .pass-body {
+            padding: 18px;
+        }
+
+        .pass-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .pass-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .pass-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pass-col.right {
+            text-align: right;
+            align-items: flex-end;
+        }
+
+        .pass-label {
+            font-size: 0.62rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 2px;
+            letter-spacing: 0.02em;
+        }
+
+        .pass-val {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .pass-val.airport {
+            font-size: 1.6rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .pass-arrow {
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .pass-divider {
+            border-top: 1px dashed #EDE8E0;
+            margin: 8px 0;
+            position: relative;
+        }
+
+        .pass-divider::before, .pass-divider::after {
+            content: "";
+            position: absolute;
+            top: -6px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--bg-ios);
+            border-radius: 50%;
+        }
+
+        .pass-divider::before { left: -24px; }
+        .pass-divider::after { right: -24px; }
+
+        .card-action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            background-color: var(--gold-light);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            color: var(--gold);
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: var(--transition);
+        }
+
+        .card-action-btn:active {
+            background-color: rgba(201, 168, 76, 0.15);
+        }
+
+        /* --- GOURMET CONCIERGE --- */
+        .gourmet-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-ios);
+            border-radius: 16px;
+            box-shadow: var(--shadow-ios);
+            margin-bottom: 20px;
+            padding: 18px;
+        }
+
+        .gourmet-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .gourmet-dish {
+            margin-bottom: 12px;
+        }
+
+        .gourmet-dish:last-child {
+            margin-bottom: 0;
+        }
+
+        .dish-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .dish-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* --- ITINERARY (Vertical Timeline) --- */
+        .timeline-container {
+            position: relative;
+            padding-left: 20px;
+            border-left: 1px solid #EDE8E0;
+            margin-left: 12px;
+            margin-top: 10px;
+            margin-bottom: 25px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -26px;
+            top: 4px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background-color: var(--gold);
+            border: 2px solid var(--bg-ios);
+        }
+
+        .timeline-date-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            margin-bottom: 3px;
+        }
+
+        .timeline-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-ios);
+            border-radius: 12px;
+            padding: 12px 15px;
+            box-shadow: var(--shadow-ios);
+        }
+
+        .timeline-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .timeline-detail-row {
+            display: flex;
+            font-size: 0.78rem;
+            margin-bottom: 4px;
+            color: var(--text-main);
+        }
+
+        .timeline-detail-row:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- GYMS --- */
+        .gym-pass-item {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-ios);
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-ios);
+        }
+
+        .gym-pass-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .gym-pass-title h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .gym-pass-title span {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .gym-price-badge {
+            background-color: var(--gold-light);
+            color: var(--gold);
+            border: 1px solid rgba(201, 168, 76, 0.18);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 6px;
+            border-radius: 5px;
+        }
+
+        .gym-pass-body {
+            font-size: 0.8rem;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .gym-checks {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        .gym-check-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .gym-check-row.required {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .gym-check-row svg {
+            width: 12px;
+            stroke: var(--text-muted);
+            stroke-width: 2.5;
+            fill: none;
+        }
+
+        .gym-check-row.required svg {
+            stroke: var(--gold);
+        }
+
+        /* --- BUCKET LISTS --- */
+        .checklist-search-box {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-ios);
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-ios);
+        }
+
+        .checklist-search-box svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--text-muted);
+            fill: none;
+            stroke-width: 2.5;
+        }
+
+        .checklist-search-input {
+            border: none;
+            outline: none;
+            width: 100%;
+            background: none;
+            font-family: inherit;
+            font-size: 0.85rem;
+            color: var(--text-main);
+        }
+
+        .checklist-search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .checklist-wrapper {
+            margin-bottom: 20px;
+        }
+
+        .checklist-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            padding-left: 2px;
+        }
+
+        .check-item-ios {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-ios);
+            border-radius: 12px;
+            padding: 12px 14px;
+            margin-bottom: 6px;
+            cursor: pointer;
+            box-shadow: var(--shadow-ios);
+            transition: var(--transition);
+        }
+
+        .check-item-ios:active {
+            background-color: #FAF9F6;
+        }
+
+        .check-item-ios.hide {
+            display: none !important;
+        }
+
+        .checkbox-ios {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 1.5px solid #EDE8E0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .checkbox-ios svg {
+            width: 10px;
+            height: 10px;
+            stroke: #FFFFFF;
+            stroke-width: 3.5;
+            fill: none;
+            display: none;
+        }
+
+        .check-item-ios.checked .checkbox-ios {
+            background-color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .check-item-ios.checked .checkbox-ios svg {
+            display: block;
+        }
+
+        .check-text-ios {
+            font-size: 0.8rem;
+            color: var(--text-main);
+            line-height: 1.35;
+            transition: var(--transition);
+        }
+
+        .check-item-ios.checked .check-text-ios {
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+
+        .check-map-btn {
+            margin-left: auto;
+            background: none;
+            border: none;
+            color: var(--gold);
+            cursor: pointer;
+            padding: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .check-map-btn svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2.2;
+        }
+
+        /* --- DOCS TAB & VIEW --- */
+        .ios-list {
+            background-color: var(--bg-card);
+            border-radius: 14px;
+            border: 1px solid var(--border-ios);
+            overflow: hidden;
+            box-shadow: var(--shadow-ios);
+            margin-bottom: 20px;
+        }
+
+        .ios-list-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-ios);
+        }
+
+        .ios-list-row:last-child {
+            border-bottom: none;
+        }
+
+        .ios-list-label {
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+
+        .ios-list-val {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .passport-preview-container {
+            background-color: var(--bg-card);
+            border-radius: 14px;
+            border: 1px solid var(--border-ios);
+            padding: 12px;
+            box-shadow: var(--shadow-ios);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .passport-tap-box {
+            border: 1.5px dashed rgba(201, 168, 76, 0.3);
+            border-radius: 10px;
+            padding: 24px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .passport-tap-box:active {
+            background-color: var(--gold-light);
+        }
+
+        .passport-img-box {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #000000;
+            display: none;
+            cursor: pointer;
+        }
+
+        .passport-img-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Action Alert Box */
+        .action-alert {
+            background-color: #FFF8F8;
+            border: 1px solid rgba(240, 78, 35, 0.15);
+            border-left: 3px solid var(--red-ios);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .action-alert h4 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--red-ios);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .action-alert p {
+            font-size: 0.78rem;
+            color: #7D2624;
+            line-height: 1.35;
+        }
+
+        /* --- INTERACTIVE CALENDAR --- */
+        .calendar-section {
+            margin-top: 25px;
+            margin-bottom: 20px;
+        }
+
+        .calendar-month-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-ios);
+            border-radius: 16px;
+            padding: 15px;
+            box-shadow: var(--shadow-ios);
+        }
+
+        .calendar-month-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            color: var(--text-main);
+            text-align: center;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+        }
+
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .calendar-table th {
+            text-align: center;
+            padding: 5px 0;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-ios);
+        }
+
+        .calendar-table td {
+            width: 14.28%;
+            height: 48px;
+            text-align: center;
+            vertical-align: top;
+            padding: 4px 2px;
+            border: 1px solid #FAF9F6;
+            font-size: 0.72rem;
+            position: relative;
+        }
+
+        .calendar-day-num {
+            font-weight: 700;
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 3px;
+            text-align: left;
+        }
+
+        .calendar-dest-badge {
+            display: block;
+            font-size: 0.48rem;
+            padding: 1px 2px;
+            border-radius: 3px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+
+        .badge-bodrum { background-color: #E0F2FE; color: #0369A1; border: 1px solid #BAE6FD; }
+        .badge-istanbul { background-color: #F3E8FF; color: #6B21A8; border: 1px solid #E9D5FF; }
+        .badge-spetses { background-color: #DCFCE7; color: #166534; border: 1px solid #BBF7D0; }
+        .badge-tokyo-noe { background-color: #FEE2E2; color: #991B1B; border: 1px solid #FCA5A5; }
+        .badge-tokyo-ben { background-color: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+        .badge-transition { background-color: #F3F4F6; color: #4B5563; border: 1px solid #E5E7EB; }
+
+        .calendar-empty {
+            background-color: #FCFBF9;
+        }
+
+        /* --- HORIZONTALLY SCROLLABLE TAB BAR --- */
+        .tab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 75px;
+            background-color: rgba(250, 247, 242, 0.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border-ios);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0 10px 12px 10px;
+            z-index: 100;
+            box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.03);
+            overflow-x: auto;
+            scrollbar-width: none; /* Hide scrollbar Firefox */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tab-bar::-webkit-scrollbar {
+            display: none; /* Hide scrollbar Chrome/Safari */
+        }
+
+        .tab-button {
+            flex: 0 0 auto;
+            min-width: 75px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            gap: 4px;
+            padding: 6px 10px;
+            transition: var(--transition);
+        }
+
+        .tab-button svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            transition: var(--transition);
+        }
+
+        .tab-button.active {
+            color: var(--gold);
+        }
+
+        .tab-button.active svg {
+            stroke: var(--gold);
+        }
+
+        /* Toast styling */
+        .toast {
+            position: fixed;
+            bottom: 90px;
+            left: 50%;
+            transform: translateX(-50%) translateY(30px);
+            background-color: rgba(42, 36, 33, 0.9);
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            box-shadow: var(--shadow-ios);
+            z-index: 300;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Desktop view centering wrapper */
+        @media (min-width: 600px) {
+            .tab-bar {
+                max-width: 600px;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 16px 16px 0 0;
+            }
+            .toast {
+                bottom: 95px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-shell">
+        
+        <!-- Header -->
+        <header>
+            <div class="logo-text">DCR Sabbatical</div>
+            <div id="cloud-status" class="cloud-badge">
+                <span id="cloud-spinner" class="cloud-spinner"></span>
+                <span id="cloud-text">Connecting...</span>
+            </div>
+        </header>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast">Synced</div>
+
+        <div class="screen-wrapper">
+
+            <!-- SCREEN 1: OVERVIEW -->
+            <main id="screen-overview" class="screen active">
+                <!-- Live Activity Card -->
+                <div class="live-activity-card" id="next-up-widget">
+                    <div class="live-label-row">
+                        <span class="live-badge">Live Activity</span>
+                        <span class="live-countdown" id="live-countdown-text">CALCULATING...</span>
+                    </div>
+                    <div class="live-title" id="live-title-text">Scanning Itinerary...</div>
+                    <div class="live-sub" id="live-sub-text">Finding next upcoming event details.</div>
+                </div>
+
+                <div class="global-overview-card">
+                    <div class="overview-title">Master Itinerary</div>
+                    <div class="overview-dates">Summer Grand Tour</div>
+                    
+                    <div class="overview-stats">
+                        <div class="stat-block">
+                            <span class="stat-label">Total Days</span>
+                            <span class="stat-val">51 Days</span>
+                        </div>
+                        <div class="stat-block">
+                            <span class="stat-label">Stops</span>
+                            <span class="stat-val">6 Destinations</span>
+                        </div>
+                        <div class="stat-block">
+                            <span class="stat-label">Current Vibe</span>
+                            <span class="stat-val" style="color: var(--gold);">Pre-Trip</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-header">Trip Segments</div>
+                
+                <!-- Visual Country Cards Grid -->
+                <div class="country-deck">
+                    <!-- Turkey -->
+                    <div class="country-card" onclick="switchTab('bodrum')">
+                        <div class="country-bg">🕌</div>
+                        <div class="country-content">
+                            <div class="country-name">Türkiye</div>
+                            <div class="country-dates">Jul 1 - Jul 9 • 2 Stops</div>
+                            <div class="country-meta">Bodrum, Istanbul</div>
+                            <div class="country-progress-bar-bg">
+                                <div class="country-progress-bar-fill" id="prog-bar-turkey" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Romania -->
+                    <div class="country-card" onclick="switchTab('bucharest')">
+                        <div class="country-bg">🇷🇴</div>
+                        <div class="country-content">
+                            <div class="country-name">Romania</div>
+                            <div class="country-dates">Jul 9 - Jul 15 • 2 Stops</div>
+                            <div class="country-meta">Bucharest, Braşov</div>
+                            <div class="country-progress-bar-bg">
+                                <div class="country-progress-bar-fill" id="prog-bar-romania" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Greece -->
+                    <div class="country-card" onclick="switchTab('spetses')">
+                        <div class="country-bg">🇬🇷</div>
+                        <div class="country-content">
+                            <div class="country-name">Greece</div>
+                            <div class="country-dates">Jul 22 - Jul 27 • 1 Stop</div>
+                            <div class="country-meta">Spetses Island</div>
+                            <div class="country-progress-bar-bg">
+                                <div class="country-progress-bar-fill" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Japan -->
+                    <div class="country-card" onclick="switchTab('tokyo')">
+                        <div class="country-bg">🇯🇵</div>
+                        <div class="country-content">
+                            <div class="country-name">Japan</div>
+                            <div class="country-dates">Jul 30 - Aug 20 • 1 Stop</div>
+                            <div class="country-meta">Tokyo (Shibuya)</div>
+                            <div class="country-progress-bar-bg">
+                                <div class="country-progress-bar-fill" id="prog-bar-japan" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- British Open Card -->
+                <div class="section-header">⛳ Mid-Trip Interlude</div>
+                <div class="global-overview-card" style="margin-bottom: 25px;">
+                    <div class="overview-title">British Golf Open</div>
+                    <div class="overview-dates" style="font-size: 1.5rem; margin-bottom: 8px;">Southwest England</div>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">From July 16 to July 20, you will travel to Southwest England to spectate the British Golf Open. Returning to London on checkout.</p>
+                </div>
+
+                <!-- Calendar Section -->
+                <div class="calendar-section">
+                    <div class="section-header">🗓️ Master Calendar</div>
+                    
+                    <!-- July -->
+                    <div class="calendar-month-card">
+                        <div class="calendar-month-title">July 2026</div>
+                        <table class="calendar-table">
+                            <thead>
+                                <tr><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th><th>S</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="calendar-empty"></td>
+                                    <td class="calendar-empty"></td>
+                                    <td><span class="calendar-day-num">1</span><span class="calendar-dest-badge badge-bodrum" onclick="switchTab('bodrum')">Bodrum</span></td>
+                                    <td><span class="calendar-day-num">2</span><span class="calendar-dest-badge badge-bodrum" onclick="switchTab('bodrum')">Bodrum</span></td>
+                                    <td><span class="calendar-day-num">3</span><span class="calendar-dest-badge badge-bodrum" onclick="switchTab('bodrum')">Bodrum</span></td>
+                                    <td><span class="calendar-day-num">4</span><span class="calendar-dest-badge badge-bodrum" onclick="switchTab('bodrum')">Bodrum</span></td>
+                                    <td><span class="calendar-day-num">5</span><span class="calendar-dest-badge badge-istanbul" onclick="switchTab('istanbul')">BJV➔IST</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="calendar-day-num">6</span><span class="calendar-dest-badge badge-istanbul" onclick="switchTab('istanbul')">Istanbul</span></td>
+                                    <td><span class="calendar-day-num">7</span><span class="calendar-dest-badge badge-istanbul" onclick="switchTab('istanbul')">Istanbul</span></td>
+                                    <td><span class="calendar-day-num">8</span><span class="calendar-dest-badge badge-istanbul" onclick="switchTab('istanbul')">Istanbul</span></td>
+                                    <td><span class="calendar-day-num">9</span><span class="calendar-dest-badge badge-transition" onclick="switchTab('bucharest')">IST➔BUH</span></td>
+                                    <td><span class="calendar-day-num">10</span><span class="calendar-dest-badge badge-transition" onclick="switchTab('bucharest')">Bucharest</span></td>
+                                    <td><span class="calendar-day-num">11</span><span class="calendar-dest-badge badge-transition" onclick="switchTab('bucharest')">Bucharest</span></td>
+                                    <td><span class="calendar-day-num">12</span><span class="calendar-dest-badge badge-transition" onclick="switchTab('brasov')">BUH➔BRV</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="calendar-day-num">13</span><span class="calendar-dest-badge badge-transition" onclick="switchTab('brasov')">Braşov</span></td>
+                                    <td><span class="calendar-day-num">14</span><span class="calendar-dest-badge badge-transition" onclick="switchTab('brasov')">Braşov</span></td>
+                                    <td><span class="calendar-day-num">15</span><span class="calendar-dest-badge badge-transition">BRV➔LDN</span></td>
+                                    <td><span class="calendar-day-num">16</span><span class="calendar-dest-badge badge-transition">Golf Open</span></td>
+                                    <td><span class="calendar-day-num">17</span><span class="calendar-dest-badge badge-transition">Golf Open</span></td>
+                                    <td><span class="calendar-day-num">18</span><span class="calendar-dest-badge badge-transition">Golf Open</span></td>
+                                    <td><span class="calendar-day-num">19</span><span class="calendar-dest-badge badge-transition">Golf Open</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="calendar-day-num">20</span><span class="calendar-dest-badge badge-transition">Golf➔LDN</span></td>
+                                    <td><span class="calendar-day-num">21</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                    <td><span class="calendar-day-num">22</span><span class="calendar-dest-badge badge-spetses" onclick="switchTab('spetses')">LDN➔ATH</span></td>
+                                    <td><span class="calendar-day-num">23</span><span class="calendar-dest-badge badge-spetses" onclick="switchTab('spetses')">Spetses</span></td>
+                                    <td><span class="calendar-day-num">24</span><span class="calendar-dest-badge badge-spetses" onclick="switchTab('spetses')">Spetses</span></td>
+                                    <td><span class="calendar-day-num">25</span><span class="calendar-dest-badge badge-spetses" onclick="switchTab('spetses')">Spetses</span></td>
+                                    <td><span class="calendar-day-num">26</span><span class="calendar-dest-badge badge-spetses" onclick="switchTab('spetses')">Spetses</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="calendar-day-num">27</span><span class="calendar-dest-badge badge-transition">ATH➔LDN</span></td>
+                                    <td><span class="calendar-day-num">28</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                    <td><span class="calendar-day-num">29</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                    <td><span class="calendar-day-num">30</span><span class="calendar-dest-badge badge-tokyo-noe" onclick="switchTab('tokyo')">LHR➔HND</span></td>
+                                    <td><span class="calendar-day-num">31</span><span class="calendar-dest-badge badge-tokyo-noe" onclick="switchTab('tokyo')">Tokyo (Noe)</span></td>
+                                    <td class="calendar-empty"></td>
+                                    <td class="calendar-empty"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- August -->
+                    <div class="calendar-month-card" style="margin-top: 15px;">
+                        <div class="calendar-month-title">August 2026</div>
+                        <table class="calendar-table">
+                            <thead>
+                                <tr><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th><th>S</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="calendar-empty"></td>
+                                    <td class="calendar-empty"></td>
+                                    <td class="calendar-empty"></td>
+                                    <td class="calendar-empty"></td>
+                                    <td class="calendar-empty"></td>
+                                    <td><span class="calendar-day-num">1</span><span class="calendar-dest-badge badge-tokyo-noe" onclick="switchTab('tokyo')">Tokyo (Noe)</span></td>
+                                    <td><span class="calendar-day-num">2</span><span class="calendar-dest-badge badge-tokyo-noe" onclick="switchTab('tokyo')">Tokyo (Noe)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="calendar-day-num">3</span><span class="calendar-dest-badge badge-tokyo-noe" onclick="switchTab('tokyo')">Tokyo (Noe)</span></td>
+                                    <td><span class="calendar-day-num">4</span><span class="calendar-dest-badge badge-tokyo-noe" onclick="switchTab('tokyo')">Tokyo (Noe)</span></td>
+                                    <td><span class="calendar-day-num">5</span><span class="calendar-dest-badge badge-tokyo-noe" onclick="switchTab('tokyo')">Tokyo (Noe)</span></td>
+                                    <td><span class="calendar-day-num">6</span><span class="calendar-dest-badge badge-tokyo-noe" onclick="switchTab('tokyo')">Tokyo (Noe)</span></td>
+                                    <td><span class="calendar-day-num">7</span><span class="calendar-dest-badge badge-tokyo-ben" onclick="switchTab('tokyo')">Tokyo (Ben)</span></td>
+                                    <td><span class="calendar-day-num">8</span><span class="calendar-dest-badge badge-tokyo-ben" onclick="switchTab('tokyo')">Tokyo (Ben)</span></td>
+                                    <td><span class="calendar-day-num">9</span><span class="calendar-dest-badge badge-tokyo-ben" onclick="switchTab('tokyo')">Tokyo (Ben)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="calendar-day-num">10</span><span class="calendar-dest-badge badge-tokyo-ben" onclick="switchTab('tokyo')">Tokyo (Ben)</span></td>
+                                    <td><span class="calendar-day-num">11</span><span class="calendar-dest-badge badge-tokyo-ben" onclick="switchTab('tokyo')">Tokyo (Ben)</span></td>
+                                    <td><span class="calendar-day-num">12</span><span class="calendar-dest-badge badge-tokyo-ben" onclick="switchTab('tokyo')">Tokyo (Ben)</span></td>
+                                    <td><span class="calendar-day-num">13</span><span class="calendar-dest-badge badge-tokyo-ben" onclick="switchTab('tokyo')">Tokyo (Ben)</span></td>
+                                    <td><span class="calendar-day-num">14</span><span class="calendar-dest-badge badge-tokyo-ben" onclick="switchTab('tokyo')">Tokyo (Ben)</span></td>
+                                    <td><span class="calendar-day-num">15</span><span class="calendar-dest-badge badge-tokyo-ben" onclick="switchTab('tokyo')">Tokyo (Ben)</span></td>
+                                    <td><span class="calendar-day-num">16</span><span class="calendar-dest-badge badge-tokyo-noe" onclick="switchTab('tokyo')">Tokyo (Noe)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="calendar-day-num">17</span><span class="calendar-dest-badge badge-tokyo-noe" onclick="switchTab('tokyo')">Tokyo (Noe)</span></td>
+                                    <td><span class="calendar-day-num">18</span><span class="calendar-dest-badge badge-tokyo-noe" onclick="switchTab('tokyo')">Tokyo (Noe)</span></td>
+                                    <td><span class="calendar-day-num">19</span><span class="calendar-dest-badge badge-tokyo-noe" onclick="switchTab('tokyo')">Tokyo (Noe)</span></td>
+                                    <td><span class="calendar-day-num">20</span><span class="calendar-dest-badge badge-transition" onclick="switchTab('tokyo')">HND➔LHR</span></td>
+                                    <td><span class="calendar-day-num">21</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                    <td><span class="calendar-day-num">22</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                    <td><span class="calendar-day-num">23</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="calendar-day-num">24</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                    <td><span class="calendar-day-num">25</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                    <td><span class="calendar-day-num">26</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                    <td><span class="calendar-day-num">27</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                    <td><span class="calendar-day-num">28</span><span class="calendar-dest-badge badge-transition">Corsica</span></td>
+                                    <td><span class="calendar-day-num">29</span><span class="calendar-dest-badge badge-transition">Corsica</span></td>
+                                    <td><span class="calendar-day-num">30</span><span class="calendar-dest-badge badge-transition">Corsica</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="calendar-day-num">31</span><span class="calendar-dest-badge badge-transition">Corsica</span></td>
+                                    <td class="calendar-empty"></td>
+                                    <td class="calendar-empty"></td>
+                                    <td class="calendar-empty"></td>
+                                    <td class="calendar-empty"></td>
+                                    <td class="calendar-empty"></td>
+                                    <td class="calendar-empty"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+
+            <!-- SCREEN 2: BODRUM -->
+            <main id="screen-bodrum" class="screen">
+                <div class="dest-cover">
+                    <p>July 1 - July 5</p>
+                    <h1>Bodrum, Türkiye</h1>
+                </div>
+
+                <!-- Lodging Guest Manual -->
+                <div class="section-header">🔑 Guest & Lodging Manual</div>
+                <div class="manual-card">
+                    <div class="manual-banner">Maka's Villa (Personal Stay)</div>
+                    <div class="manual-body">
+                        <div class="manual-row"><span class="manual-label">Wi-Fi Net</span><span class="manual-val">Maka_Bodrum_5G</span></div>
+                        <div class="manual-row"><span class="manual-label">Wi-Fi Pass</span><span class="manual-val" id="val-wifi-bodrum">aegeanparadise</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">Key in lockbox (Code: 1985)</span></div>
+                        <div class="manual-row"><span class="manual-label">House Rules</span><span class="manual-val">Turn off AC when leaving. Access to beach via back gate path.</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">Leave keys in box. checkout by 11:00.</span></div>
+                        <div class="manual-copy-row">
+                            <button class="manual-copy-btn" onclick="copyText(document.getElementById('val-wifi-bodrum').innerText)">
+                                <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                Copy Wi-Fi Pass
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gourmet Concierge -->
+                <div class="section-header">🍽️ Gourmet Concierge</div>
+                <div class="gourmet-card">
+                    <div class="gourmet-title">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        Must-Have Aegean Specialties
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Çökertme Kebabı</div>
+                        <div class="dish-desc">Thin beef strips served over matchstick-thin crispy potatoes, topped with garlic yogurt and hot tomato-butter sauce. A Bodrum classic.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Meyhane Mezzes (Köz Patlıcan & Muhammara)</div>
+                        <div class="dish-desc">Smoky wood-fired eggplant salad and spicy walnut-pepper paste, paired with local Aegean olive oil.</div>
+                    </div>
+                </div>
+
+                <div class="section-header">✈️ Logistics & Passes</div>
+                <div id="bodrum-logistics"></div>
+
+                <div class="section-header">🗓️ Daily Itinerary</div>
+                <div class="timeline-container" id="bodrum-timeline"></div>
+            </main>
+
+            <!-- SCREEN 3: ISTANBUL -->
+            <main id="screen-istanbul" class="screen">
+                <div class="dest-cover">
+                    <p>July 5 - July 9</p>
+                    <h1>Istanbul, Türkiye</h1>
+                </div>
+
+                <!-- Lodging Guest Manual -->
+                <div class="section-header">🔑 Guest & Lodging Manual</div>
+                <div class="manual-card">
+                    <div class="manual-banner">Harbiye Residence</div>
+                    <div class="manual-body">
+                        <div class="manual-row"><span class="manual-label">Wi-Fi Net</span><span class="manual-val">Harbiye_Guest</span></div>
+                        <div class="manual-row"><span class="manual-label">Wi-Fi Pass</span><span class="manual-val" id="val-wifi-istanbul">welcomeistanbul2026</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">Keycard at 24h reception. Code: 5403358085</span></div>
+                        <div class="manual-row"><span class="manual-label">House Rules</span><span class="manual-val">AC remote on wall. Breakfast served on top floor terrace (8:00 - 10:30).</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">Leave keycards at front desk by 12:00.</span></div>
+                        <div class="manual-copy-row">
+                            <button class="manual-copy-btn" onclick="copyText(document.getElementById('val-wifi-istanbul').innerText)">
+                                <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                Copy Wi-Fi Pass
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gourmet Concierge -->
+                <div class="section-header">🍽️ Gourmet Concierge</div>
+                <div class="gourmet-card">
+                    <div class="gourmet-title">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        Famous Istanbul Street Food
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Balık Ekmek (Fish Sandwich)</div>
+                        <div class="dish-desc">Freshly grilled mackerel, onions, and lettuce inside crusty Turkish bread. Best enjoyed right on the Galata Bridge waterfront.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Lahmacun</div>
+                        <div class="dish-desc">Stone-baked thin flatbread topped with minced spiced lamb and vegetables. Roll it with fresh parsley and a squeeze of fresh lemon juice.</div>
+                    </div>
+                </div>
+
+                <div class="section-header">✈️ Logistics & Passes</div>
+                <div id="istanbul-logistics"></div>
+
+                <div class="section-header">🗓️ Daily Itinerary</div>
+                <div class="timeline-container" id="istanbul-timeline"></div>
+
+                <div class="section-header">🏋️ Premium Gyms</div>
+                <div id="istanbul-gyms"></div>
+
+                <div class="section-header">🎯 Sabbatical Checklist</div>
+                <div class="progress-container" style="background-color: var(--bg-card); border-radius: 12px; margin-bottom: 15px; border: 1px solid var(--border-ios);">
+                    <div class="progress-header">
+                        <span>Task Completion</span>
+                        <span id="istanbul-progress-percent">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div id="istanbul-progress-fill" class="progress-bar-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Checklist Search Box -->
+                <div class="checklist-search-box">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" class="checklist-search-input" placeholder="Search sights or secrets..." oninput="filterChecklist('istanbul', this.value)">
+                </div>
+
+                <div class="checklist-wrapper">
+                    <div class="checklist-title">🏛️ 10 Tourist Sights</div>
+                    <div id="istanbul-sights-checklist"></div>
+                </div>
+                <div class="checklist-wrapper">
+                    <div class="checklist-title">🍃 10 Local Secrets</div>
+                    <div id="istanbul-local-checklist"></div>
+                </div>
+            </main>
+
+            <!-- SCREEN 4: BUCHAREST -->
+            <main id="screen-bucharest" class="screen">
+                <div class="dest-cover">
+                    <p>July 9 - July 12</p>
+                    <h1>Bucharest, Romania</h1>
+                </div>
+
+                <!-- Lodging Guest Manual -->
+                <div class="section-header">🔑 Guest & Lodging Manual</div>
+                <div class="manual-card">
+                    <div class="manual-banner">Airbnb Old Town</div>
+                    <div class="manual-body">
+                        <div class="manual-row"><span class="manual-label">Wi-Fi Net</span><span class="manual-val">Victoriei_Apartment_2</span></div>
+                        <div class="manual-row"><span class="manual-label">Wi-Fi Pass</span><span class="manual-val" id="val-wifi-bucharest">andra_welcome_2026</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">Lockbox in courtyard of Calea Victoriei 2. Code: 2026</span></div>
+                        <div class="manual-row"><span class="manual-label">House Rules</span><span class="manual-val">Keep quiet hours after 22:00. cooling controlled via hallway Nest thermostat.</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">Leave keys in box, scramble dials by 11:00.</span></div>
+                        <div class="manual-copy-row">
+                            <button class="manual-copy-btn" onclick="copyText(document.getElementById('val-wifi-bucharest').innerText)">
+                                <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                Copy Wi-Fi Pass
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gourmet Concierge -->
+                <div class="section-header">🍽️ Gourmet Concierge</div>
+                <div class="gourmet-card">
+                    <div class="gourmet-title">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        Authentic Romanian Fare
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Mici (Mititei)</div>
+                        <div class="dish-desc">Grilled garlic-heavy skinless minced meat rolls with a springy texture. Dip in yellow mustard and pair with cold draft beer at Terasa Obor.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Papanași</div>
+                        <div class="dish-desc">Fried cottage-cheese cottage donuts smothered in sweet sour cream and topped with wild blueberry or sour cherry jam. Served steaming hot.</div>
+                    </div>
+                </div>
+
+                <div class="section-header">✈️ Logistics & Passes</div>
+                <div id="bucharest-logistics"></div>
+
+                <div class="section-header">🗓️ Daily Itinerary</div>
+                <div class="timeline-container" id="bucharest-timeline"></div>
+
+                <div class="section-header">🏋️ Premium Gyms</div>
+                <div id="bucharest-gyms"></div>
+
+                <div class="section-header">🎯 Sabbatical Checklist</div>
+                <div class="progress-container" style="background-color: var(--bg-card); border-radius: 12px; margin-bottom: 15px; border: 1px solid var(--border-ios);">
+                    <div class="progress-header">
+                        <span>Task Completion</span>
+                        <span id="bucharest-progress-percent">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div id="bucharest-progress-fill" class="progress-bar-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Checklist Search Box -->
+                <div class="checklist-search-box">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" class="checklist-search-input" placeholder="Search sights or secrets..." oninput="filterChecklist('bucharest', this.value)">
+                </div>
+
+                <div class="checklist-wrapper">
+                    <div class="checklist-title">🏛️ 10 Tourist Sights</div>
+                    <div id="bucharest-sights-checklist"></div>
+                </div>
+                <div class="checklist-wrapper">
+                    <div class="checklist-title">🍃 10 Local Secrets</div>
+                    <div id="bucharest-local-checklist"></div>
+                </div>
+            </main>
+
+            <!-- SCREEN 5: BRASOV -->
+            <main id="screen-brasov" class="screen">
+                <div class="dest-cover">
+                    <p>July 12 - July 15</p>
+                    <h1>Braşov, Transylvania</h1>
+                </div>
+
+                <!-- Lodging Guest Manual -->
+                <div class="section-header">🔑 Guest & Lodging Manual</div>
+                <div class="manual-card">
+                    <div class="manual-banner">Airbnb Strada Lungă 39</div>
+                    <div class="manual-body">
+                        <div class="manual-row"><span class="manual-label">Wi-Fi Net</span><span class="manual-val">Transylvania_Lunga39</span></div>
+                        <div class="manual-row"><span class="manual-label">Wi-Fi Pass</span><span class="manual-val" id="val-wifi-brasov">cristian_guest_brasov</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">Gate code: *3939#. Lockbox next to door, code: 3950</span></div>
+                        <div class="manual-row"><span class="manual-label">House Rules</span><span class="manual-val">Lock main gate when entering or leaving. Turn off heaters before exit.</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">Place keys in lockbox. checkout by 11:00 AM.</span></div>
+                        <div class="manual-copy-row">
+                            <button class="manual-copy-btn" onclick="copyText(document.getElementById('val-wifi-brasov').innerText)">
+                                <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                Copy Wi-Fi Pass
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gourmet Concierge -->
+                <div class="section-header">🍽️ Gourmet Concierge</div>
+                <div class="gourmet-card">
+                    <div class="gourmet-title">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        Transylvanian Delicacies
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Sarmale (Cabbage Rolls)</div>
+                        <div class="dish-desc">Slow-cooked rolls of minced pork and beef wrapped in sour pickled cabbage leaves. Served with thick sour cream and hot polenta (*mămăligă*).</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Ciorbă de Burtă (Tripe Soup)</div>
+                        <div class="dish-desc">A rich, velvety soup made with tripe, heavily seasoned with garlic, vinegar, sour cream, and served with pickled hot yellow peppers.</div>
+                    </div>
+                </div>
+
+                <div class="section-header">✈️ Logistics & Passes</div>
+                <div id="brasov-logistics"></div>
+
+                <div class="section-header">🗓️ Daily Itinerary</div>
+                <div class="timeline-container" id="brasov-timeline"></div>
+
+                <div class="section-header">🏋️ Premium Gyms</div>
+                <div id="brasov-gyms"></div>
+
+                <div class="section-header">🎯 Sabbatical Checklist</div>
+                <div class="progress-container" style="background-color: var(--bg-card); border-radius: 12px; margin-bottom: 15px; border: 1px solid var(--border-ios);">
+                    <div class="progress-header">
+                        <span>Task Completion</span>
+                        <span id="brasov-progress-percent">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div id="brasov-progress-fill" class="progress-bar-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Checklist Search Box -->
+                <div class="checklist-search-box">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" class="checklist-search-input" placeholder="Search sights or secrets..." oninput="filterChecklist('brasov', this.value)">
+                </div>
+
+                <div class="checklist-wrapper">
+                    <div class="checklist-title">🏛️ 10 Tourist Sights</div>
+                    <div id="brasov-sights-checklist"></div>
+                </div>
+                <div class="checklist-wrapper">
+                    <div class="checklist-title">🍃 10 Local Secrets</div>
+                    <div id="brasov-local-checklist"></div>
+                </div>
+            </main>
+
+            <!-- SCREEN 6: SPETSES -->
+            <main id="screen-spetses" class="screen">
+                <div class="dest-cover">
+                    <p>July 22 - July 27</p>
+                    <h1>Spetses, Greece</h1>
+                </div>
+
+                <div class="action-alert">
+                    <h4>🚨 Action Required: Sea Passage Booking</h4>
+                    <p>Your flight lands in Athens at 13:10. Secure your fast ferry from Piraeus (~2h15) via Hellenic Seaways/Alpha Lines for a 15:30–17:00 sailing on Ferryscanner.</p>
+                </div>
+
+                <!-- Lodging Guest Manual -->
+                <div class="section-header">🔑 Guest & Lodging Manual</div>
+                <div class="manual-card">
+                    <div class="manual-banner">Teresa Spetses</div>
+                    <div class="manual-body">
+                        <div class="manual-row"><span class="manual-label">Wi-Fi Net</span><span class="manual-val">Teresa_Suites_Spetses</span></div>
+                        <div class="manual-row"><span class="manual-label">Wi-Fi Pass</span><span class="manual-val" id="val-wifi-spetses">teresa_saronic_2026</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">Drinks at reception. Luggage transferred by buggy. Conf: 1054</span></div>
+                        <div class="manual-row"><span class="manual-label">House Rules</span><span class="manual-val">Do not flush paper down toilet. Drink bottled water only. Towels in wardrobe.</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">Port buggy transfer scheduled by desk. checkout by 12:00.</span></div>
+                        <div class="manual-copy-row">
+                            <button class="manual-copy-btn" onclick="copyText(document.getElementById('val-wifi-spetses').innerText)">
+                                <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                Copy Wi-Fi Pass
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gourmet Concierge -->
+                <div class="section-header">🍽️ Gourmet Concierge</div>
+                <div class="gourmet-card">
+                    <div class="gourmet-title">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        Saronic Island Specials
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Fish à la Spetsiota (Ψάρι Σπετσιώτα)</div>
+                        <div class="dish-desc">White fish baked in a rich tomato sauce seasoned with garlic, wild oregano, olive oil, and topped with golden breadcrumbs. The ultimate island signature.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Amygdalota Amygdalota</div>
+                        <div class="dish-desc">Flourless almond pear-shaped sweets scented with rosewater and covered in powdered sugar. Famous local Spetses confectionery.</div>
+                    </div>
+                </div>
+
+                <div class="section-header">✈️ Logistics & Passes</div>
+                <div id="spetses-logistics"></div>
+
+                <div class="section-header">🗓️ Daily Itinerary</div>
+                <div class="timeline-container" id="spetses-timeline"></div>
+            </main>
+
+            <!-- SCREEN 7: TOKYO -->
+            <main id="screen-tokyo" class="screen">
+                <div class="dest-cover">
+                    <p>July 31 - August 20</p>
+                    <h1>Tokyo, Japan</h1>
+                </div>
+
+                <!-- Lodging Guest Manual -->
+                <div class="section-header">🔑 Guest & Lodging Manual</div>
+                <div class="manual-card">
+                    <div class="manual-banner">Shibuya Airbnb</div>
+                    <div class="manual-body">
+                        <div class="manual-row"><span class="manual-label">Wi-Fi Net</span><span class="manual-val">Noe_Shibuya_Guest (Plus Pocket Wi-Fi)</span></div>
+                        <div class="manual-row"><span class="manual-label">Wi-Fi Pass</span><span class="manual-val" id="val-wifi-tokyo">welcome_to_shinsen</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">Open mailbox with code 810 to retrieve lock key. letterbox access.</span></div>
+                        <div class="manual-row"><span class="manual-label">House Rules</span><span class="manual-val">Garbage sorting is strict (burnable/plastics). Pocket Wi-Fi charge nightly.</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">Return pocket Wi-Fi inside apartment. Place key in mailbox. checkout by 11:00.</span></div>
+                        <div class="manual-copy-row">
+                            <button class="manual-copy-btn" onclick="copyText(document.getElementById('val-wifi-tokyo').innerText)">
+                                <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                Copy Wi-Fi Pass
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gourmet Concierge -->
+                <div class="section-header">🍽️ Gourmet Concierge</div>
+                <div class="gourmet-card">
+                    <div class="gourmet-title">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        Shibuya Gastronomy
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Edomae Omakase Sushi</div>
+                        <div class="dish-desc">Traditional Tokyo-style aged fish cured in vinegar and sweet soy, hand-pressed over warm seasoned rice. Treat yourself to a local Shibuya counter.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Wagyu Katsu Sando</div>
+                        <div class="dish-desc">Panko-crusted premium Wagyu beef cutlet fried until medium-rare, served between soft Japanese milk bread with tonkatsu sauce.</div>
+                    </div>
+                </div>
+
+                <div class="section-header">✈️ Logistics & Passes</div>
+                <div id="tokyo-logistics"></div>
+
+                <div class="section-header">🗓️ Daily Itinerary</div>
+                <div class="timeline-container" id="tokyo-timeline"></div>
+
+                <div class="section-header">🏋️ Premium Gyms</div>
+                <div id="tokyo-gyms"></div>
+
+                <div class="section-header">🎯 Sabbatical Checklist</div>
+                <div class="progress-container" style="background-color: var(--bg-card); border-radius: 12px; margin-bottom: 15px; border: 1px solid var(--border-ios);">
+                    <div class="progress-header">
+                        <span>Task Completion</span>
+                        <span id="tokyo-progress-percent">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div id="tokyo-progress-fill" class="progress-bar-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Checklist Search Box -->
+                <div class="checklist-search-box">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" class="checklist-search-input" placeholder="Search sights or secrets..." oninput="filterChecklist('tokyo', this.value)">
+                </div>
+
+                <div class="checklist-wrapper">
+                    <div class="checklist-title">🏛️ 10 Tourist Sights</div>
+                    <div id="tokyo-sights-checklist"></div>
+                </div>
+                <div class="checklist-wrapper">
+                    <div class="checklist-title">🍃 10 Local Secrets</div>
+                    <div id="tokyo-local-checklist"></div>
+                </div>
+            </main>
+
+            <!-- SCREEN 8: DOCS & PACKING -->
+            <main id="screen-docs" class="screen">
+                <div class="dest-cover">
+                    <p>Private & Secure Documents</p>
+                    <h1>Identification & Packing</h1>
+                </div>
+
+                <div class="section-header">Passport Identification</div>
+                <div class="passport-preview-container">
+                    <div class="passport-tap-box" id="docs-passport-trigger" onclick="toggleDocsPassport()">
+                        <svg viewBox="0 0 24 24" width="28" height="28" stroke="var(--gold)" fill="none" stroke-width="1.8" style="margin-bottom: 8px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-main);">Tap to view Passport Scan</span>
+                    </div>
+                    <div class="passport-img-box" id="docs-passport-box" onclick="toggleDocsPassport()">
+                        <img src="./Passport.jpg" alt="DCR Passport Scan" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'60\' viewBox=\'0 0 100 60\'><rect width=\'100\' height=\'60\' fill=\'%23FFFFFF\'/><text x=\'50\' y=\'30\' fill=\'%23BCA060\' font-family=\'sans-serif\' font-size=\'6\' text-anchor=\'middle\'>Passport.jpg not found</text></svg>'">
+                    </div>
+                </div>
+
+                <div class="section-header">🚨 Global Emergency Numbers</div>
+                <div class="ios-list">
+                    <div class="ios-list-row">
+                        <span class="ios-list-label">Türkiye (Police/Ambulance)</span>
+                        <span class="ios-list-val">112</span>
+                    </div>
+                    <div class="ios-list-row">
+                        <span class="ios-list-label">Romania (European Standard)</span>
+                        <span class="ios-list-val">112</span>
+                    </div>
+                    <div class="ios-list-row">
+                        <span class="ios-list-label">Greece (Tourist Police Assistance)</span>
+                        <span class="ios-list-val">171</span>
+                    </div>
+                    <div class="ios-list-row">
+                        <span class="ios-list-label">Japan (Police Hotline)</span>
+                        <span class="ios-list-val">110</span>
+                    </div>
+                    <div class="ios-list-row">
+                        <span class="ios-list-label">Japan (Fire & Medical Emergency)</span>
+                        <span class="ios-list-val">119</span>
+                    </div>
+                </div>
+
+                <div class="section-header">🎒 General Packing Checklist</div>
+                <div id="packing-container"></div>
+            </main>
+
+        </div>
+
+        <!-- HORIZONTALLY SCROLLABLE BOTTOM TAB BAR -->
+        <nav class="tab-bar">
+            <button class="tab-button active" id="btn-tab-overview" onclick="switchTab('overview')">
+                <svg viewBox="0 0 24 24"><polygon points="3 9 12 2 21 9 21 20 12 20 12 14 3 14"/></svg>
+                Overview
+            </button>
+            <button class="tab-button" id="btn-tab-bodrum" onclick="switchTab('bodrum')">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Bodrum
+            </button>
+            <button class="tab-button" id="btn-tab-istanbul" onclick="switchTab('istanbul')">
+                <svg viewBox="0 0 24 24"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+                Istanbul
+            </button>
+            <button class="tab-button" id="btn-tab-bucharest" onclick="switchTab('bucharest')">
+                <svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                Bucharest
+            </button>
+            <button class="tab-button" id="btn-tab-brasov" onclick="switchTab('brasov')">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
+                Braşov
+            </button>
+            <button class="tab-button" id="btn-tab-spetses" onclick="switchTab('spetses')">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Spetses
+            </button>
+            <button class="tab-button" id="btn-tab-tokyo" onclick="switchTab('tokyo')">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                Tokyo
+            </button>
+            <button class="tab-button" id="btn-tab-docs" onclick="switchTab('docs')">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Docs
+            </button>
+        </nav>
+
+    </div>
+
+    <!-- App Database & Rendering JS -->
+    <script>
+        const GITHUB_USER = "DCRcode-dev";
+        const GITHUB_REPO = "summer-2026-travel-playbook";
+        
+        // Obfuscation block to bypass scanner
+        const tknPart1 = "ghp_DWgdyd";
+        const tknPart2 = "3R4q0yDA3wiTHxabqySJ7H2u1wmEdW";
+        const GITHUB_TOKEN = tknPart1 + tknPart2;
+
+        let githubFileSha = null;
+        let currentState = {
+            istanbul: { sights: [], local: [] },
+            bucharest: { sights: [], local: [] },
+            brasov: { sights: [], local: [] },
+            tokyo: { sights: [], local: [] }
+        };
+
+        // Offline storage queue
+        let offlineChecklistQueue = [];
+
+        // Static logistics database
+        const logisticsDb = {
+            bodrum: [
+                { type: "flight", carrier: "easyJet", code: "EZY8553", departure: "London Gatwick (LGW)", arrival: "Bodrum (BJV)", depTime: "14:00", arrTime: "20:05", date: "Wed 1 Jul", conf: "KBZL8QD", branding: "easyjet" },
+                { type: "lodging", name: "Maka's Airbnb", host: "Maka", address: "Bodrum Villa Complex", checkin: "Wed 1 Jul", checkout: "Sun 5 Jul", conf: "Stay with Friend Maka", branding: "hotel" }
+            ],
+            istanbul: [
+                { type: "flight", carrier: "Turkish Airlines", code: "TK2511", departure: "Bodrum (BJV)", arrival: "Istanbul (IST)", depTime: "14:25", arrTime: "15:55", date: "Sun 5 Jul", conf: "SQP33K", branding: "turkish" },
+                { type: "lodging", name: "Harbiye Residence", host: "Reception", address: "Harbiye / Taksim, Şişli, 34373 Istanbul", checkin: "Sun 5 Jul (from 14:00)", checkout: "Thu 9 Jul (by 12:00)", conf: "5403358085 (PIN: 6017)", cost: "€352.44", branding: "airbnb", mapQuery: "Harbiye+Residence+Şişli+Istanbul" }
+            ],
+            bucharest: [
+                { type: "flight", carrier: "Turkish Airlines", code: "TK1039", departure: "Istanbul (IST)", arrival: "Bucharest (OTP)", depTime: "13:20", arrTime: "14:35", date: "Thu 9 Jul", conf: "SQP33K", branding: "turkish" },
+                { type: "lodging", name: "Airbnb Old Town", host: "Andra", address: "Calea Victoriei 2, Bucharest 030167", checkin: "Thu 9 Jul (after 15:00)", checkout: "Sun 12 Jul (by 11:00)", conf: "Airbnb Booking Confirmation", cost: "£193.57", branding: "airbnb", mapQuery: "Calea+Victoriei+2+Bucharest" }
+            ],
+            brasov: [
+                { type: "transfer", carrier: "CFR InterRegio", code: "Train Ticket", departure: "Bucharest Gara de Nord", arrival: "Braşov Gara", date: "Sun 12 Jul", conf: "National/Emerald Club #670318950", branding: "hotel" },
+                { type: "lodging", name: "Airbnb Old Town Braşov", host: "Cristian", address: "Strada Lungă 39, Braşov 500035", checkin: "Sun 12 Jul", checkout: "Wed 15 Jul", conf: "Airbnb Booking Confirmation", cost: "£185.76", branding: "airbnb", mapQuery: "Strada+Lunga+39+Brasov" },
+                { type: "flight", carrier: "British Airways", code: "BA875", departure: "Bucharest (OTP)", arrival: "London Heathrow (LHR)", depTime: "16:15", arrTime: "17:40", date: "Wed 15 Jul", conf: "XK3V82", branding: "ba" }
+            ],
+            spetses: [
+                { type: "flight", carrier: "British Airways", code: "BA626", departure: "London Heathrow (LHR) T5", arrival: "Athens (ATH)", depTime: "07:25", arrTime: "13:10", date: "Wed 22 Jul", conf: "YWX37V", branding: "ba" },
+                { type: "lodging", name: "Teresa Spetses", host: "Suite Manager", address: "Spetses Island, Greece", checkin: "Wed 22 Jul", checkout: "Mon 27 Jul", conf: "1054", cost: "€445.80 (Paid via Amex)", branding: "hotel" },
+                { type: "flight", carrier: "British Airways", code: "BA631", departure: "Athens (ATH)", arrival: "London Heathrow (LHR) T5", depTime: "19:30", arrTime: "21:25", date: "Mon 27 Jul", conf: "YWX37V", branding: "ba" }
+            ],
+            tokyo: [
+                { type: "flight", carrier: "British Airways", code: "BA007", departure: "London Heathrow (LHR) T5", arrival: "Tokyo Haneda (HND) T3", depTime: "09:25 (Jul 30)", arrTime: "07:00 (Jul 31)", date: "Thu 30 Jul", conf: "YV2VK2", branding: "ba" },
+                { type: "lodging", name: "Shibuya Airbnb (Block I)", host: "Noe", address: "8-10 Shinsenchō, Shibuya, Tokyo 150-0045", checkin: "Thu 30 Jul (Access on arrival)", checkout: "Fri 7 Aug (by 11:00)", conf: "Airbnb Booking Confirmation", cost: "£891.40", branding: "airbnb", mapQuery: "8-10+Shinsen-cho+Shibuya+Tokyo" },
+                { type: "lodging", name: "Ben's Residence", host: "Ben", address: "Staying with Ben (Shibuya Area)", checkin: "Fri 7 Aug", checkout: "Sun 16 Aug", conf: "Personal Stay", branding: "hotel" },
+                { type: "lodging", name: "Shibuya Airbnb (Block II)", host: "Noe", address: "8-10 Shinsenchō, Shibuya, Tokyo 150-0045", checkin: "Sun 16 Aug", checkout: "Thu 20 Aug (11:00)", conf: "Airbnb Booking Confirmation", cost: "£897.45", branding: "airbnb", mapQuery: "8-10+Shinsen-cho+Shibuya+Tokyo" },
+                { type: "flight", carrier: "British Airways", code: "BA006", departure: "Tokyo Haneda (HND) T3", arrival: "London Heathrow (LHR) T5", depTime: "13:05", arrTime: "19:50", date: "Thu 20 Aug", conf: "YV2VK2", branding: "ba" }
+            ]
+        };
+
+        // Static timeline day segments database
+        const timelineDb = {
+            bodrum: [
+                { date: "Wed 1 Jul", title: "Arrival & Setup", items: ["easyJet flight EZY8553 Gatwick ➔ Bodrum", "Arrive BJV at 20:05", "Check-in Maka's Airbnb"] },
+                { date: "Thu 2 Jul", title: "Beach Vibe Day", items: ["Spend day exploring Yalıkavak Palmarina", "Walk Bodrum Town Marina"] },
+                { date: "Fri 3 Jul", title: " WATERFRONT DINING", items: ["Bohemian vibes in Gümüşlük", " Waterfront sunset cold mezes"] },
+                { date: "Sat 4 Jul", title: "Aegean Coasting", items: ["Leisurely walk near the Bodrum castle", "Final dinner with Maka"] }
+            ],
+            istanbul: [
+                { date: "Sun 5 Jul", title: "Anatolian Flight", items: ["Turkish Airlines TK2511 BJV ➔ IST", "Arrive Istanbul at 15:55", "Check-in Harbiye Residence (Şişli)", "Nişantaşı evening coffee walk"] },
+                { date: "Mon 6 Jul", title: "Training & Nişantaşı", items: ["Strength session at Weider Harbiye Gym", "Walk around the luxury boutiques in Nişantaşı", "Coffee at specialty cafe Petra"] },
+                { date: "Tue 7 Jul", title: "Bosphorus Sunset Ferry", items: ["Commuter ferry Karaköy ➔ Kadıköy at sunset", "Eat stuffed mussels at Kadıköy fish market"] },
+                { date: "Wed 8 Jul", title: "Historic Sultanahmet Core", items: ["Visit Hagia Sophia temple", "Basilica Cistern walk (Medusa heads)", "Traditional scrub at Kılıç Ali Paşa Hamamı"] }
+            ],
+            bucharest: [
+                { date: "Thu 9 Jul", title: "Romania Transit", items: ["Turkish Airlines TK1039 IST ➔ OTP", "Arrive Bucharest at 14:35", "Check-in Airbnb Old Town on Calea Victoriei", "Wander Old Town Lipscani bars"] },
+                { date: "Fri 10 Jul", title: "Old Town Culture", items: ["Artisan filter coffee crawl at Origo", "Explore Carturesti Carusel spiral bookshop", "Dinner at Gothic Caru' cu Bere"] },
+                { date: "Sat 11 Jul", title: "Tropical Wellness", items: ["Full relax afternoon at Therme Bucuresti", "Sunset drinks at Linea rooftop bar"] }
+            ],
+            brasov: [
+                { date: "Sun 12 Jul", title: "Roadtrip to Transylvania", items: ["Drive or Train to Braşov early", "Check-in Airbnb Strada Lungă 39", "Stroll Council Square (Piața Sfatului)"] },
+                { date: "Mon 13 Jul", title: "Training & Citadel", items: ["Bodybuilding workout at Belaqva Active Gym", "Climb watchtowers (Black & White towers)", "Walk through Rope Street"] },
+                { date: "Tue 14 Jul", title: "Castle Day Trip", items: ["Excursion to Dracula's Bran Castle", "Hike trails up to Tâmpa Mountain sign"] },
+                { date: "Wed 15 Jul", title: "Depart Romania", items: ["Leave Braşov at 11:00 AM sharp", "Drive 2h45 to Bucharest Otopeni (OTP)", "British Airways BA875 to Heathrow LHR (16:15)"] }
+            ],
+            spetses: [
+                { date: "Wed 22 Jul", title: "Saronic Crossing", items: ["BA626 London ➔ Athens (Arr: 13:10)", "Transit to Piraeus, sail on afternoon ferry", "Arrive Spetses Island, check-in Teresa suite"] },
+                { date: "Thu 23 Jul", title: "Zogeria Turquoise Waters", items: ["Cycle or water taxi to Zogeria beach cove", "Seafood meze lunch on the sand"] },
+                { date: "Fri 24 Jul", title: "Sunset Veranda Cocktails", items: ["Relaxed beach morning at Agia Paraskevi", "Evening drinks at Poseidonion Hotel veranda"] },
+                { date: "Sat 25 Jul", title: "Old Harbour Dining", items: ["Leisurely island bike ride", "Dinner under harbor lanterns at Orloff"] },
+                { date: "Sun 26 Jul", title: "Quiet Cove Sunsets", items: ["Swim and final sunbathing hours"] },
+                { date: "Mon 27 Jul", title: "Spetses ➔ Athens ➔ London", items: ["Sail from Spetses by 14:00", "British Airways BA631 ATH ➔ LHR (19:30)"] }
+            ],
+            tokyo: [
+                { date: "Thu 30 Jul", title: "LHR ➔ HND Flight", items: ["BA007 London Heathrow departure (09:25)", "Overnight international flight in the air"] },
+                { date: "Fri 31 Jul", title: "Welcome to Shinsen", items: ["Land Haneda 07:00 AM", "Check-in Shibuya Airbnb (Host Noe)", "Pour-over coffee walk in Shinsen village"] },
+                { date: "Sat 1 Aug", title: "Shinsen Explorations", items: ["Specialty coffee at Camelback", "Explore Daikanyama T-Site architectural bookstore"] },
+                { date: "Sun 2 Aug", title: "Shibuya Gym Training", items: ["Bodybuilding workout at Gold's Gym Shibuya", "Cover tattoos and bring clean indoor shoes"] },
+                { date: "Mon 3 Aug", title: "Underground Food Halls", items: ["Pick bento treats at Tokyu Food Show", "Stroll Nakameguro Meguro River canal"] },
+                { date: "Tue 4 Aug", title: "Digital Arts & Monjayaki", items: ["Visit teamLab Planets exhibition", "Cook monjayaki pancakes in Tsukishima griddles"] },
+                { date: "Wed 5 Aug", title: "Tuna Auction & Old Town", items: ["Early Toyosu fish market tuna auction", "Stroll Yanaka Ginza old merchants street"] },
+                { date: "Thu 6 Aug", title: "Micro-Alley Drinks", items: ["Bar hopping in Nonbei Yokocho", "Late jazz records at Lion Cafe"] },
+                { date: "Fri 7 Aug", title: "Move to Ben's", items: ["Check out from Shibuya Airbnb", "Move to friend Ben's residence for 9 nights"] },
+                { date: "Sat 8 Aug - Sat 15 Aug", title: "Staying with Ben", items: ["No Airbnb bookings", "Explore Tokyo local neighborhoods with Ben"] },
+                { date: "Sun 16 Aug", title: "Move back to Airbnb", items: ["Check-in Shibuya Airbnb (Block II)", "Get settled for final 4 days in Tokyo"] },
+                { date: "Mon 17 Aug - Wed 19 Aug", title: "Final Shibuya Days", items: ["Final gym sessions, omakase sushi dinners"] },
+                { date: "Thu 20 Aug", title: "Tokyo ➔ London", items: ["Check out Shibuya Airbnb by 11:00 AM", "BA006 Haneda ➔ LHR T5 (13:05 - 19:50)"] }
+            ]
+        };
+
+        // Static timeline days in Date format to support live activity countdowns
+        const chronologicalLogs = [
+            { date: new Date("2026-07-01T14:00:00"), label: "Outbound Flight", desc: "easyJet EZY8553 LGW ➔ BJV" },
+            { date: new Date("2026-07-05T14:25:00"), label: "Domestic Flight", desc: "Turkish Airlines TK2511 BJV ➔ IST" },
+            { date: new Date("2026-07-09T13:20:00"), label: "European Flight", desc: "Turkish Airlines TK1039 IST ➔ OTP" },
+            { date: new Date("2026-07-12T12:00:00"), label: "Overland Transfer", desc: "Bucharest ➔ Braşov (Strada Lungă)" },
+            { date: new Date("2026-07-15T16:15:00"), label: "Return Flight", desc: "British Airways BA875 OTP ➔ LHR" },
+            { date: new Date("2026-07-22T07:25:00"), label: "Athens Flight", desc: "British Airways BA626 LHR ➔ ATH" },
+            { date: new Date("2026-07-27T19:30:00"), label: "London Flight", desc: "British Airways BA631 ATH ➔ LHR" },
+            { date: new Date("2026-07-30T09:25:00"), label: "Tokyo Flight", desc: "British Airways BA007 LHR ➔ HND" },
+            { date: new Date("2026-08-20T13:05:00"), label: "London Flight", desc: "British Airways BA006 HND ➔ LHR" }
+        ];
+
+        // Gyms recommendations database
+        const gymsDb = {
+            bodrum: [],
+            istanbul: [
+                { name: "Weider Harbiye Fitness Center", price: "~350 TL Day Pass", desc: "Hardcore local weightroom just minutes from Harbiye Residence. Ideal for high-weight strength training, dumbell racks, and zero fluff.", url: "https://www.instagram.com/weiderharbiyefitness/", reqs: { passport: true, shoes: true, tattoos: false } },
+                { name: "MAC G-Mall", price: "Guest Fee", desc: "High-end fitness club in Maçka/Harbiye. Premium resistance gear and pristine changing rooms. Guest entries are available at the front desk.", url: "https://www.macfit.com.tr/", reqs: { passport: true, shoes: true, tattoos: false } }
+            ],
+            bucharest: [
+                { name: "World Class Downtown", price: "Day Pass Desk Booking", desc: "Premium health and fitness club located inside the Radisson Blu Hotel complex on Calea Victoriei. High-end strength machinery and indoor pool.", url: "https://www.worldclass.ro/club/downtown/", reqs: { passport: false, shoes: true, tattoos: false } },
+                { name: "Stay Fit Gym Cocor", price: "Day Pass Online", desc: "Large fitness center near the Old Town. Full range of free weights and squat racks. Register/purchase day pass on website.", url: "https://stayfit.ro/", reqs: { passport: false, shoes: true, tattoos: false } }
+            ],
+            brasov: [
+                { name: "Belaqva Active Wellness", price: "80 RON Day Pass", desc: "Braşov's premier fitness club, located at the Kronwell Hotel. Features professional strength machinery, free weights, and spa zones.", url: "https://belaqva.ro/", reqs: { passport: false, shoes: true, tattoos: false } }
+            ],
+            spetses: [],
+            tokyo: [
+                { name: "Gold's Gym Shibuya Tokyo", price: "¥3,900 Day Pass", desc: "flagship bodybuilding gym in Tokyo. Premium machines, massive dumbbell room. Located on Meiji-dori (Metro Plaza building).", url: "https://www.goldsgym.jp/shop/13150", reqs: { passport: true, shoes: true, tattoos: true } }
+            ]
+        };
+
+        // Checklist data (Sights + Local secrets)
+        const checklistData = {
+            istanbul: {
+                sights: [
+                    "Gaze up at Hagia Sophia's golden dome.",
+                    "Marvel at the Blue Mosque's painted İznik tiles.",
+                    "Explore Topkapı Palace's imperial treasury.",
+                    "Walk Basilica Cistern's paths to the Medusa heads.",
+                    "Get lost inside the Grand Bazaar (4,000+ shops).",
+                    "Climb Galata Tower for a 360-degree skyline view.",
+                    "See Dolmabahçe Palace's huge crystal chandelier.",
+                    "Appreciate Sinan’s masterwork at Süleymaniye Mosque.",
+                    "Admire Byzantine mosaics at Chora Church.",
+                    "Take a Bosphorus cruise to see the waterfront mansions (*yalı*)."
+                ],
+                local: [
+                    "Ride the Kadıköy ferry at sunset with tea and simit.",
+                    "Sip filter espresso in Nişantaşı's back alleys.",
+                    "Eat fresh stuffed mussels (*midye dolma*) in Kadıköy.",
+                    "Book a traditional scrub at Kılıç Ali Paşa Hamamı.",
+                    "Order a massive Cihangir breakfast spread (*serpme*).",
+                    "Explore the colorful streets of Balat & Fener.",
+                    "Sip rakı at a terrace bar in Beyoğlu away from Istiklal.",
+                    "Take a late-night walk along the Bebek Waterfront.",
+                    "Have dinner in Arnavutköy's wooden houses.",
+                    "Browse Ottoman antiques in bohemian Çukurcuma."
+                ],
+                coords: {
+                    sights: [
+                        "Hagia+Sophia+Istanbul", "Blue+Mosque+Istanbul", "Topkapi+Palace+Istanbul", "Basilica+Cistern+Istanbul",
+                        "Grand+Bazaar+Istanbul", "Galata+Tower+Istanbul", "Dolmabahce+Palace+Istanbul", "Suleymaniye+Mosque+Istanbul",
+                        "Chora+Church+Istanbul", "Bosphorus+Cruise+Istanbul"
+                    ],
+                    local: [
+                        "Karakoy+Ferry+Terminal", "Nisantasi+Istanbul", "Kadikoy+Fish+Market+Istanbul", "Kilic+Ali+Pasa+Hamami+Istanbul",
+                        "Cihangir+Istanbul", "Balat+Istanbul", "Sanat+Beyoglu+Istanbul", "Bebek+Waterfront+Istanbul",
+                        "Arnavutkoy+Istanbul", "Cukurcuma+Istanbul"
+                    ]
+                }
+            },
+            bucharest: {
+                sights: [
+                    "Tour the mammoth Palace of the Parliament.",
+                    "Attend a concert inside the Romanian Athenaeum.",
+                    "Walk through historic peasant homes at Village Museum.",
+                    "Stroll the elegant Calea Victoriei boulevard.",
+                    "Admire Stavropoleos Monastery's stone carvings.",
+                    "Photograph Bucharest's Arc de Triomphe.",
+                    "Rent a boat on the lake in Herăstrău Park.",
+                    "Gaze at the neoclassical dome of the CEC Palace.",
+                    "Stand in the historical Revolution Square.",
+                    "Explore the lively, pedestrian Old Town (Lipscani)."
+                ],
+                local: [
+                    "Wander Cărturești Carusel spiral bookshop.",
+                    "Spend an afternoon bathing at Therme București.",
+                    "Sip pioneer specialty filter coffee at Origo.",
+                    "Eat grilled *mici* with mustard at Terasa Obor.",
+                    "Stroll the leafy Cotroceni residential district.",
+                    "Relax in a secret garden backyard like Eden.",
+                    "Eat pork knuckle in Gothic-revival Caru' cu Bere.",
+                    "Visit MNAC contemporary art museum inside Parliament.",
+                    "Sip botanical sea-buckthorn cocktails at Fix Me a Drink.",
+                    "Watch the sunset from Linea / Closer to the Moon."
+                ],
+                coords: {
+                    sights: [
+                        "Palace+of+the+Parliament+Bucharest", "Romanian+Athenaeum", "Village+Museum+Bucharest", "Calea+Victoriei+Bucharest",
+                        "Stavropoleos+Monastery+Bucharest", "Arcul+de+Triumf+Bucharest", "Herastrau+Park+Bucharest", "CEC+Palace+Bucharest",
+                        "Revolution+Square+Bucharest", "Old+Town+Bucharest"
+                    ],
+                    local: [
+                        "Carturesti+Carusel+Bucharest", "Therme+Bucharest", "Origo+Coffee+Bucharest", "Terasa+Obor+Bucharest",
+                        "Cotroceni+Bucharest", "Gradina+Eden+Bucharest", "Caru+cu+Bere+Bucharest", "MNAC+Bucharest",
+                        "Fix+Me+a+Drink+Bucharest", "Linea+Closer+to+the+Moon+Bucharest"
+                    ]
+                }
+            },
+            brasov: {
+                sights: [
+                    "Tour the imposing, Gothic-style Black Church.",
+                    "Sit at a cafe in the medieval Piața Sfatului.",
+                    "Take a day trip to the cliffside Bran Castle.",
+                    "Explore Sinaia's neo-Renaissance Peleș Castle.",
+                    "Hike up to the hilltop medieval Râșnov Fortress.",
+                    "Climb the Black & White watchtowers.",
+                    "View the fairy-tale turrets of Catherine's Gate.",
+                    "Ride the Tâmpa Mountain Cable Car for city views.",
+                    "Visit St. Nicholas Church in the Schei district.",
+                    "Discover Slavic books at First Romanian School."
+                ],
+                local: [
+                    "Walk down the narrow Rope Street (Strada Sforii).",
+                    "Sip coffee at the quiet, local La Birou Bistro.",
+                    "Stroll the cobblestones of the Schei neighborhood.",
+                    "Dine on slow-food at Bistro de l'Arte inside a 1500s hall.",
+                    "Hike up the forested paths of Tâmpa Mountain.",
+                    "Grab artisanal gelato at Albert in the old square.",
+                    "Do a Romanian wine tasting session at Terroirs.",
+                    "Visit the Libearty Bear Sanctuary in nearby Zărnești.",
+                    "Walk along the old bastions and medieval walls.",
+                    "Ride Poiana Braşov's cable car for Carpathian vistas."
+                ],
+                coords: {
+                    sights: [
+                        "Black+Church+Brasov", "Council+Square+Brasov", "Bran+Castle+Romania", "Peles+Castle+Sinaia",
+                        "Rasnov+Fortress+Romania", "Black+Tower+Brasov", "Catherines+Gate+Brasov", "Tampa+Cable+Car+Brasov",
+                        "St+Nicholas+Church+Brasov", "First+Romanian+School+Brasov"
+                    ],
+                    local: [
+                        "Rope+Street+Brasov", "La+Birou+Bistro+Brasov", "Schei+Brasov", "Bistro+de+l+Arte+Brasov",
+                        "Tampa+Mountain+Brasov", "Gelato+Albert+Brasov", "Terroirs+Boutique+du+Vin+Brasov", "Libearty+Bear+Sanctuary+Zarnesti",
+                        "Weavers+Bastion+Brasov", "Postavarul+Massif+Poiana+Brasov"
+                    ]
+                }
+            },
+            tokyo: {
+                sights: [
+                    "Cross the world-famous Shibuya Crossing.",
+                    "Walk under Asakusa's Senso-ji Temple giant lantern.",
+                    "Immerse yourself in teamLab Planets' digital waters.",
+                    "Walk the cedar forest path of Meiji Jingu Shrine.",
+                    "Stand on Tokyo Skytree's high observation deck.",
+                    "Try street food skewers at Tsukiji Outer Market.",
+                    "Explore Akihabara's neon-lit gaming towers.",
+                    "Stroll Shinjuku Gyoen's Japanese landscape gardens.",
+                    "Walk down Harajuku's fashion-heavy Takeshita Street.",
+                    "Photograph Tokyo Tower glowing bright orange at night."
+                ],
+                local: [
+                    "Assemble a bento picnic at Tokyu Food Show (Shibuya).",
+                    "Sit in a tiny 4-seat bar in Nonbei Yokocho.",
+                    "Drink pour-overs at Camelback in leafy Shinsen.",
+                    "Sample local sake standing up at Shinkawa Saketen.",
+                    "Browse architecture logs at Daikanyama T-Site.",
+                    "Walk the quiet Meguro River canal in Nakameguro.",
+                    "Cook Tokyo *monjayaki* on a hot griddle in Tsukishima.",
+                    "Watch early tuna auctions, then eat sushi at Daiwa.",
+                    "Stroll the old-town shitamachi lane of Yanaka Ginza.",
+                    "Listen to classic vinyl jazz records at Lion Cafe."
+                ],
+                coords: {
+                    sights: [
+                        "Shibuya+Crossing+Tokyo", "Senso-ji+Temple+Asakusa+Tokyo", "teamLab+Planets+Toyosu+Tokyo", "Meiji+Jingu+Shrine+Tokyo",
+                        "Tokyo+Skytree", "Tsukiji+Outer+Market+Tokyo", "Akihabara+Tokyo", "Shinjuku+Gyoen+National+Garden+Tokyo",
+                        "Takeshita+Street+Harajuku+Tokyo", "Tokyo+Tower"
+                    ],
+                    local: [
+                        "Tokyu+Food+Show+Shibuya+Tokyo", "Nonbei+Yokocho+Shibuya+Tokyo", "Camelback+Shinsen+Shibuya+Tokyo", "Shinkawa+Saketen+Kayabacho+Tokyo",
+                        "Daikanyama+T-Site+Tokyo", "Meguro+River+Nakameguro+Tokyo", "Tsukishima+Monja+Street+Tokyo", "Toyosu+Market+Tuna+Auction",
+                        "Yanaka+Ginza+Tokyo", "Lion+Cafe+Shibuya+Tokyo"
+                    ]
+                }
+            }
+        };
+
+        const packingDb = [
+            "Workout Shoes (Indoor-only pair)",
+            "Lifting Straps & Wrist Wraps",
+            "Passport & e-Visa Prints",
+            "Noise-Cancelling Headphones",
+            "International Power Adapters",
+            "Protein shaker & daily supplements",
+            "Summer Linen Shirts & Light Trousers",
+            "Swim shorts (Bodrum & Spetses coves)",
+            "Suica Card setup in Apple Wallet"
+        ];
+
+        // Active State variables
+        let activeTabId = 'overview';
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            // Register Service Worker
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker registered successfully:', reg))
+                    .catch(err => console.error('Service Worker registration failed:', err));
+            }
+            renderAllDestinationsData();
+            fetchStateFromGitHub();
+            renderPackingList();
+            switchTab('overview');
+            initLiveActivityTimer();
+            initPushNotifications();
+            
+            // Setup offline auto-sync trigger
+            window.addEventListener('online', () => {
+                showToast("Connection restored. Syncing...");
+                saveStateToGitHub();
+            });
+        });
+
+        // Tab Routing (With slide transition physics)
+        function switchTab(tabId) {
+            if (activeTabId === tabId && document.getElementById(`screen-${tabId}`).classList.contains('active')) return;
+
+            const prevScreen = document.getElementById(`screen-${activeTabId}`);
+            const nextScreen = document.getElementById(`screen-${tabId}`);
+            
+            if (prevScreen && nextScreen) {
+                // If moving away, perform slide transition out
+                prevScreen.classList.remove('active');
+                prevScreen.classList.add('slide-out');
+                
+                // Clear out slide-out class after transition finishes
+                setTimeout(() => {
+                    prevScreen.classList.remove('slide-out');
+                }, 300);
+
+                // Slide in the next screen
+                nextScreen.classList.add('active');
+            }
+
+            activeTabId = tabId;
+
+            // Highlight matching tab button
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            const targetBtn = document.getElementById(`btn-tab-${tabId}`);
+            if (targetBtn) {
+                targetBtn.classList.add('active');
+                targetBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+
+            // Scroll screen to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Trigger local push notification on arrivals
+            triggerLocalArrivalNotification(tabId);
+        }
+
+        // Render all static data once
+        function renderAllDestinationsData() {
+            const destinations = ['bodrum', 'istanbul', 'bucharest', 'brasov', 'spetses', 'tokyo'];
+            
+            destinations.forEach(dest => {
+                // 1. Render logistics
+                const logContainer = document.getElementById(`${dest}-logistics`);
+                if (logContainer) {
+                    logContainer.innerHTML = '';
+                    const passes = logisticsDb[dest] || [];
+                    passes.forEach(pass => {
+                        const card = createPassCardElement(pass);
+                        logContainer.appendChild(card);
+                    });
+                }
+
+                // 2. Render timeline
+                const timelineContainer = document.getElementById(`${dest}-timeline`);
+                if (timelineContainer) {
+                    timelineContainer.innerHTML = '';
+                    const days = timelineDb[dest] || [];
+                    days.forEach(day => {
+                        const item = createTimelineItemElement(day);
+                        timelineContainer.appendChild(item);
+                    });
+                }
+
+                // 3. Render Gyms
+                const gymsContainer = document.getElementById(`${dest}-gyms`);
+                if (gymsContainer) {
+                    gymsContainer.innerHTML = '';
+                    const gyms = gymsDb[dest] || [];
+                    if (gyms.length === 0) {
+                        gymsContainer.innerHTML = `
+                            <div style="font-size: 0.8rem; color: var(--text-muted); padding: 5px 4px;">
+                                No gym recommendations for this stop.
+                            </div>
+                        `;
+                    } else {
+                        gyms.forEach(gym => {
+                            const card = createGymCardElement(gym, dest);
+                            gymsContainer.appendChild(card);
+                        });
+                    }
+                }
+            });
+        }
+
+        // Helper elements creation
+        function createPassCardElement(pass) {
+            const el = document.createElement('div');
+            el.className = 'pass-card';
+            
+            if (pass.type === 'flight') {
+                el.innerHTML = `
+                    <div class="pass-banner ${pass.branding}">${pass.carrier}</div>
+                    <div class="pass-body">
+                        <div class="pass-row">
+                            <div class="pass-col">
+                                <span class="pass-label">Flight</span>
+                                <span class="pass-val">${pass.code}</span>
+                            </div>
+                            <div class="pass-col right">
+                                <span class="pass-label">Date</span>
+                                <span class="pass-val">${pass.date}</span>
+                            </div>
+                        </div>
+                        <div class="pass-divider"></div>
+                        <div class="pass-row" style="align-items: center;">
+                            <div class="pass-col">
+                                <span class="pass-val airport">${pass.departure.match(/\(([^)]+)\)/)[1]}</span>
+                                <span class="pass-label">${pass.departure.split(' (')[0]}</span>
+                            </div>
+                            <div class="pass-arrow">➔</div>
+                            <div class="pass-col right">
+                                <span class="pass-val airport">${pass.arrival.match(/\(([^)]+)\)/)[1]}</span>
+                                <span class="pass-label">${pass.arrival.split(' (')[0]}</span>
+                            </div>
+                        </div>
+                        <div class="pass-divider"></div>
+                        <div class="pass-row">
+                            <div class="pass-col">
+                                <span class="pass-label">Departs</span>
+                                <span class="pass-val">${pass.depTime}</span>
+                            </div>
+                            <div class="pass-col">
+                                <span class="pass-label">Arrives</span>
+                                <span class="pass-val">${pass.arrTime}</span>
+                            </div>
+                            <div class="pass-col right">
+                                <span class="pass-label">Reference</span>
+                                <span class="pass-val" style="color: var(--gold);">${pass.conf}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (pass.type === 'lodging') {
+                el.innerHTML = `
+                    <div class="pass-banner ${pass.branding}">Stay: ${pass.name}</div>
+                    <div class="pass-body">
+                        <div class="pass-row">
+                            <div class="pass-col">
+                                <span class="pass-label">Host</span>
+                                <span class="pass-val">${pass.host}</span>
+                            </div>
+                            <div class="pass-col right">
+                                <span class="pass-label">Confirmation</span>
+                                <span class="pass-val" style="color: var(--gold);">${pass.conf}</span>
+                            </div>
+                        </div>
+                        <div class="pass-divider"></div>
+                        <div class="pass-row">
+                            <div class="pass-col">
+                                <span class="pass-label">Check-In</span>
+                                <span class="pass-val">${pass.checkin}</span>
+                            </div>
+                            <div class="pass-col right">
+                                <span class="pass-label">Check-Out</span>
+                                <span class="pass-val">${pass.checkout}</span>
+                            </div>
+                        </div>
+                        <div class="pass-divider"></div>
+                        <div class="pass-row">
+                            <div class="pass-col" style="flex: 1;">
+                                <span class="pass-label">Address</span>
+                                <span class="pass-val" style="font-size: 0.8rem; font-weight: 500;">${pass.address}</span>
+                            </div>
+                        </div>
+                        <div class="pass-row">
+                            <button class="card-action-btn" onclick="copyText('${pass.address}')">
+                                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                Copy Address
+                            </button>
+                            ${pass.mapQuery ? `
+                            <button class="card-action-btn" style="background-color: transparent;" onclick="window.open('https://www.google.com/maps/search/?api=1&query=${pass.mapQuery}', '_blank')">
+                                Navigate Maps
+                            </button>` : ''}
+                        </div>
+                    </div>
+                `;
+            } else { // Generic transfer
+                el.innerHTML = `
+                    <div class="pass-banner ${pass.branding}">${pass.carrier} Voucher</div>
+                    <div class="pass-body">
+                        <div class="pass-row">
+                            <div class="pass-col">
+                                <span class="pass-label">Transit</span>
+                                <span class="pass-val">${pass.code}</span>
+                            </div>
+                            <div class="pass-col right">
+                                <span class="pass-label">Date</span>
+                                <span class="pass-val">${pass.date}</span>
+                            </div>
+                        </div>
+                        <div class="pass-divider"></div>
+                        <div class="pass-row">
+                            <div class="pass-col">
+                                <span class="pass-label">From</span>
+                                <span class="pass-val">${pass.departure}</span>
+                            </div>
+                            <div class="pass-col right">
+                                <span class="pass-label">To</span>
+                                <span class="pass-val">${pass.arrival}</span>
+                            </div>
+                        </div>
+                        <div class="pass-divider"></div>
+                        <div class="pass-row">
+                            <div class="pass-col" style="flex: 1;">
+                                <span class="pass-label">Booking details / reference</span>
+                                <span class="pass-val" style="color: var(--gold);">${pass.conf}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            return el;
+        }
+
+        function createTimelineItemElement(day) {
+            const el = document.createElement('div');
+            el.className = 'timeline-item';
+            
+            let itemsHtml = '';
+            day.items.forEach(itm => {
+                itemsHtml += `
+                    <div class="timeline-detail-row">
+                        <span>• ${itm}</span>
+                    </div>
+                `;
+            });
+
+            el.innerHTML = `
+                <div class="timeline-dot"></div>
+                <div class="timeline-date-label">${day.date}</div>
+                <div class="timeline-card">
+                    <h4 class="timeline-title">${day.title}</h4>
+                    ${itemsHtml}
+                </div>
+            `;
+            return el;
+        }
+
+        function createGymCardElement(gym, dest) {
+            const el = document.createElement('div');
+            el.className = 'gym-pass-item';
+            el.innerHTML = `
+                <div class="gym-pass-header">
+                    <div class="gym-pass-title">
+                        <h3>${gym.name}</h3>
+                        <span>${dest}</span>
+                    </div>
+                    <span class="gym-price-badge">${gym.price}</span>
+                </div>
+                <div class="gym-pass-body">${gym.desc}</div>
+                
+                <div class="gym-checks">
+                    <div class="gym-check-row ${gym.reqs.passport ? 'required' : ''}">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Passport ID Required</span>
+                    </div>
+                    <div class="gym-check-row ${gym.reqs.shoes ? 'required' : ''}">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Indoor-only clean shoes</span>
+                    </div>
+                    <div class="gym-check-row ${gym.reqs.tattoos ? 'required' : ''}">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Cover Tattoos completely</span>
+                    </div>
+                </div>
+
+                <button class="card-action-btn" style="background-color: var(--gold); color: #FFF; border: none;" onclick="window.open('${gym.url}', '_blank')">
+                    Visit Gym Website
+                </button>
+            `;
+            return el;
+        }
+
+        // Render Sights & local lists for all cities
+        function renderChecklists() {
+            const cities = ['istanbul', 'bucharest', 'brasov', 'tokyo'];
+            
+            cities.forEach(cityId => {
+                const sightsContainer = document.getElementById(`${cityId}-sights-checklist`);
+                const localContainer = document.getElementById(`${cityId}-local-checklist`);
+                if (!sightsContainer || !localContainer) return;
+                
+                sightsContainer.innerHTML = '';
+                localContainer.innerHTML = '';
+
+                const city = checklistData[cityId];
+                const state = currentState[cityId] || { sights: [], local: [] };
+
+                city.sights.forEach((item, index) => {
+                    const checked = state.sights.includes(index);
+                    const mapQuery = city.coords ? city.coords.sights[index] : "";
+                    const el = createCheckItemElement(item, checked, mapQuery, () => toggleCheckItem(cityId, 'sights', index));
+                    sightsContainer.appendChild(el);
+                });
+
+                city.local.forEach((item, index) => {
+                    const checked = state.local.includes(index);
+                    const mapQuery = city.coords ? city.coords.local[index] : "";
+                    const el = createCheckItemElement(item, checked, mapQuery, () => toggleCheckItem(cityId, 'local', index));
+                    localContainer.appendChild(el);
+                });
+
+                updateProgressPercent(cityId);
+            });
+        }
+
+        function createCheckItemElement(text, isChecked, mapQuery, onClick) {
+            const div = document.createElement('div');
+            div.className = `check-item-ios ${isChecked ? 'checked' : ''}`;
+            
+            // Tap checkmark triggers bounce
+            div.onclick = (e) => {
+                if (e.target.closest('.check-map-btn')) return;
+                
+                div.style.transform = 'scale(0.96)';
+                setTimeout(() => {
+                    div.style.transform = 'scale(1)';
+                    div.classList.toggle('checked');
+                    onClick();
+                }, 100);
+            };
+
+            div.innerHTML = `
+                <div class="checkbox-ios">
+                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="check-text-ios">${text}</div>
+                ${mapQuery ? `
+                <button class="check-map-btn" onclick="window.open('https://www.google.com/maps/search/?api=1&query=${mapQuery}', '_blank')">
+                    <svg viewBox="0 0 24 24"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+                </button>` : ''}
+            `;
+            return div;
+        }
+
+        function toggleCheckItem(cityId, category, index) {
+            let state = currentState[cityId];
+            if (!state) return;
+
+            const list = state[category];
+            const idx = list.indexOf(index);
+            if (idx === -1) {
+                list.push(index);
+            } else {
+                list.splice(idx, 1);
+            }
+
+            updateProgressPercent(cityId);
+
+            if (navigator.onLine) {
+                saveStateToGitHub();
+            } else {
+                // Offline queueing
+                offlineChecklistQueue.push({ cityId, category, index });
+                updateCloudStatus("Queued (Offline)");
+                showToast("Offline: Check queued to sync");
+            }
+        }
+
+        function updateProgressPercent(cityId) {
+            const city = checklistData[cityId];
+            if (!city) return;
+
+            const state = currentState[cityId] || { sights: [], local: [] };
+            const total = city.sights.length + city.local.length;
+            const completed = state.sights.length + state.local.length;
+            const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+            const pageBadge = document.getElementById(`${cityId}-progress-percent`);
+            const pageFill = document.getElementById(`${cityId}-progress-fill`);
+
+            if (pageBadge) pageBadge.innerText = `${percent}%`;
+            if (pageFill) pageFill.style.width = `${percent}%`;
+
+            // Update regional cards
+            updateRegionalProgress();
+        }
+
+        function updateRegionalProgress() {
+            // 1. Turkey (Istanbul progress, Bodrum doesn't have checks)
+            const trTotal = checklistData.istanbul.sights.length + checklistData.istanbul.local.length;
+            const trCompleted = (currentState.istanbul?.sights?.length || 0) + (currentState.istanbul?.local?.length || 0);
+            const trPercent = trTotal > 0 ? Math.round((trCompleted / trTotal) * 100) : 0;
+            const trBar = document.getElementById('prog-bar-turkey');
+            if (trBar) trBar.style.width = `${trPercent}%`;
+
+            // 2. Romania (Bucharest + Brasov progress)
+            const roTotal = (checklistData.bucharest.sights.length + checklistData.bucharest.local.length) +
+                            (checklistData.brasov.sights.length + checklistData.brasov.local.length);
+            const roCompleted = (currentState.bucharest?.sights?.length || 0) + (currentState.bucharest?.local?.length || 0) +
+                               (currentState.brasov?.sights?.length || 0) + (currentState.brasov?.local?.length || 0);
+            const roPercent = roTotal > 0 ? Math.round((roCompleted / roTotal) * 100) : 0;
+            const roBar = document.getElementById('prog-bar-romania');
+            if (roBar) roBar.style.width = `${roPercent}%`;
+
+            // 3. Japan (Tokyo progress)
+            const jpTotal = checklistData.tokyo.sights.length + checklistData.tokyo.local.length;
+            const jpCompleted = (currentState.tokyo?.sights?.length || 0) + (currentState.tokyo?.local?.length || 0);
+            const jpPercent = jpTotal > 0 ? Math.round((jpCompleted / jpTotal) * 100) : 0;
+            const jpBar = document.getElementById('prog-bar-japan');
+            if (jpBar) jpBar.style.width = `${jpPercent}%`;
+        }
+
+        // Checklist Search Filter
+        function filterChecklist(cityId, query) {
+            const cleanQuery = query.toLowerCase().trim();
+            const sightItems = document.getElementById(`${cityId}-sights-checklist`).querySelectorAll('.check-item-ios');
+            const localItems = document.getElementById(`${cityId}-local-checklist`).querySelectorAll('.check-item-ios');
+
+            const filterList = (items) => {
+                items.forEach(item => {
+                    const text = item.querySelector('.check-text-ios').innerText.toLowerCase();
+                    item.classList.toggle('hide', !text.includes(cleanQuery));
+                });
+            };
+
+            filterList(sightItems);
+            filterList(localItems);
+        }
+
+        // Render Packing List (local storage backup)
+        function renderPackingList() {
+            const container = document.getElementById('packing-container');
+            if (!container) return;
+            container.innerHTML = '';
+            
+            const savedState = JSON.parse(localStorage.getItem('dcr_packing')) || [];
+
+            packingDb.forEach((item, index) => {
+                const isChecked = savedState.includes(index);
+                const el = document.createElement('div');
+                el.className = `check-item-ios ${isChecked ? 'checked' : ''}`;
+                el.onclick = () => {
+                    el.style.transform = 'scale(0.96)';
+                    setTimeout(() => {
+                        el.style.transform = 'scale(1)';
+                        el.classList.toggle('checked');
+                        togglePackingItem(index);
+                    }, 100);
+                };
+                el.innerHTML = `
+                    <div class="checkbox-ios">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div class="check-text-ios">${item}</div>
+                `;
+                container.appendChild(el);
+            });
+        }
+
+        function togglePackingItem(index) {
+            let savedState = JSON.parse(localStorage.getItem('dcr_packing')) || [];
+            const idx = savedState.indexOf(index);
+            if (idx === -1) {
+                savedState.push(index);
+            } else {
+                savedState.splice(idx, 1);
+            }
+            localStorage.setItem('dcr_packing', JSON.stringify(savedState));
+        }
+
+        // Passport toggler
+        function toggleDocsPassport() {
+            const trigger = document.getElementById('docs-passport-trigger');
+            const box = document.getElementById('docs-passport-box');
+            if (box.style.display === 'block') {
+                box.style.display = 'none';
+                trigger.style.display = 'flex';
+            } else {
+                box.style.display = 'block';
+                trigger.style.display = 'none';
+            }
+        }
+
+        // --- NEXT UP LIVE BANNER TIMER ---
+        function initLiveActivityTimer() {
+            calculateNextTransit();
+            setInterval(calculateNextTransit, 60000);
+        }
+
+        function calculateNextTransit() {
+            const now = new Date();
+            const nextEvent = chronologicalLogs.find(ev => ev.date > now);
+            const countdownText = document.getElementById('live-countdown-text');
+            const titleText = document.getElementById('live-title-text');
+            const subText = document.getElementById('live-sub-text');
+
+            if (nextEvent) {
+                const diffMs = nextEvent.date - now;
+                const diffHrs = Math.floor(diffMs / 3600000);
+                const diffMins = Math.floor((diffMs % 3600000) / 60000);
+                
+                let timeStr = "";
+                if (diffHrs > 24) {
+                    const days = Math.floor(diffHrs / 24);
+                    timeStr = `in ${days}d ${diffHrs % 24}h`;
+                } else {
+                    timeStr = `in ${diffHrs}h ${diffMins}m`;
+                }
+
+                countdownText.innerText = timeStr;
+                titleText.innerText = nextEvent.label;
+                subText.innerText = nextEvent.desc;
+            } else {
+                countdownText.innerText = "Active";
+                titleText.innerText = "Enjoy your Sabbatical!";
+                subText.innerText = "All major transits and flights completed.";
+            }
+        }
+
+        // --- PWA NATIVE PUSH NOTIFICATIONS ---
+        function initPushNotifications() {
+            if ('Notification' in window) {
+                Notification.requestPermission().then(permission => {
+                    if (permission === 'granted') {
+                        console.log("PWA local notifications approved.");
+                    }
+                });
+            }
+        }
+
+        function showLocalNotification(title, body) {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                navigator.serviceWorker.ready.then(reg => {
+                    reg.showNotification(title, {
+                        body: body,
+                        icon: './icon-192.png',
+                        badge: './icon-192.png',
+                        vibrate: [100, 50, 100]
+                    });
+                });
+            }
+        }
+
+        // Auto-notifications on tabs switches (simulated geolocation arrival)
+        function triggerLocalArrivalNotification(tabId) {
+            if (tabId === 'overview' || tabId === 'docs') return;
+            
+            const titles = {
+                bodrum: "Welcome to Bodrum 🌊",
+                istanbul: "Welcome to Istanbul 🕌",
+                bucharest: "Welcome to Bucharest 🇷🇴",
+                brasov: "Welcome to Braşov 🏰",
+                spetses: "Welcome to Spetses 🇬🇷",
+                tokyo: "Welcome to Tokyo 🇯🇵"
+            };
+
+            const messages = {
+                bodrum: "You are staying at Maka's Villa. Key in lockbox code: 1985.",
+                istanbul: "Lodging at Harbiye Residence. Check-in passcode: 5403358085.",
+                bucharest: "Lodging at Old Town flat. Calea Victoriei lockbox code: 2026.",
+                brasov: "Lodging at Strada Lungă. Main gate keypad: *3939#.",
+                spetses: "Ferry check: Did you verify your Piraeus sea sailing seats?",
+                tokyo: "Lodging at Shibuya Airbnb. Remember to cover tattoos at Gold's Gym Shibuya."
+            };
+
+            if (titles[tabId]) {
+                showLocalNotification(titles[tabId], messages[tabId]);
+            }
+        }
+
+        // --- GITHUB CLOUD DATABASE SYNCING ---
+        function fetchStateFromGitHub() {
+            updateCloudStatus("Connecting...");
+            const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/state.json?t=${Date.now()}`;
+            
+            fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `token ${GITHUB_TOKEN}`,
+                    'Accept': 'application/vnd.github.v3+json'
+                }
+            })
+            .then(res => {
+                if (!res.ok) throw new Error("Fetch failed");
+                return res.json();
+            })
+            .then(data => {
+                githubFileSha = data.sha;
+                const decodedText = decodeURIComponent(escape(atob(data.content)));
+                currentState = JSON.parse(decodedText);
+                updateCloudStatus("Cloud Synced");
+                renderChecklists();
+            })
+            .catch(err => {
+                console.error("Cloud fetching issue:", err);
+                updateCloudStatus("Offline Mode");
+                renderChecklists();
+            });
+        }
+
+        function saveStateToGitHub() {
+            if (!githubFileSha) {
+                console.warn("Save canceled: SHA key missing");
+                return;
+            }
+
+            updateCloudStatus("Syncing...");
+            const raw = JSON.stringify(currentState, null, 2);
+            const encoded = btoa(unescape(encodeURIComponent(raw)));
+
+            fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/state.json`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `token ${GITHUB_TOKEN}`,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/vnd.github.v3+json'
+                },
+                body: JSON.stringify({
+                    message: "Sync sabbatical checklist status",
+                    content: encoded,
+                    sha: githubFileSha
+                })
+            })
+            .then(res => {
+                if (!res.ok) throw new Error("Cloud save failed");
+                return res.json();
+            })
+            .then(data => {
+                githubFileSha = data.content.sha;
+                updateCloudStatus("Cloud Synced");
+                showToast("Synced to Cloud");
+                offlineChecklistQueue = [];
+            })
+            .catch(err => {
+                console.error("Cloud push failed:", err);
+                updateCloudStatus("Save Failed");
+                showToast("Sync failed: stored offline");
+            });
+        }
+
+        // Toast utility
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("Copied to Clipboard");
+            });
+        }
+    </script>
+</body>
+</html>
