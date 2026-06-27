@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dcr-travel-v2';
+const CACHE_NAME = 'dcr-travel-v3';
 const ASSETS = [
   './',
   './DCR_Travel.html',
@@ -31,6 +31,12 @@ self.addEventListener('activate', (e) => {
       );
     })
   );
+});
+
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener('fetch', (e) => {

@@ -992,7 +992,7 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* Desktop view centering wrapper */
+         /* Desktop view centering wrapper */
         @media (min-width: 600px) {
             .tab-bar {
                 max-width: 600px;
@@ -1004,9 +1004,63 @@
                 bottom: 95px;
             }
         }
+
+        /* Update Notification Pill */
+        .update-pill {
+            position: fixed;
+            top: 75px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background-color: var(--gold);
+            color: #FFFFFF;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 12px rgba(201, 168, 76, 0.25);
+            z-index: 500;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .update-pill.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+
+        .update-pill button {
+            background-color: #FFFFFF;
+            color: var(--gold);
+            border: none;
+            outline: none;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .update-pill button:active {
+            transform: scale(0.95);
+        }
     </style>
 </head>
 <body>
+
+    <!-- Update Notification Pill -->
+    <div id="update-pill" class="update-pill">
+        <span>New Sabbatical Update!</span>
+        <button id="btn-update-refresh">Tap to Refresh</button>
+    </div>
 
     <div class="app-shell">
         
@@ -2160,13 +2214,37 @@
         // Active State variables
         let activeTabId = 'overview';
 
+        let newWorker;
         // Initialize App
         window.addEventListener('DOMContentLoaded', () => {
             // Register Service Worker
             if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(reg => console.log('Service Worker registered successfully:', reg))
-                    .catch(err => console.error('Service Worker registration failed:', err));
+                navigator.serviceWorker.register('./sw.js').then(reg => {
+                    console.log('Service Worker registered successfully:', reg);
+                    
+                    if (reg.waiting) {
+                        showUpdatePill(reg.waiting);
+                    }
+
+                    reg.addEventListener('updatefound', () => {
+                        const installingWorker = reg.installing;
+                        installingWorker.addEventListener('statechange', () => {
+                            if (installingWorker.state === 'installed') {
+                                if (navigator.serviceWorker.controller) {
+                                    showUpdatePill(installingWorker);
+                                }
+                            }
+                        });
+                    });
+                }).catch(err => console.error('Service Worker registration failed:', err));
+
+                let refreshing = false;
+                navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    if (!refreshing) {
+                        refreshing = true;
+                        window.location.reload();
+                    }
+                });
             }
             renderAllDestinationsData();
             fetchStateFromGitHub();
@@ -2786,6 +2864,18 @@
             navigator.clipboard.writeText(text).then(() => {
                 showToast("Copied to Clipboard");
             });
+        }
+
+        function showUpdatePill(worker) {
+            newWorker = worker;
+            const pill = document.getElementById('update-pill');
+            const btn = document.getElementById('btn-update-refresh');
+            if (pill && btn) {
+                pill.classList.add('show');
+                btn.onclick = () => {
+                    newWorker.postMessage({ type: 'SKIP_WAITING' });
+                };
+            }
         }
     </script>
 </body>
