@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Summer 2026 Grand Tour Playbook - DCR</title>
+    
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Color Palette & Custom Properties */
+        :root {
+            --bg-color: #FCFBF9; /* Warm paper/cream */
+            --text-main: #1C1C1C; /* Luxurious charcoal */
+            --text-muted: #555555;
+            --accent-gold: #C5A059; /* Antique gold */
+            --accent-gold-hover: #AF8B45;
+            --accent-navy: #0F2C59; /* Deep maritime navy */
+            --accent-red: #D9534F; /* Soft alert red */
+            --card-bg: #FFFFFF;
+            --border-color: #E6E3DF;
+            --shadow: 0 10px 30px rgba(28, 28, 28, 0.04);
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding: 0;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* Cover Page / Header */
+        .cover {
+            text-align: center;
+            padding: 100px 20px 80px 20px;
+            border-bottom: 2px double var(--accent-gold);
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .cover-subtitle {
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.25em;
+            color: var(--accent-gold);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .cover-title {
+            font-size: 3.8rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            color: var(--accent-navy);
+            font-weight: 700;
+        }
+
+        .cover-details {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-muted);
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .cover-meta {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Section Dividers */
+        .section-divider {
+            margin: 80px 0;
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(197, 160, 89, 0), rgba(197, 160, 89, 0.5), rgba(197, 160, 89, 0));
+        }
+
+        /* Destination Section */
+        .destination {
+            margin-bottom: 100px;
+            position: relative;
+        }
+
+        .dest-header {
+            display: flex;
+            align-items: baseline;
+            gap: 15px;
+            border-bottom: 1px solid var(--accent-gold);
+            padding-bottom: 15px;
+            margin-bottom: 35px;
+        }
+
+        .dest-emoji {
+            font-size: 2.2rem;
+        }
+
+        .dest-title {
+            font-size: 2.4rem;
+            color: var(--accent-navy);
+        }
+
+        .dest-title span {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-left: 10px;
+        }
+
+        /* Table Design */
+        .logistics-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background-color: #F6F4F0;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        td {
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+            color: var(--text-main);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .alert-text {
+            color: var(--accent-red);
+            font-weight: 600;
+        }
+
+        .highlight-text {
+            font-weight: 600;
+        }
+
+        /* Vibe Check Cards */
+        .vibe-check-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .vibe-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .vibe-card {
+            background-color: var(--card-bg);
+            border-left: 3px solid var(--accent-gold);
+            padding: 25px 30px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: var(--shadow);
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .vibe-card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+            color: var(--accent-navy);
+            font-weight: 700;
+        }
+
+        .vibe-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .vibe-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .vibe-card li {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .vibe-card li::before {
+            content: "•";
+            color: var(--accent-gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        /* Action Alert Box */
+        .action-alert {
+            background-color: #FFF8F8;
+            border: 1px solid rgba(217, 83, 79, 0.2);
+            border-left: 4px solid var(--accent-red);
+            padding: 20px 25px;
+            border-radius: 4px;
+            margin-bottom: 40px;
+        }
+
+        .action-alert h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .action-alert p {
+            font-size: 0.9rem;
+            color: #7D2624;
+        }
+
+        /* Print Button for Browser View */
+        .print-btn-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .print-btn {
+            background-color: var(--accent-navy);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(15, 44, 89, 0.2);
+            transition: var(--transition);
+        }
+
+        .print-btn:hover {
+            background-color: #0b2041;
+            transform: translateY(-2px);
+        }
+
+        /* Print Mode Optimizations (Mobile Phone PDF Friendly) */
+        @media print {
+            @page {
+                size: 108mm 192mm; /* Mobile phone aspect ratio (9:16) */
+                margin: 6mm;
+            }
+            body {
+                background-color: #FFFFFF;
+                color: #000000;
+                font-size: 10px;
+            }
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+            .cover {
+                padding: 40px 0 20px 0;
+                page-break-after: always;
+            }
+            .cover-title {
+                font-size: 2.2rem;
+            }
+            .cover-meta {
+                margin-top: 20px;
+                gap: 10px;
+                font-size: 0.75rem;
+            }
+            .calendar-section {
+                page-break-after: always;
+            }
+            .calendar-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .calendar-month {
+                padding: 12px;
+                box-shadow: none;
+                border: 1px solid #CCCCCC;
+                page-break-after: always;
+            }
+            .calendar-month:last-child {
+                page-break-after: avoid;
+            }
+            .calendar-table td {
+                height: 48px;
+                padding: 2px;
+                font-size: 0.65rem;
+            }
+            .calendar-dest-badge {
+                font-size: 0.5rem;
+                padding: 1px 2px;
+            }
+            .destination {
+                page-break-after: always;
+                padding-top: 10px;
+            }
+            .destination:last-child {
+                page-break-after: avoid;
+            }
+            .dest-title {
+                font-size: 1.8rem;
+            }
+            .table-container {
+                margin-bottom: 20px;
+                box-shadow: none;
+                border: 1px solid #CCCCCC;
+            }
+            table {
+                font-size: 0.75rem;
+            }
+            th, td {
+                padding: 8px 10px;
+            }
+            .vibe-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .vibe-card {
+                padding: 15px 20px;
+                box-shadow: none;
+                border: 1px solid #CCCCCC;
+                border-left: 4px solid #C5A059;
+                background-color: #FFFFFF !important;
+            }
+            .action-alert {
+                border: 1px solid #D9534F;
+                background-color: #FFFDFD !important;
+            }
+            .print-btn-container {
+                display: none;
+            }
+        }
+
+        /* Responsive Layout adjustments */
+        @media (max-width: 768px) {
+            .vibe-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cover-title {
+                font-size: 2.8rem;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            .cover-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        /* Calendar Styles */
+        .calendar-section {
+            margin-bottom: 80px;
+        }
+        .calendar-section-title {
+            font-size: 1.8rem;
+            color: var(--accent-navy);
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .calendar-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .calendar-month {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+        .calendar-month-title {
+            font-size: 1.4rem;
+            color: var(--accent-navy);
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-bottom: 1px solid var(--accent-gold);
+            padding-bottom: 8px;
+            font-weight: 700;
+        }
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .calendar-table th {
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+            background-color: transparent;
+        }
+        .calendar-table td {
+            width: 14.28%;
+            height: 65px;
+            text-align: center;
+            vertical-align: top;
+            padding: 6px;
+            border: 1px solid #FAF9F6;
+            font-size: 0.8rem;
+            position: relative;
+        }
+        .calendar-day-num {
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 4px;
+            text-align: left;
+        }
+        .calendar-dest-badge {
+            display: block;
+            font-size: 0.58rem;
+            padding: 3px 4px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        /* Badge colors */
+        .badge-bodrum { background-color: #E0F2FE; color: #0369A1; border: 1px solid #BAE6FD; }
+        .badge-istanbul { background-color: #F3E8FF; color: #6B21A8; border: 1px solid #E9D5FF; }
+        .badge-spetses { background-color: #DCFCE7; color: #166534; border: 1px solid #BBF7D0; }
+        .badge-tokyo-noe { background-color: #FEE2E2; color: #991B1B; border: 1px solid #FCA5A5; }
+        .badge-tokyo-ben { background-color: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+        .badge-transition { background-color: #F3F4F6; color: #4B5563; border: 1px solid #E5E7EB; }
+        
+        .calendar-empty {
+            background-color: #FCFBF9;
+        }
+
+        /* Print Media Additions */
+        @media print {
+            .calendar-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                page-break-after: always;
+            }
+            .calendar-month {
+                box-shadow: none;
+                border: 1px solid #000000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Print Button -->
+        <div class="print-btn-container">
+            <button class="print-btn" onclick="window.print()">Export Playbook to PDF</button>
+        </div>
+
+        <!-- Cover Page -->
+        <header class="cover">
+            <div class="cover-subtitle">Private Travel Briefing</div>
+            <h1 class="cover-title">The Summer 2026<br>Grand Tour</h1>
+            <div class="cover-details">Prepared exclusively for Daniel Cruz-Rosso (DCR)</div>
+            <div class="cover-meta">
+                <div>Bodrum • Istanbul • Spetses • Tokyo</div>
+                <div>July 1 – August 20, 2026</div>
+                <div>4 Destinations • 51 Days</div>
+            </div>
+        </header>
+
+        <!-- Calendar Section -->
+        <section class="calendar-section">
+            <h2 class="calendar-section-title">🗓️ The Summer 2026 Master Timeline</h2>
+            
+            <div class="calendar-container">
+                <!-- July 2026 -->
+                <div class="calendar-month">
+                    <div class="calendar-month-title">July 2026</div>
+                    <table class="calendar-table">
+                        <thead>
+                            <tr>
+                                <th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="calendar-empty"></td>
+                                <td class="calendar-empty"></td>
+                                <td><span class="calendar-day-num">1</span><span class="calendar-dest-badge badge-bodrum">Bodrum</span></td>
+                                <td><span class="calendar-day-num">2</span><span class="calendar-dest-badge badge-bodrum">Bodrum</span></td>
+                                <td><span class="calendar-day-num">3</span><span class="calendar-dest-badge badge-bodrum">Bodrum</span></td>
+                                <td><span class="calendar-day-num">4</span><span class="calendar-dest-badge badge-bodrum">Bodrum</span></td>
+                                <td><span class="calendar-day-num">5</span><span class="calendar-dest-badge badge-istanbul">BJV➔IST</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="calendar-day-num">6</span><span class="calendar-dest-badge badge-istanbul">Istanbul</span></td>
+                                <td><span class="calendar-day-num">7</span><span class="calendar-dest-badge badge-istanbul">Istanbul</span></td>
+                                <td><span class="calendar-day-num">8</span><span class="calendar-dest-badge badge-istanbul">Istanbul</span></td>
+                                <td><span class="calendar-day-num">9</span><span class="calendar-dest-badge badge-transition">IST➔BUH</span></td>
+                                <td><span class="calendar-day-num">10</span><span class="calendar-dest-badge badge-transition">Bucharest</span></td>
+                                <td><span class="calendar-day-num">11</span><span class="calendar-dest-badge badge-transition">Bucharest</span></td>
+                                <td><span class="calendar-day-num">12</span><span class="calendar-dest-badge badge-transition">BUH➔BRV</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="calendar-day-num">13</span><span class="calendar-dest-badge badge-transition">Braşov</span></td>
+                                <td><span class="calendar-day-num">14</span><span class="calendar-dest-badge badge-transition">Braşov</span></td>
+                                <td><span class="calendar-day-num">15</span><span class="calendar-dest-badge badge-transition">BRV➔LDN</span></td>
+                                <td><span class="calendar-day-num">16</span><span class="calendar-dest-badge badge-transition">Golf Open</span></td>
+                                <td><span class="calendar-day-num">17</span><span class="calendar-dest-badge badge-transition">Golf Open</span></td>
+                                <td><span class="calendar-day-num">18</span><span class="calendar-dest-badge badge-transition">Golf Open</span></td>
+                                <td><span class="calendar-day-num">19</span><span class="calendar-dest-badge badge-transition">Golf Open</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="calendar-day-num">20</span><span class="calendar-dest-badge badge-transition">Golf➔LDN</span></td>
+                                <td><span class="calendar-day-num">21</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                <td><span class="calendar-day-num">22</span><span class="calendar-dest-badge badge-spetses">LDN➔ATH</span></td>
+                                <td><span class="calendar-day-num">23</span><span class="calendar-dest-badge badge-spetses">Spetses</span></td>
+                                <td><span class="calendar-day-num">24</span><span class="calendar-dest-badge badge-spetses">Spetses</span></td>
+                                <td><span class="calendar-day-num">25</span><span class="calendar-dest-badge badge-spetses">Spetses</span></td>
+                                <td><span class="calendar-day-num">26</span><span class="calendar-dest-badge badge-spetses">Spetses</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="calendar-day-num">27</span><span class="calendar-dest-badge badge-transition">ATH➔LDN</span></td>
+                                <td><span class="calendar-day-num">28</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                <td><span class="calendar-day-num">29</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                <td><span class="calendar-day-num">30</span><span class="calendar-dest-badge badge-tokyo-noe">LHR➔HND</span></td>
+                                <td><span class="calendar-day-num">31</span><span class="calendar-dest-badge badge-tokyo-noe">Tokyo (Noe)</span></td>
+                                <td class="calendar-empty"></td>
+                                <td class="calendar-empty"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- August 2026 -->
+                <div class="calendar-month">
+                    <div class="calendar-month-title">August 2026</div>
+                    <table class="calendar-table">
+                        <thead>
+                            <tr>
+                                <th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="calendar-empty"></td>
+                                <td class="calendar-empty"></td>
+                                <td class="calendar-empty"></td>
+                                <td class="calendar-empty"></td>
+                                <td class="calendar-empty"></td>
+                                <td><span class="calendar-day-num">1</span><span class="calendar-dest-badge badge-tokyo-noe">Tokyo (Noe)</span></td>
+                                <td><span class="calendar-day-num">2</span><span class="calendar-dest-badge badge-tokyo-noe">Tokyo (Noe)</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="calendar-day-num">3</span><span class="calendar-dest-badge badge-tokyo-noe">Tokyo (Noe)</span></td>
+                                <td><span class="calendar-day-num">4</span><span class="calendar-dest-badge badge-tokyo-noe">Tokyo (Noe)</span></td>
+                                <td><span class="calendar-day-num">5</span><span class="calendar-dest-badge badge-tokyo-noe">Tokyo (Noe)</span></td>
+                                <td><span class="calendar-day-num">6</span><span class="calendar-dest-badge badge-tokyo-noe">Tokyo (Noe)</span></td>
+                                <td><span class="calendar-day-num">7</span><span class="calendar-dest-badge badge-tokyo-ben">Tokyo (Ben)</span></td>
+                                <td><span class="calendar-day-num">8</span><span class="calendar-dest-badge badge-tokyo-ben">Tokyo (Ben)</span></td>
+                                <td><span class="calendar-day-num">9</span><span class="calendar-dest-badge badge-tokyo-ben">Tokyo (Ben)</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="calendar-day-num">10</span><span class="calendar-dest-badge badge-tokyo-ben">Tokyo (Ben)</span></td>
+                                <td><span class="calendar-day-num">11</span><span class="calendar-dest-badge badge-tokyo-ben">Tokyo (Ben)</span></td>
+                                <td><span class="calendar-day-num">12</span><span class="calendar-dest-badge badge-tokyo-ben">Tokyo (Ben)</span></td>
+                                <td><span class="calendar-day-num">13</span><span class="calendar-dest-badge badge-tokyo-ben">Tokyo (Ben)</span></td>
+                                <td><span class="calendar-day-num">14</span><span class="calendar-dest-badge badge-tokyo-ben">Tokyo (Ben)</span></td>
+                                <td><span class="calendar-day-num">15</span><span class="calendar-dest-badge badge-tokyo-ben">Tokyo (Ben)</span></td>
+                                <td><span class="calendar-day-num">16</span><span class="calendar-dest-badge badge-tokyo-noe">Tokyo (Noe)</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="calendar-day-num">17</span><span class="calendar-dest-badge badge-tokyo-noe">Tokyo (Noe)</span></td>
+                                <td><span class="calendar-day-num">18</span><span class="calendar-dest-badge badge-tokyo-noe">Tokyo (Noe)</span></td>
+                                <td><span class="calendar-day-num">19</span><span class="calendar-dest-badge badge-tokyo-noe">Tokyo (Noe)</span></td>
+                                <td><span class="calendar-day-num">20</span><span class="calendar-dest-badge badge-transition">HND➔LHR</span></td>
+                                <td><span class="calendar-day-num">21</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                <td><span class="calendar-day-num">22</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                <td><span class="calendar-day-num">23</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="calendar-day-num">24</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                <td><span class="calendar-day-num">25</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                <td><span class="calendar-day-num">26</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                <td><span class="calendar-day-num">27</span><span class="calendar-dest-badge badge-transition">London</span></td>
+                                <td><span class="calendar-day-num">28</span><span class="calendar-dest-badge badge-transition">Corsica</span></td>
+                                <td><span class="calendar-day-num">29</span><span class="calendar-dest-badge badge-transition">Corsica</span></td>
+                                <td><span class="calendar-day-num">30</span><span class="calendar-dest-badge badge-transition">Corsica</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="calendar-day-num">31</span><span class="calendar-dest-badge badge-transition">Corsica</span></td>
+                                <td class="calendar-empty"></td>
+                                <td class="calendar-empty"></td>
+                                <td class="calendar-empty"></td>
+                                <td class="calendar-empty"></td>
+                                <td class="calendar-empty"></td>
+                                <td class="calendar-empty"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bodrum, Türkiye -->
+        <section class="destination">
+            <div class="dest-header">
+                <span class="dest-emoji">🌊</span>
+                <h2 class="dest-title">BODRUM <span>Türkiye</span></h2>
+            </div>
+
+            <!-- Logistical Alert if any -->
+
+            <h3 class="logistics-title">✈️ Logistics & Bookings</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Date / Time</th>
+                            <th style="width: 25%;">Type (Flight/Stay)</th>
+                            <th style="width: 30%;">Details (Flight # / Property)</th>
+                            <th style="width: 25%;">Confirmation / Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight-text">Wed 1 Jul<br>14:00 – 20:05</td>
+                            <td>✈️ Outbound Flight</td>
+                            <td>easyJet <strong>EZY8553</strong><br>London Gatwick (LGW) ➔ Bodrum (BJV)<br><small>Duration: 4h05</small></td>
+                            <td>Ref: <strong>KBZL8QD</strong><br><small>Retimed from 13:55. Hold + Cabin bag confirmed.</small></td>
+                        </tr>
+                        <tr>
+                            <td class="highlight-text">Wed 1 Jul –<br>Sun 5 Jul</td>
+                            <td>🏨 Stay (4 Nights)</td>
+                            <td><strong>Maka's Airbnb</strong></td>
+                            <td>Stay at friend Maka's property (No booking required)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="vibe-check-title">🗺️ The Vibe Check</h3>
+            <div class="vibe-container">
+                <div class="vibe-card">
+                    <div class="vibe-card-title">The Neighborhood</div>
+                    <p>Known as the "St. Tropez of Turkey," Bodrum marries rugged Aegean cliffs with shiny superyacht harbours. Since your lodging is wide open, tailor your base to your mood:</p>
+                    <ul>
+                        <li><strong>Bodrum Town:</strong> Energetic and historical. Perfect for late-night walks, bar street vibes, and immediate access on night one.</li>
+                        <li><strong>Yalıkavak:</strong> The crown jewel. Home to the sleek Palmarina, ultra-luxury fashion boutiques, and high-end beach clubs.</li>
+                        <li><strong>Gümüşlük:</strong> A low-key bohemian dream. Ruins, quiet waters, and candle-lit dining directly on the sand.</li>
+                    </ul>
+                </div>
+                <div class="vibe-card">
+                    <div class="vibe-card-title">Local Know-How</div>
+                    <ul>
+                        <li><strong>e-Visa Requirement:</strong> Make sure to obtain your Turkish e-visa online prior to arriving at Gatwick Airport using your US passport.</li>
+                        <li><strong>Sunset Mezze in Gümüşlük:</strong> Head to Gümüşlük at sunset. Dining on fresh, local cold mezze at a waterfront table with the tide licking your feet is an absolute must.</li>
+                        <li><strong>Palmarina Dinner at Sait:</strong> Allocate an evening to explore the yachts at Palmarina in Yalıkavak, and book a table at <strong>Sait</strong> for Bodrum's premier seafood experience.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Istanbul, Türkiye -->
+        <section class="destination">
+            <div class="dest-header">
+                <span class="dest-emoji">🕌</span>
+                <h2 class="dest-title">ISTANBUL <span>Türkiye</span></h2>
+            </div>
+
+            <h3 class="logistics-title">✈️ Logistics & Bookings</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Date / Time</th>
+                            <th style="width: 25%;">Type (Flight/Stay)</th>
+                            <th style="width: 30%;">Details (Flight # / Property)</th>
+                            <th style="width: 25%;">Confirmation / Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight-text">Sun 5 Jul<br>14:25 – 15:55</td>
+                            <td>✈️ Domestic Flight</td>
+                            <td>Turkish Airlines <strong>TK2511</strong><br>Bodrum (BJV) ➔ Istanbul (IST)</td>
+                            <td>Ref: <strong>SQP33K</strong><br><small>Economy ticket. Part of your Anatolian transit.</small></td>
+                        </tr>
+                        <tr>
+                            <td class="highlight-text">Sun 5 Jul –<br>Thu 9 Jul</td>
+                            <td>🏨 Stay (4 Nights)</td>
+                            <td><strong>Harbiye Residence</strong><br><small>Double occupancy</small></td>
+                            <td>Conf: <strong>5403358085</strong><br>PIN: <strong>6017</strong><br><strong>Harbiye / Taksim, Şişli, 34373 Istanbul</strong><br><small>Total: €352.44. Early check-in approved.</small></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="vibe-check-title">🗺️ The Vibe Check</h3>
+            <div class="vibe-container">
+                <div class="vibe-card">
+                    <div class="vibe-card-title">The Neighborhood</div>
+                    <p>Your base at the <strong>Harbiye Residence</strong> places you in a highly walkable, cultured urban district. You are nestled right between:</p>
+                    <ul>
+                        <li><strong>Nişantaşı:</strong> Istanbul's upscale shopping and dining district, packed with design galleries, elite cafés, and the elegant Soho House Istanbul.</li>
+                        <li><strong>Taksim:</strong> A high-octane cultural corridor. Excellent for feeling the raw, sleepless pulse of the city.</li>
+                    </ul>
+                </div>
+                <div class="vibe-card">
+                    <div class="vibe-card-title">Local Know-How</div>
+                    <ul>
+                        <li><strong>Golden Hour Bosphorus Ferry:</strong> Avoid city traffic. Take a ferry to Karaköy or Galataport at sunset. Silhouetting the domes of the Hagia Sophia against a deep golden sky is a classic experience.</li>
+                        <li><strong>Tactical Transit:</strong> Istanbul Airport (IST) to Harbiye takes 45–60 minutes. Grab the comfortable <strong>Havaist shuttle</strong> to Taksim, then take a quick 10-minute taxi. If you take a cab from IST, expect a fixed-ish rate of <strong>€35–45</strong>.</li>
+                        <li><strong>Housekeeping Note:</strong> Your Soho House night on 6-7 July was successfully cancelled on 1 Feb, meaning your schedule is clear and clean with no overlaps.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Greece (Spetses) -->
+        <section class="destination">
+            <div class="dest-header">
+                <span class="dest-emoji">🇬🇷</span>
+                <h2 class="dest-title">SPETSES <span>Greece</span></h2>
+            </div>
+
+            <!-- Logistical Alert if any -->
+            <div class="action-alert">
+                <h4>🚨 Action Required: Sea Passage Booking</h4>
+                <p>Your inbound flight lands in Athens (ATH) at 13:10. You must arrange transit to Spetses island. Choose either: <strong>Option A</strong> (Taxi to Piraeus (~50m) + fast ferry (~2h15)) aiming for a 15:30–17:00 sailing, or <strong>Option B</strong> (Private car to Costa (~2h) + 10-min water taxi). Ferry space sells out fast in July—book this week.</p>
+            </div>
+
+            <h3 class="logistics-title">✈️ Logistics & Bookings</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Date / Time</th>
+                            <th style="width: 25%;">Type (Flight/Stay)</th>
+                            <th style="width: 30%;">Details (Flight # / Property)</th>
+                            <th style="width: 25%;">Confirmation / Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight-text">Wed 22 Jul<br>07:25 – 13:10</td>
+                            <td>✈️ Inbound Flight</td>
+                            <td>British Airways <strong>BA626</strong><br>London Heathrow (LHR) T5 ➔ Athens (ATH)</td>
+                            <td>Ref: <strong>YWX37V</strong><br><small>Euro Traveller. Roundtrip cost: £351.35.</small></td>
+                        </tr>
+                        <tr>
+                            <td class="highlight-text">Wed 22 Jul –<br>Mon 27 Jul</td>
+                            <td>🏨 Stay (5 Nights)</td>
+                            <td><strong>Teresa Spetses</strong><br><small>1-Bedroom Suite (Twin set-up: fixed double + sofa bed)</small></td>
+                            <td>Conf: <strong>1054</strong><br><strong>Spetses Island, Greece</strong><br><small>Paid in full via Amex ...1003. Email: reservations@teresa-spetses.com</small></td>
+                        </tr>
+                        <tr>
+                            <td class="highlight-text">Mon 27 Jul<br>19:30 – 21:25</td>
+                            <td>✈️ Outbound Flight</td>
+                            <td>British Airways <strong>BA631</strong><br>Athens (ATH) ➔ London Heathrow (LHR) T5</td>
+                            <td>Ref: <strong>YWX37V</strong><br><small>Depart Spetses by ~14:00 to ensure check-in buffer.</small></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="vibe-check-title">🗺️ The Vibe Check</h3>
+            <div class="vibe-container">
+                <div class="vibe-card">
+                    <div class="vibe-card-title">The Neighborhood</div>
+                    <p><strong>Spetses</strong> is a Saronic gem dripping in old-school maritime glamour. A historical harbor, grand neoclassical estates, and zero private cars create an exclusive, relaxed sanctuary. Travel here consists of:</p>
+                    <ul>
+                        <li><strong>Water Taxis:</strong> Speedy and direct for beach runs.</li>
+                        <li><strong>Bicycles / Buggies:</strong> For casual exploration and slow-paced island life.</li>
+                    </ul>
+                </div>
+                <div class="vibe-card">
+                    <div class="vibe-card-title">Local Know-How</div>
+                    <ul>
+                        <li><strong>Poseidonion Aperitifs:</strong> Sip an evening cocktail on the grand veranda of the historic <strong>Poseidonion Grand Hotel</strong> while watching yachts arrive at the harbor.</li>
+                        <li><strong>Old Harbour Dinners:</strong> For fresh catches, book a table at <strong>Patralis</strong>. For a high-energy waterfront atmosphere, head to <strong>Orloff</strong>.</li>
+                        <li><strong>Secluded Coves:</strong> Take a water taxi or rigid inflatable boat (RIB) to <strong>Agia Paraskevi</strong> or <strong>Zogeria</strong>. Clear waters, pine-fringed beaches, and ultimate privacy.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Tokyo, Japan -->
+        <section class="destination">
+            <div class="dest-header">
+                <span class="dest-emoji">🇯🇵</span>
+                <h2 class="dest-title">TOKYO <span>Japan</span></h2>
+            </div>
+
+            <!-- Logistical Alert if any -->
+
+            <h3 class="logistics-title">✈️ Logistics & Bookings</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Date / Time</th>
+                            <th style="width: 25%;">Type (Flight/Stay)</th>
+                            <th style="width: 30%;">Details (Flight # / Property)</th>
+                            <th style="width: 25%;">Confirmation / Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight-text">Thu 30 Jul<br>09:25 – 07:00 (+1)</td>
+                            <td>✈️ Inbound Flight</td>
+                            <td>British Airways <strong>BA007</strong><br>London Heathrow (LHR) T5 ➔ Tokyo Haneda (HND) T3</td>
+                            <td>Ref: <strong>YV2VK2</strong><br><small>Arrives Friday morning, Jul 31. Cost: £1,554.49 (R/T).</small></td>
+                        </tr>
+                        <tr>
+                            <td class="highlight-text">Thu 30 Jul –<br>Fri 7 Aug</td>
+                            <td>🏨 Stay (Block I - 8 Nights)</td>
+                            <td><strong>Shibuya Airbnb</strong><br><small>Host: Noe. Booked from the 30th for immediate landing access.</small></td>
+                            <td>via Airbnb App<br><strong>8-10 Shinsenchō, Shibuya, Tokyo</strong><br><small>Cost: £891.40</small></td>
+                        </tr>
+                        <tr>
+                            <td class="highlight-text">Fri 7 Aug –<br>Sun 16 Aug</td>
+                            <td>🏠 Stay (Interlude - 9 Nights)</td>
+                            <td><strong>Staying with Ben</strong></td>
+                            <td>Stay at friend Ben's residence (No booking required)</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight-text">Sun 16 Aug –<br>Thu 20 Aug</td>
+                            <td>🏨 Stay (Block II - 4 Nights)</td>
+                            <td><strong>Shibuya Airbnb</strong><br><small>Host: Noe</small></td>
+                            <td>via Airbnb App<br><strong>8-10 Shinsenchō, Shibuya, Tokyo</strong><br><small>Cost: £897.45 (Checked out on Aug 20, flight day)</small></td>
+                        </tr>
+                        <tr>
+                            <td class="highlight-text">Thu 20 Aug<br>13:05 – 19:50</td>
+                            <td>✈️ Outbound Flight</td>
+                            <td>British Airways <strong>BA006</strong><br>Tokyo Haneda (HND) T3 ➔ London Heathrow (LHR) T5</td>
+                            <td>Ref: <strong>YV2VK2</strong><br><small>World Traveller ticket. Smooth daytime return flight.</small></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="vibe-check-title">🗺️ The Vibe Check</h3>
+            <div class="vibe-container">
+                <div class="vibe-card">
+                    <div class="vibe-card-title">The Neighborhood</div>
+                    <p>Your Shibuya home base is located in **Shinsen**. It is one of Tokyo's most delightful secrets:</p>
+                    <ul>
+                        <li><strong>Shinsen Enclave:</strong> Quiet, sophisticated, and village-like. It is filled with cozy wine bars, low-key bistros, and third-wave coffee shops.</li>
+                        <li><strong>Shibuya Proximity:</strong> Just a 10-minute walk (or one stop on the Keio Inokashira Line) from Shibuya Crossing, providing instant access to Tokyo's neon pulse whenever you want it.</li>
+                    </ul>
+                </div>
+                <div class="vibe-card">
+                    <div class="vibe-card-title">Local Know-How</div>
+                    <ul>
+                        <li><strong>Digital Suica Card:</strong> Load a Suica card directly into your Apple Wallet before leaving Heathrow. It is the easiest way to navigate transit and pay at convenience stores.</li>
+                        <li><strong>Tokyu Food Show:</strong> Walk down to the food hall below Shibuya Station for a phenomenal gourmet spread—perfect for grabbing premium bento boxes or fresh sashimi.</li>
+                        <li><strong>Reservations Timeline:</strong> Book your tickets for **teamLab** (Planets or Borderless) and lock in high-end **omakase** sushi/yakitori reservations exactly **2–4 weeks in advance**.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
