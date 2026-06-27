@@ -5,7 +5,11 @@ const ASSETS = [
   './index.html',
   './manifest.json',
   './icon-192.png',
-  './icon-512.png'
+  './icon-512.png',
+  './turkey_sepia_cover.jpg',
+  './romania_sepia_cover.jpg',
+  './greece_sepia_cover.jpg',
+  './japan_sepia_cover.jpg'
 ];
 
 self.addEventListener('install', (e) => {

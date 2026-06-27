@@ -163,57 +163,6 @@
         }
 
         /* --- OVERVIEW SCREEN --- */
-        .global-overview-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-ios);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow-ios);
-        }
-
-        .overview-title {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-muted);
-            font-weight: 700;
-        }
-
-        .overview-dates {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.1rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin: 4px 0 14px 0;
-            line-height: 1.1;
-        }
-
-        .overview-stats {
-            display: flex;
-            gap: 25px;
-            border-top: 1px solid var(--border-ios);
-            padding-top: 15px;
-        }
-
-        .stat-block {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .stat-label {
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .stat-val {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
         /* Live Activity Banner */
         .live-activity-card {
             background-color: var(--bg-card);
@@ -273,15 +222,11 @@
             background-color: var(--bg-card);
             border: 1px solid var(--border-ios);
             border-radius: 16px;
-            padding: 16px;
             box-shadow: var(--shadow-ios);
             cursor: pointer;
-            position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            min-height: 140px;
             transition: var(--transition);
         }
 
@@ -289,37 +234,43 @@
             transform: scale(0.96);
         }
 
-        .country-bg {
-            position: absolute;
-            right: -10px;
-            bottom: -10px;
-            font-size: 4.5rem;
-            opacity: 0.05;
-            pointer-events: none;
-            line-height: 1;
+        .country-image {
+            height: 100px;
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            border-bottom: 1px solid var(--border-ios);
+        }
+
+        .country-content {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
         }
 
         .country-name {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.45rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--text-main);
             line-height: 1.1;
         }
 
         .country-dates {
-            font-size: 0.65rem;
+            font-size: 0.62rem;
             color: var(--text-muted);
             text-transform: uppercase;
             font-weight: 700;
-            margin-top: 4px;
+            margin-top: 2px;
             letter-spacing: 0.02em;
         }
 
         .country-meta {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: var(--text-main);
-            margin-top: 8px;
+            margin-top: 6px;
             font-weight: 500;
         }
 
@@ -327,7 +278,7 @@
             height: 4px;
             background-color: var(--bg-ios);
             border-radius: 2px;
-            margin-top: 15px;
+            margin-top: 10px;
             overflow: hidden;
             width: 100%;
         }
@@ -1194,33 +1145,13 @@
                     <div class="live-sub" id="live-sub-text">Finding next upcoming event details.</div>
                 </div>
 
-                <div class="global-overview-card">
-                    <div class="overview-title">Master Itinerary</div>
-                    <div class="overview-dates">Summer Grand Tour</div>
-                    
-                    <div class="overview-stats">
-                        <div class="stat-block">
-                            <span class="stat-label">Total Days</span>
-                            <span class="stat-val">51 Days</span>
-                        </div>
-                        <div class="stat-block">
-                            <span class="stat-label">Stops</span>
-                            <span class="stat-val">6 Destinations</span>
-                        </div>
-                        <div class="stat-block">
-                            <span class="stat-label">Current Vibe</span>
-                            <span class="stat-val" style="color: var(--gold);">Pre-Trip</span>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="section-header">Trip Segments</div>
                 
                 <!-- Visual Country Cards Grid -->
                 <div class="country-deck">
                     <!-- Turkey -->
                     <div class="country-card" onclick="switchTab('bodrum')">
-                        <div class="country-bg">🕌</div>
+                        <div class="country-image" style="background-image: url('./turkey_sepia_cover.jpg');"></div>
                         <div class="country-content">
                             <div class="country-name">Türkiye</div>
                             <div class="country-dates">Jul 1 - Jul 9 • 2 Stops</div>
@@ -1233,7 +1164,7 @@
                     
                     <!-- Romania -->
                     <div class="country-card" onclick="switchTab('bucharest')">
-                        <div class="country-bg">🇷🇴</div>
+                        <div class="country-image" style="background-image: url('./romania_sepia_cover.jpg');"></div>
                         <div class="country-content">
                             <div class="country-name">Romania</div>
                             <div class="country-dates">Jul 9 - Jul 15 • 2 Stops</div>
@@ -1246,7 +1177,7 @@
                     
                     <!-- Greece -->
                     <div class="country-card" onclick="switchTab('spetses')">
-                        <div class="country-bg">🇬🇷</div>
+                        <div class="country-image" style="background-image: url('./greece_sepia_cover.jpg');"></div>
                         <div class="country-content">
                             <div class="country-name">Greece</div>
                             <div class="country-dates">Jul 22 - Jul 27 • 1 Stop</div>
@@ -1259,7 +1190,7 @@
                     
                     <!-- Japan -->
                     <div class="country-card" onclick="switchTab('tokyo')">
-                        <div class="country-bg">🇯🇵</div>
+                        <div class="country-image" style="background-image: url('./japan_sepia_cover.jpg');"></div>
                         <div class="country-content">
                             <div class="country-name">Japan</div>
                             <div class="country-dates">Jul 30 - Aug 20 • 1 Stop</div>
@@ -1269,14 +1200,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- British Open Card -->
-                <div class="section-header">⛳ Mid-Trip Interlude</div>
-                <div class="global-overview-card" style="margin-bottom: 25px;">
-                    <div class="overview-title">British Golf Open</div>
-                    <div class="overview-dates" style="font-size: 1.5rem; margin-bottom: 8px;">Southwest England</div>
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">From July 16 to July 20, you will travel to Southwest England to spectate the British Golf Open. Returning to London on checkout.</p>
                 </div>
 
                 <!-- Calendar Section -->
@@ -2695,17 +2618,6 @@
                 `;
                 container.appendChild(el);
             });
-        }
-
-        function togglePackingItem(index) {
-            let savedState = JSON.parse(localStorage.getItem('dcr_packing')) || [];
-            const idx = savedState.indexOf(index);
-            if (idx === -1) {
-                savedState.push(index);
-            } else {
-                savedState.splice(idx, 1);
-            }
-            localStorage.setItem('dcr_packing', JSON.stringify(savedState));
         }
 
         // Passport toggler
