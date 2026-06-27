@@ -1233,10 +1233,13 @@
                 <!-- Lodging Guest Manual -->
                 <div class="section-header">🔑 Guest & Lodging Manual</div>
                 <div class="manual-card">
-                    <div class="manual-banner">Maka's Villa (Personal Stay)</div>
+                    <div class="manual-banner">Airbnb (Picked by Maca)</div>
                     <div class="manual-body">
-                        <div class="manual-row"><span class="manual-label">Property</span><span class="manual-val">Stay at friend Maka's property</span></div>
-                        <div class="manual-row"><span class="manual-label">Details</span><span class="manual-val">No formal booking required (Stay with Friend Maka)</span></div>
+                        <div class="manual-row"><span class="manual-label">Address</span><span class="manual-val">Details TBD (Picked by Maca)</span></div>
+                        <div class="manual-row"><span class="manual-label">Host</span><span class="manual-val">TBD</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">Wed 1 Jul</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">Sun 5 Jul</span></div>
+                        <div class="manual-row"><span class="manual-label">Confirmation</span><span class="manual-val">TBD</span></div>
                     </div>
                 </div>
 
@@ -1255,6 +1258,10 @@
                         <div class="dish-name">Meyhane Mezzes (Köz Patlıcan & Muhammara)</div>
                         <div class="dish-desc">Smoky wood-fired eggplant salad and spicy walnut-pepper paste, paired with local Aegean olive oil.</div>
                     </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Fresh Sea Bream (Çipura)</div>
+                        <div class="dish-desc">Grilled whole sea bream served at a waterfront fish taverna in Gümüşlük, accompanied by wild greens and olive oil.</div>
+                    </div>
                 </div>
 
                 <div class="section-header">✈️ Logistics & Passes</div>
@@ -1262,6 +1269,35 @@
 
                 <div class="section-header">🗓️ Daily Itinerary</div>
                 <div class="timeline-container" id="bodrum-timeline"></div>
+
+                <div class="section-header">🏋️ Premium Gyms</div>
+                <div id="bodrum-gyms"></div>
+
+                <div class="section-header">🎯 Sabbatical Checklist</div>
+                <div class="progress-container" style="background-color: var(--bg-card); border-radius: 12px; margin-bottom: 15px; border: 1px solid var(--border-ios);">
+                    <div class="progress-header">
+                        <span>Task Completion</span>
+                        <span id="bodrum-progress-percent">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div id="bodrum-progress-fill" class="progress-bar-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Checklist Search Box -->
+                <div class="checklist-search-box">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" class="checklist-search-input" placeholder="Search sights or secrets..." oninput="filterChecklist('bodrum', this.value)">
+                </div>
+
+                <div class="checklist-wrapper">
+                    <div class="checklist-title">🏛️ 10 Tourist Sights</div>
+                    <div id="bodrum-sights-checklist"></div>
+                </div>
+                <div class="checklist-wrapper">
+                    <div class="checklist-title">🍃 10 Local Secrets</div>
+                    <div id="bodrum-local-checklist"></div>
+                </div>
             </main>
 
             <!-- SCREEN 3: ISTANBUL -->
@@ -1298,6 +1334,10 @@
                     <div class="gourmet-dish">
                         <div class="dish-name">Lahmacun</div>
                         <div class="dish-desc">Stone-baked thin flatbread topped with minced spiced lamb and vegetables. Roll it with fresh parsley and a squeeze of fresh lemon juice.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">İskender Kebap</div>
+                        <div class="dish-desc">Thinly sliced grilled lamb basted with hot tomato sauce over pieces of pita bread, generously slathered with melted sheep butter and yogurt.</div>
                     </div>
                 </div>
 
@@ -1372,6 +1412,10 @@
                         <div class="dish-name">Papanași</div>
                         <div class="dish-desc">Fried cottage-cheese cottage donuts smothered in sweet sour cream and topped with wild blueberry or sour cherry jam. Served steaming hot.</div>
                     </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Salată de Vinete</div>
+                        <div class="dish-desc">Smoky, roasted mashed eggplant dip whipped with local sunflower oil, onions, and garlic. Spread over fresh crusty bread.</div>
+                    </div>
                 </div>
 
                 <div class="section-header">✈️ Logistics & Passes</div>
@@ -1443,6 +1487,10 @@
                     <div class="gourmet-dish">
                         <div class="dish-name">Ciorbă de Burtă (Tripe Soup)</div>
                         <div class="dish-desc">A rich, velvety soup made with tripe, heavily seasoned with garlic, vinegar, sour cream, and served with pickled hot yellow peppers.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Bulz Transilvănean</div>
+                        <div class="dish-desc">A traditional mountain dish of polenta balls stuffed with soft sheep's cheese (*brânză de burduf*), baked in clay ovens, and served with sour cream.</div>
                     </div>
                 </div>
 
@@ -1521,6 +1569,10 @@
                         <div class="dish-name">Amygdalota Amygdalota</div>
                         <div class="dish-desc">Flourless almond pear-shaped sweets scented with rosewater and covered in powdered sugar. Famous local Spetses confectionery.</div>
                     </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Charcoal-Grilled Octopus</div>
+                        <div class="dish-desc">Freshly caught octopus hung to dry in the sun, then grilled over hot charcoals and drizzled with lemon and local olive oil.</div>
+                    </div>
                 </div>
 
                 <div class="section-header">✈️ Logistics & Passes</div>
@@ -1528,6 +1580,35 @@
 
                 <div class="section-header">🗓️ Daily Itinerary</div>
                 <div class="timeline-container" id="spetses-timeline"></div>
+
+                <div class="section-header">🏋️ Premium Gyms</div>
+                <div id="spetses-gyms"></div>
+
+                <div class="section-header">🎯 Sabbatical Checklist</div>
+                <div class="progress-container" style="background-color: var(--bg-card); border-radius: 12px; margin-bottom: 15px; border: 1px solid var(--border-ios);">
+                    <div class="progress-header">
+                        <span>Task Completion</span>
+                        <span id="spetses-progress-percent">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div id="spetses-progress-fill" class="progress-bar-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Checklist Search Box -->
+                <div class="checklist-search-box">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" class="checklist-search-input" placeholder="Search sights or secrets..." oninput="filterChecklist('spetses', this.value)">
+                </div>
+
+                <div class="checklist-wrapper">
+                    <div class="checklist-title">🏛️ 10 Tourist Sights</div>
+                    <div id="spetses-sights-checklist"></div>
+                </div>
+                <div class="checklist-wrapper">
+                    <div class="checklist-title">🍃 10 Local Secrets</div>
+                    <div id="spetses-local-checklist"></div>
+                </div>
             </main>
 
             <!-- SCREEN 7: TOKYO -->
@@ -1563,6 +1644,10 @@
                     <div class="gourmet-dish">
                         <div class="dish-name">Wagyu Katsu Sando</div>
                         <div class="dish-desc">Panko-crusted premium Wagyu beef cutlet fried until medium-rare, served between soft Japanese milk bread with tonkatsu sauce.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Tsukemen Ramen</div>
+                        <div class="dish-desc">Dipping ramen featuring cold, thick noodles served alongside a separate bowl of concentrated, intensely rich pork and seafood broth.</div>
                     </div>
                 </div>
 
@@ -1700,9 +1785,11 @@
 
         let githubFileSha = null;
         let currentState = {
+            bodrum: { sights: [], local: [] },
             istanbul: { sights: [], local: [] },
             bucharest: { sights: [], local: [] },
             brasov: { sights: [], local: [] },
+            spetses: { sights: [], local: [] },
             tokyo: { sights: [], local: [] }
         };
 
@@ -1713,7 +1800,7 @@
         const logisticsDb = {
             bodrum: [
                 { type: "flight", carrier: "easyJet", code: "EZY8553", departure: "London Gatwick (LGW)", arrival: "Bodrum (BJV)", depTime: "14:00", arrTime: "20:05", date: "Wed 1 Jul", conf: "KBZL8QD", branding: "easyjet" },
-                { type: "lodging", name: "Maka's Airbnb", host: "Maka", address: "Bodrum Villa Complex", checkin: "Wed 1 Jul", checkout: "Sun 5 Jul", conf: "Stay with Friend Maka", branding: "hotel" }
+                { type: "lodging", name: "Airbnb (Picked by Maca)", host: "TBD", address: "Details TBD (Picked by Maca)", checkin: "Wed 1 Jul", checkout: "Sun 5 Jul", conf: "TBD", branding: "hotel" }
             ],
             istanbul: [
                 { type: "flight", carrier: "Turkish Airlines", code: "TK2511", departure: "Bodrum (BJV)", arrival: "Istanbul (IST)", depTime: "14:25", arrTime: "15:55", date: "Sun 5 Jul", conf: "SQP33K", branding: "turkish" },
@@ -1745,10 +1832,10 @@
         // Static timeline day segments database
         const timelineDb = {
             bodrum: [
-                { date: "Wed 1 Jul", title: "Arrival & Setup", items: ["easyJet flight EZY8553 Gatwick ➔ Bodrum", "Arrive BJV at 20:05", "Check-in Maka's Airbnb"] },
+                { date: "Wed 1 Jul", title: "Arrival & Setup", items: ["easyJet flight EZY8553 Gatwick ➔ Bodrum", "Arrive BJV at 20:05", "Check-in Airbnb"] },
                 { date: "Thu 2 Jul", title: "Beach Vibe Day", items: ["Spend day exploring Yalıkavak Palmarina", "Walk Bodrum Town Marina"] },
                 { date: "Fri 3 Jul", title: " WATERFRONT DINING", items: ["Bohemian vibes in Gümüşlük", " Waterfront sunset cold mezes"] },
-                { date: "Sat 4 Jul", title: "Aegean Coasting", items: ["Leisurely walk near the Bodrum castle", "Final dinner with Maka"] }
+                { date: "Sat 4 Jul", title: "Aegean Coasting", items: ["Leisurely walk near the Bodrum castle", "Final dinner with Maca"] }
             ],
             istanbul: [
                 { date: "Sun 5 Jul", title: "Anatolian Flight", items: ["Turkish Airlines TK2511 BJV ➔ IST", "Arrive Istanbul at 15:55", "Check-in Harbiye Residence (Şişli)", "Nişantaşı evening coffee walk"] },
@@ -1794,7 +1881,10 @@
 
         // Gyms recommendations database
         const gymsDb = {
-            bodrum: [],
+            bodrum: [
+                { name: "OxyGym Bodrum", price: "Daily Pass Available", desc: "Solid strength training facility in Gümbet/Bodrum. Clean, well-equipped, and popular with visitors. Closed on Sundays.", url: "https://www.instagram.com/oxygymbodrum/", reqs: { passport: false, shoes: true, tattoos: false } },
+                { name: "Marina Fitness Center", price: "Guest Pass Available", desc: "Located near the Bodrum Marina, offering modern strength and cardio equipment in a premium atmosphere.", url: "https://www.bodrummarina.com/", reqs: { passport: false, shoes: true, tattoos: false } }
+            ],
             istanbul: [
                 { name: "Weider Harbiye Fitness Center", price: "~350 TL Day Pass", desc: "Hardcore local weightroom just minutes from Harbiye Residence. Ideal for high-weight strength training, dumbell racks, and zero fluff.", url: "https://www.instagram.com/weiderharbiyefitness/", reqs: { passport: true, shoes: true, tattoos: false } },
                 { name: "MAC G-Mall", price: "Guest Fee", desc: "High-end fitness club in Maçka/Harbiye. Premium resistance gear and pristine changing rooms. Guest entries are available at the front desk.", url: "https://www.macfit.com.tr/", reqs: { passport: true, shoes: true, tattoos: false } }
@@ -1806,7 +1896,10 @@
             brasov: [
                 { name: "Belaqva Active Wellness", price: "80 RON Day Pass", desc: "Braşov's premier fitness club, located at the Kronwell Hotel. Features professional strength machinery, free weights, and spa zones.", url: "https://belaqva.ro/", reqs: { passport: false, shoes: true, tattoos: false } }
             ],
-            spetses: [],
+            spetses: [
+                { name: "In Action Gym Spetses", price: "Visitor Pass", desc: "The main local gym on the island. Fully equipped for weight training and fitness. Ask for a visitor pass at the desk.", url: "#", reqs: { passport: false, shoes: true, tattoos: false } },
+                { name: "Poseidonion Fitness Center", price: "Hotel Guest Pass", desc: "Fitness and wellness facilities at the Poseidonion Grand Hotel. Pilates, cross-training, and movement classes are open to external bookings.", url: "https://www.poseidonion.com/", reqs: { passport: false, shoes: true, tattoos: false } }
+            ],
             tokyo: [
                 { name: "Gold's Gym Shibuya Tokyo", price: "¥3,900 Day Pass", desc: "flagship bodybuilding gym in Tokyo. Premium machines, massive dumbbell room. Located on Meiji-dori (Metro Plaza building).", url: "https://www.goldsgym.jp/shop/13150", reqs: { passport: true, shoes: true, tattoos: true } }
             ]
@@ -1814,6 +1907,44 @@
 
         // Checklist data (Sights + Local secrets)
         const checklistData = {
+            bodrum: {
+                sights: [
+                    "Explore Bodrum Castle (Castle of St. Peter).",
+                    "Browse ancient relics in Bodrum Museum of Underwater Archaeology.",
+                    "Visit the ancient Mausoleum at Halicarnassus ruins.",
+                    "Attend a show or climb up the Bodrum Antique Theatre.",
+                    "See the historical Windmills of Bodrum on the Gümbet ridge.",
+                    "Walk along the superyachts at Bodrum Marina.",
+                    "Pass through the historic ruins of the Myndos Gate.",
+                    "Learn about the legendary singer at Zeki Müren Art Museum.",
+                    "Sunbathe on the golden sands of Bardakçı Cove.",
+                    "Take a boat tour to the thermal caves of Karaada."
+                ],
+                local: [
+                    "Book a sunset wine tasting session at Karnas Vineyards.",
+                    "Eat sea bream at a waterfront taverna in Gümüşlük.",
+                    "Hike segments of the historic Leleg Way trail.",
+                    "Have a slow traditional breakfast in Karakaya village.",
+                    "Sip an ice-cold Efes beer at Liman Köftecisi.",
+                    "Watch the sunset from the hills of the Yalıkavak Windmill.",
+                    "Swim in the pristine waters of Aquarium Bay.",
+                    "Buy fresh regional tangerines at the weekly farmers market.",
+                    "Order Çökertme Kebabı at a local beachfront spot.",
+                    "Walk through the ruins of the ancient city of Pedasa."
+                ],
+                coords: {
+                    sights: [
+                        "Bodrum+Castle", "Museum+of+Underwater+Archaeology+Bodrum", "Mausoleum+at+Halicarnassus+Bodrum", "Bodrum+Antique+Theatre",
+                        "Windmills+of+Bodrum", "Bodrum+Marina", "Myndos+Gate+Bodrum", "Zeki+Muren+Art+Museum+Bodrum",
+                        "Bardakci+Cove+Bodrum", "Karaada+Bodrum"
+                    ],
+                    local: [
+                        "Karnas+Vineyards+Bodrum", "Gumusluk+Bodrum", "Leleg+Way+Bodrum", "Karakaya+Village+Bodrum",
+                        "Liman+Koftecisi+Bodrum", "Yalikavak+Windmill+Bodrum", "Aquarium+Bay+Bodrum", "Bodrum+Market",
+                        "Cokertme+Kebabi+Bodrum", "Pedasa+Antique+City+Bodrum"
+                    ]
+                }
+            },
             istanbul: {
                 sights: [
                     "Gaze up at Hagia Sophia's golden dome.",
@@ -1963,6 +2094,44 @@
                         "Tokyu+Food+Show+Shibuya+Tokyo", "Nonbei+Yokocho+Shibuya+Tokyo", "Camelback+Shinsen+Shibuya+Tokyo", "Shinkawa+Saketen+Kayabacho+Tokyo",
                         "Daikanyama+T-Site+Tokyo", "Meguro+River+Nakameguro+Tokyo", "Tsukishima+Monja+Street+Tokyo", "Toyosu+Market+Tuna+Auction",
                         "Yanaka+Ginza+Tokyo", "Lion+Cafe+Shibuya+Tokyo"
+                    ]
+                }
+            },
+            spetses: {
+                sights: [
+                    "Stroll the elegant plaza of Poseidonion Grand Hotel.",
+                    "Tour the Bouboulina Museum in a 17th-century mansion.",
+                    "View ancient island history logs at Spetses Museum.",
+                    "Stroll the grounds of Anargyrios and Korgialenios School.",
+                    "Visit the historic Church of Panagia Armata.",
+                    "Explore the traditional Old Harbour of Spetses (Baltiza).",
+                    "Visit the beautiful Cathedral of Saint Demetrios.",
+                    "See one of the oldest working lighthouses in Greece.",
+                    "Take a dip inside the cavern waters of Bekiris Cave.",
+                    "Sit at a harbor cafe in the central Dapia Square."
+                ],
+                local: [
+                    "Rent a bicycle and ride the 26km island loop trail.",
+                    "Swim at the pine-fringed cove of Zogeria beach.",
+                    "Order baked Fish à la Spetsiota at Orloff.",
+                    "Buy fresh Amygdalota almond cakes at Klimis bakery.",
+                    "Drink freddo espresso on the Dapia harbor wall.",
+                    "Walk to the tiny chapel of Agios Mamas at sunset.",
+                    "Explore the pine trails to the Kakou headlands.",
+                    "Hire a wooden water taxi to reach Kaiki beach.",
+                    "Eat charcoal-grilled octopus at Patralis Taverna.",
+                    "Watch an open-air movie under stars at Cine Titania."
+                ],
+                coords: {
+                    sights: [
+                        "Poseidonion+Grand+Hotel+Spetses", "Bouboulina+Museum+Spetses", "Museum+of+Spetses", "Anargyrios+School+Spetses",
+                        "Panagia+Armata+Spetses", "Old+Harbour+Spetses", "Saint+Demetrios+Cathedral+Spetses", "Lighthouse+of+Spetses",
+                        "Bekiris+Cave+Spetses", "Dapia+Square+Spetses"
+                    ],
+                    local: [
+                        "Spetses+Bicycle+Loop", "Zogeria+Beach+Spetses", "Orloff+Restaurant+Spetses", "Klimis+Amygdalota+Spetses",
+                        "Dapia+Harbour+Spetses", "Agios+Mamas+Spetses", "Kakou+Headland+Spetses", "Kaiki+Beach+Spetses",
+                        "Patralis+Taverna+Spetses", "Cine+Titania+Spetses"
                     ]
                 }
             }
@@ -2242,6 +2411,50 @@
             return el;
         }
 
+        function createGymCardElement(gym, dest) {
+            const el = document.createElement('div');
+            el.className = 'gym-pass-item';
+            
+            const reqPassportClass = gym.reqs.passport ? 'required' : '';
+            const reqShoesClass = gym.reqs.shoes ? 'required' : '';
+            const reqTattoosClass = gym.reqs.tattoos ? 'required' : '';
+            
+            el.innerHTML = `
+                <div class="gym-pass-header">
+                    <div class="gym-pass-title">
+                        <h3>${gym.name}</h3>
+                        <span>Fitness & Strength</span>
+                    </div>
+                    <div>
+                        <span class="gym-price-badge">${gym.price}</span>
+                    </div>
+                </div>
+                <div class="gym-pass-body">
+                    ${gym.desc}
+                </div>
+                <div class="gym-checks">
+                    <div class="gym-check-row ${reqPassportClass}">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Passport ID Required</span>
+                    </div>
+                    <div class="gym-check-row ${reqShoesClass}">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Clean Indoor Shoes Required</span>
+                    </div>
+                    <div class="gym-check-row ${reqTattoosClass}">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Tattoo Cover-Up Mandatory</span>
+                    </div>
+                </div>
+                ${gym.url !== '#' ? `
+                <button class="card-action-btn" onclick="window.open('${gym.url}', '_blank')">
+                    Visit Gym Site / Instagram
+                </button>
+                ` : ''}
+            `;
+            return el;
+        }
+
         function createTimelineItemElement(day) {
             const el = document.createElement('div');
             el.className = 'timeline-item';
@@ -2268,7 +2481,7 @@
 
         // Render Sights & local lists for all cities
         function renderChecklists() {
-            const cities = ['istanbul', 'bucharest', 'brasov', 'tokyo'];
+            const cities = ['bodrum', 'istanbul', 'bucharest', 'brasov', 'spetses', 'tokyo'];
             
             cities.forEach(cityId => {
                 const sightsContainer = document.getElementById(`${cityId}-sights-checklist`);
@@ -2479,7 +2692,7 @@
             };
 
             const messages = {
-                bodrum: "You are staying at Maka's Villa.",
+                bodrum: "You are staying at the Airbnb picked by Maca.",
                 istanbul: "Lodging at Harbiye Residence. Conf ID: 5403358085.",
                 bucharest: "Lodging at Old Town flat. Calea Victoriei 2.",
                 brasov: "Lodging at Strada Lungă 39.",
