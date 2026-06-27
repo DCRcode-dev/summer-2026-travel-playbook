@@ -20,14 +20,14 @@
         :root {
             /* DCR Gym Sepia Palette */
             --bg-ios: #FAF7F2; /* Vellum background */
-            --bg-card: #FFFFFF; /* Pure white card surface */
+            --bg-card: transparent; /* Flat canvas flow, non-boxy */
             --border-ios: #EDE8E0; /* Warm divide */
             --text-main: #2A2421; /* Warm espresso charcoal */
             --text-muted: #B8A99A; /* Sand */
             --gold: #C9A84C; /* Antique gold */
             --gold-light: rgba(201, 168, 76, 0.08);
             --red-ios: #F04E23; /* Terracotta alert */
-            --shadow-ios: 0 4px 12px rgba(42, 36, 33, 0.03);
+            --shadow-ios: none; /* Flatten shadow shapes */
             --transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), fill 0.3s ease, opacity 0.25s linear;
         }
 
@@ -162,27 +162,29 @@
             text-transform: uppercase;
             letter-spacing: 0.08em;
             color: var(--text-muted);
-            margin-bottom: 10px;
-            margin-left: 4px;
+            margin-bottom: 15px;
+            margin-left: 2px;
+            border-bottom: 1px solid var(--border-ios);
+            padding-bottom: 6px;
         }
 
         /* --- OVERVIEW SCREEN --- */
-        /* Live Activity Banner */
+        /* Non-boxy Live Activity Banner */
         .live-activity-card {
-            background-color: var(--bg-card);
-            border: 1px solid rgba(201, 168, 76, 0.3);
-            border-left: 4px solid var(--gold);
-            border-radius: 14px;
-            padding: 16px 20px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow-ios);
+            background-color: rgba(201, 168, 76, 0.04);
+            border: none;
+            border-left: 2px solid var(--gold);
+            border-radius: 0;
+            padding: 12px 16px;
+            margin-bottom: 25px;
+            box-shadow: none;
         }
 
         .live-label-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .live-badge {
@@ -214,20 +216,18 @@
             color: var(--text-muted);
         }
 
-        /* Minimalist Country Silhouette Collage (Aesthetic similar to Gym app human map) */
+        /* Floated Country Silhouette Collage (No border card container) */
         .silhouette-canvas-container {
             width: 100%;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-ios);
-            border-radius: 24px;
-            padding: 20px 14px;
-            margin-bottom: 25px;
-            box-shadow: var(--shadow-ios);
+            background: none;
+            border: none;
+            box-shadow: none;
+            padding: 10px 0;
+            margin-bottom: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            position: relative;
         }
 
         .silhouette-svg {
@@ -243,7 +243,7 @@
 
         .country-path {
             fill: url(#gold-grad);
-            stroke: rgba(201, 168, 76, 0.45);
+            stroke: rgba(201, 168, 76, 0.55);
             stroke-width: 1.5;
             filter: url(#luxury-shadow);
             transition: var(--transition);
@@ -252,7 +252,7 @@
 
         .silhouette-group:hover .country-path {
             fill: #C9A84C;
-            transform: scale(1.03);
+            transform: scale(1.04);
         }
 
         .silhouette-label {
@@ -276,7 +276,7 @@
 
         .silhouette-group:hover .silhouette-node {
             fill: var(--red-ios);
-            transform: scale(1.2);
+            transform: scale(1.25);
             transform-origin: center;
         }
 
@@ -290,13 +290,13 @@
 
         /* --- DESTINATION VIEWS --- */
         .dest-cover {
-            margin-bottom: 20px;
-            padding: 5px 4px;
+            margin-bottom: 25px;
+            padding: 5px 2px;
         }
 
         .dest-cover h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.4rem;
+            font-size: 2.5rem;
             font-weight: 700;
             line-height: 1.1;
         }
@@ -309,23 +309,23 @@
             font-weight: 600;
         }
 
-        /* --- AIRBNB/HOTEL MANUAL PASS --- */
+        /* --- NON-BOXY GUEST MANUALS & PASSES --- */
         .manual-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-ios);
-            border-radius: 16px;
-            box-shadow: var(--shadow-ios);
-            margin-bottom: 20px;
-            overflow: hidden;
+            background: none;
+            border: none;
+            box-shadow: none;
+            margin-bottom: 30px;
+            border-radius: 0;
+            overflow: visible;
         }
 
         .manual-banner {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            background-color: var(--gold-light);
-            border-bottom: 1px solid var(--border-ios);
-            padding: 12px 18px;
+            background: none;
+            border-bottom: 1px solid var(--gold);
+            padding: 8px 0;
             color: var(--gold);
             display: flex;
             align-items: center;
@@ -333,13 +333,13 @@
         }
 
         .manual-body {
-            padding: 18px;
+            padding: 12px 0 0 0;
         }
 
         .manual-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             font-size: 0.82rem;
         }
 
@@ -366,9 +366,9 @@
             align-items: center;
             justify-content: flex-end;
             gap: 6px;
-            margin-top: 8px;
+            margin-top: 10px;
             border-top: 1px solid var(--border-ios);
-            padding-top: 8px;
+            padding-top: 10px;
         }
 
         .manual-copy-btn {
@@ -384,42 +384,43 @@
             gap: 4px;
         }
 
-        /* --- LOGISTICS (Boarding Passes) --- */
         .pass-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            border: 1px solid var(--border-ios);
-            box-shadow: var(--shadow-ios);
-            margin-bottom: 16px;
-            overflow: hidden;
+            background: none;
+            border: none;
+            box-shadow: none;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border-ios);
+            padding-bottom: 18px;
+            border-radius: 0;
+            overflow: visible;
         }
 
         .pass-banner {
-            padding: 10px 18px;
-            color: #FFFFFF;
-            font-size: 0.68rem;
+            padding: 6px 0;
+            font-size: 0.72rem;
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 0.08em;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: none !important;
         }
 
-        .pass-banner.easyjet { background: #FF6600; }
-        .pass-banner.turkish { background: #E11C23; }
-        .pass-banner.ba { background: #002366; }
-        .pass-banner.airbnb { background: #FF5A5F; }
-        .pass-banner.hotel { background: #C9A84C; }
+        .pass-banner.easyjet { color: #FF6600; }
+        .pass-banner.turkish { color: #E11C23; }
+        .pass-banner.ba { color: #C9A84C; }
+        .pass-banner.airbnb { color: #FF5A5F; }
+        .pass-banner.hotel { color: #C9A84C; }
 
         .pass-body {
-            padding: 18px;
+            padding: 8px 0 0 0;
         }
 
         .pass-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .pass-row:last-child {
@@ -467,56 +468,18 @@
         }
 
         .pass-divider {
-            border-top: 1px dashed #EDE8E0;
-            margin: 8px 0;
-            position: relative;
-        }
-
-        .pass-divider::before, .pass-divider::after {
-            content: "";
-            position: absolute;
-            top: -6px;
-            width: 12px;
-            height: 12px;
-            background-color: var(--bg-ios);
-            border-radius: 50%;
-        }
-
-        .pass-divider::before { left: -24px; }
-        .pass-divider::after { right: -24px; }
-
-        .card-action-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            width: 100%;
-            background-color: var(--gold-light);
-            border: 1px solid rgba(201, 168, 76, 0.2);
-            color: var(--gold);
-            padding: 8px;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-            margin-top: 12px;
-            transition: var(--transition);
-        }
-
-        .card-action-btn:active {
-            background-color: rgba(201, 168, 76, 0.15);
+            border-top: 1px dashed var(--border-ios);
+            margin: 12px 0;
         }
 
         /* --- GOURMET CONCIERGE --- */
         .gourmet-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-ios);
-            border-radius: 16px;
-            box-shadow: var(--shadow-ios);
-            margin-bottom: 20px;
-            padding: 18px;
+            background: none;
+            border: none;
+            box-shadow: none;
+            margin-bottom: 30px;
+            padding: 0;
+            border-radius: 0;
         }
 
         .gourmet-title {
@@ -528,10 +491,12 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            border-bottom: 1px solid var(--border-ios);
+            padding-bottom: 6px;
         }
 
         .gourmet-dish {
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .gourmet-dish:last-child {
@@ -555,14 +520,14 @@
             position: relative;
             padding-left: 20px;
             border-left: 1px solid #EDE8E0;
-            margin-left: 12px;
-            margin-top: 10px;
-            margin-bottom: 25px;
+            margin-left: 10px;
+            margin-top: 15px;
+            margin-bottom: 30px;
         }
 
         .timeline-item {
             position: relative;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         .timeline-item:last-child {
@@ -590,26 +555,25 @@
         }
 
         .timeline-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-ios);
-            border-radius: 12px;
-            padding: 12px 15px;
-            box-shadow: var(--shadow-ios);
+            background: none;
+            border: none;
+            padding: 0;
+            box-shadow: none;
         }
 
         .timeline-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-main);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .timeline-detail-row {
             display: flex;
             font-size: 0.78rem;
             margin-bottom: 4px;
-            color: var(--text-main);
+            color: var(--text-muted);
         }
 
         .timeline-detail-row:last-child {
@@ -618,12 +582,13 @@
 
         /* --- GYMS --- */
         .gym-pass-item {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-ios);
-            border-radius: 16px;
-            padding: 18px;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow-ios);
+            background: none;
+            border: none;
+            box-shadow: none;
+            padding: 12px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-ios);
+            border-radius: 0;
         }
 
         .gym-pass-header {
@@ -694,17 +659,18 @@
             stroke: var(--gold);
         }
 
-        /* --- BUCKET LISTS --- */
+        /* --- NON-BOXY CHECKLISTS --- */
         .checklist-search-box {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-ios);
-            border-radius: 10px;
-            padding: 10px 14px;
+            background: none;
+            border: none;
+            border-bottom: 1px solid var(--border-ios);
+            border-radius: 0;
+            padding: 8px 0;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: var(--shadow-ios);
+            box-shadow: none;
         }
 
         .checklist-search-box svg {
@@ -730,7 +696,7 @@
         }
 
         .checklist-wrapper {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .checklist-title {
@@ -747,18 +713,19 @@
             display: flex;
             align-items: flex-start;
             gap: 12px;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-ios);
-            border-radius: 12px;
-            padding: 12px 14px;
-            margin-bottom: 6px;
+            background: none;
+            border: none;
+            border-bottom: 1px solid rgba(237, 232, 224, 0.45);
+            border-radius: 0;
+            padding: 10px 4px;
+            margin-bottom: 0;
             cursor: pointer;
-            box-shadow: var(--shadow-ios);
+            box-shadow: none;
             transition: var(--transition);
         }
 
         .check-item-ios:active {
-            background-color: #FAF9F6;
+            opacity: 0.75;
         }
 
         .check-item-ios.hide {
@@ -830,19 +797,19 @@
 
         /* --- DOCS TAB & VIEW --- */
         .ios-list {
-            background-color: var(--bg-card);
-            border-radius: 14px;
-            border: 1px solid var(--border-ios);
-            overflow: hidden;
-            box-shadow: var(--shadow-ios);
-            margin-bottom: 20px;
+            background: none;
+            border-radius: 0;
+            border: none;
+            overflow: visible;
+            box-shadow: none;
+            margin-bottom: 25px;
         }
 
         .ios-list-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 15px;
+            padding: 10px 0;
             border-bottom: 1px solid var(--border-ios);
         }
 
@@ -862,13 +829,13 @@
         }
 
         .passport-preview-container {
-            background-color: var(--bg-card);
-            border-radius: 14px;
-            border: 1px solid var(--border-ios);
-            padding: 12px;
-            box-shadow: var(--shadow-ios);
+            background: none;
+            border-radius: 0;
+            border: none;
+            padding: 0;
+            box-shadow: none;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .passport-tap-box {
@@ -908,8 +875,8 @@
             border: 1px solid rgba(240, 78, 35, 0.15);
             border-left: 3px solid var(--red-ios);
             padding: 12px 16px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            border-radius: 0;
+            margin-bottom: 25px;
         }
 
         .action-alert h4 {
@@ -934,11 +901,14 @@
         }
 
         .calendar-month-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-ios);
-            border-radius: 16px;
-            padding: 15px;
-            box-shadow: var(--shadow-ios);
+            background: none;
+            border: none;
+            border-bottom: 1px solid var(--border-ios);
+            padding-bottom: 20px;
+            box-shadow: none;
+            border-radius: 0;
+            padding: 0;
+            margin-bottom: 25px;
         }
 
         .calendar-month-title {
@@ -1029,12 +999,12 @@
             z-index: 100;
             box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.03);
             overflow-x: auto;
-            scrollbar-width: none; /* Hide scrollbar Firefox */
+            scrollbar-width: none;
             -webkit-overflow-scrolling: touch;
         }
 
         .tab-bar::-webkit-scrollbar {
-            display: none; /* Hide scrollbar Chrome/Safari */
+            display: none;
         }
 
         .tab-button {
@@ -1087,7 +1057,7 @@
             font-size: 0.78rem;
             font-weight: 600;
             letter-spacing: 0.02em;
-            box-shadow: var(--shadow-ios);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             z-index: 300;
             opacity: 0;
             pointer-events: none;
@@ -1142,10 +1112,8 @@
                     <div class="live-title" id="live-title-text">Scanning Itinerary...</div>
                     <div class="live-sub" id="live-sub-text">Finding next upcoming event details.</div>
                 </div>
-
-                <div class="section-header">Trip Segments</div>
                 
-                <!-- Central Country Silhouette Collage -->
+                <!-- Central Country Silhouette Collage (Floats directly on app vellum background) -->
                 <div class="silhouette-canvas-container">
                     <svg class="silhouette-svg" viewBox="0 0 500 350">
                         <defs>
@@ -1158,45 +1126,60 @@
                             </filter>
                         </defs>
 
-                        <!-- GREECE (Large Silhouette) -->
+                        <!-- GREECE (Geographically Accurate Outline) -->
                         <g class="silhouette-group" onclick="switchTab('spetses')">
-                            <path class="country-path" d="M 40,110 C 45,95 58,95 58,115 C 58,135 44,145 52,165 C 58,185 74,175 74,195 C 74,215 58,225 48,215 C 36,200 34,170 34,140 Z M 72,140 C 76,144 80,140 76,136 Z M 84,175 C 88,180 90,175 86,170 Z" />
-                            <text x="56" y="240" class="silhouette-label">Greece</text>
+                            <!-- Main Peninsula & Islands -->
+                            <path class="country-path" d="M 28,110 L 32,105 L 42,108 L 46,104 L 54,106 L 56,112 L 60,110 L 64,115 L 61,120 L 52,122 L 48,128 L 52,132 L 56,138 L 54,142 L 50,146 L 54,152 L 48,158 L 52,168 L 58,165 L 58,155 L 64,156 L 68,160 L 66,168 L 72,176 L 68,184 L 62,186 L 60,192 L 58,188 L 54,188 L 52,182 L 48,182 L 44,176 L 42,170 L 40,162 L 35,160 L 30,154 L 32,142 L 28,138 L 26,128 L 30,122 Z" />
+                            <!-- Peloponnese detail -->
+                            <path class="country-path" d="M 42,170 L 46,176 L 50,180 L 44,186 L 40,182 Z" />
+                            <!-- Crete -->
+                            <path class="country-path" d="M 56,204 L 72,204 L 70,208 L 58,208 Z" />
+                            <text x="56" y="235" class="silhouette-label">Greece</text>
                             <!-- Spetses Node -->
-                            <circle cx="52" cy="165" r="4.5" class="silhouette-node" />
-                            <text x="35" y="169" class="silhouette-node-label" style="text-anchor: end;">Spetses</text>
+                            <circle cx="49" cy="173" r="4" class="silhouette-node" />
+                            <text x="35" y="177" class="silhouette-node-label" style="text-anchor: end;">Spetses</text>
                         </g>
 
-                        <!-- ROMANIA (Large Silhouette) -->
+                        <!-- ROMANIA (Geographically Accurate Outline) -->
                         <g class="silhouette-group" onclick="switchTab('bucharest')">
-                            <path class="country-path" d="M 160,85 C 150,65 165,45 198,40 C 218,40 238,55 238,75 C 238,98 218,118 202,125 C 182,130 165,118 160,85 Z" />
-                            <text x="199" y="145" class="silhouette-label">Romania</text>
+                            <path class="country-path" d="M 172,50 L 180,44 L 195,40 L 210,42 L 218,48 L 222,46 L 228,52 L 234,50 L 238,58 L 232,68 L 235,76 L 244,78 L 240,86 L 246,90 L 242,98 L 236,102 L 228,100 L 220,105 L 210,103 L 202,112 L 194,115 L 184,118 L 176,112 L 170,116 L 164,114 L 160,106 L 166,100 L 160,94 L 158,84 L 162,76 L 156,70 L 164,62 L 168,58 Z" />
+                            <text x="199" y="135" class="silhouette-label">Romania</text>
                             <!-- Bucharest Node -->
-                            <circle cx="202" cy="100" r="4.5" class="silhouette-node" />
+                            <circle cx="202" cy="100" r="4" class="silhouette-node" />
                             <text x="212" y="104" class="silhouette-node-label">Bucharest</text>
                             <!-- Brasov Node -->
-                            <circle cx="190" cy="70" r="4.5" class="silhouette-node" />
+                            <circle cx="190" cy="70" r="4" class="silhouette-node" />
                             <text x="180" y="74" class="silhouette-node-label" style="text-anchor: end;">Braşov</text>
                         </g>
 
-                        <!-- TÜRKİYE (Large Silhouette) -->
+                        <!-- TÜRKİYE (Geographically Accurate Outline) -->
                         <g class="silhouette-group" onclick="switchTab('bodrum')">
-                            <path class="country-path" d="M 130,225 C 140,212 165,212 172,226 C 176,216 188,218 202,220 C 226,220 262,222 286,226 C 310,232 332,238 332,252 C 332,270 314,286 296,288 C 272,292 246,286 222,286 C 198,288 172,292 148,290 C 126,286 116,270 118,246 Z" />
-                            <text x="225" y="315" class="silhouette-label">Türkiye</text>
+                            <!-- Anatolian Peninsula -->
+                            <path class="country-path" d="M 125,138 C 130,132 142,132 145,139 C 147,134 153,135 160,136 C 172,136 190,137 202,139 C 214,142 225,145 225,152 C 225,161 216,169 207,170 C 195,172 182,169 170,169 C 158,170 145,172 133,171 C 122,169 117,161 118,149 Z" transform="translate(5, 110) scale(1.1)" />
+                            <!-- Thrace Detail -->
+                            <path class="country-path" d="M 108,232 L 114,228 L 116,234 L 110,236 Z" />
+                            <text x="210" y="315" class="silhouette-label">Türkiye</text>
                             <!-- Istanbul Node -->
-                            <circle cx="152" cy="230" r="4.5" class="silhouette-node" />
+                            <circle cx="152" cy="230" r="4" class="silhouette-node" />
                             <text x="152" y="215" class="silhouette-node-label" style="text-anchor: middle;">Istanbul</text>
                             <!-- Bodrum Node -->
-                            <circle cx="136" cy="260" r="4.5" class="silhouette-node" />
+                            <circle cx="136" cy="260" r="4" class="silhouette-node" />
                             <text x="122" y="275" class="silhouette-node-label">Bodrum</text>
                         </g>
 
-                        <!-- JAPAN (Large Silhouette) -->
+                        <!-- JAPAN (Geographically Accurate Outline) -->
                         <g class="silhouette-group" onclick="switchTab('tokyo')">
-                            <path class="country-path" d="M 390,95 C 402,107 424,131 436,155 C 448,179 460,213 464,247 C 468,281 460,303 448,315 C 440,303 440,269 436,235 C 432,201 418,179 402,155 C 386,131 378,107 390,95 Z M 368,59 C 372,67 380,67 374,55 Z" />
+                            <!-- Honshu (Main Island) -->
+                            <path class="country-path" d="M 390,95 L 396,102 L 404,114 L 412,126 L 418,138 L 424,152 L 432,168 L 434,184 L 436,204 L 434,224 L 428,240 L 422,246 L 416,242 L 414,232 L 418,220 L 422,208 L 424,192 L 422,176 L 418,160 L 412,146 L 406,134 L 396,120 L 388,108 L 385,100 Z" />
+                            <!-- Hokkaido (North Island) -->
+                            <path class="country-path" d="M 374,54 L 382,58 L 386,64 L 384,72 L 376,76 L 372,70 L 370,62 Z" />
+                            <!-- Kyushu (Southwest Island) -->
+                            <path class="country-path" d="M 408,252 L 412,258 L 406,266 L 402,260 Z" />
+                            <!-- Shikoku Island -->
+                            <path class="country-path" d="M 416,236 L 420,238 L 418,244 L 412,242 Z" />
                             <text x="427" y="340" class="silhouette-label">Japan</text>
                             <!-- Tokyo Node -->
-                            <circle cx="430" cy="220" r="4.5" class="silhouette-node" />
+                            <circle cx="430" cy="220" r="4" class="silhouette-node" />
                             <text x="442" y="224" class="silhouette-node-label">Tokyo</text>
                         </g>
                     </svg>
@@ -2698,6 +2681,21 @@
             });
         }
 
+        // Update PWA connection status
+        function updateCloudStatus(statusStr) {
+            const txt = document.getElementById('cloud-text');
+            const spinner = document.getElementById('cloud-spinner');
+            
+            if (txt) txt.innerText = statusStr;
+            if (spinner) {
+                if (statusStr === "Syncing..." || statusStr === "Connecting...") {
+                    spinner.style.display = "inline-block";
+                } else {
+                    spinner.style.display = "none";
+                }
+            }
+        }
+
         function saveStateToGitHub() {
             if (!githubFileSha) {
                 console.warn("Save canceled: SHA key missing");
@@ -2736,29 +2734,6 @@
                 updateCloudStatus("Save Failed");
                 showToast("Sync failed: stored offline");
             });
-        }
-
-        // Toast utility
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            toast.innerText = msg;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 2000);
-        }
-
-        // Update PWA connection status
-        function updateCloudStatus(statusStr) {
-            const txt = document.getElementById('cloud-text');
-            const spinner = document.getElementById('cloud-spinner');
-            
-            if (txt) txt.innerText = statusStr;
-            if (spinner) {
-                if (statusStr === "Syncing..." || statusStr === "Connecting...") {
-                    spinner.style.display = "inline-block";
-                } else {
-                    spinner.style.display = "none";
-                }
-            }
         }
 
         function copyText(text) {
