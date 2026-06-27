@@ -670,7 +670,7 @@
             border: none;
             border-bottom: 1px solid rgba(237, 232, 224, 0.45);
             border-radius: 0;
-            padding: 10px 4px;
+            padding: 14px 6px; /* Expanded touch targets for mobile friendliness */
             margin-bottom: 0;
             cursor: pointer;
             box-shadow: none;
@@ -894,9 +894,17 @@
             text-align: center;
             vertical-align: top;
             padding: 4px 2px;
-            border: 1px solid #FAF9F6;
+            border: 1px solid rgba(42, 36, 33, 0.05); /* Soft calendar grid lines */
             font-size: 0.72rem;
             position: relative;
+            background: transparent;
+        }
+
+        /* Remove empty white boxes for calendar days outside the month */
+        .calendar-empty {
+            background-color: transparent !important;
+            border: none !important;
+            pointer-events: none;
         }
 
         .calendar-day-num {
@@ -928,10 +936,6 @@
         .badge-tokyo-ben { background-color: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
         .badge-transition { background-color: #F3F4F6; color: #4B5563; border: 1px solid #E5E7EB; }
 
-        .calendar-empty {
-            background-color: #FCFBF9;
-        }
-
         /* --- HORIZONTALLY SCROLLABLE TAB BAR --- */
         .tab-bar {
             position: fixed;
@@ -951,7 +955,7 @@
             box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.03);
             overflow-x: auto;
             scrollbar-width: none;
-            -webkit-overflow-scrolling: touch;
+            -webkit-overflow-scrolling: touch; /* High fidelity swipe physics on mobile */
         }
 
         .tab-bar::-webkit-scrollbar {
@@ -1079,7 +1083,7 @@
                             <text x="56" y="235" class="silhouette-label">Greece</text>
                             <!-- Spetses Node -->
                             <circle cx="49" cy="176" r="4" class="silhouette-node" />
-                            <text x="35" y="180" class="silhouette-node-label" style="text-anchor: end;">Spetses</text>
+                            <text x="60" y="180" class="silhouette-node-label" style="text-anchor: start;">Spetses</text>
                         </g>
 
                         <!-- ROMANIA (Geographically Accurate Outline) -->
@@ -2027,6 +2031,7 @@
             fetchStateFromGitHub();
             renderPackingList();
             switchTab('overview');
+            updateDynamicTabs(); // Filter past tabs out dynamically on startup
             initPushNotifications();
             
             // Setup offline auto-sync trigger
@@ -2072,6 +2077,27 @@
 
             // Trigger local push notification on arrivals
             triggerLocalArrivalNotification(tabId);
+        }
+
+        // Filter out past destinations from navigation bar dynamically
+        function updateDynamicTabs() {
+            const now = new Date();
+            // Defined checkout/completion dates for each segment
+            const tabCheckoutDates = {
+                bodrum: new Date("2026-07-05T23:59:59"),
+                istanbul: new Date("2026-07-09T23:59:59"),
+                bucharest: new Date("2026-07-12T23:59:59"),
+                brasov: new Date("2026-07-15T23:59:59"),
+                spetses: new Date("2026-07-27T23:59:59"),
+                tokyo: new Date("2026-08-20T23:59:59")
+            };
+
+            for (const [tabId, checkoutDate] of Object.entries(tabCheckoutDates)) {
+                const btn = document.getElementById(`btn-tab-${tabId}`);
+                if (btn && now > checkoutDate) {
+                    btn.style.setProperty('display', 'none', 'important');
+                }
+            }
         }
 
         // Render all static data once
@@ -2496,7 +2522,7 @@
             };
 
             if (titles[tabId]) {
-                showLocalNotification(titles[tabId], messages[tabId]);
+                showLocalNotification(titles[titles], messages[tabId]);
             }
         }
 
