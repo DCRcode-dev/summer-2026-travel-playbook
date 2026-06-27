@@ -168,54 +168,6 @@
             padding-bottom: 6px;
         }
 
-        /* --- OVERVIEW SCREEN --- */
-        /* Non-boxy Live Activity Banner */
-        .live-activity-card {
-            background-color: rgba(201, 168, 76, 0.04);
-            border: none;
-            border-left: 2px solid var(--gold);
-            border-radius: 0;
-            padding: 12px 16px;
-            margin-bottom: 25px;
-            box-shadow: none;
-        }
-
-        .live-label-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 4px;
-        }
-
-        .live-badge {
-            font-size: 0.62rem;
-            font-weight: 700;
-            color: var(--gold);
-            background-color: var(--gold-light);
-            padding: 2px 6px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .live-countdown {
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: var(--gold);
-        }
-
-        .live-title {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 2px;
-        }
-
-        .live-sub {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-        }
-
         /* Floated Country Silhouette Collage (No border card container) */
         .silhouette-canvas-container {
             width: 100%;
@@ -321,7 +273,7 @@
 
         .manual-banner {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 700;
             background: none;
             border-bottom: 1px solid var(--gold);
@@ -350,7 +302,7 @@
         .manual-label {
             color: var(--text-muted);
             font-weight: 500;
-            width: 90px;
+            width: 100px;
             flex-shrink: 0;
         }
 
@@ -359,29 +311,6 @@
             font-weight: 600;
             flex: 1;
             text-align: right;
-        }
-
-        .manual-copy-row {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 6px;
-            margin-top: 10px;
-            border-top: 1px solid var(--border-ios);
-            padding-top: 10px;
-        }
-
-        .manual-copy-btn {
-            background: none;
-            border: none;
-            color: var(--gold);
-            font-size: 0.72rem;
-            font-weight: 700;
-            cursor: pointer;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 4px;
         }
 
         .pass-card {
@@ -470,6 +399,30 @@
         .pass-divider {
             border-top: 1px dashed var(--border-ios);
             margin: 12px 0;
+        }
+
+        .card-action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            background-color: var(--gold-light);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            color: var(--gold);
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: var(--transition);
+        }
+
+        .card-action-btn:active {
+            background-color: rgba(201, 168, 76, 0.15);
         }
 
         /* --- GOURMET CONCIERGE --- */
@@ -901,14 +854,12 @@
         }
 
         .calendar-month-card {
-            background: none;
-            border: none;
-            border-bottom: 1px solid var(--border-ios);
-            padding-bottom: 20px;
-            box-shadow: none;
-            border-radius: 0;
-            padding: 0;
+            background-color: rgba(42, 36, 33, 0.025); /* Premium subtle background tint */
+            border: 1px solid rgba(237, 232, 224, 0.6); /* Very soft rounded frame */
+            border-radius: 20px;
+            padding: 16px;
             margin-bottom: 25px;
+            box-shadow: none;
         }
 
         .calendar-month-title {
@@ -1103,15 +1054,6 @@
 
             <!-- SCREEN 1: OVERVIEW -->
             <main id="screen-overview" class="screen active">
-                <!-- Live Activity Card -->
-                <div class="live-activity-card" id="next-up-widget">
-                    <div class="live-label-row">
-                        <span class="live-badge">Live Activity</span>
-                        <span class="live-countdown" id="live-countdown-text">CALCULATING...</span>
-                    </div>
-                    <div class="live-title" id="live-title-text">Scanning Itinerary...</div>
-                    <div class="live-sub" id="live-sub-text">Finding next upcoming event details.</div>
-                </div>
                 
                 <!-- Central Country Silhouette Collage (Floats directly on app vellum background) -->
                 <div class="silhouette-canvas-container">
@@ -1129,20 +1071,20 @@
                         <!-- GREECE (Geographically Accurate Outline) -->
                         <g class="silhouette-group" onclick="switchTab('spetses')">
                             <!-- Main Peninsula & Islands -->
-                            <path class="country-path" d="M 28,110 L 32,105 L 42,108 L 46,104 L 54,106 L 56,112 L 60,110 L 64,115 L 61,120 L 52,122 L 48,128 L 52,132 L 56,138 L 54,142 L 50,146 L 54,152 L 48,158 L 52,168 L 58,165 L 58,155 L 64,156 L 68,160 L 66,168 L 72,176 L 68,184 L 62,186 L 60,192 L 58,188 L 54,188 L 52,182 L 48,182 L 44,176 L 42,170 L 40,162 L 35,160 L 30,154 L 32,142 L 28,138 L 26,128 L 30,122 Z" />
+                            <path class="country-path" d="M 25,120 L 30,110 L 40,113 L 48,110 L 52,115 L 56,113 L 60,118 L 60,123 L 53,124 L 46,130 L 48,136 L 55,142 L 53,148 L 47,150 L 52,157 L 46,163 L 49,170 L 54,166 L 54,158 C 55,157 58,157 58,160 L 64,162 L 68,165 L 65,172 L 70,178 L 66,184 L 60,186 L 58,193 L 56,189 L 52,189 L 50,183 L 46,183 L 42,177 L 40,171 L 38,163 L 34,161 L 29,155 L 31,143 L 27,139 L 25,129 Z" />
                             <!-- Peloponnese detail -->
-                            <path class="country-path" d="M 42,170 L 46,176 L 50,180 L 44,186 L 40,182 Z" />
+                            <path class="country-path" d="M 38,171 L 43,171 L 45,178 L 48,185 L 43,189 L 41,180 L 37,178 Z" />
                             <!-- Crete -->
                             <path class="country-path" d="M 56,204 L 72,204 L 70,208 L 58,208 Z" />
                             <text x="56" y="235" class="silhouette-label">Greece</text>
                             <!-- Spetses Node -->
-                            <circle cx="49" cy="173" r="4" class="silhouette-node" />
-                            <text x="35" y="177" class="silhouette-node-label" style="text-anchor: end;">Spetses</text>
+                            <circle cx="49" cy="176" r="4" class="silhouette-node" />
+                            <text x="35" y="180" class="silhouette-node-label" style="text-anchor: end;">Spetses</text>
                         </g>
 
                         <!-- ROMANIA (Geographically Accurate Outline) -->
                         <g class="silhouette-group" onclick="switchTab('bucharest')">
-                            <path class="country-path" d="M 172,50 L 180,44 L 195,40 L 210,42 L 218,48 L 222,46 L 228,52 L 234,50 L 238,58 L 232,68 L 235,76 L 244,78 L 240,86 L 246,90 L 242,98 L 236,102 L 228,100 L 220,105 L 210,103 L 202,112 L 194,115 L 184,118 L 176,112 L 170,116 L 164,114 L 160,106 L 166,100 L 160,94 L 158,84 L 162,76 L 156,70 L 164,62 L 168,58 Z" />
+                            <path class="country-path" d="M 160,65 L 170,53 L 185,45 L 200,42 L 215,45 L 228,52 L 238,50 L 244,60 L 242,72 L 248,82 L 245,95 L 238,102 L 225,100 L 215,108 L 198,114 L 180,112 L 170,115 L 162,108 L 155,95 L 158,82 L 155,72 Z" />
                             <text x="199" y="135" class="silhouette-label">Romania</text>
                             <!-- Bucharest Node -->
                             <circle cx="202" cy="100" r="4" class="silhouette-node" />
@@ -1155,9 +1097,9 @@
                         <!-- TÜRKİYE (Geographically Accurate Outline) -->
                         <g class="silhouette-group" onclick="switchTab('bodrum')">
                             <!-- Anatolian Peninsula -->
-                            <path class="country-path" d="M 125,138 C 130,132 142,132 145,139 C 147,134 153,135 160,136 C 172,136 190,137 202,139 C 214,142 225,145 225,152 C 225,161 216,169 207,170 C 195,172 182,169 170,169 C 158,170 145,172 133,171 C 122,169 117,161 118,149 Z" transform="translate(5, 110) scale(1.1)" />
+                            <path class="country-path" d="M 125,242 L 132,238 L 145,238 L 158,240 L 175,238 L 190,238 L 210,236 L 230,238 L 245,242 L 255,240 L 270,244 L 285,248 L 282,260 L 278,268 L 270,272 L 252,272 L 248,276 L 235,274 L 225,278 L 215,276 L 205,278 L 195,276 L 188,272 L 180,276 L 170,272 L 162,276 L 158,270 L 148,274 L 138,270 L 132,274 L 128,266 L 122,258 L 125,248 Z" />
                             <!-- Thrace Detail -->
-                            <path class="country-path" d="M 108,232 L 114,228 L 116,234 L 110,236 Z" />
+                            <path class="country-path" d="M 108,232 L 115,226 L 122,230 L 118,236 L 110,236 Z" />
                             <text x="210" y="315" class="silhouette-label">Türkiye</text>
                             <!-- Istanbul Node -->
                             <circle cx="152" cy="230" r="4" class="silhouette-node" />
@@ -1187,7 +1129,6 @@
 
                 <!-- Calendar Section -->
                 <div class="calendar-section">
-                    <div class="section-header">🗓️ Master Calendar</div>
                     
                     <!-- July -->
                     <div class="calendar-month-card">
@@ -1326,17 +1267,8 @@
                 <div class="manual-card">
                     <div class="manual-banner">Maka's Villa (Personal Stay)</div>
                     <div class="manual-body">
-                        <div class="manual-row"><span class="manual-label">Wi-Fi Net</span><span class="manual-val">Maka_Bodrum_5G</span></div>
-                        <div class="manual-row"><span class="manual-label">Wi-Fi Pass</span><span class="manual-val" id="val-wifi-bodrum">aegeanparadise</span></div>
-                        <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">Key in lockbox (Code: 1985)</span></div>
-                        <div class="manual-row"><span class="manual-label">House Rules</span><span class="manual-val">Turn off AC when leaving. Access to beach via back gate path.</span></div>
-                        <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">Leave keys in box. checkout by 11:00.</span></div>
-                        <div class="manual-copy-row">
-                            <button class="manual-copy-btn" onclick="copyText(document.getElementById('val-wifi-bodrum').innerText)">
-                                <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                                Copy Wi-Fi Pass
-                            </button>
-                        </div>
+                        <div class="manual-row"><span class="manual-label">Property</span><span class="manual-val">Stay at friend Maka's property</span></div>
+                        <div class="manual-row"><span class="manual-label">Details</span><span class="manual-val">No formal booking required (Stay with Friend Maka)</span></div>
                     </div>
                 </div>
 
@@ -1376,17 +1308,11 @@
                 <div class="manual-card">
                     <div class="manual-banner">Harbiye Residence</div>
                     <div class="manual-body">
-                        <div class="manual-row"><span class="manual-label">Wi-Fi Net</span><span class="manual-val">Harbiye_Guest</span></div>
-                        <div class="manual-row"><span class="manual-label">Wi-Fi Pass</span><span class="manual-val" id="val-wifi-istanbul">welcomeistanbul2026</span></div>
-                        <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">Keycard at 24h reception. Code: 5403358085</span></div>
-                        <div class="manual-row"><span class="manual-label">House Rules</span><span class="manual-val">AC remote on wall. Breakfast served on top floor terrace (8:00 - 10:30).</span></div>
-                        <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">Leave keycards at front desk by 12:00.</span></div>
-                        <div class="manual-copy-row">
-                            <button class="manual-copy-btn" onclick="copyText(document.getElementById('val-wifi-istanbul').innerText)">
-                                <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                                Copy Wi-Fi Pass
-                            </button>
-                        </div>
+                        <div class="manual-row"><span class="manual-label">Address</span><span class="manual-val">Harbiye / Taksim, Şişli, 34373 Istanbul</span></div>
+                        <div class="manual-row"><span class="manual-label">Confirmation</span><span class="manual-val">5403358085 (PIN: 6017)</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">From 14:00</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">By 12:00</span></div>
+                        <div class="manual-row"><span class="manual-label">Cost</span><span class="manual-val">€352.44</span></div>
                     </div>
                 </div>
 
@@ -1453,19 +1379,13 @@
                 <!-- Lodging Guest Manual -->
                 <div class="section-header">🔑 Guest & Lodging Manual</div>
                 <div class="manual-card">
-                    <div class="manual-banner">Airbnb Old Town</div>
+                    <div class="manual-banner">Airbnb Old Town — Host Andra</div>
                     <div class="manual-body">
-                        <div class="manual-row"><span class="manual-label">Wi-Fi Net</span><span class="manual-val">Victoriei_Apartment_2</span></div>
-                        <div class="manual-row"><span class="manual-label">Wi-Fi Pass</span><span class="manual-val" id="val-wifi-bucharest">andra_welcome_2026</span></div>
-                        <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">Lockbox in courtyard of Calea Victoriei 2. Code: 2026</span></div>
-                        <div class="manual-row"><span class="manual-label">House Rules</span><span class="manual-val">Keep quiet hours after 22:00. cooling controlled via hallway Nest thermostat.</span></div>
-                        <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">Leave keys in box, scramble dials by 11:00.</span></div>
-                        <div class="manual-copy-row">
-                            <button class="manual-copy-btn" onclick="copyText(document.getElementById('val-wifi-bucharest').innerText)">
-                                <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                                Copy Wi-Fi Pass
-                            </button>
-                        </div>
+                        <div class="manual-row"><span class="manual-label">Address</span><span class="manual-val">Calea Victoriei 2, Bucharest 030167</span></div>
+                        <div class="manual-row"><span class="manual-label">Host</span><span class="manual-val">Andra</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">After 15:00</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">By 11:00</span></div>
+                        <div class="manual-row"><span class="manual-label">Cost</span><span class="manual-val">£193.57</span></div>
                     </div>
                 </div>
 
@@ -1532,19 +1452,12 @@
                 <!-- Lodging Guest Manual -->
                 <div class="section-header">🔑 Guest & Lodging Manual</div>
                 <div class="manual-card">
-                    <div class="manual-banner">Airbnb Strada Lungă 39</div>
+                    <div class="manual-banner">Airbnb Old Town Braşov — Host Cristian</div>
                     <div class="manual-body">
-                        <div class="manual-row"><span class="manual-label">Wi-Fi Net</span><span class="manual-val">Transylvania_Lunga39</span></div>
-                        <div class="manual-row"><span class="manual-label">Wi-Fi Pass</span><span class="manual-val" id="val-wifi-brasov">cristian_guest_brasov</span></div>
-                        <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">Gate code: *3939#. Lockbox next to door, code: 3950</span></div>
-                        <div class="manual-row"><span class="manual-label">House Rules</span><span class="manual-val">Lock main gate when entering or leaving. Turn off heaters before exit.</span></div>
-                        <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">Place keys in lockbox. checkout by 11:00 AM.</span></div>
-                        <div class="manual-copy-row">
-                            <button class="manual-copy-btn" onclick="copyText(document.getElementById('val-wifi-brasov').innerText)">
-                                <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                                Copy Wi-Fi Pass
-                            </button>
-                        </div>
+                        <div class="manual-row"><span class="manual-label">Address</span><span class="manual-val">Strada Lungă 39, Braşov 500035</span></div>
+                        <div class="manual-row"><span class="manual-label">Host</span><span class="manual-val">Cristian</span></div>
+                        <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">Wed 15 Jul</span></div>
+                        <div class="manual-row"><span class="manual-label">Cost</span><span class="manual-val">£185.76</span></div>
                     </div>
                 </div>
 
@@ -1616,19 +1529,12 @@
                 <!-- Lodging Guest Manual -->
                 <div class="section-header">🔑 Guest & Lodging Manual</div>
                 <div class="manual-card">
-                    <div class="manual-banner">Teresa Spetses</div>
+                    <div class="manual-banner">Teresa Spetses (1-Bedroom Suite)</div>
                     <div class="manual-body">
-                        <div class="manual-row"><span class="manual-label">Wi-Fi Net</span><span class="manual-val">Teresa_Suites_Spetses</span></div>
-                        <div class="manual-row"><span class="manual-label">Wi-Fi Pass</span><span class="manual-val" id="val-wifi-spetses">teresa_saronic_2026</span></div>
-                        <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">Drinks at reception. Luggage transferred by buggy. Conf: 1054</span></div>
-                        <div class="manual-row"><span class="manual-label">House Rules</span><span class="manual-val">Do not flush paper down toilet. Drink bottled water only. Towels in wardrobe.</span></div>
-                        <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">Port buggy transfer scheduled by desk. checkout by 12:00.</span></div>
-                        <div class="manual-copy-row">
-                            <button class="manual-copy-btn" onclick="copyText(document.getElementById('val-wifi-spetses').innerText)">
-                                <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                                Copy Wi-Fi Pass
-                            </button>
-                        </div>
+                        <div class="manual-row"><span class="manual-label">Address</span><span class="manual-val">Spetses Island, Greece</span></div>
+                        <div class="manual-row"><span class="manual-label">Confirmation</span><span class="manual-val">1054</span></div>
+                        <div class="manual-row"><span class="manual-label">Contact</span><span class="manual-val">reservations@teresa-spetses.com</span></div>
+                        <div class="manual-row"><span class="manual-label">Cost</span><span class="manual-val">€445.80 (Paid in full via Amex)</span></div>
                     </div>
                 </div>
 
@@ -1666,19 +1572,12 @@
                 <!-- Lodging Guest Manual -->
                 <div class="section-header">🔑 Guest & Lodging Manual</div>
                 <div class="manual-card">
-                    <div class="manual-banner">Shibuya Airbnb</div>
+                    <div class="manual-banner">Shibuya Airbnb — Host Noe</div>
                     <div class="manual-body">
-                        <div class="manual-row"><span class="manual-label">Wi-Fi Net</span><span class="manual-val">Noe_Shibuya_Guest (Plus Pocket Wi-Fi)</span></div>
-                        <div class="manual-row"><span class="manual-label">Wi-Fi Pass</span><span class="manual-val" id="val-wifi-tokyo">welcome_to_shinsen</span></div>
-                        <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">Open mailbox with code 810 to retrieve lock key. letterbox access.</span></div>
-                        <div class="manual-row"><span class="manual-label">House Rules</span><span class="manual-val">Garbage sorting is strict (burnable/plastics). Pocket Wi-Fi charge nightly.</span></div>
-                        <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">Return pocket Wi-Fi inside apartment. Place key in mailbox. checkout by 11:00.</span></div>
-                        <div class="manual-copy-row">
-                            <button class="manual-copy-btn" onclick="copyText(document.getElementById('val-wifi-tokyo').innerText)">
-                                <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                                Copy Wi-Fi Pass
-                            </button>
-                        </div>
+                        <div class="manual-row"><span class="manual-label">Address</span><span class="manual-val">8-10 Shinsenchō, Shibuya City, Tokyo 150-0045</span></div>
+                        <div class="manual-row"><span class="manual-label">Host</span><span class="manual-val">Noe</span></div>
+                        <div class="manual-row"><span class="manual-label">Block I Cost</span><span class="manual-val">£891.40 (Ready on arrival Jul 31)</span></div>
+                        <div class="manual-row"><span class="manual-label">Block II Cost</span><span class="manual-val">£897.45 (Checkout Aug 20)</span></div>
                     </div>
                 </div>
 
@@ -1925,19 +1824,6 @@
             ]
         };
 
-        // Static timeline days in Date format to support live activity countdowns
-        const chronologicalLogs = [
-            { date: new Date("2026-07-01T14:00:00"), label: "Outbound Flight", desc: "easyJet EZY8553 LGW ➔ BJV" },
-            { date: new Date("2026-07-05T14:25:00"), label: "Domestic Flight", desc: "Turkish Airlines TK2511 BJV ➔ IST" },
-            { date: new Date("2026-07-09T13:20:00"), label: "European Flight", desc: "Turkish Airlines TK1039 IST ➔ OTP" },
-            { date: new Date("2026-07-12T12:00:00"), label: "Overland Transfer", desc: "Bucharest ➔ Braşov (Strada Lungă)" },
-            { date: new Date("2026-07-15T16:15:00"), label: "Return Flight", desc: "British Airways BA875 OTP ➔ LHR" },
-            { date: new Date("2026-07-22T07:25:00"), label: "Athens Flight", desc: "British Airways BA626 LHR ➔ ATH" },
-            { date: new Date("2026-07-27T19:30:00"), label: "London Flight", desc: "British Airways BA631 ATH ➔ LHR" },
-            { date: new Date("2026-07-30T09:25:00"), label: "Tokyo Flight", desc: "British Airways BA007 LHR ➔ HND" },
-            { date: new Date("2026-08-20T13:05:00"), label: "London Flight", desc: "British Airways BA006 HND ➔ LHR" }
-        ];
-
         // Gyms recommendations database
         const gymsDb = {
             bodrum: [],
@@ -2141,7 +2027,6 @@
             fetchStateFromGitHub();
             renderPackingList();
             switchTab('overview');
-            initLiveActivityTimer();
             initPushNotifications();
             
             // Setup offline auto-sync trigger
@@ -2564,42 +2449,6 @@
             }
         }
 
-        // --- NEXT UP LIVE BANNER TIMER ---
-        function initLiveActivityTimer() {
-            calculateNextTransit();
-            setInterval(calculateNextTransit, 60000);
-        }
-
-        function calculateNextTransit() {
-            const now = new Date();
-            const nextEvent = chronologicalLogs.find(ev => ev.date > now);
-            const countdownText = document.getElementById('live-countdown-text');
-            const titleText = document.getElementById('live-title-text');
-            const subText = document.getElementById('live-sub-text');
-
-            if (nextEvent) {
-                const diffMs = nextEvent.date - now;
-                const diffHrs = Math.floor(diffMs / 3600000);
-                const diffMins = Math.floor((diffMs % 3600000) / 60000);
-                
-                let timeStr = "";
-                if (diffHrs > 24) {
-                    const days = Math.floor(diffHrs / 24);
-                    timeStr = `in ${days}d ${diffHrs % 24}h`;
-                } else {
-                    timeStr = `in ${diffHrs}h ${diffMins}m`;
-                }
-
-                countdownText.innerText = timeStr;
-                titleText.innerText = nextEvent.label;
-                subText.innerText = nextEvent.desc;
-            } else {
-                countdownText.innerText = "Active";
-                titleText.innerText = "Enjoy your Sabbatical!";
-                subText.innerText = "All major transits and flights completed.";
-            }
-        }
-
         // --- PWA NATIVE PUSH NOTIFICATIONS ---
         function initPushNotifications() {
             if ('Notification' in window) {
@@ -2638,10 +2487,10 @@
             };
 
             const messages = {
-                bodrum: "You are staying at Maka's Villa. Key in lockbox code: 1985.",
-                istanbul: "Lodging at Harbiye Residence. Check-in passcode: 5403358085.",
-                bucharest: "Lodging at Old Town flat. Calea Victoriei lockbox code: 2026.",
-                brasov: "Lodging at Strada Lungă. Main gate keypad: *3939#.",
+                bodrum: "You are staying at Maka's Villa.",
+                istanbul: "Lodging at Harbiye Residence. Conf ID: 5403358085.",
+                bucharest: "Lodging at Old Town flat. Calea Victoriei 2.",
+                brasov: "Lodging at Strada Lungă 39.",
                 spetses: "Ferry check: Did you verify your Piraeus sea sailing seats?",
                 tokyo: "Lodging at Shibuya Airbnb. Remember to cover tattoos at Gold's Gym Shibuya."
             };
