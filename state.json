@@ -48,20 +48,20 @@
     "sights": [],
     "local": [],
     "timeline": [
-      { "date": "Thu 9 Jul", "title": "Romania Transit", "items": ["Turkish Airlines TK1039 IST ➔ OTP", "Arrive Bucharest at 14:35", "Check-in Airbnb Old Town on Calea Victoriei", "Wander Old Town Lipscani bars"], "lunchOptions": [
+      { "date": "Thu 9 Jul", "title": "Romania Transit & Historic Vibe", "items": ["Turkish Airlines TK1039 IST ➔ OTP (Arrive Bucharest 14:35)", "Uber / Bolt to Calea Victoriei Airbnb (Check-in 15:30)", "Stroll down historic Calea Victoriei to view CEC Palace & National History Museum", "Casual evening wander through lively Old Town (Lipscani) pedestrian alleys", "Drinks at Fix Me a Drink botanical cocktail bar or Linea Closer to the Moon rooftop"], "lunchOptions": [
         { "name": "Caru' cu Bere", "query": "Caru cu Bere Bucharest" },
         { "name": "Lacrimi și Sfinți", "query": "Lacrimi si Sfinti Bucharest" },
         { "name": "Aubergine Restaurant", "query": "Aubergine Restaurant Bucharest" }
       ] },
-      { "date": "Fri 10 Jul", "title": "Old Town Culture", "items": ["Artisan filter coffee crawl at Origo", "Explore Carturesti Carusel spiral bookshop", "Dinner at Gothic Caru' cu Bere"], "lunchOptions": [
+      { "date": "Fri 10 Jul", "title": "Bucharest Sights: Palace of Parliament & Old Icons", "items": ["Palace of the Parliament guided tour (10:00 AM - book in advance)", "Stavropoleos Monastery 18th-century Eastern Orthodox courtyard walk (12:00 PM)", "Browse spectacular spiral balconies at Cărturești Carusel bookshop (01:00 PM)", "Tour the golden-leaf neoclassical hall of the Romanian Athenaeum (03:00 PM)", "Open-air historic peasant cottages walk at Dimitrie Gusti National Village Museum (04:30 PM)", "Fine dining dinner at The Artist modern molecular cuisine on Calea Victoriei (19:30)"], "lunchOptions": [
         { "name": "Bistro Ateneu", "query": "Bistro Ateneu Bucharest" },
-        { "name": "Alt Shift", "query": "Alt Shift Bucharest" },
-        { "name": "Origo Coffee", "query": "Origo Bucharest" }
+        { "name": "Simbio", "query": "Simbio Bucharest" },
+        { "name": "Alt Shift", "query": "Alt Shift Bucharest" }
       ] },
-      { "date": "Sat 11 Jul", "title": "Tropical Wellness", "items": ["Full relax afternoon at Therme Bucuresti", "Sunset drinks at Linea rooftop bar"], "lunchOptions": [
-        { "name": "Pescăruș", "query": "Pescarus Bucharest" },
+      { "date": "Sat 11 Jul", "title": "Local Living & Engagement Party", "items": ["Specialty filter coffee & breakfast at Frudisiac or Bob Coffee Lab (09:00 AM)", "Tour Ceaușescu Mansion (Palatul Primăverii) in Bucharest's most exclusive district (10:30 AM)", "Stroll the leafy luxury residential streets of Primăverii & Floreasca", "Walk the Herăstrău Lakefront paths followed by upscale lakeside lunch (12:30 PM)", "Relax and prepare for the evening event (03:00 PM)", "Engagement Party - Max & Fin (05:30 PM)"], "lunchOptions": [
         { "name": "Fior di Latte", "query": "Fior di Latte Bucharest" },
-        { "name": "Isoletta", "query": "Isoletta Bucharest" }
+        { "name": "Isoletta", "query": "Isoletta Bucharest" },
+        { "name": "Pescăruș", "query": "Pescarus Bucharest" }
       ] }
     ]
   },
@@ -69,22 +69,22 @@
     "sights": [],
     "local": [],
     "timeline": [
-      { "date": "Sun 12 Jul", "title": "Roadtrip to Transylvania", "items": ["Drive or Train to Braşov early", "Check-in Airbnb Strada Lungă 39", "Stroll Council Square (Piața Sfatului)"], "lunchOptions": [
+      { "date": "Sun 12 Jul", "title": "Transylvanian Arrival & Royal Stopover", "items": ["Private driver pickup from Bucharest Airbnb (11:00 AM)", "Tour the stunning neo-Renaissance Peleș Castle in Sinaia (12:30 PM)", "Arrive in Braşov & check-in to Airbnb on Strada Lungă 39 (15:30)", "Sunset walk around medieval Council Square (Piața Sfatului)", "Dinner at Dei Frati for exceptional handmade pasta (19:00)"], "lunchOptions": [
         { "name": "Bistro de l'Arte", "query": "Bistro de l'Arte Brasov" },
         { "name": "Dei Frati", "query": "Dei Frati Brasov" },
         { "name": "Sub Tâmpa", "query": "Sub Tampa Brasov" }
       ] },
-      { "date": "Mon 13 Jul", "title": "Training & Citadel", "items": ["Bodybuilding workout at Belaqva Active Gym", "Climb watchtowers (Black & White towers)", "Walk through Rope Street"], "lunchOptions": [
+      { "date": "Mon 13 Jul", "title": "Braşov Sights & Bran Castle", "items": ["Day trip to the dramatic gothic towers of cliffside Bran Castle (12:00 PM)", "Walk down Rope Street (Strada Sforii) - one of Europe's narrowest paths (03:00 PM)", "Climb the medieval Black Tower & White Tower for orange-roofed skyline views (04:00 PM)", "Explore historic defensive walls and Weavers' Bastion (05:00 PM)", "Slow-food Transylvanian dinner inside a 16th-century hall at Bistro de l'Arte (19:30)"], "lunchOptions": [
         { "name": "Prato", "query": "Prato Brasov" },
         { "name": "La Birou Bistro", "query": "La Birou Bistro Brasov" },
         { "name": "Pilvax", "query": "Pilvax Brasov" }
       ] },
-      { "date": "Tue 14 Jul", "title": "Castle Day Trip", "items": ["Excursion to Dracula's Bran Castle", "Hike trails up to Tâmpa Mountain sign"], "lunchOptions": [
-        { "name": "Club Vila Bran", "query": "Club Vila Bran" },
-        { "name": "Stâna Turistică Sergiana", "query": "Stana Turistica Sergiana Poiana Brasov" },
-        { "name": "Coliba Haiducilor", "query": "Coliba Haiducilor Poiana Brasov" }
+      { "date": "Tue 14 Jul", "title": "Day Trip to Sighișoara UNESCO Citadel", "items": ["Depart Braşov for Sighișoara medieval walled town (09:00 AM)", "Tour Sighișoara Citadel, Clock Tower, and covered stairs (11:00 AM)", "Explore the birthplace of Vlad the Impaler (Dracula)", "Return to Braşov in the late afternoon (04:30 PM)", "Dinner at forest-edge Sub Tâmpa at the foot of the mountain (19:30)"], "lunchOptions": [
+        { "name": "Medieval Cafe Sighișoara", "query": "Medieval Cafe Sighisoara" },
+        { "name": "Gasthaus Alte Post Sighișoara", "query": "Gasthaus Alte Post Sighisoara" },
+        { "name": "Joseph T. Restaurant", "query": "Joseph T Restaurant Sighisoara" }
       ] },
-      { "date": "Wed 15 Jul", "title": "Depart Romania", "items": ["Leave Braşov at 11:00 AM sharp", "Drive 2h45 to Bucharest Otopeni (OTP)", "British Airways BA875 to Heathrow LHR (16:15)"], "lunchOptions": [] }
+      { "date": "Wed 15 Jul", "title": "Depart Romania via Gara de Nord", "items": ["Check out of Braşov Airbnb (09:00 AM)", "InterRegio train from Braşov to Bucharest Gara de Nord (09:30 AM departure)", "Direct airport train from Gara de Nord to Otopeni (OTP) (12:30 PM)", "Arrive at OTP Airport with safe buffer (12:50 PM)", "British Airways BA875 back to London Heathrow LHR (16:15 departure)"], "lunchOptions": [] }
     ]
   },
   "spetses": {

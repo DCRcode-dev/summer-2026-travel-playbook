@@ -106,7 +106,8 @@ Welcome to your bespoke Summer 2026 Grand Tour Playbook. This curated guide swee
 ### 🗺️ The Vibe Check
 * **The Neighborhood:** You are staying at the very top of **Calea Victoriei**, Bucharest's most historic and stylish avenue. You are steps away from the vibrant **Old Town (Lipscani)**, Stavropoleos Monastery, and a wealth of excellent bistros.
 * **Local Know-How:**
-  * **Timing Your Departure:** On check-out day (Jul 12), leave early if driving to Transylvania, as weekend highway traffic out of Bucharest gets heavily congested.
+  * **Saturday Night Engagement Party:** You have the Engagement Party (Max & Fin) scheduled for **Saturday, July 11 at 17:30**. 
+  * **Sunday Private Driver Pickup:** On checkout day (Sun 12 Jul) at **11:00 AM**, your private driver will pick you up from the Airbnb to drive to Braşov with a 2-hour sightseeing stop at Peleș Castle in Sinaia.
 
 ### 🏋️ Recommended Gyms (Day Pass)
 * **[World Class Downtown](https://www.worldclass.ro/club/downtown/)** (Radisson Blu, Calea Victoriei): A premium health and fitness club located directly on Calea Victoriei. Featuring high-end strength gear, cardio zones, and pool access. Day passes can be booked directly through their desk.
@@ -127,7 +128,7 @@ Welcome to your bespoke Summer 2026 Grand Tour Playbook. This curated guide swee
 
 #### 🍃 10 Unique Local Experiences
 1. **Book Shopping at Cărturești Carusel:** Wander the six floors of the "Carousel of Light" spiral bookshop.
-2. **Thermal Bathing at Therme București:** Spend an afternoon in Europe's largest indoor botanical garden and thermal pool complex.
+2. **Calea Victoriei Pedestrian Walk:** Stroll the weekend pedestrian-only Calea Victoriei ("Open Streets"), grab gelato at Velocità, and sip espresso at M60.
 3. **Artisan Coffee at Origo:** Sip a custom-roasted filter coffee at Bucharest’s legendary pioneer specialty cafe.
 4. **Eat Mici at Obor Market:** Head to *Terasa Obor* in the bustling central market for grilled Romanian minced meat rolls with mustard.
 5. **Stroll the Cotroceni Neighborhood:** Walk through Bucharest's most elegant, tree-lined residential district filled with villas.
@@ -143,14 +144,15 @@ Welcome to your bespoke Summer 2026 Grand Tour Playbook. This curated guide swee
 ### ✈️ Logistics & Bookings
 | Date/Time | Type (Flight/Stay) | Details (Flight # / Property Name) | Confirmation / Address |
 | :--- | :--- | :--- | :--- |
-| **Sun 12 Jul –<br>Wed 15 Jul** | 🚘 Overland Transfer | Bucharest `OTP` ➔ Braşov `Strada Lungă`<br><small>No flights. Travel via train (CFR InterRegio) or hire car.</small> | **National/Emerald Club #670318950** (CFR tickets via cfrcalatori.ro) |
+| **Sun 12 Jul**<br>11:00 – 15:30 | 🚘 Overland Transfer | Bucharest ➔ Sinaia (Peleș Castle) ➔ Braşov | **Private Driver Stopover** (Bags remain in trunk)<br>Cost: ~€130–€180 |
 | **Sun 12 Jul –<br>Wed 15 Jul** | 🏨 Stay (3 Nights) | **Airbnb (Old Town) — Host Cristian** | **Strada Lungă 39, Braşov 500035**<br>Cost: **£185.76** (Check-out Wed 15 Jul) |
 | **Wed 15 Jul**<br>16:15 – 17:40 | ✈️ Outbound Flight | British Airways **BA875** (Bucharest `OTP` ➔ London Heathrow `LHR`) | Ref: **XK3V82**<br>Cost: **€74.82** (Euro Traveller) |
 
 ### 🗺️ The Vibe Check
 * **The Neighborhood:** **Strada Lungă** runs directly into the heart of Braşov's medieval old town. You are a 10-minute stroll from **Piața Sfatului** (Council Square) and the imposing Black Church. It is quiet, historic, and surrounded by forested mountains.
 * **Local Know-How:**
-  * **Airport Buffer:** On Wed 15 Jul, allow 2h45 for the drive from Braşov to Bucharest Otopeni (OTP) + 2h airport buffer. Start driving by 11:00 to catch your 16:15 flight safely.
+  * **Wednesday Train Connection:** On checkout day (Wed 15 Jul), take the **09:30 AM CFR InterRegio train** from Braşov Gara to Bucharest Gara de Nord (arriving 12:10 PM). Transfer to the direct airport train (12:30 PM departure, 20 mins) to arrive at OTP by 12:50 PM. This gives you a safe 3+ hour buffer before your 16:15 BA875 flight.
+  * **Tuesday Day Trip:** Plan a day trip to the spectacular UNESCO World Heritage medieval citadel of **Sighișoara** (approx. 1.5–2 hours north of Braşov).
 
 ### 🏋️ Recommended Gyms (Day Pass)
 * **[Belaqva Active Wellness](https://belaqva.ro/)** (Kronwell Hotel): Braşov's premier wellness center, located a short taxi ride from the old town. Offering top-tier resistance training machines, free weights, and clean, professional locker rooms. Day pass is **80 RON**.
