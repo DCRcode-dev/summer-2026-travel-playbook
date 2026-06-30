@@ -566,6 +566,30 @@
             color: var(--gold);
         }
 
+        .maps-inline-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+        .maps-inline-btn:hover {
+            background-color: rgba(201, 168, 76, 0.12);
+        }
+        .maps-inline-btn svg {
+            transition: all 0.2s ease;
+        }
+        .maps-inline-btn:hover svg {
+            fill: var(--gold) !important;
+            opacity: 1 !important;
+            transform: scale(1.15);
+        }
+
         /* Next Up Pill on Overview */
         .next-up-pill {
             background-color: var(--gold-light);
@@ -2725,16 +2749,53 @@
             return el;
         }
 
+        function getCleanMapsQuery(text, destinationName) {
+            if (!text) return '';
+            // Remove parentheticals, e.g. (08:30 AM arrival...)
+            let cleaned = text.replace(/\([^)]*\)/g, '');
+            // Remove square brackets
+            cleaned = cleaned.replace(/\[[^\]]*\]/g, '');
+            // Remove time patterns (e.g., 08:30 AM, 19:00, 15:55, etc.)
+            cleaned = cleaned.replace(/\b\d{1,2}:\d{2}\s*(?:AM|PM)?\b/gi, '');
+            // Remove flight arrow symbols
+            cleaned = cleaned.replace(/➔|➔/g, '');
+            // Trim and collapse multiple spaces
+            cleaned = cleaned.trim().replace(/\s+/g, ' ');
+            
+            // Clean up destinationName for query suffix
+            let suffix = '';
+            if (destinationName) {
+                if (destinationName.toLowerCase() === 'bodrum') suffix = 'Bodrum';
+                else if (destinationName.toLowerCase() === 'istanbul') suffix = 'Istanbul';
+                else if (destinationName.toLowerCase() === 'bucharest') suffix = 'Bucharest';
+                else if (destinationName.toLowerCase() === 'brasov') suffix = 'Brasov';
+                else if (destinationName.toLowerCase() === 'spetses') suffix = 'Spetses';
+                else if (destinationName.toLowerCase() === 'tokyo') suffix = 'Tokyo';
+            }
+            
+            if (cleaned && suffix) {
+                if (!cleaned.toLowerCase().includes(suffix.toLowerCase())) {
+                    cleaned += ' ' + suffix;
+                }
+            }
+            return cleaned;
+        }
+
         function createTimelineItemElement(day, dayIndex, dest) {
             const el = document.createElement('div');
             el.className = 'timeline-item';
             
             let itemsHtml = '';
             day.items.forEach((itm, itemIndex) => {
+                const cleanQuery = getCleanMapsQuery(itm, dest);
+                const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanQuery)}`;
                 itemsHtml += `
                     <div class="timeline-detail-row">
                         <span style="user-select: none;">• </span>
                         <span class="timeline-item-text" contenteditable="true" data-day="${dayIndex}" data-item="${itemIndex}">${itm}</span>
+                        <a href="${mapsUrl}" target="_blank" class="maps-inline-btn" title="Open in Google Maps" style="text-decoration: none;">
+                            <svg viewBox="0 0 24 24" style="width: 10px; height: 10px; fill: var(--gold); opacity: 0.65; transition: all 0.2s ease;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                        </a>
                         <button class="delete-item-btn" onclick="deleteTimelineItem('${dest}', ${dayIndex}, ${itemIndex})">×</button>
                     </div>
                 `;
@@ -2788,6 +2849,13 @@
                         // Editing a bullet detail item
                         const itemIdx = parseInt(itemIdxAttr);
                         timelineDb[dest][dayIdx].items[itemIdx] = newText;
+                        
+                        // Update the sibling map button href dynamically
+                        const siblingLink = e.target.parentElement.querySelector('.maps-inline-btn');
+                        if (siblingLink) {
+                            const cleanQuery = getCleanMapsQuery(newText, dest);
+                            siblingLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanQuery)}`;
+                        }
                     } else if (field === 'date') {
                         timelineDb[dest][dayIdx].date = newText;
                     } else if (field === 'title') {
