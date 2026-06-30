@@ -1,6 +1,68 @@
 {
-  "istanbul": { "sights": [], "local": [] },
-  "bucharest": { "sights": [], "local": [] },
-  "brasov": { "sights": [], "local": [] },
-  "tokyo": { "sights": [], "local": [] }
+  "bodrum": {
+    "sights": [],
+    "local": [],
+    "timeline": [
+      { "date": "Wed 1 Jul", "title": "Arrival & Setup", "items": ["easyJet flight EZY8553 Gatwick ➔ Bodrum", "Arrive BJV at 20:05", "Check-in Airbnb"] },
+      { "date": "Thu 2 Jul", "title": "Beach Vibe Day", "items": ["Spend day exploring Yalıkavak Palmarina", "Walk Bodrum Town Marina"] },
+      { "date": "Fri 3 Jul", "title": " WATERFRONT DINING", "items": ["Bohemian vibes in Gümüşlük", " Waterfront sunset cold mezes"] },
+      { "date": "Sat 4 Jul", "title": "Aegean Coasting", "items": ["Leisurely walk near the Bodrum castle", "Final dinner with Maca"] }
+    ]
+  },
+  "istanbul": {
+    "sights": [],
+    "local": [],
+    "timeline": [
+      { "date": "Sun 5 Jul", "title": "Anatolian Flight & Setup", "items": ["Turkish Airlines TK2511 BJV ➔ IST (Land 15:55)", "Transit to Harbiye Residence (Check-in 17:00)", "Healin Foods Nişantaşı clean-eating dinner (19:00)"] },
+      { "date": "Mon 6 Jul", "title": "Imperial History & Bosphorus Walk", "items": ["Hagia Sophia (08:30 AM arrival for 09:00 opening)", "Basilica Cistern (10:15 AM with pre-purchased tickets)", "Topkapı Palace & Harem (11:30 AM)", "Bebek Bosphorus Walk (04:30 PM - 05:30 PM)", "Tatbak Nişantaşı clean kebab dinner (19:00)"] },
+      { "date": "Tue 7 Jul", "title": "Palace Opulence & Karaköy", "items": ["Dolmabahçe Palace (08:45 AM arrival for 09:00 opening)", "Karaköy waterfront & specialty coffee crawl / hamam", "Zübeyir Ocakbaşı Taksim (07:00 PM grill counter dinner)"] },
+      { "date": "Wed 8 Jul", "title": "Bazaars, Mosques & Old Quarters", "items": ["Grand Bazaar (08:30 AM at opening)", "Süleymaniye Mosque (10:00 AM for views)", "Fener & Balat historic quarters stroll", "Hünkar Lokantası Nişantaşı traditional dinner (19:00)"] },
+      { "date": "Thu 9 Jul", "title": "Departure Day", "items": ["Check out of Harbiye Residence (09:30 AM)", "Transit to Istanbul Airport (IST)", "Turkish Airlines TK1039 to Bucharest (13:20 departure)"] }
+    ]
+  },
+  "bucharest": {
+    "sights": [],
+    "local": [],
+    "timeline": [
+      { "date": "Thu 9 Jul", "title": "Romania Transit", "items": ["Turkish Airlines TK1039 IST ➔ OTP", "Arrive Bucharest at 14:35", "Check-in Airbnb Old Town on Calea Victoriei", "Wander Old Town Lipscani bars"] },
+      { "date": "Fri 10 Jul", "title": "Old Town Culture", "items": ["Artisan filter coffee crawl at Origo", "Explore Carturesti Carusel spiral bookshop", "Dinner at Gothic Caru' cu Bere"] },
+      { "date": "Sat 11 Jul", "title": "Tropical Wellness", "items": ["Full relax afternoon at Therme Bucuresti", "Sunset drinks at Linea rooftop bar"] }
+    ]
+  },
+  "brasov": {
+    "sights": [],
+    "local": [],
+    "timeline": [
+      { "date": "Sun 12 Jul", "title": "Roadtrip to Transylvania", "items": ["Drive or Train to Braşov early", "Check-in Airbnb Strada Lungă 39", "Stroll Council Square (Piața Sfatului)"] },
+      { "date": "Mon 13 Jul", "title": "Training & Citadel", "items": ["Bodybuilding workout at Belaqva Active Gym", "Climb watchtowers (Black & White towers)", "Walk through Rope Street"] },
+      { "date": "Tue 14 Jul", "title": "Castle Day Trip", "items": ["Excursion to Dracula's Bran Castle", "Hike trails up to Tâmpa Mountain sign"] },
+      { "date": "Wed 15 Jul", "title": "Depart Romania", "items": ["Leave Braşov at 11:00 AM sharp", "Drive 2h45 to Bucharest Otopeni (OTP)", "British Airways BA875 to Heathrow LHR (16:15)"] }
+    ]
+  },
+  "spetses": {
+    "sights": [],
+    "local": [],
+    "timeline": [
+      { "date": "Wed 22 Jul", "title": "Saronic Crossing", "items": ["BA626 London ➔ Athens (Arr: 13:10)", "Transit to Piraeus, sail on afternoon ferry", "Arrive Spetses Island, check-in Teresa suite"] },
+      { "date": "Thu 23 Jul", "title": "Zogeria Turquoise Waters", "items": ["Cycle or water taxi to Zogeria beach cove", "Seafood meze lunch on the sand"] },
+      { "date": "Fri 24 Jul", "title": "Sunset Veranda Cocktails", "items": ["Relaxed beach morning at Agia Paraskevi", "Evening drinks at Poseidonion Hotel veranda"] },
+      { "date": "Sat 25 Jul", "title": "Old Harbour Dining", "items": ["Leisurely island bike ride", "Dinner under harbor lanterns at Orloff"] },
+      { "date": "Sun 26 Jul", "title": "Quiet Cove Sunsets", "items": ["Swim and final sunbathing hours"] },
+      { "date": "Mon 27 Jul", "title": "Spetses ➔ Athens ➔ London", "items": ["Sail from Spetses by 14:00", "British Airways BA631 ATH ➔ LHR (19:30)"] }
+    ]
+  },
+  "tokyo": {
+    "sights": [],
+    "local": [],
+    "timeline": [
+      { "date": "Thu 30 Jul", "title": "LHR ➔ HND Flight", "items": ["BA007 London Heathrow departure (09:25)", "Overnight international flight in the air"] },
+      { "date": "Fri 31 Jul", "title": "Welcome to Shinsen", "items": ["Land Haneda 07:00 AM", "Check-in Shibuya Airbnb (Host Noe)", "Pour-over coffee walk in Shinsen village"] },
+      { "date": "Sat 1 Aug", "title": "Shinsen Explorations", "items": ["Specialty coffee at Camelback", "Explore Daikanyama T-Site architectural bookstore"] },
+      { "date": "Sun 2 Aug", "title": "Shibuya Gym Training", "items": ["Bodybuilding workout at Gold's Gym Shibuya", "Cover tattoos and bring clean indoor shoes"] },
+      { "date": "Mon 3 Aug", "title": "Underground Food Halls", "items": ["Pick bento treats at Tokyu Food Show", "Stroll Nakameguro Meguro River canal"] },
+      { "date": "Tue 4 Aug", "title": "Digital Arts & Monjayaki", "items": ["Visit teamLab Planets exhibition", "Cook monjayaki pancakes in Tsukishima griddles"] },
+      { "date": "Wed 5 Aug", "title": "Tuna Auction & Old Town", "items": ["Early Toyosu fish market tuna auction", "Stroll Yanaka Ginza old merchants street"] },
+      { "date": "Thu 6 Aug", "title": "Micro-Alley Drinks", "items": ["Bar hopping in Nonbei Yokocho", "Late jazz records at Lion Cafe"] }
+    ]
+  }
 }

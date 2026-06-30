@@ -495,6 +495,7 @@
 
         .timeline-detail-row {
             display: flex;
+            align-items: center;
             font-size: 0.78rem;
             margin-bottom: 4px;
             color: var(--text-muted);
@@ -502,6 +503,105 @@
 
         .timeline-detail-row:last-child {
             margin-bottom: 0;
+        }
+
+        /* Editable timeline styles */
+        [contenteditable="true"] {
+            outline: none;
+            transition: background-color 0.2s ease, border-bottom 0.2s ease;
+            border-bottom: 1px dashed transparent;
+            padding: 1px 3px;
+            border-radius: 2px;
+        }
+        [contenteditable="true"]:hover {
+            background-color: rgba(201, 168, 76, 0.05);
+            border-bottom: 1px dashed var(--gold);
+        }
+        [contenteditable="true"]:focus {
+            background-color: rgba(201, 168, 76, 0.08);
+            border-bottom: 1px dashed var(--gold);
+        }
+        
+        .timeline-item-text {
+            flex-grow: 1;
+            margin-left: 4px;
+            color: var(--text-main);
+        }
+        
+        .delete-item-btn {
+            opacity: 0;
+            background: none;
+            border: none;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            padding: 0 4px;
+            margin-left: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            line-height: 1;
+        }
+        .timeline-detail-row:hover .delete-item-btn {
+            opacity: 0.6;
+        }
+        .timeline-detail-row:hover .delete-item-btn:hover {
+            opacity: 1;
+            color: var(--red-ios);
+        }
+        
+        .add-item-btn {
+            background: none;
+            border: 1px dashed #EDE8E0;
+            border-radius: 4px;
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            padding: 4px 10px;
+            margin-top: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        .add-item-btn:hover {
+            background-color: var(--gold-light);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Next Up Pill on Overview */
+        .next-up-pill {
+            background-color: var(--gold-light);
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            border-radius: 20px;
+            padding: 6px 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.74rem;
+            color: var(--text-main);
+            max-width: 100%;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+            box-shadow: 0 2px 8px rgba(42, 36, 33, 0.02);
+        }
+        .next-up-pill:hover {
+            transform: translateY(-1px);
+            background-color: rgba(201, 168, 76, 0.12);
+            border-color: rgba(201, 168, 76, 0.3);
+        }
+        .next-up-tag {
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.05em;
+            font-size: 0.64rem;
+            border-right: 1px solid rgba(42, 36, 33, 0.12);
+            padding-right: 8px;
+            white-space: nowrap;
+        }
+        .next-up-text {
+            font-weight: 500;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
         }
 
         /* --- GYMS --- */
@@ -1151,6 +1251,9 @@
                         </g>
                     </svg>
                 </div>
+
+                <!-- Next Up Pill Container -->
+                <div id="next-up-container" style="display: flex; justify-content: center; margin: 10px 0 20px 0; padding: 0 16px; min-height: 34px;"></div>
 
                 <!-- Calendar Section -->
                 <div class="calendar-section">
@@ -1887,7 +1990,7 @@
         };
 
         // Static timeline day segments database
-        const timelineDb = {
+        let timelineDb = {
             bodrum: [
                 { date: "Wed 1 Jul", title: "Arrival & Setup", items: ["easyJet flight EZY8553 Gatwick ➔ Bodrum", "Arrive BJV at 20:05", "Check-in Airbnb"] },
                 { date: "Thu 2 Jul", title: "Beach Vibe Day", items: ["Spend day exploring Yalıkavak Palmarina", "Walk Bodrum Town Marina"] },
@@ -1895,10 +1998,11 @@
                 { date: "Sat 4 Jul", title: "Aegean Coasting", items: ["Leisurely walk near the Bodrum castle", "Final dinner with Maca"] }
             ],
             istanbul: [
-                { date: "Sun 5 Jul", title: "Anatolian Flight", items: ["Turkish Airlines TK2511 BJV ➔ IST", "Arrive Istanbul at 15:55", "Check-in Harbiye Residence (Şişli)", "Nişantaşı evening coffee walk"] },
-                { date: "Mon 6 Jul", title: "Training & Nişantaşı", items: ["Strength session at Weider Harbiye Gym", "Walk around the luxury boutiques in Nişantaşı", "Coffee at specialty cafe Petra"] },
-                { date: "Tue 7 Jul", title: "Bosphorus Sunset Ferry", items: ["Commuter ferry Karaköy ➔ Kadıköy at sunset", "Eat stuffed mussels at Kadıköy fish market"] },
-                { date: "Wed 8 Jul", title: "Historic Sultanahmet Core", items: ["Visit Hagia Sophia temple", "Basilica Cistern walk (Medusa heads)", "Traditional scrub at Kılıç Ali Paşa Hamamı"] }
+                { date: "Sun 5 Jul", title: "Anatolian Flight & Setup", items: ["Turkish Airlines TK2511 BJV ➔ IST (Land 15:55)", "Transit to Harbiye Residence (Check-in 17:00)", "Healin Foods Nişantaşı clean-eating dinner (19:00)"] },
+                { date: "Mon 6 Jul", title: "Imperial History & Bosphorus Walk", items: ["Hagia Sophia (08:30 AM arrival for 09:00 opening)", "Basilica Cistern (10:15 AM with pre-purchased tickets)", "Topkapı Palace & Harem (11:30 AM)", "Bebek Bosphorus Walk (04:30 PM - 05:30 PM)", "Tatbak Nişantaşı clean kebab dinner (19:00)"] },
+                { date: "Tue 7 Jul", title: "Palace Opulence & Karaköy", items: ["Dolmabahçe Palace (08:45 AM arrival for 09:00 opening)", "Karaköy waterfront & specialty coffee crawl / hamam", "Zübeyir Ocakbaşı Taksim (07:00 PM grill counter dinner)"] },
+                { date: "Wed 8 Jul", title: "Bazaars, Mosques & Old Quarters", items: ["Grand Bazaar (08:30 AM at opening)", "Süleymaniye Mosque (10:00 AM for views)", "Fener & Balat historic quarters stroll", "Hünkar Lokantası Nişantaşı traditional dinner (19:00)"] },
+                { date: "Thu 9 Jul", title: "Departure Day", items: ["Check out of Harbiye Residence (09:30 AM)", "Transit to Istanbul Airport (IST)", "Turkish Airlines TK1039 to Bucharest (13:20 departure)"] }
             ],
             bucharest: [
                 { date: "Thu 9 Jul", title: "Romania Transit", items: ["Turkish Airlines TK1039 IST ➔ OTP", "Arrive Bucharest at 14:35", "Check-in Airbnb Old Town on Calea Victoriei", "Wander Old Town Lipscani bars"] },
@@ -2253,6 +2357,7 @@
             fetchStateFromGitHub();
             renderPackingList();
             switchTab('overview');
+            updateNextUpPill();
             updateDynamicTabs(); // Filter past tabs out dynamically on startup
             initPushNotifications();
             
@@ -2343,8 +2448,8 @@
                 if (timelineContainer) {
                     timelineContainer.innerHTML = '';
                     const days = timelineDb[dest] || [];
-                    days.forEach(day => {
-                        const item = createTimelineItemElement(day);
+                    days.forEach((day, dayIndex) => {
+                        const item = createTimelineItemElement(day, dayIndex, dest);
                         timelineContainer.appendChild(item);
                     });
                 }
@@ -2544,29 +2649,214 @@
             return el;
         }
 
-        function createTimelineItemElement(day) {
+        function createTimelineItemElement(day, dayIndex, dest) {
             const el = document.createElement('div');
             el.className = 'timeline-item';
             
             let itemsHtml = '';
-            day.items.forEach(itm => {
+            day.items.forEach((itm, itemIndex) => {
                 itemsHtml += `
                     <div class="timeline-detail-row">
-                        <span>• ${itm}</span>
+                        <span style="user-select: none;">• </span>
+                        <span class="timeline-item-text" contenteditable="true" data-day="${dayIndex}" data-item="${itemIndex}">${itm}</span>
+                        <button class="delete-item-btn" onclick="deleteTimelineItem('${dest}', ${dayIndex}, ${itemIndex})">×</button>
                     </div>
                 `;
             });
 
             el.innerHTML = `
                 <div class="timeline-dot"></div>
-                <div class="timeline-date-label">${day.date}</div>
+                <div class="timeline-date-label" contenteditable="true" data-day="${dayIndex}" data-field="date">${day.date}</div>
                 <div class="timeline-card">
-                    <h4 class="timeline-title">${day.title}</h4>
-                    ${itemsHtml}
+                    <h4 class="timeline-title" contenteditable="true" data-day="${dayIndex}" data-field="title">${day.title}</h4>
+                    <div class="timeline-details-list">
+                        ${itemsHtml}
+                    </div>
+                    <button class="add-item-btn" onclick="addTimelineItem('${dest}', ${dayIndex})">+ Add Item</button>
                 </div>
             `;
+
+            // Add change listeners
+            el.querySelectorAll('[contenteditable="true"]').forEach(editable => {
+                editable.addEventListener('blur', (e) => {
+                    const dayIdx = parseInt(e.target.getAttribute('data-day'));
+                    const itemIdxAttr = e.target.getAttribute('data-item');
+                    const field = e.target.getAttribute('data-field');
+                    const newText = e.target.innerText.trim();
+                    
+                    if (itemIdxAttr !== null && itemIdxAttr !== undefined) {
+                        // Editing a bullet detail item
+                        const itemIdx = parseInt(itemIdxAttr);
+                        timelineDb[dest][dayIdx].items[itemIdx] = newText;
+                    } else if (field === 'date') {
+                        timelineDb[dest][dayIdx].date = newText;
+                    } else if (field === 'title') {
+                        timelineDb[dest][dayIdx].title = newText;
+                    }
+                    
+                    // Sync timeline data to currentState
+                    if (!currentState[dest]) currentState[dest] = {};
+                    currentState[dest].timeline = timelineDb[dest];
+                    
+                    // Save and Sync
+                    localStorage.setItem('dcr_sabbatical_state', JSON.stringify(currentState));
+                    saveStateToGitHub();
+                    
+                    // Trigger pill update in case dates/activities changed
+                    if (window.updateNextUpPill) {
+                        window.updateNextUpPill();
+                    }
+                });
+                
+                // keydown handler to blur on Enter
+                editable.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        e.target.blur();
+                    }
+                });
+            });
+
             return el;
         }
+
+        // Global timeline manipulation functions for mobile editing
+        window.addTimelineItem = function(dest, dayIndex) {
+            if (!timelineDb[dest]) return;
+            timelineDb[dest][dayIndex].items.push("New timeline detail");
+            
+            if (!currentState[dest]) currentState[dest] = {};
+            currentState[dest].timeline = timelineDb[dest];
+            
+            localStorage.setItem('dcr_sabbatical_state', JSON.stringify(currentState));
+            saveStateToGitHub();
+            
+            // Re-render timeline only
+            const timelineContainer = document.getElementById(`${dest}-timeline`);
+            if (timelineContainer) {
+                timelineContainer.innerHTML = '';
+                timelineDb[dest].forEach((day, idx) => {
+                    timelineContainer.appendChild(createTimelineItemElement(day, idx, dest));
+                });
+            }
+            if (window.updateNextUpPill) {
+                window.updateNextUpPill();
+            }
+        };
+
+        window.deleteTimelineItem = function(dest, dayIndex, itemIndex) {
+            if (!timelineDb[dest]) return;
+            timelineDb[dest][dayIndex].items.splice(itemIndex, 1);
+            
+            if (!currentState[dest]) currentState[dest] = {};
+            currentState[dest].timeline = timelineDb[dest];
+            
+            localStorage.setItem('dcr_sabbatical_state', JSON.stringify(currentState));
+            saveStateToGitHub();
+            
+            // Re-render timeline only
+            const timelineContainer = document.getElementById(`${dest}-timeline`);
+            if (timelineContainer) {
+                timelineContainer.innerHTML = '';
+                timelineDb[dest].forEach((day, idx) => {
+                    timelineContainer.appendChild(createTimelineItemElement(day, idx, dest));
+                });
+            }
+            if (window.updateNextUpPill) {
+                window.updateNextUpPill();
+            }
+        };
+
+        // Merge customized timeline state loaded from GitHub or localStorage
+        function mergeTimelineState() {
+            const destinations = ['bodrum', 'istanbul', 'bucharest', 'brasov', 'spetses', 'tokyo'];
+            destinations.forEach(dest => {
+                if (currentState[dest] && currentState[dest].timeline) {
+                    timelineDb[dest] = currentState[dest].timeline;
+                }
+            });
+        }
+
+        function parseTimelineDate(dateStr) {
+            if (!dateStr) return null;
+            const parts = dateStr.trim().split(/\s+/);
+            if (parts.length < 3) return null;
+            
+            const day = parseInt(parts[1]);
+            const monthStr = parts[2].toLowerCase();
+            let month = 6; // default July (0-indexed)
+            
+            if (monthStr.startsWith('jun')) month = 5;
+            else if (monthStr.startsWith('jul')) month = 6;
+            else if (monthStr.startsWith('aug')) month = 7;
+            else if (monthStr.startsWith('sep')) month = 8;
+            
+            return new Date(2026, month, day);
+        }
+
+        window.updateNextUpPill = function() {
+            const nextUpContainer = document.getElementById('next-up-container');
+            if (!nextUpContainer) return;
+            
+            const allDays = [];
+            const destinations = ['bodrum', 'istanbul', 'bucharest', 'brasov', 'spetses', 'tokyo'];
+            
+            destinations.forEach(dest => {
+                const days = timelineDb[dest] || [];
+                days.forEach(day => {
+                    const dateObj = parseTimelineDate(day.date);
+                    if (dateObj) {
+                        allDays.push({
+                            dest: dest,
+                            date: day.date,
+                            title: day.title,
+                            items: day.items || [],
+                            dateObj: dateObj
+                        });
+                    }
+                });
+            });
+            
+            // Sort allDays chronologically
+            allDays.sort((a, b) => a.dateObj - b.dateObj);
+            
+            const now = new Date();
+            // Get today at midnight for date-only comparison
+            const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            
+            let selectedDay = null;
+            let label = "Next Up";
+            
+            for (const day of allDays) {
+                const dayDateOnly = new Date(day.dateObj.getFullYear(), day.dateObj.getMonth(), day.dateObj.getDate());
+                if (dayDateOnly.getTime() === todayStart.getTime()) {
+                    selectedDay = day;
+                    label = "Today";
+                    break;
+                } else if (dayDateOnly.getTime() > todayStart.getTime()) {
+                    selectedDay = day;
+                    label = "Next Up";
+                    break;
+                }
+            }
+            
+            if (selectedDay) {
+                const nextItemText = selectedDay.items[0] ? selectedDay.items[0].replace(/^[•\s\-*]+/g, '').trim() : '';
+                const displayItem = nextItemText ? `: ${nextItemText}` : '';
+                nextUpContainer.innerHTML = `
+                    <div class="next-up-pill" onclick="switchTab('${selectedDay.dest}')">
+                        <span class="next-up-tag">${label} (${selectedDay.date})</span>
+                        <span class="next-up-text">${selectedDay.title}${displayItem}</span>
+                    </div>
+                `;
+            } else {
+                nextUpContainer.innerHTML = `
+                    <div class="next-up-pill" style="cursor: default; opacity: 0.8; background-color: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.05);">
+                        <span class="next-up-tag" style="border-right: none; color: var(--text-muted);">Trip Completed 🌴</span>
+                    </div>
+                `;
+            }
+        };
 
         // Render Sights & local lists for all cities
         function renderChecklists() {
@@ -2814,15 +3104,21 @@
                 const decodedText = decodeURIComponent(escape(atob(data.content)));
                 currentState = JSON.parse(decodedText);
                 localStorage.setItem('dcr_sabbatical_state', decodedText);
+                mergeTimelineState();
+                renderAllDestinationsData();
                 renderChecklists();
+                if (window.updateNextUpPill) window.updateNextUpPill();
             })
             .catch(err => {
                 console.error("Cloud fetching issue:", err);
                 const localState = localStorage.getItem('dcr_sabbatical_state');
                 if (localState) {
                     currentState = JSON.parse(localState);
+                    mergeTimelineState();
+                    renderAllDestinationsData();
                 }
                 renderChecklists();
+                if (window.updateNextUpPill) window.updateNextUpPill();
             });
         }
 
