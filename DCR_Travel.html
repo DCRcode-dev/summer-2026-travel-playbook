@@ -1988,7 +1988,9 @@
             ],
             istanbul: [
                 { type: "flight", carrier: "Turkish Airlines", code: "TK2511", departure: "Bodrum (BJV)", arrival: "Istanbul (IST)", depTime: "14:25", arrTime: "15:55", date: "Sun 5 Jul", conf: "SQP33K", branding: "turkish" },
-                { type: "lodging", name: "Harbiye Residence", host: "Reception", address: "Harbiye / Taksim, Şişli, 34373 Istanbul", checkin: "Sun 5 Jul (from 14:00)", checkout: "Thu 9 Jul (by 12:00)", conf: "5403358085 (PIN: 6017)", cost: "€352.44", branding: "airbnb", mapQuery: "Harbiye+Residence+Şişli+Istanbul" }
+                { type: "transfer", carrier: "Booking.com Taxi", code: "Airport Pickup (Ref: 273660554)", departure: "Istanbul Airport (IST)", arrival: "Harbiye Residence", date: "Sun 5 Jul", conf: "Pick-up 15:55 (meets flight TK2511). Driver waits up to 45 min. Vehicle: Sedan. Price: £32.01 Paid.", branding: "hotel", mapQuery: "Harbiye+Residence+Şişli+Istanbul" },
+                { type: "lodging", name: "Harbiye Residence", host: "Reception", address: "Harbiye / Taksim, Şişli, 34373 Istanbul", checkin: "Sun 5 Jul (from 14:00)", checkout: "Thu 9 Jul (by 12:00)", conf: "5403358085 (PIN: 6017)", cost: "€352.44", branding: "airbnb", mapQuery: "Harbiye+Residence+Şişli+Istanbul" },
+                { type: "transfer", carrier: "Booking.com Taxi", code: "Airport Drop-off (Ref: 411163861)", departure: "Harbiye Residence", arrival: "Istanbul Airport (IST)", date: "Thu 9 Jul", conf: "Pick-up 09:45 at Harbiye (estimated arr 10:24). For flight TK1039 to OTP departing 13:20. Price: £29.41 Paid.", branding: "hotel", mapQuery: "Istanbul+Airport+IST" }
             ],
             bucharest: [
                 { type: "flight", carrier: "Turkish Airlines", code: "TK1039", departure: "Istanbul (IST)", arrival: "Bucharest (OTP)", depTime: "13:20", arrTime: "14:35", date: "Thu 9 Jul", conf: "SQP33K", branding: "turkish" },
@@ -2669,7 +2671,7 @@
                 `;
             } else { // Generic transfer
                 el.innerHTML = `
-                    <div class="pass-banner ${pass.branding}">${pass.carrier} Voucher</div>
+                    <div class="pass-banner ${pass.branding}">${pass.carrier}</div>
                     <div class="pass-body">
                         <div class="pass-row">
                             <div class="pass-col">
@@ -2696,9 +2698,15 @@
                         <div class="pass-row">
                             <div class="pass-col" style="flex: 1;">
                                 <span class="pass-label">Booking details / reference</span>
-                                <span class="pass-val" style="color: var(--gold);">${pass.conf}</span>
+                                <span class="pass-val" style="color: var(--gold); font-size: 0.74rem; font-weight: 500; line-height: 1.35;">${pass.conf}</span>
                             </div>
                         </div>
+                        ${pass.mapQuery ? `
+                        <div class="pass-row" style="margin-top: 8px;">
+                            <button class="card-action-btn" style="background-color: transparent;" onclick="window.open('https://www.google.com/maps/search/?api=1&query=${pass.mapQuery}', '_blank')">
+                                Navigate Maps
+                            </button>
+                        </div>` : ''}
                     </div>
                 `;
             }
