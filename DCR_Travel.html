@@ -3009,12 +3009,35 @@
             }
             
             if (selectedDay) {
-                const nextItemText = selectedDay.items[0] ? selectedDay.items[0].replace(/^[•\s\-*]+/g, '').trim() : '';
-                const displayItem = nextItemText ? `: ${nextItemText}` : '';
+                const getConciseKeyword = (text) => {
+                    if (!text) return '';
+                    let cleaned = text.replace(/\([^)]*\)/g, '').replace(/\[[^\]]*\]/g, '');
+                    cleaned = cleaned.replace(/\b\d{1,2}:\d{2}\s*(?:AM|PM)?\b/gi, '');
+                    cleaned = cleaned.replace(/➔|➔/g, '');
+                    cleaned = cleaned.replace(/\b(?:Turkish Airlines|British Airways|easyJet flight|flight|Transit to|Check-in|Check out of)\b/gi, '');
+                    cleaned = cleaned.trim().replace(/\s+/g, ' ');
+                    
+                    cleaned = cleaned.replace(/\b(?:clean-eating dinner|clean kebab dinner|traditional dinner|grill counter dinner|modern wine & bite bar dinner|waterfront stroll|historic quarters stroll|waterfront sunset cold mezes|panoramic dinner|modern Turkish lunch)\b/gi, '');
+                    
+                    let words = cleaned.split(' ');
+                    if (words.length > 3) {
+                        cleaned = words.slice(0, 3).join(' ');
+                    }
+                    cleaned = cleaned.replace(/\s*[&+,➔]\s*$/, '').trim();
+                    return cleaned;
+                };
+
+                const keywords = selectedDay.items
+                    .map(itm => getConciseKeyword(itm))
+                    .filter(k => k.length > 0)
+                    .slice(0, 4);
+                
+                const flowText = keywords.join(' → ');
+
                 nextUpContainer.innerHTML = `
                     <div class="next-up-pill" onclick="switchTab('${selectedDay.dest}')">
                         <span class="next-up-tag">${label} (${selectedDay.date})</span>
-                        <span class="next-up-text">${selectedDay.title}${displayItem}</span>
+                        <span class="next-up-text" style="font-size: 0.72rem; font-weight: 500; letter-spacing: 0.01em;">${flowText}</span>
                     </div>
                 `;
             } else {
