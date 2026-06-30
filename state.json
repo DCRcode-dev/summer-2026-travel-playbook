@@ -13,10 +13,10 @@
     "sights": [],
     "local": [],
     "timeline": [
-      { "date": "Sun 5 Jul", "title": "Anatolian Flight & Setup", "items": ["Turkish Airlines TK2511 BJV ➔ IST (Land 15:55)", "Transit to Harbiye Residence (Check-in 17:00)", "Healin Foods Nişantaşı clean-eating dinner (19:00)"] },
-      { "date": "Mon 6 Jul", "title": "Imperial History & Bosphorus Walk", "items": ["Hagia Sophia (08:30 AM arrival for 09:00 opening)", "Basilica Cistern (10:15 AM with pre-purchased tickets)", "Topkapı Palace & Harem (11:30 AM)", "Bebek Bosphorus Walk (04:30 PM - 05:30 PM)", "Tatbak Nişantaşı clean kebab dinner (19:00)"] },
-      { "date": "Tue 7 Jul", "title": "Palace Opulence & Karaköy", "items": ["Dolmabahçe Palace (08:45 AM arrival for 09:00 opening)", "Karaköy waterfront & specialty coffee crawl / hamam", "Zübeyir Ocakbaşı Taksim (07:00 PM grill counter dinner)"] },
-      { "date": "Wed 8 Jul", "title": "Bazaars, Mosques & Old Quarters", "items": ["Grand Bazaar (08:30 AM at opening)", "Süleymaniye Mosque (10:00 AM for views)", "Fener & Balat historic quarters stroll", "Hünkar Lokantası Nişantaşı traditional dinner (19:00)"] },
+      { "date": "Sun 5 Jul", "title": "Anatolian Flight & Nişantaşı", "items": ["Turkish Airlines TK2511 BJV ➔ IST (Land 15:55)", "Transit to Harbiye Residence (Check-in 17:00)", "Lips Nişantaşı trendy wine & bite bar dinner (19:00)"] },
+      { "date": "Mon 6 Jul", "title": "Old City Core: Byzantine & Bebek", "items": ["Hagia Sophia (08:30 AM arrival for 09:00 opening)", "Basilica Cistern (10:15 AM with pre-purchased tickets)", "Topkapı Palace & Harem (11:30 AM)", "Bebek Bosphorus Walk (04:30 PM - 05:30 PM)", "Tatbak Nişantaşı clean kebab dinner (19:00)"] },
+      { "date": "Tue 7 Jul", "title": "Old City: Palace, Bazaar & Mosques", "items": ["Grand Bazaar (08:30 AM at opening to beat crowds)", "Süleymaniye Mosque (10:00 AM for hill views)", "Dolmabahçe Palace (11:30 AM tour of grand suites)", "Karaköy waterfront stroll (02:00 PM)", "Zübeyir Ocakbaşı Taksim (07:00 PM grill counter dinner)"] },
+      { "date": "Wed 8 Jul", "title": "Modern Bosphorus: Yeniköy & Etiler", "items": ["Yeniköy waterfront stroll past historic yalı villas (08:30 AM)", "Etiler luxury hills & Arnavutköy wooden architecture walk", "Sunset Grill & Bar Ulus Bosphorus panoramic dinner (19:00)"] },
       { "date": "Thu 9 Jul", "title": "Departure Day", "items": ["Check out of Harbiye Residence (09:30 AM)", "Transit to Istanbul Airport (IST)", "Turkish Airlines TK1039 to Bucharest (13:20 departure)"] }
     ]
   },
