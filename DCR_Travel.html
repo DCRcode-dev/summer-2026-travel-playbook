@@ -1992,51 +1992,127 @@
         // Static timeline day segments database
         let timelineDb = {
             bodrum: [
-                { date: "Wed 1 Jul", title: "Arrival & Setup", items: ["easyJet flight EZY8553 Gatwick ➔ Bodrum", "Arrive BJV at 20:05", "Check-in Airbnb"] },
-                { date: "Thu 2 Jul", title: "Beach Vibe Day", items: ["Spend day exploring Yalıkavak Palmarina", "Walk Bodrum Town Marina"] },
-                { date: "Fri 3 Jul", title: " WATERFRONT DINING", items: ["Bohemian vibes in Gümüşlük", " Waterfront sunset cold mezes"] },
-                { date: "Sat 4 Jul", title: "Aegean Coasting", items: ["Leisurely walk near the Bodrum castle", "Final dinner with Maca"] }
+                { date: "Wed 1 Jul", title: "Arrival & Setup", items: ["easyJet flight EZY8553 Gatwick ➔ Bodrum", "Arrive BJV at 20:05", "Check-in Airbnb"], lunchOptions: [] },
+                { date: "Thu 2 Jul", title: "Beach Vibe Day", items: ["Spend day exploring Yalıkavak Palmarina", "Walk Bodrum Town Marina"], lunchOptions: [
+                    { name: "Sait (Yalıkavak)", query: "Sait Yalikavak Bodrum" },
+                    { name: "Zuma (Yalıkavak)", query: "Zuma Yalikavak Bodrum" },
+                    { name: "Nusr-Et Yalıkavak", query: "Nusr-Et Yalikavak Bodrum" }
+                ] },
+                { date: "Fri 3 Jul", title: " WATERFRONT DINING", items: ["Bohemian vibes in Gümüşlük", " Waterfront sunset cold mezes"], lunchOptions: [
+                    { name: "Mimoza (Gümüşlük)", query: "Mimoza Gumusluk Bodrum" },
+                    { name: "Liman Köftecisi", query: "Liman Koftecisi Bodrum" },
+                    { name: "Kavaklı Köfteci", query: "Kavakli Kofteci Bodrum" }
+                ] },
+                { date: "Sat 4 Jul", title: "Aegean Coasting", items: ["Leisurely walk near the Bodrum castle", "Final dinner with Maca"], lunchOptions: [
+                    { name: "Karnas Vineyards", query: "Karnas Vineyards Bodrum" },
+                    { name: "Macakizi Restaurant", query: "Macakizi Hotel Golturbuku" },
+                    { name: "Marina Yacht Club", query: "Marina Yacht Club Bodrum" }
+                ] }
             ],
             istanbul: [
-                { date: "Sun 5 Jul", title: "Anatolian Flight & Nişantaşı", items: ["Turkish Airlines TK2511 BJV ➔ IST (Land 15:55)", "Transit to Harbiye Residence (Check-in 17:00)", "Healin Foods Nişantaşı clean-eating dinner (19:00)"] },
-                { date: "Mon 6 Jul", title: "Old City Core: Byzantine & Bebek", items: ["Hagia Sophia (08:30 AM arrival for 09:00 opening)", "Basilica Cistern (10:15 AM with pre-purchased tickets)", "Topkapı Palace & Harem (11:30 AM)", "Bebek Bosphorus Walk (04:30 PM - 05:30 PM)", "Lips Nişantaşı modern wine & bite bar dinner (19:00)"] },
-                { date: "Tue 7 Jul", title: "Old City: Palace, Bazaar & Mosques", items: ["Grand Bazaar (08:30 AM at opening to beat crowds)", "Süleymaniye Mosque (10:00 AM for hill views)", "Dolmabahçe Palace (11:30 AM tour of grand suites)", "Karaköy waterfront stroll (02:00 PM)", "Arkestra Etiler Michelin-starred modern dinner (19:00)"] },
-                { date: "Wed 8 Jul", title: "Modern Bosphorus: Yeniköy & Etiler", items: ["Yeniköy waterfront stroll past historic yalı villas (08:30 AM)", "Casual protein-rich lunch & espresso crawl in Yeniköy", "Etiler luxury hills & Arnavutköy wooden architecture walk", "Sunset Grill & Bar Ulus Bosphorus panoramic dinner (19:00)"] },
-                { date: "Thu 9 Jul", title: "Departure Day", items: ["Check out of Harbiye Residence (09:30 AM)", "Transit to Istanbul Airport (IST)", "Turkish Airlines TK1039 to Bucharest (13:20 departure)"] }
+                { date: "Sun 5 Jul", title: "Anatolian Flight & Nişantaşı", items: ["Turkish Airlines TK2511 BJV ➔ IST (Land 15:55)", "Transit to Harbiye Residence (Check-in 17:00)", "Healin Foods Nişantaşı clean-eating dinner (19:00)"], lunchOptions: [] },
+                { date: "Mon 6 Jul", title: "Old City Core: Byzantine & Bebek", items: ["Hagia Sophia (08:30 AM arrival for 09:00 opening)", "Basilica Cistern (10:15 AM with pre-purchased tickets)", "Topkapı Palace & Harem (11:30 AM)", "Bebek Bosphorus Walk (04:30 PM - 05:30 PM)", "Lips Nişantaşı modern wine & bite bar dinner (19:00)"], lunchOptions: [
+                    { name: "Sultanahmet Köftecisi", query: "Sultanahmet Koftecisi Selim Usta" },
+                    { name: "Matbah Restaurant", query: "Matbah Restaurant Istanbul" },
+                    { name: "Deraliye Restaurant", query: "Deraliye Ottoman Palace Cuisine Restaurant" }
+                ] },
+                { date: "Tue 7 Jul", title: "Old City: Palace, Bazaar & Mosques", items: ["Grand Bazaar (08:30 AM at opening to beat crowds)", "Süleymaniye Mosque (10:00 AM for hill views)", "Dolmabahçe Palace (11:30 AM tour of grand suites)", "Karaköy waterfront stroll (02:00 PM)", "Arkestra Etiler Michelin-starred modern dinner (19:00)"], lunchOptions: [
+                    { name: "Karaköy Lokantası", query: "Karakoy Lokantasi" },
+                    { name: "Liman İstanbul", query: "Liman Istanbul Galataport" },
+                    { name: "Karadeniz Dönerci", query: "Karadeniz Doner-Asim+Usta Besiktas" }
+                ] },
+                { date: "Wed 8 Jul", title: "Modern Bosphorus: Yeniköy & Etiler", items: ["Yeniköy waterfront stroll past historic yalı villas (08:30 AM)", "Casual protein-rich lunch & espresso crawl in Yeniköy", "Etiler luxury hills & Arnavutköy wooden architecture walk", "Sunset Grill & Bar Ulus Bosphorus panoramic dinner (19:00)"], lunchOptions: [
+                    { name: "Lokanta Limu (Yeniköy)", query: "Lokanta Limu Yenikoy" },
+                    { name: "Mangerie (Bebek)", query: "Mangerie Bebek" },
+                    { name: "Beyaz Fırın (Etiler)", query: "Beyaz Firin Etiler" }
+                ] },
+                { date: "Thu 9 Jul", title: "Departure Day", items: ["Check out of Harbiye Residence (09:30 AM)", "Transit to Istanbul Airport (IST)", "Turkish Airlines TK1039 to Bucharest (13:20 departure)"], lunchOptions: [] }
             ],
             bucharest: [
-                { date: "Thu 9 Jul", title: "Romania Transit", items: ["Turkish Airlines TK1039 IST ➔ OTP", "Arrive Bucharest at 14:35", "Check-in Airbnb Old Town on Calea Victoriei", "Wander Old Town Lipscani bars"] },
-                { date: "Fri 10 Jul", title: "Old Town Culture", items: ["Artisan filter coffee crawl at Origo", "Explore Carturesti Carusel spiral bookshop", "Dinner at Gothic Caru' cu Bere"] },
-                { date: "Sat 11 Jul", title: "Tropical Wellness", items: ["Full relax afternoon at Therme Bucuresti", "Sunset drinks at Linea rooftop bar"] }
+                { date: "Thu 9 Jul", title: "Romania Transit", items: ["Turkish Airlines TK1039 IST ➔ OTP", "Arrive Bucharest at 14:35", "Check-in Airbnb Old Town on Calea Victoriei", "Wander Old Town Lipscani bars"], lunchOptions: [
+                    { name: "Caru' cu Bere", query: "Caru cu Bere Bucharest" },
+                    { name: "Lacrimi și Sfinți", query: "Lacrimi si Sfinti Bucharest" },
+                    { name: "Aubergine Restaurant", query: "Aubergine Restaurant Bucharest" }
+                ] },
+                { date: "Fri 10 Jul", title: "Old Town Culture", items: ["Artisan filter coffee crawl at Origo", "Explore Carturesti Carusel spiral bookshop", "Dinner at Gothic Caru' cu Bere"], lunchOptions: [
+                    { name: "Bistro Ateneu", query: "Bistro Ateneu Bucharest" },
+                    { name: "Alt Shift", query: "Alt Shift Bucharest" },
+                    { name: "Origo Coffee", query: "Origo Bucharest" }
+                ] },
+                { date: "Sat 11 Jul", title: "Tropical Wellness", items: ["Full relax afternoon at Therme Bucuresti", "Sunset drinks at Linea rooftop bar"], lunchOptions: [
+                    { name: "Pescăruș", query: "Pescarus Bucharest" },
+                    { name: "Fior di Latte", query: "Fior di Latte Bucharest" },
+                    { name: "Isoletta", query: "Isoletta Bucharest" }
+                ] }
             ],
             brasov: [
-                { date: "Sun 12 Jul", title: "Roadtrip to Transylvania", items: ["Drive or Train to Braşov early", "Check-in Airbnb Strada Lungă 39", "Stroll Council Square (Piața Sfatului)"] },
-                { date: "Mon 13 Jul", title: "Training & Citadel", items: ["Bodybuilding workout at Belaqva Active Gym", "Climb watchtowers (Black & White towers)", "Walk through Rope Street"] },
-                { date: "Tue 14 Jul", title: "Castle Day Trip", items: ["Excursion to Dracula's Bran Castle", "Hike trails up to Tâmpa Mountain sign"] },
-                { date: "Wed 15 Jul", title: "Depart Romania", items: ["Leave Braşov at 11:00 AM sharp", "Drive 2h45 to Bucharest Otopeni (OTP)", "British Airways BA875 to Heathrow LHR (16:15)"] }
+                { date: "Sun 12 Jul", title: "Roadtrip to Transylvania", items: ["Drive or Train to Braşov early", "Check-in Airbnb Strada Lungă 39", "Stroll Council Square (Piața Sfatului)"], lunchOptions: [
+                    { name: "Bistro de l'Arte", query: "Bistro de l'Arte Brasov" },
+                    { name: "Dei Frati", query: "Dei Frati Brasov" },
+                    { name: "Sub Tâmpa", query: "Sub Tampa Brasov" }
+                ] },
+                { date: "Mon 13 Jul", title: "Training & Citadel", items: ["Bodybuilding workout at Belaqva Active Gym", "Climb watchtowers (Black & White towers)", "Walk through Rope Street"], lunchOptions: [
+                    { name: "Prato", query: "Prato Brasov" },
+                    { name: "La Birou Bistro", query: "La Birou Bistro Brasov" },
+                    { name: "Pilvax", query: "Pilvax Brasov" }
+                ] },
+                { date: "Tue 14 Jul", title: "Castle Day Trip", items: ["Excursion to Dracula's Bran Castle", "Hike trails up to Tâmpa Mountain sign"], lunchOptions: [
+                    { name: "Club Vila Bran", query: "Club Vila Bran" },
+                    { name: "Stâna Turistică Sergiana", query: "Stana Turistica Sergiana Poiana Brasov" },
+                    { name: "Coliba Haiducilor", query: "Coliba Haiducilor Poiana Brasov" }
+                ] },
+                { date: "Wed 15 Jul", title: "Depart Romania", items: ["Leave Braşov at 11:00 AM sharp", "Drive 2h45 to Bucharest Otopeni (OTP)", "British Airways BA875 to Heathrow LHR (16:15)"], lunchOptions: [] }
             ],
             spetses: [
-                { date: "Wed 22 Jul", title: "Saronic Crossing", items: ["BA626 London ➔ Athens (Arr: 13:10)", "Transit to Piraeus, sail on afternoon ferry", "Arrive Spetses Island, check-in Teresa suite"] },
-                { date: "Thu 23 Jul", title: "Zogeria Turquoise Waters", items: ["Cycle or water taxi to Zogeria beach cove", "Seafood meze lunch on the sand"] },
-                { date: "Fri 24 Jul", title: "Sunset Veranda Cocktails", items: ["Relaxed beach morning at Agia Paraskevi", "Evening drinks at Poseidonion Hotel veranda"] },
-                { date: "Sat 25 Jul", title: "Old Harbour Dining", items: ["Leisurely island bike ride", "Dinner under harbor lanterns at Orloff"] },
-                { date: "Sun 26 Jul", title: "Quiet Cove Sunsets", items: ["Swim and final sunbathing hours"] },
-                { date: "Mon 27 Jul", title: "Spetses ➔ Athens ➔ London", items: ["Sail from Spetses by 14:00", "British Airways BA631 ATH ➔ LHR (19:30)"] }
+                { date: "Wed 22 Jul", title: "Saronic Crossing", items: ["BA626 London ➔ Athens (Arr: 13:10)", "Transit to Piraeus, sail on afternoon ferry", "Arrive Spetses Island, check-in Teresa suite"], lunchOptions: [] },
+                { date: "Thu 23 Jul", title: "Zogeria Turquoise Waters", items: ["Cycle or water taxi to Zogeria beach cove", "Seafood meze lunch on the sand"], lunchOptions: [
+                    { name: "Zogeria Tavern", query: "Zogeria Tavern Spetses" },
+                    { name: "Tarsanas Tavern", query: "Tarsanas Tavern Spetses" },
+                    { name: "Patralis Fish Tavern", query: "Patralis Fish Tavern Spetses" }
+                ] },
+                { date: "Fri 24 Jul", title: "Sunset Veranda Cocktails", items: ["Relaxed beach morning at Agia Paraskevi", "Evening drinks at Poseidonion Hotel veranda"], lunchOptions: [
+                    { name: "Kaiki Beach Club", query: "Kaiki Beach Club Spetses" },
+                    { name: "Nero Restaurant", query: "Nero Restaurant Spetses" },
+                    { name: "Clock Pizza/Souvlaki", query: "Clock Spetses" }
+                ] },
+                { date: "Sat 25 Jul", title: "Old Harbour Dining", items: ["Leisurely island bike ride", "Dinner under harbor lanterns at Orloff"], lunchOptions: [
+                    { name: "Orloff Restaurant", query: "Orloff Restaurant Spetses" },
+                    { name: "Liotrivi Restaurant", query: "Liotrivi Restaurant Spetses" },
+                    { name: "Mourayo Tavern", query: "Mourayo Spetses" }
+                ] },
+                { date: "Sun 26 Jul", title: "Quiet Cove Sunsets", items: ["Swim and final sunbathing hours"], lunchOptions: [
+                    { name: "Paradise Beach Tavern", query: "Paradise Beach Tavern Spetses" },
+                    { name: "Spetsiotiko Grill", query: "Spetsiotiko Spetses" },
+                    { name: "Bouboulina Tavern", query: "Bouboulina Spetses" }
+                ] },
+                { date: "Mon 27 Jul", title: "Spetses ➔ Athens ➔ London", items: ["Sail from Spetses by 14:00", "British Airways BA631 ATH ➔ LHR (19:30)"], lunchOptions: [] }
             ],
             tokyo: [
-                { date: "Thu 30 Jul", title: "LHR ➔ HND Flight", items: ["BA007 London Heathrow departure (09:25)", "Overnight international flight in the air"] },
-                { date: "Fri 31 Jul", title: "Welcome to Shinsen", items: ["Land Haneda 07:00 AM", "Check-in Shibuya Airbnb (Host Noe)", "Pour-over coffee walk in Shinsen village"] },
-                { date: "Sat 1 Aug", title: "Shinsen Explorations", items: ["Specialty coffee at Camelback", "Explore Daikanyama T-Site architectural bookstore"] },
-                { date: "Sun 2 Aug", title: "Shibuya Gym Training", items: ["Bodybuilding workout at Gold's Gym Shibuya", "Cover tattoos and bring clean indoor shoes"] },
-                { date: "Mon 3 Aug", title: "Underground Food Halls", items: ["Pick bento treats at Tokyu Food Show", "Stroll Nakameguro Meguro River canal"] },
-                { date: "Tue 4 Aug", title: "Digital Arts & Monjayaki", items: ["Visit teamLab Planets exhibition", "Cook monjayaki pancakes in Tsukishima griddles"] },
-                { date: "Wed 5 Aug", title: "Tuna Auction & Old Town", items: ["Early Toyosu fish market tuna auction", "Stroll Yanaka Ginza old merchants street"] },
-                { date: "Thu 6 Aug", title: "Micro-Alley Drinks", items: ["Bar hopping in Nonbei Yokocho", "Late jazz records at Lion Cafe"] },
-                { date: "Fri 7 Aug", title: "Move to Ben's", items: ["Check out from Shibuya Airbnb", "Move to friend Ben's residence for 9 nights"] },
-                { date: "Sat 8 Aug - Sat 15 Aug", title: "Staying with Ben", items: ["No Airbnb bookings", "Explore Tokyo local neighborhoods with Ben"] },
-                { date: "Sun 16 Aug", title: "Move back to Airbnb", items: ["Check-in Shibuya Airbnb (Block II)", "Get settled for final 4 days in Tokyo"] },
-                { date: "Mon 17 Aug - Wed 19 Aug", title: "Final Shibuya Days", items: ["Final gym sessions, omakase sushi dinners"] },
-                { date: "Thu 20 Aug", title: "Tokyo ➔ London", items: ["Check out Shibuya Airbnb by 11:00 AM", "BA006 Haneda ➔ LHR T5 (13:05 - 19:50)"] }
+                { date: "Thu 30 Jul", title: "LHR ➔ HND Flight", items: ["BA007 London Heathrow departure (09:25)", "Overnight international flight in the air"], lunchOptions: [] },
+                { date: "Fri 31 Jul", title: "Welcome to Shinsen", items: ["Land Haneda 07:00 AM", "Check-in Shibuya Airbnb (Host Noe)", "Pour-over coffee walk in Shinsen village"], lunchOptions: [
+                    { name: "Camelback Sandwiches", query: "Camelback Sandwich Shibuya" },
+                    { name: "Sushizanmai Shibuya", query: "Sushizanmai Shibuya" },
+                    { name: "Tsumugi Shinsen", query: "Tsumugi Shinsen Shibuya" }
+                ] },
+                { date: "Sat 1 Aug", title: "Shinsen Explorations", items: ["Specialty coffee at Camelback", "Explore Daikanyama T-Site architectural bookstore"], lunchOptions: [
+                    { name: "Abura Soba Shibuya", query: "Abura Soba Shibuya" },
+                    { name: "Tonkatsu Maisen", query: "Tonkatsu Maisen Shibuya" },
+                    { name: "Uobei Sushi Shibuya", query: "Uobei Shibuya" }
+                ] },
+                { date: "Sun 2 Aug", title: "Shibuya Gym Training", items: ["Bodybuilding workout at Gold's Gym Shibuya", "Cover tattoos and bring clean indoor shoes"], lunchOptions: [
+                    { name: "Ikinari Steak Shibuya", query: "Ikinari Steak Shibuya" },
+                    { name: "Negishi Shibuya", query: "Negishi Shibuya" },
+                    { name: "Genki Sushi Shibuya", query: "Genki Sushi Shibuya" }
+                ] },
+                { date: "Mon 3 Aug", title: "Underground Food Halls", items: ["Pick bento treats at Tokyu Food Show", "Stroll Nakameguro Meguro River canal"], lunchOptions: [] },
+                { date: "Tue 4 Aug", title: "Digital Arts & Monjayaki", items: ["Visit teamLab Planets exhibition", "Cook monjayaki pancakes in Tsukishima griddles"], lunchOptions: [] },
+                { date: "Wed 5 Aug", title: "Tuna Auction & Old Town", items: ["Early Toyosu fish market tuna auction", "Stroll Yanaka Ginza old merchants street"], lunchOptions: [] },
+                { date: "Thu 6 Aug", title: "Micro-Alley Drinks", items: ["Bar hopping in Nonbei Yokocho", "Late jazz records at Lion Cafe"], lunchOptions: [] },
+                { date: "Fri 7 Aug", title: "Move to Ben's", items: ["Check out from Shibuya Airbnb", "Move to friend Ben's residence for 9 nights"], lunchOptions: [] },
+                { date: "Sat 8 Aug - Sat 15 Aug", title: "Staying with Ben", items: ["No Airbnb bookings", "Explore Tokyo local neighborhoods with Ben"], lunchOptions: [] },
+                { date: "Sun 16 Aug", title: "Move back to Airbnb", items: ["Check-in Shibuya Airbnb (Block II)", "Get settled for final 4 days in Tokyo"], lunchOptions: [] },
+                { date: "Mon 17 Aug - Wed 19 Aug", title: "Final Shibuya Days", items: ["Final gym sessions, omakase sushi dinners"], lunchOptions: [] },
+                { date: "Thu 20 Aug", title: "Tokyo ➔ London", items: ["Check out Shibuya Airbnb by 11:00 AM", "BA006 Haneda ➔ LHR T5 (13:05 - 19:50)"], lunchOptions: [] }
             ]
         };
 
@@ -2664,6 +2740,29 @@
                 `;
             });
 
+            let lunchOptionsHtml = '';
+            if (day.lunchOptions && day.lunchOptions.length > 0) {
+                let optionsList = '';
+                day.lunchOptions.forEach(opt => {
+                    const encodedQuery = encodeURIComponent(opt.query);
+                    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedQuery}`;
+                    optionsList += `
+                        <a href="${mapsUrl}" target="_blank" style="font-size: 0.72rem; color: var(--text-main); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; background: rgba(201, 168, 76, 0.06); border: 1px solid rgba(201, 168, 76, 0.15); padding: 4px 8px; border-radius: 12px; margin-right: 6px; margin-bottom: 6px; transition: all 0.2s ease;">
+                            <svg viewBox="0 0 24 24" style="width: 10px; height: 10px; fill: var(--gold); margin-bottom: 1px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                            <span style="font-weight: 500; border-bottom: 1px dashed transparent;">${opt.name}</span>
+                        </a>
+                    `;
+                });
+                lunchOptionsHtml = `
+                    <div class="timeline-lunch-section" style="margin-top: 12px; padding-top: 10px; border-top: 1px dashed rgba(201, 168, 76, 0.25);">
+                        <div style="font-size: 0.65rem; text-transform: uppercase; font-weight: 700; color: var(--gold); letter-spacing: 0.05em; margin-bottom: 8px;">📍 Lunch Options</div>
+                        <div style="display: flex; flex-wrap: wrap;">
+                            ${optionsList}
+                        </div>
+                    </div>
+                `;
+            }
+
             el.innerHTML = `
                 <div class="timeline-dot"></div>
                 <div class="timeline-date-label" contenteditable="true" data-day="${dayIndex}" data-field="date">${day.date}</div>
@@ -2672,6 +2771,7 @@
                     <div class="timeline-details-list">
                         ${itemsHtml}
                     </div>
+                    ${lunchOptionsHtml}
                     <button class="add-item-btn" onclick="addTimelineItem('${dest}', ${dayIndex})">+ Add Item</button>
                 </div>
             `;
