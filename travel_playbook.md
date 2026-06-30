@@ -106,7 +106,7 @@ Welcome to your bespoke Summer 2026 Grand Tour Playbook. This curated guide swee
 ### 🗺️ The Vibe Check
 * **The Neighborhood:** You are staying at the very top of **Calea Victoriei**, Bucharest's most historic and stylish avenue. You are steps away from the vibrant **Old Town (Lipscani)**, Stavropoleos Monastery, and a wealth of excellent bistros.
 * **Local Know-How:**
-  * **Saturday Night Engagement Party:** You have the Engagement Party (Max & Fin) scheduled for **Saturday, July 11 at 17:30**. 
+  * **Saturday Night Engagement Party:** You have the Engagement Party (Max & Fin) scheduled for **Saturday, July 11 at 19:30 (7:30 PM)**. 
   * **Sunday Private Driver Pickup:** On checkout day (Sun 12 Jul) at **11:00 AM**, your private driver will pick you up from the Airbnb to drive to Braşov with a 2-hour sightseeing stop at Peleș Castle in Sinaia.
 
 ### 🏋️ Recommended Gyms (Day Pass)
