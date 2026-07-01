@@ -28,8 +28,8 @@ Welcome to your bespoke Summer 2026 Grand Tour Playbook. This curated guide swee
 | **3**<br>🇯🇵 Tokyo (Noe) | **4**<br>🇯🇵 Tokyo (Noe) | **5**<br>🇯🇵 Tokyo (Noe) | **6**<br>🇯🇵 Tokyo (Noe) | **7**<br>🇯🇵 Tokyo (Ben) | **8**<br>🇯🇵 Tokyo (Ben) | **9**<br>🇯🇵 Tokyo (Ben) |
 | **10**<br>🇯🇵 Tokyo (Ben) | **11**<br>🇯🇵 Tokyo (Ben) | **12**<br>🇯🇵 Tokyo (Ben) | **13**<br>🇯🇵 Tokyo (Ben) | **14**<br>🇯🇵 Tokyo (Ben) | **15**<br>🇯🇵 Tokyo (Ben) | **16**<br>🇯🇵 Tokyo (Ben ➔ Noe) |
 | **17**<br>🇯🇵 Tokyo (Noe) | **18**<br>🇯🇵 Tokyo (Noe) | **19**<br>🇯🇵 Tokyo (Noe) | **20**<br>✈️ HND ➔ LHR | **21**<br>🇬🇧 London | **22**<br>🇬🇧 London | **23**<br>🇬🇧 London |
-| **24**<br>🇬🇧 London | **25**<br>🇬🇧 London | **26**<br>🇬🇧 London | **27**<br>🇬🇧 London | **28**<br>🇫🇷 Corsica | **29**<br>🇫🇷 Corsica | **30**<br>🇫🇷 Corsica |
-| **31**<br>🇫🇷 Corsica | | | | | | |
+| **24**<br>🇬🇧 London | **25**<br>🇬🇧 London | **26**<br>🇬🇧 London | **27**<br>🇬🇧 London | **28**<br>🔄 TBD | **29**<br>🔄 TBD | **30**<br>🔄 TBD |
+| **31**<br>🔄 TBD | | | | | | |
 
 ---
 
@@ -107,7 +107,7 @@ Welcome to your bespoke Summer 2026 Grand Tour Playbook. This curated guide swee
 * **The Neighborhood:** You are staying at the very top of **Calea Victoriei**, Bucharest's most historic and stylish avenue. You are steps away from the vibrant **Old Town (Lipscani)**, Stavropoleos Monastery, and a wealth of excellent bistros.
 * **Local Know-How:**
   * **Saturday Night Engagement Party:** You have the Engagement Party (Max & Fin) scheduled for **Saturday, July 11 at 19:30 (7:30 PM)**. 
-  * **Sunday Private Driver Pickup:** On checkout day (Sun 12 Jul) at **11:00 AM**, your private driver will pick you up from the Airbnb to drive to Braşov with a 2-hour sightseeing stop at Peleș Castle in Sinaia.
+  * **Sunday Train Stopover:** On checkout day (Sun 12 Jul) at **11:00 AM**, check out and take an Uber/Bolt to Bucharest Gara de Nord. Take the **12:10 PM InterRegio train** to Sinaia (arrive 13:40), store your bags at Sinaia station (or Hotel Caraiman), tour Peleș Castle, and catch the **17:15 PM InterRegio train** to Brașov (arrive 18:15).
 
 ### 🏋️ Recommended Gyms (Day Pass)
 * **[World Class Downtown](https://www.worldclass.ro/club/downtown/)** (Radisson Blu, Calea Victoriei): A premium health and fitness club located directly on Calea Victoriei. Featuring high-end strength gear, cardio zones, and pool access. Day passes can be booked directly through their desk.
@@ -144,7 +144,7 @@ Welcome to your bespoke Summer 2026 Grand Tour Playbook. This curated guide swee
 ### ✈️ Logistics & Bookings
 | Date/Time | Type (Flight/Stay) | Details (Flight # / Property Name) | Confirmation / Address |
 | :--- | :--- | :--- | :--- |
-| **Sun 12 Jul**<br>11:00 – 15:30 | 🚘 Overland Transfer | Bucharest ➔ Sinaia (Peleș Castle) ➔ Braşov | **Private Driver Stopover** (Bags remain in trunk)<br>Cost: ~€130–€180 |
+| **Sun 12 Jul**<br>12:10 – 18:15 | 🚆 Train Stopover | Bucharest ➔ Sinaia (Peleș Castle) ➔ Braşov | **CFR InterRegio Trains** (IR 12:10 ➔ Sinaia; IR 17:15 ➔ Brașov)<br>Bags stored at Sinaia Gara |
 | **Sun 12 Jul –<br>Wed 15 Jul** | 🏨 Stay (3 Nights) | **Airbnb (Old Town) — Host Cristian** | **Strada Lungă 39, Braşov 500035**<br>Cost: **£185.76** (Check-out Wed 15 Jul) |
 | **Wed 15 Jul**<br>16:15 – 17:40 | ✈️ Outbound Flight | British Airways **BA875** (Bucharest `OTP` ➔ London Heathrow `LHR`) | Ref: **XK3V82**<br>Cost: **€74.82** (Euro Traveller) |
 
