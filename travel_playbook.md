@@ -38,7 +38,7 @@ Welcome to your bespoke Summer 2026 Grand Tour Playbook. This curated guide swee
 | Date/Time | Type (Flight/Stay) | Details (Flight # / Property Name) | Confirmation / Address |
 | :--- | :--- | :--- | :--- |
 | **Wed 1 Jul**<br>14:00 – 20:05 | ✈️ Outbound Flight | easyJet **EZY8553** (London Gatwick `LGW` ➔ Bodrum `BJV`) | Ref: **KBZL8QD** (Retimed from 13:55 to 14:00)<br>Cost: **£105.98** (Hold + Cabin Bag) |
-| **Wed 1 Jul –<br>Sun 5 Jul** | 🏨 Stay (4 Nights) | **Airbnb (Picked by Maca)** | Stay at Airbnb picked by Maca (Details TBD) |
+| **Wed 1 Jul –<br>Sun 5 Jul** | 🏨 Stay (4 Nights) | **Airbnb (Picked by Maca)** | Gümbet Mahallesi, Mister Hadi Sokak, Bodrum, Muğla 48400 |
 
 ### 🗺️ The Vibe Check
 * **The Neighborhood:** Bodrum is the playground of the Mediterranean jet-set—where rugged cliffs meet superyacht glamour. Since your lodging is picked by Maca, you are fully set. 

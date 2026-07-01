@@ -1419,11 +1419,20 @@
                 <div class="manual-card">
                     <div class="manual-banner">Airbnb (Picked by Maca)</div>
                     <div class="manual-body">
-                        <div class="manual-row"><span class="manual-label">Address</span><span class="manual-val">Details TBD (Picked by Maca)</span></div>
-                        <div class="manual-row"><span class="manual-label">Host</span><span class="manual-val">TBD</span></div>
+                        <div class="manual-row"><span class="manual-label">Address</span><span class="manual-val">Gümbet Mahallesi, Mister Hadi Sokak, Bodrum, Muğla 48400</span></div>
+                        <div class="manual-row"><span class="manual-label">Host</span><span class="manual-val">TBD (Picked by Maca)</span></div>
                         <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">Wed 1 Jul</span></div>
                         <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">Sun 5 Jul</span></div>
                         <div class="manual-row"><span class="manual-label">Confirmation</span><span class="manual-val">TBD</span></div>
+                        <div class="manual-row" style="flex-direction: column; align-items: flex-start; gap: 4px; border-top: 1px solid var(--border-ios); margin-top: 8px; padding-top: 8px;">
+                            <span class="manual-label" style="font-weight: 600;">Directions</span>
+                            <span class="manual-val" style="font-size: 0.72rem; color: var(--text-secondary); line-height: 1.35;">If you get off in front of the "Serpina Hotel" with the Bardakçı minibus, you will have a walking distance of 100 meters. Taxi costs 120 TL in front of the municipality in front of the center.</span>
+                        </div>
+                        <div class="manual-row" style="margin-top: 8px;">
+                            <button class="card-action-btn" onclick="window.open('https://www.google.com/maps/search/?api=1&query=Mister+Hadi+Sokak+Bodrum+Mugla+48400', '_blank')">
+                                Navigate Maps
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -2054,7 +2063,7 @@
         const logisticsDb = {
             bodrum: [
                 { type: "flight", carrier: "easyJet", code: "EZY8553", departure: "London Gatwick (LGW)", arrival: "Bodrum (BJV)", depTime: "14:00", arrTime: "20:05", date: "Wed 1 Jul", conf: "KBZL8QD", branding: "easyjet" },
-                { type: "lodging", name: "Airbnb (Picked by Maca)", host: "TBD", address: "Details TBD (Picked by Maca)", checkin: "Wed 1 Jul", checkout: "Sun 5 Jul", conf: "TBD", branding: "hotel" }
+                { type: "lodging", name: "Airbnb (Picked by Maca)", host: "TBD (Picked by Maca)", address: "Gümbet Mahallesi, Mister Hadi Sokak, Bodrum, Muğla 48400", checkin: "Wed 1 Jul", checkout: "Sun 5 Jul", conf: "TBD", branding: "hotel", mapQuery: "Mister+Hadi+Sokak+Bodrum+Mugla+48400" }
             ],
             istanbul: [
                 { type: "flight", carrier: "Turkish Airlines", code: "TK2511", departure: "Bodrum (BJV)", arrival: "Istanbul (IST)", depTime: "14:25", arrTime: "15:55", date: "Sun 5 Jul", conf: "SQP33K", branding: "turkish" },
