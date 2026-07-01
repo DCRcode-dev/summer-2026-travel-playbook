@@ -2498,8 +2498,11 @@
         window.addEventListener('DOMContentLoaded', () => {
             // Register Service Worker
             if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('./sw.js').then(reg => {
+                navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then(reg => {
                     console.log('Service Worker registered successfully:', reg);
+                    
+                    // Force check for updates on startup
+                    reg.update();
                     
                     if (reg.waiting) {
                         showUpdatePill(reg.waiting);
