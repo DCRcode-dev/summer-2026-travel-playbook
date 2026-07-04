@@ -107,7 +107,7 @@ Welcome to your bespoke Summer 2026 Grand Tour Playbook. This curated guide swee
 * **The Neighborhood:** You are staying at the very top of **Calea Victoriei**, Bucharest's most historic and stylish avenue. You are steps away from the vibrant **Old Town (Lipscani)**, Stavropoleos Monastery, and a wealth of excellent bistros.
 * **Local Know-How:**
   * **Saturday Night Engagement Party:** You have the Engagement Party (Max & Fin) scheduled for **Saturday, July 11 at 19:30 (7:30 PM)**. 
-  * **Sunday Train Stopover:** On checkout day (Sun 12 Jul) at **11:00 AM**, check out and take an Uber/Bolt to Bucharest Gara de Nord. Take the **12:10 PM InterRegio train** to Sinaia (arrive 13:40), store your bags at Sinaia station (or Hotel Caraiman), tour Peleș Castle, and catch the **17:15 PM InterRegio train** to Brașov (arrive 18:15).
+  * **Sunday Train Stopover:** On checkout day (Sun 12 Jul) at **09:30 AM**, check out and take an Uber/Bolt to Bucharest Gara de Nord. Take the **10:15 AM InterRegio train** to Sinaia (arrive 11:45), store your bags at Sinaia station (or Hotel Caraiman), walk to the Royal Estate for a scenic lunch at Carol Gastro Bierhaus (12:30 PM), tour Peleș Castle (02:30 PM timed entry), and catch the **17:15 PM InterRegio train** to Brașov (arrive 18:15).
 
 ### 🏋️ Recommended Gyms (Day Pass)
 * **[World Class Downtown](https://www.worldclass.ro/club/downtown/)** (Radisson Blu, Calea Victoriei): A premium health and fitness club located directly on Calea Victoriei. Featuring high-end strength gear, cardio zones, and pool access. Day passes can be booked directly through their desk.
@@ -144,7 +144,7 @@ Welcome to your bespoke Summer 2026 Grand Tour Playbook. This curated guide swee
 ### ✈️ Logistics & Bookings
 | Date/Time | Type (Flight/Stay) | Details (Flight # / Property Name) | Confirmation / Address |
 | :--- | :--- | :--- | :--- |
-| **Sun 12 Jul**<br>12:10 – 18:15 | 🚆 Train Stopover | Bucharest ➔ Sinaia (Peleș Castle) ➔ Braşov | **CFR InterRegio Trains** (IR 12:10 ➔ Sinaia; IR 17:15 ➔ Brașov)<br>Bags stored at Sinaia Gara |
+| **Sun 12 Jul**<br>10:15 – 18:15 | 🚆 Train Stopover | Bucharest ➔ Sinaia (Peleș Castle) ➔ Braşov | **CFR InterRegio Trains** (IR 10:15 ➔ Sinaia; IR 17:15 ➔ Brașov)<br>Bags stored at Sinaia Gara |
 | **Sun 12 Jul –<br>Wed 15 Jul** | 🏨 Stay (3 Nights) | **Airbnb (Old Town) — Host Cristian** | **Strada Lungă 39, Braşov 500035**<br>Cost: **£185.76** (Check-out Wed 15 Jul) |
 | **Wed 15 Jul**<br>16:15 – 17:40 | ✈️ Outbound Flight | British Airways **BA875** (Bucharest `OTP` ➔ London Heathrow `LHR`) | Ref: **XK3V82**<br>Cost: **€74.82** (Euro Traveller) |
 
