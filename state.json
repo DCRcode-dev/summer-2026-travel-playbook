@@ -3,148 +3,644 @@
     "sights": [],
     "local": [],
     "timeline": [
-      { "date": "Wed 1 Jul", "title": "Arrival & Setup", "items": ["easyJet flight EZY8553 Gatwick ➔ Bodrum", "Arrive BJV at 20:05", "Check-in Airbnb"], "lunchOptions": [] },
-      { "date": "Thu 2 Jul", "title": "Beach Vibe Day", "items": ["Spend day exploring Yalıkavak Palmarina", "Walk Bodrum Town Marina"], "lunchOptions": [
-        { "name": "Sait (Yalıkavak)", "query": "Sait Yalikavak Bodrum" },
-        { "name": "Zuma (Yalıkavak)", "query": "Zuma Yalikavak Bodrum" },
-        { "name": "Nusr-Et Yalıkavak", "query": "Nusr-Et Yalikavak Bodrum" }
-      ] },
-      { "date": "Fri 3 Jul", "title": " WATERFRONT DINING", "items": ["Bohemian vibes in Gümüşlük", " Waterfront sunset cold mezes"], "lunchOptions": [
-        { "name": "Mimoza (Gümüşlük)", "query": "Mimoza Gumusluk Bodrum" },
-        { "name": "Liman Köftecisi", "query": "Liman Koftecisi Bodrum" },
-        { "name": "Kavaklı Köfteci", "query": "Kavakli Kofteci Bodrum" }
-      ] },
-      { "date": "Sat 4 Jul", "title": "Aegean Coasting", "items": ["Leisurely walk near the Bodrum castle", "Final dinner with Maca"], "lunchOptions": [
-        { "name": "Karnas Vineyards", "query": "Karnas Vineyards Bodrum" },
-        { "name": "Macakizi Restaurant", "query": "Macakizi Hotel Golturbuku" },
-        { "name": "Marina Yacht Club", "query": "Marina Yacht Club Bodrum" }
-      ] }
+      {
+        "date": "Wed 1 Jul",
+        "title": "Arrival & Setup",
+        "items": [
+          "easyJet flight EZY8553 Gatwick ➔ Bodrum",
+          "Arrive BJV at 20:05",
+          "Check-in Airbnb"
+        ],
+        "lunchOptions": []
+      },
+      {
+        "date": "Thu 2 Jul",
+        "title": "Beach Vibe Day",
+        "items": [
+          "Spend day exploring Yalıkavak Palmarina",
+          "Walk Bodrum Town Marina"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Sait (Yalıkavak)",
+            "query": "Sait Yalikavak Bodrum"
+          },
+          {
+            "name": "Zuma (Yalıkavak)",
+            "query": "Zuma Yalikavak Bodrum"
+          },
+          {
+            "name": "Nusr-Et Yalıkavak",
+            "query": "Nusr-Et Yalikavak Bodrum"
+          }
+        ]
+      },
+      {
+        "date": "Fri 3 Jul",
+        "title": " WATERFRONT DINING",
+        "items": [
+          "Bohemian vibes in Gümüşlük",
+          " Waterfront sunset cold mezes"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Mimoza (Gümüşlük)",
+            "query": "Mimoza Gumusluk Bodrum"
+          },
+          {
+            "name": "Liman Köftecisi",
+            "query": "Liman Koftecisi Bodrum"
+          },
+          {
+            "name": "Kavaklı Köfteci",
+            "query": "Kavakli Kofteci Bodrum"
+          }
+        ]
+      },
+      {
+        "date": "Sat 4 Jul",
+        "title": "Aegean Coasting",
+        "items": [
+          "Leisurely walk near the Bodrum castle",
+          "Final dinner with Maca"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Karnas Vineyards",
+            "query": "Karnas Vineyards Bodrum"
+          },
+          {
+            "name": "Macakizi Restaurant",
+            "query": "Macakizi Hotel Golturbuku"
+          },
+          {
+            "name": "Marina Yacht Club",
+            "query": "Marina Yacht Club Bodrum"
+          }
+        ]
+      }
     ]
   },
-    "istanbul": {
-      "sights": [],
-      "local": [],
-      "timeline": [
-        { "date": "Sun 5 Jul", "title": "Arrival & Nişantaşı", "items": ["Turkish Airlines TK2511 BJV ➔ IST (Land 15:55)", "Transit to Harbiye Residence (Check-in 17:00)", "Healin Foods Nişantaşı clean-eating dinner (19:00)"], "lunchOptions": [] },
-        { "date": "Mon 6 Jul", "title": "Karaköy, Galataport & Bebek Walk", "items": ["Waterfront stroll at Karaköy & Galataport (11:30 AM)", "Karaköy Lokantası late meze lunch / early dinner (14:30) (Backup: Muuto or Ali Ocakbaşı)", "Flagship dessert tasting at Karaköy Güllüoğlu (16:00)", "Sunset walk along Bebek Waterfront promenade (19:00)", "Optional drinks at Efendi Nişantaşı or Arkestra Listening Room (21:30)"], "lunchOptions": [
-          { "name": "Karaköy Lokantası", "query": "Karakoy Lokantasi" },
-          { "name": "Muuto Galataport", "query": "Muuto Galataport" },
-          { "name": "Ali Ocakbaşı (Karaköy)", "query": "Ali Ocakbasi Karakoy" }
-        ] },
-        { "date": "Tue 7 Jul", "title": "Old City Tour & local Kebab", "items": ["Hagia Sophia (08:30 AM arrival for 09:00 opening)", "Basilica Cistern (10:15 AM with pre-purchased tickets)", "Grand Bazaar & Spice Bazaar walkthrough & local lunch (11:30 AM)", "Süleymaniye Mosque for stunning Golden Horn views (14:30)", "Lips Nişantaşı trendy dinner close to hotel (18:30)", "Meeting with Pablo (07:00 PM London / 09:00 PM local time)"], "lunchOptions": [
-          { "name": "Sultanahmet Köftecisi", "query": "Sultanahmet Koftecisi Selim Usta" },
-          { "name": "Matbah Restaurant", "query": "Matbah Restaurant Istanbul" },
-          { "name": "Deraliye Restaurant", "query": "Deraliye Ottoman Palace Cuisine Restaurant" }
-        ] },
-        { "date": "Wed 8 Jul", "title": "Bosphorus Lunch, Palaces & Zeyrek Hamam", "items": ["Specialty coffee crawl in Nişantaşı (e.g. Petra) (09:00 AM)", "Dolmabahçe Palace tour (11:00 AM)", "Bosphorus lunch at Feriye Lokantası (Ortaköy) (13:00) (Backup: The House Café or Banyan)", "Ortaköy & Arnavutköy Bosphorus stroll (15:00)", "Zeyrek Çinili Hamam luxury bath & scrub (16:30 - 18:30)", "Grab healthy takeaway in Nişantaşı to eat at the hotel (19:15)", "Meeting (06:00 PM London / 08:00 PM local time)"], "lunchOptions": [
-          { "name": "Feriye Lokantası", "query": "Feriye Lokantasi Ortakoy" },
-          { "name": "The House Café Ortaköy", "query": "The House Cafe Ortakoy" },
-          { "name": "Banyan Ortaköy", "query": "Banyan Restaurant Ortakoy" },
-          { "name": "Adem Baba (Arnavutköy)", "query": "Adem Baba Arnavutkoy" }
-        ] },
-        { "date": "Thu 9 Jul", "title": "Departure Day", "items": ["Check out of Harbiye Residence (09:30 AM)", "Transit to Istanbul Airport (IST)", "Turkish Airlines TK1039 to Bucharest (13:20 departure)"], "lunchOptions": [] }
-      ]
-    },
+  "istanbul": {
+    "sights": [],
+    "local": [],
+    "timeline": [
+      {
+        "date": "Sun 5 Jul",
+        "title": "Arrival & Nişantaşı",
+        "items": [
+          "Turkish Airlines TK2511 BJV ➔ IST (Land 15:55)",
+          "Transit to Harbiye Residence (Check-in 17:00)",
+          "Healin Foods Nişantaşı clean-eating dinner (19:00)"
+        ],
+        "lunchOptions": []
+      },
+      {
+        "date": "Mon 6 Jul",
+        "title": "Karaköy, Galataport & Bebek Walk",
+        "items": [
+          "Waterfront stroll at Karaköy & Galataport (11:30 AM)",
+          "Karaköy Lokantası late meze lunch / early dinner (14:30) (Backup: Muuto or Ali Ocakbaşı)",
+          "Flagship dessert tasting at Karaköy Güllüoğlu (16:00)",
+          "Sunset walk along Bebek Waterfront promenade (19:00)",
+          "Optional drinks at Efendi Nişantaşı or Arkestra Listening Room (21:30)"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Karaköy Lokantası",
+            "query": "Karakoy Lokantasi"
+          },
+          {
+            "name": "Muuto Galataport",
+            "query": "Muuto Galataport"
+          },
+          {
+            "name": "Ali Ocakbaşı (Karaköy)",
+            "query": "Ali Ocakbasi Karakoy"
+          }
+        ]
+      },
+      {
+        "date": "Tue 7 Jul",
+        "title": "Old City Tour & local Kebab",
+        "items": [
+          "Hagia Sophia (08:30 AM arrival for 09:00 opening)",
+          "Basilica Cistern (10:15 AM with pre-purchased tickets)",
+          "Grand Bazaar & Spice Bazaar walkthrough & local lunch (11:30 AM)",
+          "Süleymaniye Mosque for stunning Golden Horn views (14:30)",
+          "Lips Nişantaşı trendy dinner close to hotel (18:30)",
+          "Meeting with Pablo (07:00 PM London / 09:00 PM local time)"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Sultanahmet Köftecisi",
+            "query": "Sultanahmet Koftecisi Selim Usta"
+          },
+          {
+            "name": "Matbah Restaurant",
+            "query": "Matbah Restaurant Istanbul"
+          },
+          {
+            "name": "Deraliye Restaurant",
+            "query": "Deraliye Ottoman Palace Cuisine Restaurant"
+          }
+        ]
+      },
+      {
+        "date": "Wed 8 Jul",
+        "title": "Bosphorus Lunch, Palaces & Zeyrek Hamam",
+        "items": [
+          "Specialty coffee crawl in Nişantaşı (e.g. Petra) (09:00 AM)",
+          "Dolmabahçe Palace tour (11:00 AM)",
+          "Bosphorus lunch at Feriye Lokantası (Ortaköy) (13:00) (Backup: The House Café or Banyan)",
+          "Ortaköy & Arnavutköy Bosphorus stroll (15:00)",
+          "Zeyrek Çinili Hamam luxury bath & scrub (16:30 - 18:30)",
+          "Grab healthy takeaway in Nişantaşı to eat at the hotel (19:15)",
+          "Meeting (06:00 PM London / 08:00 PM local time)"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Feriye Lokantası",
+            "query": "Feriye Lokantasi Ortakoy"
+          },
+          {
+            "name": "The House Café Ortaköy",
+            "query": "The House Cafe Ortakoy"
+          },
+          {
+            "name": "Banyan Ortaköy",
+            "query": "Banyan Restaurant Ortakoy"
+          },
+          {
+            "name": "Adem Baba (Arnavutköy)",
+            "query": "Adem Baba Arnavutkoy"
+          }
+        ]
+      },
+      {
+        "date": "Thu 9 Jul",
+        "title": "Departure Day",
+        "items": [
+          "Check out of Harbiye Residence (09:30 AM)",
+          "Transit to Istanbul Airport (IST)",
+          "Turkish Airlines TK1039 to Bucharest (13:20 departure)"
+        ],
+        "lunchOptions": []
+      }
+    ]
+  },
   "bucharest": {
     "sights": [],
     "local": [],
     "timeline": [
-      { "date": "Thu 9 Jul", "title": "Romania Transit & Historic Vibe", "items": ["Turkish Airlines TK1039 IST ➔ OTP (Arrive Bucharest 14:35)", "Uber / Bolt to Calea Victoriei Airbnb (Check-in 15:30)", "Stroll Calea Victoriei past CEC Palace & tour the historic Stavropoleos Monastery", "Wander lively Old Town (Lipscani) & have dinner at the iconic Caru' cu Bere", "Must-do: Order papanași for dessert and do a traditional pălincă tasting", "Late drinks at Fix Me a Drink botanical cocktail bar or Linea Closer to the Moon rooftop"], "lunchOptions": [
-        { "name": "Caru' cu Bere", "query": "Caru cu Bere Bucharest" },
-        { "name": "Lacrimi și Sfinți", "query": "Lacrimi si Sfinti Bucharest" },
-        { "name": "Aubergine Restaurant", "query": "Aubergine Restaurant Bucharest" }
-      ] },
-      { "date": "Fri 10 Jul", "title": "Bucharest Sights: Palace of Parliament & Old Icons", "items": ["Tour the golden-leaf neoclassical hall of the Romanian Athenaeum (11:00 AM)", "Browse spiral balconies at Cărturești Carusel bookshop in the Old Town (12:00 PM)", "Palace of the Parliament guided tour (03:00 PM - book in advance)", "Walk to the peaceful Darvari Skete hidden church courtyard & shop (04:45 PM)", "Pop into Casa Mița Biciclista or Casa Capșa for pastries in a historic building (05:30 PM)", "Fine dining dinner at The Artist modern molecular cuisine on Calea Victoriei (19:30)"], "lunchOptions": [
-        { "name": "Bistro Ateneu", "query": "Bistro Ateneu Bucharest" },
-        { "name": "Simbio", "query": "Simbio Bucharest" },
-        { "name": "Alt Shift", "query": "Alt Shift Bucharest" }
-      ] },
-      { "date": "Sat 11 Jul", "title": "Local Living & Engagement Party", "items": ["Specialty filter coffee & breakfast at Frudisiac or Bob Coffee Lab (09:00 AM)", "Tour Ceaușescu Mansion (Palatul Primăverii) in Bucharest's most exclusive district (10:30 AM)", "Stroll the leafy luxury residential streets of Primăverii & Floreasca", "Walk the Herăstrău Lakefront paths followed by upscale lakeside lunch (12:30 PM)", "Relax and prepare for the evening event (03:00 PM)", "Engagement Party - Max & Fin (07:30 PM)"], "lunchOptions": [
-        { "name": "Fior di Latte", "query": "Fior di Latte Bucharest" },
-        { "name": "Isoletta", "query": "Isoletta Bucharest" },
-        { "name": "Pescăruș", "query": "Pescarus Bucharest" }
-      ] }
+      {
+        "date": "Thu 9 Jul",
+        "title": "Romania Transit & Historic Vibe",
+        "items": [
+          "Turkish Airlines TK1039 IST ➔ OTP (Arrive Bucharest 14:35)",
+          "Uber / Bolt to Calea Victoriei Airbnb (Check-in 15:30)",
+          "Stroll Calea Victoriei past CEC Palace & tour the historic Stavropoleos Monastery",
+          "Wander lively Old Town (Lipscani) & have dinner at the iconic Caru' cu Bere",
+          "Must-do: Order papanași for dessert and do a traditional pălincă tasting",
+          "Late drinks at Fix Me a Drink botanical cocktail bar or Linea Closer to the Moon rooftop"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Caru' cu Bere",
+            "query": "Caru cu Bere Bucharest"
+          },
+          {
+            "name": "Lacrimi și Sfinți",
+            "query": "Lacrimi si Sfinti Bucharest"
+          },
+          {
+            "name": "Aubergine Restaurant",
+            "query": "Aubergine Restaurant Bucharest"
+          }
+        ]
+      },
+      {
+        "date": "Fri 10 Jul",
+        "title": "Bucharest Sights: Palace of Parliament & Old Icons",
+        "items": [
+          "Tour the golden-leaf neoclassical hall of the Romanian Athenaeum (11:00 AM)",
+          "Browse spiral balconies at Cărturești Carusel bookshop in the Old Town (12:00 PM)",
+          "Palace of the Parliament guided tour (03:00 PM - book in advance)",
+          "Walk to the peaceful Darvari Skete hidden church courtyard & shop (04:45 PM)",
+          "Pop into Casa Mița Biciclista or Casa Capșa for pastries in a historic building (05:30 PM)",
+          "Fine dining dinner at The Artist modern molecular cuisine on Calea Victoriei (19:30)"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Bistro Ateneu",
+            "query": "Bistro Ateneu Bucharest"
+          },
+          {
+            "name": "Simbio",
+            "query": "Simbio Bucharest"
+          },
+          {
+            "name": "Alt Shift",
+            "query": "Alt Shift Bucharest"
+          }
+        ]
+      },
+      {
+        "date": "Sat 11 Jul",
+        "title": "Local Living & Engagement Party",
+        "items": [
+          "Specialty filter coffee & breakfast at Frudisiac or Bob Coffee Lab (09:00 AM)",
+          "Tour Ceaușescu Mansion (Palatul Primăverii) in Bucharest's most exclusive district (10:30 AM)",
+          "Stroll the leafy luxury residential streets of Primăverii & Floreasca",
+          "Walk the Herăstrău Lakefront paths followed by upscale lakeside lunch (12:30 PM)",
+          "Relax and prepare for the evening event (03:00 PM)",
+          "Engagement Party - Max & Fin (07:30 PM)"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Fior di Latte",
+            "query": "Fior di Latte Bucharest"
+          },
+          {
+            "name": "Isoletta",
+            "query": "Isoletta Bucharest"
+          },
+          {
+            "name": "Pescăruș",
+            "query": "Pescarus Bucharest"
+          }
+        ]
+      }
     ]
   },
   "brasov": {
     "sights": [],
     "local": [],
     "timeline": [
-      { "date": "Sun 12 Jul", "title": "Transylvanian Arrival & Royal Stopover", "items": ["Checkout from Airbnb & Uber/Bolt to Bucharest Gara de Nord (09:30 AM)", "InterRegio train from Bucharest to Sinaia (10:15 AM - 11:45 AM)", "Store bags at Sinaia station left-luggage desk (or Hotel Caraiman next door)", "Walk up to the Royal Estate & lunch next to the castle at Carol Gastro Bierhaus (12:30 PM)", "Tour the stunning neo-Renaissance Peleș Castle (02:30 PM timed entry)", "InterRegio train from Sinaia to Braşov (05:15 PM - 06:15 PM)", "Uber/taxi to Braşov Airbnb on Strada Lungă 39 & check-in", "Dinner at Dei Frati for exceptional handmade pasta (19:30)"], "lunchOptions": [
-        { "name": "Bistro de l'Arte", "query": "Bistro de l'Arte Brasov" },
-        { "name": "Dei Frati", "query": "Dei Frati Brasov" },
-        { "name": "Sub Tâmpa", "query": "Sub Tampa Brasov" }
-      ] },
-      { "date": "Mon 13 Jul", "title": "Braşov Sights & Bran Castle", "items": ["Day trip to the dramatic gothic towers of cliffside Bran Castle (12:00 PM)", "Walk down Rope Street (Strada Sforii) - one of Europe's narrowest paths (03:00 PM)", "Climb the medieval Black Tower & White Tower for orange-roofed skyline views (04:00 PM)", "Explore historic defensive walls and Weavers' Bastion (05:00 PM)", "Slow-food Transylvanian dinner inside a 16th-century hall at Bistro de l'Arte (19:30)"], "lunchOptions": [
-        { "name": "Prato", "query": "Prato Brasov" },
-        { "name": "La Birou Bistro", "query": "La Birou Bistro Brasov" },
-        { "name": "Pilvax", "query": "Pilvax Brasov" }
-      ] },
-      { "date": "Tue 14 Jul", "title": "Day Trip to Sighișoara UNESCO Citadel", "items": ["Depart Braşov for Sighișoara medieval walled town (09:00 AM)", "Tour Sighișoara Citadel, Clock Tower, and covered stairs (11:00 AM)", "Explore the birthplace of Vlad the Impaler (Dracula)", "Return to Braşov in the late afternoon (04:30 PM)", "Dinner at forest-edge Sub Tâmpa at the foot of the mountain (19:30)"], "lunchOptions": [
-        { "name": "Medieval Cafe Sighișoara", "query": "Medieval Cafe Sighisoara" },
-        { "name": "Gasthaus Alte Post Sighișoara", "query": "Gasthaus Alte Post Sighisoara" },
-        { "name": "Joseph T. Restaurant", "query": "Joseph T Restaurant Sighisoara" }
-      ] },
-      { "date": "Wed 15 Jul", "title": "Depart Romania via Gara de Nord", "items": ["Check out of Braşov Airbnb (09:00 AM)", "InterRegio train from Braşov to Bucharest Gara de Nord (09:30 AM departure)", "Direct airport train from Gara de Nord to Otopeni (OTP) (12:30 PM)", "Arrive at OTP Airport with safe buffer (12:50 PM)", "British Airways BA875 back to London Heathrow LHR (16:15 departure)"], "lunchOptions": [] }
+      {
+        "date": "Sun 12 Jul",
+        "title": "Transylvanian Arrival & Royal Stopover",
+        "items": [
+          "Checkout from Airbnb & Uber/Bolt to Bucharest Gara de Nord (09:30 AM)",
+          "InterRegio train from Bucharest to Sinaia (10:15 AM - 11:45 AM)",
+          "Store bags at Sinaia station left-luggage desk (or Hotel Caraiman next door)",
+          "Walk up to the Royal Estate & lunch next to the castle at Carol Gastro Bierhaus (12:30 PM)",
+          "Tour the stunning neo-Renaissance Peleș Castle (02:30 PM timed entry)",
+          "InterRegio train from Sinaia to Braşov (05:15 PM - 06:15 PM)",
+          "Uber/taxi to Braşov Airbnb on Strada Lungă 39 & check-in",
+          "Dinner at Dei Frati for exceptional handmade pasta (19:30)"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Bistro de l'Arte",
+            "query": "Bistro de l'Arte Brasov"
+          },
+          {
+            "name": "Dei Frati",
+            "query": "Dei Frati Brasov"
+          },
+          {
+            "name": "Sub Tâmpa",
+            "query": "Sub Tampa Brasov"
+          }
+        ]
+      },
+      {
+        "date": "Mon 13 Jul",
+        "title": "Braşov Sights & Bran Castle",
+        "items": [
+          "Day trip to the dramatic gothic towers of cliffside Bran Castle (12:00 PM)",
+          "Walk down Rope Street (Strada Sforii) - one of Europe's narrowest paths (03:00 PM)",
+          "Climb the medieval Black Tower & White Tower for orange-roofed skyline views (04:00 PM)",
+          "Explore historic defensive walls and Weavers' Bastion (05:00 PM)",
+          "Slow-food Transylvanian dinner inside a 16th-century hall at Bistro de l'Arte (19:30)"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Prato",
+            "query": "Prato Brasov"
+          },
+          {
+            "name": "La Birou Bistro",
+            "query": "La Birou Bistro Brasov"
+          },
+          {
+            "name": "Pilvax",
+            "query": "Pilvax Brasov"
+          }
+        ]
+      },
+      {
+        "date": "Tue 14 Jul",
+        "title": "Day Trip to Sighișoara UNESCO Citadel",
+        "items": [
+          "Depart Braşov for Sighișoara medieval walled town (09:00 AM)",
+          "Tour Sighișoara Citadel, Clock Tower, and covered stairs (11:00 AM)",
+          "Explore the birthplace of Vlad the Impaler (Dracula)",
+          "Return to Braşov in the late afternoon (04:30 PM)",
+          "Dinner at forest-edge Sub Tâmpa at the foot of the mountain (19:30)"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Medieval Cafe Sighișoara",
+            "query": "Medieval Cafe Sighisoara"
+          },
+          {
+            "name": "Gasthaus Alte Post Sighișoara",
+            "query": "Gasthaus Alte Post Sighisoara"
+          },
+          {
+            "name": "Joseph T. Restaurant",
+            "query": "Joseph T Restaurant Sighisoara"
+          }
+        ]
+      },
+      {
+        "date": "Wed 15 Jul",
+        "title": "Depart Romania via Gara de Nord",
+        "items": [
+          "Check out of Braşov Airbnb (09:00 AM)",
+          "InterRegio train from Braşov to Bucharest Gara de Nord (09:30 AM departure)",
+          "Direct airport train from Gara de Nord to Otopeni (OTP) (12:30 PM)",
+          "Arrive at OTP Airport with safe buffer (12:50 PM)",
+          "British Airways BA875 back to London Heathrow LHR (16:15 departure)"
+        ],
+        "lunchOptions": []
+      }
     ]
   },
   "spetses": {
     "sights": [],
     "local": [],
     "timeline": [
-      { "date": "Wed 22 Jul", "title": "Saronic Crossing", "items": ["BA626 London ➔ Athens (Arr: 13:10)", "Transit to Piraeus, sail on afternoon ferry", "Arrive Spetses Island, check-in Teresa suite"], "lunchOptions": [] },
-      { "date": "Thu 23 Jul", "title": "Zogeria Turquoise Waters", "items": ["Cycle or water taxi to Zogeria beach cove", "Seafood meze lunch on the sand"], "lunchOptions": [
-        { "name": "Zogeria Tavern", "query": "Zogeria Tavern Spetses" },
-        { "name": "Tarsanas Tavern", "query": "Tarsanas Tavern Spetses" },
-        { "name": "Patralis Fish Tavern", "query": "Patralis Fish Tavern Spetses" }
-      ] },
-      { "date": "Fri 24 Jul", "title": "Sunset Veranda Cocktails", "items": ["Relaxed beach morning at Agia Paraskevi", "Evening drinks at Poseidonion Hotel veranda"], "lunchOptions": [
-        { "name": "Kaiki Beach Club", "query": "Kaiki Beach Club Spetses" },
-        { "name": "Nero Restaurant", "query": "Nero Restaurant Spetses" },
-        { "name": "Clock Pizza/Souvlaki", "query": "Clock Spetses" }
-      ] },
-      { "date": "Sat 25 Jul", "title": "Old Harbour Dining", "items": ["Leisurely island bike ride", "Dinner under harbor lanterns at Orloff"], "lunchOptions": [
-        { "name": "Orloff Restaurant", "query": "Orloff Restaurant Spetses" },
-        { "name": "Liotrivi Restaurant", "query": "Liotrivi Restaurant Spetses" },
-        { "name": "Mourayo Tavern", "query": "Mourayo Spetses" }
-      ] },
-      { "date": "Sun 26 Jul", "title": "Quiet Cove Sunsets", "items": ["Swim and final sunbathing hours"], "lunchOptions": [
-        { "name": "Paradise Beach Tavern", "query": "Paradise Beach Tavern Spetses" },
-        { "name": "Spetsiotiko Grill", "query": "Spetsiotiko Spetses" },
-        { "name": "Bouboulina Tavern", "query": "Bouboulina Spetses" }
-      ] },
-      { "date": "Mon 27 Jul", "title": "Spetses ➔ Athens ➔ London", "items": ["Sail from Spetses by 14:00", "British Airways BA631 ATH ➔ LHR (19:30)"], "lunchOptions": [] }
+      {
+        "date": "Wed 22 Jul",
+        "title": "Saronic Crossing",
+        "items": [
+          "BA626 London ➔ Athens (Arr: 13:10)",
+          "Transit to Piraeus, sail on afternoon ferry",
+          "Arrive Spetses Island, check-in Teresa suite"
+        ],
+        "lunchOptions": []
+      },
+      {
+        "date": "Thu 23 Jul",
+        "title": "Zogeria Turquoise Waters",
+        "items": [
+          "Cycle or water taxi to Zogeria beach cove",
+          "Seafood meze lunch on the sand"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Zogeria Tavern",
+            "query": "Zogeria Tavern Spetses"
+          },
+          {
+            "name": "Tarsanas Tavern",
+            "query": "Tarsanas Tavern Spetses"
+          },
+          {
+            "name": "Patralis Fish Tavern",
+            "query": "Patralis Fish Tavern Spetses"
+          }
+        ]
+      },
+      {
+        "date": "Fri 24 Jul",
+        "title": "Sunset Veranda Cocktails",
+        "items": [
+          "Relaxed beach morning at Agia Paraskevi",
+          "Evening drinks at Poseidonion Hotel veranda"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Kaiki Beach Club",
+            "query": "Kaiki Beach Club Spetses"
+          },
+          {
+            "name": "Nero Restaurant",
+            "query": "Nero Restaurant Spetses"
+          },
+          {
+            "name": "Clock Pizza/Souvlaki",
+            "query": "Clock Spetses"
+          }
+        ]
+      },
+      {
+        "date": "Sat 25 Jul",
+        "title": "Old Harbour Dining",
+        "items": [
+          "Leisurely island bike ride",
+          "Dinner under harbor lanterns at Orloff"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Orloff Restaurant",
+            "query": "Orloff Restaurant Spetses"
+          },
+          {
+            "name": "Liotrivi Restaurant",
+            "query": "Liotrivi Restaurant Spetses"
+          },
+          {
+            "name": "Mourayo Tavern",
+            "query": "Mourayo Spetses"
+          }
+        ]
+      },
+      {
+        "date": "Sun 26 Jul",
+        "title": "Quiet Cove Sunsets",
+        "items": [
+          "Swim and final sunbathing hours"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Paradise Beach Tavern",
+            "query": "Paradise Beach Tavern Spetses"
+          },
+          {
+            "name": "Spetsiotiko Grill",
+            "query": "Spetsiotiko Spetses"
+          },
+          {
+            "name": "Bouboulina Tavern",
+            "query": "Bouboulina Spetses"
+          }
+        ]
+      },
+      {
+        "date": "Mon 27 Jul",
+        "title": "Spetses ➔ Athens ➔ London",
+        "items": [
+          "Sail from Spetses by 14:00",
+          "British Airways BA631 ATH ➔ LHR (19:30)"
+        ],
+        "lunchOptions": []
+      }
     ]
   },
   "tokyo": {
     "sights": [],
     "local": [],
     "timeline": [
-      { "date": "Thu 30 Jul", "title": "LHR ➔ HND Flight", "items": ["BA007 London Heathrow departure (09:25)", "Overnight international flight in the air"], "lunchOptions": [] },
-      { "date": "Fri 31 Jul", "title": "Welcome to Shinsen", "items": ["Land Haneda 07:00 AM", "Check-in Shibuya Airbnb (Host Noe)", "Pour-over coffee walk in Shinsen village"], "lunchOptions": [
-        { "name": "Camelback Sandwiches", "query": "Camelback Sandwich Shibuya" },
-        { "name": "Sushizanmai Shibuya", "query": "Sushizanmai Shibuya" },
-        { "name": "Tsumugi Shinsen", "query": "Tsumugi Shinsen Shibuya" }
-      ] },
-      { "date": "Sat 1 Aug", "title": "Shinsen Explorations", "items": ["Specialty coffee at Camelback", "Explore Daikanyama T-Site architectural bookstore"], "lunchOptions": [
-        { "name": "Abura Soba Shibuya", "query": "Abura Soba Shibuya" },
-        { "name": "Tonkatsu Maisen", "query": "Tonkatsu Maisen Shibuya" },
-        { "name": "Uobei Sushi Shibuya", "query": "Uobei Shibuya" }
-      ] },
-      { "date": "Sun 2 Aug", "title": "Shibuya Gym Training", "items": ["Bodybuilding workout at Gold's Gym Shibuya", "Cover tattoos and bring clean indoor shoes"], "lunchOptions": [
-        { "name": "Ikinari Steak Shibuya", "query": "Ikinari Steak Shibuya" },
-        { "name": "Negishi Shibuya", "query": "Negishi Shibuya" },
-        { "name": "Genki Sushi Shibuya", "query": "Genki Sushi Shibuya" }
-      ] },
-      { "date": "Mon 3 Aug", "title": "Underground Food Halls", "items": ["Pick bento treats at Tokyu Food Show", "Stroll Nakameguro Meguro River canal"], "lunchOptions": [] },
-      { "date": "Tue 4 Aug", "title": "Digital Arts & Monjayaki", "items": ["Visit teamLab Planets exhibition", "Cook monjayaki pancakes in Tsukishima griddles"], "lunchOptions": [] },
-      { "date": "Wed 5 Aug", "title": "Tuna Auction & Old Town", "items": ["Early Toyosu fish market tuna auction", "Stroll Yanaka Ginza old merchants street"], "lunchOptions": [] },
-      { "date": "Thu 6 Aug", "title": "Micro-Alley Drinks", "items": ["Bar hopping in Nonbei Yokocho", "Late jazz records at Lion Cafe"], "lunchOptions": [] },
-      { "date": "Fri 7 Aug", "title": "Move to Ben's", "items": ["Check out from Shibuya Airbnb", "Move to friend Ben's residence for 9 nights"], "lunchOptions": [] },
-      { "date": "Sat 8 Aug - Sat 15 Aug", "title": "Staying with Ben", "items": ["No Airbnb bookings", "Explore Tokyo local neighborhoods with Ben"], "lunchOptions": [] },
-      { "date": "Sun 16 Aug", "title": "Move back to Airbnb", "items": ["Check-in Shibuya Airbnb (Block II)", "Get settled for final 4 days in Tokyo"], "lunchOptions": [] },
-      { "date": "Mon 17 Aug - Wed 19 Aug", "title": "Final Shibuya Days", "items": ["Final gym sessions, omakase sushi dinners"], "lunchOptions": [] },
-      { "date": "Thu 20 Aug", "title": "Tokyo ➔ London", "items": ["Check out Shibuya Airbnb by 11:00 AM", "BA006 Haneda ➔ LHR T5 (13:05 - 19:50)"], "lunchOptions": [] }
+      {
+        "date": "Thu 30 Jul",
+        "title": "LHR ➔ HND Flight",
+        "items": [
+          "BA007 London Heathrow departure (09:25)",
+          "Overnight international flight in the air"
+        ],
+        "lunchOptions": []
+      },
+      {
+        "date": "Fri 31 Jul",
+        "title": "Welcome to Shinsen",
+        "items": [
+          "Land Haneda 07:00 AM",
+          "Check-in Shibuya Airbnb (Host Noe)",
+          "Pour-over coffee walk in Shinsen village"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Camelback Sandwiches",
+            "query": "Camelback Sandwich Shibuya"
+          },
+          {
+            "name": "Sushizanmai Shibuya",
+            "query": "Sushizanmai Shibuya"
+          },
+          {
+            "name": "Tsumugi Shinsen",
+            "query": "Tsumugi Shinsen Shibuya"
+          }
+        ]
+      },
+      {
+        "date": "Sat 1 Aug",
+        "title": "Shinsen Explorations",
+        "items": [
+          "Specialty coffee at Camelback",
+          "Explore Daikanyama T-Site architectural bookstore"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Abura Soba Shibuya",
+            "query": "Abura Soba Shibuya"
+          },
+          {
+            "name": "Tonkatsu Maisen",
+            "query": "Tonkatsu Maisen Shibuya"
+          },
+          {
+            "name": "Uobei Sushi Shibuya",
+            "query": "Uobei Shibuya"
+          }
+        ]
+      },
+      {
+        "date": "Sun 2 Aug",
+        "title": "Shibuya Gym Training",
+        "items": [
+          "Bodybuilding workout at Gold's Gym Shibuya",
+          "Cover tattoos and bring clean indoor shoes"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Ikinari Steak Shibuya",
+            "query": "Ikinari Steak Shibuya"
+          },
+          {
+            "name": "Negishi Shibuya",
+            "query": "Negishi Shibuya"
+          },
+          {
+            "name": "Genki Sushi Shibuya",
+            "query": "Genki Sushi Shibuya"
+          }
+        ]
+      },
+      {
+        "date": "Mon 3 Aug",
+        "title": "Underground Food Halls",
+        "items": [
+          "Pick bento treats at Tokyu Food Show",
+          "Stroll Nakameguro Meguro River canal"
+        ],
+        "lunchOptions": []
+      },
+      {
+        "date": "Tue 4 Aug",
+        "title": "Digital Arts & Monjayaki",
+        "items": [
+          "Visit teamLab Planets exhibition",
+          "Cook monjayaki pancakes in Tsukishima griddles"
+        ],
+        "lunchOptions": []
+      },
+      {
+        "date": "Wed 5 Aug",
+        "title": "Tuna Auction & Old Town",
+        "items": [
+          "Early Toyosu fish market tuna auction",
+          "Stroll Yanaka Ginza old merchants street"
+        ],
+        "lunchOptions": []
+      },
+      {
+        "date": "Thu 6 Aug",
+        "title": "Micro-Alley Drinks",
+        "items": [
+          "Bar hopping in Nonbei Yokocho",
+          "Late jazz records at Lion Cafe"
+        ],
+        "lunchOptions": []
+      },
+      {
+        "date": "Fri 7 Aug",
+        "title": "Move to Ben's",
+        "items": [
+          "Check out from Shibuya Airbnb",
+          "Move to friend Ben's residence for 9 nights"
+        ],
+        "lunchOptions": []
+      },
+      {
+        "date": "Sat 8 Aug - Sat 15 Aug",
+        "title": "Staying with Ben",
+        "items": [
+          "No Airbnb bookings",
+          "Explore Tokyo local neighborhoods with Ben"
+        ],
+        "lunchOptions": []
+      },
+      {
+        "date": "Sun 16 Aug",
+        "title": "Move back to Airbnb",
+        "items": [
+          "Check-in Shibuya Airbnb (Block II)",
+          "Get settled for final 4 days in Tokyo"
+        ],
+        "lunchOptions": []
+      },
+      {
+        "date": "Mon 17 Aug - Wed 19 Aug",
+        "title": "Final Shibuya Days",
+        "items": [
+          "Final gym sessions, omakase sushi dinners"
+        ],
+        "lunchOptions": []
+      },
+      {
+        "date": "Thu 20 Aug",
+        "title": "Tokyo ➔ London",
+        "items": [
+          "Check out Shibuya Airbnb by 11:00 AM",
+          "BA006 Haneda ➔ LHR T5 (13:05 - 19:50)"
+        ],
+        "lunchOptions": []
+      }
     ]
   }
 }
