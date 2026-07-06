@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dcr-travel-v23';
+const CACHE_NAME = 'dcr-travel-v24';
 const ASSETS = [
   './',
   './DCR_Travel.html',
@@ -15,7 +15,15 @@ const ASSETS = [
 
 self.addEventListener('install', (e) => {
   e.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+    caches.open(CACHE_NAME).then((cache) => {
+      return Promise.all(
+        ASSETS.map((url) => {
+          return cache.add(url).catch((err) => {
+            console.warn('Service Worker: Failed to cache optional asset:', url, err);
+          });
+        })
+      ).then(() => self.skipWaiting());
+    })
   );
 });
 
@@ -25,11 +33,12 @@ self.addEventListener('activate', (e) => {
       return Promise.all(
         keys.map((key) => {
           if (key !== CACHE_NAME) {
+            console.log('Service Worker: Clearing old cache:', key);
             return caches.delete(key);
           }
         })
       );
-    })
+    }).then(() => self.clients.claim())
   );
 });
 
@@ -40,11 +49,17 @@ self.addEventListener('message', (event) => {
 });
 
 self.addEventListener('fetch', (e) => {
+  if (e.request.method !== 'GET') return;
+
   e.respondWith(
     caches.match(e.request, { ignoreSearch: true }).then((cachedResponse) => {
-      return cachedResponse || fetch(e.request).then((networkResponse) => {
-        // Cache new successful requests on the fly
-        if (networkResponse.status === 200 && e.request.method === 'GET') {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+      
+      return fetch(e.request).then((networkResponse) => {
+        // Cache new successful requests on the fly (excluding non-http/https, e.g. chrome-extension or data URLs)
+        if (networkResponse.status === 200 && e.request.url.startsWith('http')) {
           const responseToCache = networkResponse.clone();
           caches.open(CACHE_NAME).then((cache) => {
             cache.put(e.request, responseToCache);
@@ -52,9 +67,12 @@ self.addEventListener('fetch', (e) => {
         }
         return networkResponse;
       });
-    }).catch(() => {
-      // Offline fallback
-      return caches.match('./index.html');
+    }).catch((err) => {
+      // Return offline fallback only for page navigations to avoid corrupted resource fetches
+      if (e.request.mode === 'navigate') {
+        return caches.match('./DCR_Travel.html') || caches.match('./index.html') || caches.match('./');
+      }
+      // Return empty response or trigger browser default error for subresources
     })
   );
 });

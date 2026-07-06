@@ -2116,21 +2116,41 @@
             ],
             istanbul: [
                 { date: "Sun 5 Jul", title: "Arrival & Nişantaşı", items: ["Turkish Airlines TK2511 BJV ➔ IST (Land 15:55)", "Transit to Harbiye Residence (Check-in 17:00)", "Healin Foods Nişantaşı clean-eating dinner (19:00)"], lunchOptions: [] },
-                { date: "Mon 6 Jul", title: "Karaköy, Galataport & Bebek Walk", items: ["Waterfront stroll at Karaköy & Galataport (11:30 AM)", "Karaköy Lokantası late meze lunch / early dinner (14:30) (Backup: Muuto or Ali Ocakbaşı)", "Flagship dessert tasting at Karaköy Güllüoğlu (16:00)", "Sunset walk along Bebek Waterfront promenade (19:00)", "Optional drinks at Efendi Nişantaşı or Arkestra Listening Room (21:30)"], lunchOptions: [
-                    { name: "Karaköy Lokantası", query: "Karakoy Lokantasi" },
-                    { name: "Muuto Galataport", query: "Muuto Galataport" },
-                    { name: "Ali Ocakbaşı (Karaköy)", query: "Ali Ocakbasi Karakoy" }
+                { date: "Mon 6 Jul", title: "Modern Bosphorus: Etiler, Arnavutköy & Bebek", items: [
+                    "12:15 PM – 12:50 PM | Transit: Nişantaşı to Etiler (Metro M2 to Levent, transfer M6 to Etiler)",
+                    "12:50 PM – 2:30 PM | Lunch in Etiler (Amaya, Nusr-Et, or Minoa Village)",
+                    "2:30 PM – 2:45 PM | Transit: Etiler down to Arnavutköy (Uber/Taxi)",
+                    "2:45 PM – 4:15 PM | Coastal Exploration: Arnavutköy (Ottoman-era wooden mansions & espresso)",
+                    "4:15 PM – 4:35 PM | Transit: Arnavutköy to Bebek (Walking Bebek Sahili promenade)",
+                    "4:35 PM – 6:30 PM | Golden Hour & People Watching: Bebek (Baylan or Bebek Kahvesi, Bebek Park)",
+                    "6:30 PM – 7:00 PM | Transit: Bebek to Yeniköy (Uber/Taxi)",
+                    "7:00 PM – 9:30 PM | Waterfront Dinner in Yeniköy (Azur, Gazebo, or Manca Yeniköy)",
+                    "9:30 PM onwards | Transit: Yeniköy back to Nişantaşı (Uber/Taxi)"
+                ], lunchOptions: [
+                    { name: "Amaya İstanbul", query: "Amaya Istanbul" },
+                    { name: "Nusr-Et Steakhouse", query: "Nusr-Et Steakhouse Etiler" },
+                    { name: "Minoa Village", query: "Minoa Village Etiler" }
                 ] },
                 { date: "Tue 7 Jul", title: "Old City Tour & local Kebab", items: ["Hagia Sophia (08:30 AM arrival for 09:00 opening)", "Basilica Cistern (10:15 AM with pre-purchased tickets)", "Grand Bazaar & Spice Bazaar walkthrough & local lunch (11:30 AM)", "Süleymaniye Mosque for stunning Golden Horn views (14:30)", "Lips Nişantaşı trendy dinner close to hotel (18:30)", "Meeting with Pablo (07:00 PM London / 09:00 PM local time)"], lunchOptions: [
                     { name: "Sultanahmet Köftecisi", query: "Sultanahmet Koftecisi Selim Usta" },
                     { name: "Matbah Restaurant", query: "Matbah Restaurant Istanbul" },
                     { name: "Deraliye Restaurant", query: "Deraliye Ottoman Palace Cuisine Restaurant" }
                 ] },
-                { date: "Wed 8 Jul", title: "Bosphorus Lunch, Palaces & Zeyrek Hamam", items: ["Specialty coffee crawl in Nişantaşı (e.g. Petra) (09:00 AM)", "Dolmabahçe Palace tour (11:00 AM)", "Bosphorus lunch at Feriye Lokantası (Ortaköy) (13:00) (Backup: The House Café or Banyan)", "Ortaköy & Arnavutköy Bosphorus stroll (15:00)", "Zeyrek Çinili Hamam luxury bath & scrub (16:30 - 18:30)", "Grab healthy takeaway in Nişantaşı to eat at the hotel (19:15)", "Meeting (06:00 PM London / 08:00 PM local time)"], lunchOptions: [
+                { date: "Wed 8 Jul", title: "Bosphorus, Karaköy & Zeyrek Hamam", items: [
+                    "Specialty coffee crawl in Nişantaşı (e.g. Petra) (09:00 AM)",
+                    "Dolmabahçe Palace tour (11:00 AM)",
+                    "Waterfront stroll at Karaköy & Galataport (12:30 PM)",
+                    "Karaköy Lokantası late meze lunch / early dinner (14:15) (Backup: Feriye Lokantası or Muuto)",
+                    "Flagship dessert tasting at Karaköy Güllüoğlu (15:45)",
+                    "Zeyrek Çinili Hamam luxury bath & scrub (16:30 - 18:30)",
+                    "Grab healthy takeaway in Nişantaşı to eat at the hotel (19:15)",
+                    "Meeting (06:00 PM London / 08:00 PM local time)",
+                    "Optional drinks at Efendi Nişantaşı or Arkestra Listening Room (21:30)"
+                ], lunchOptions: [
+                    { name: "Karaköy Lokantası", query: "Karakoy Lokantasi" },
                     { name: "Feriye Lokantası", query: "Feriye Lokantasi Ortakoy" },
-                    { name: "The House Café Ortaköy", query: "The House Cafe Ortakoy" },
-                    { name: "Banyan Ortaköy", query: "Banyan Restaurant Ortakoy" },
-                    { name: "Adem Baba (Arnavutköy)", query: "Adem Baba Arnavutkoy" }
+                    { name: "Karaköy Güllüoğlu", query: "Karakoy Gulluoglu" },
+                    { name: "Muuto Galataport", query: "Muuto Galataport" }
                 ] },
                 { date: "Thu 9 Jul", title: "Departure Day", items: ["Check out of Harbiye Residence (09:30 AM)", "Transit to Istanbul Airport (IST)", "Turkish Airlines TK1039 to Bucharest (13:20 departure)"], lunchOptions: [] }
             ],
@@ -2537,6 +2557,16 @@
                         window.location.reload();
                     }
                 });
+            }
+            // Load state from localStorage on startup if it exists (for instant offline render)
+            const localStateText = localStorage.getItem('dcr_sabbatical_state');
+            if (localStateText) {
+                try {
+                    currentState = JSON.parse(localStateText);
+                    mergeTimelineState();
+                } catch(e) {
+                    console.error("Local storage parse error:", e);
+                }
             }
             renderAllDestinationsData();
             fetchStateFromGitHub();

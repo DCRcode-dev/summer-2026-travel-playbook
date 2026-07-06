@@ -97,25 +97,30 @@
       },
       {
         "date": "Mon 6 Jul",
-        "title": "Karaköy, Galataport & Bebek Walk",
+        "title": "Modern Bosphorus: Etiler, Arnavutköy & Bebek",
         "items": [
-          "Waterfront stroll at Karaköy & Galataport (11:30 AM)",
-          "Flagship dessert tasting at Karaköy Güllüoğlu (16:00)",
-          "Sunset walk along Bebek Waterfront promenade (19:00)",
-          "Optional drinks at Efendi Nişantaşı or Arkestra Listening Room (21:30)"
+          "12:15 PM – 12:50 PM | Transit: Nişantaşı to Etiler (Metro M2 to Levent, transfer M6 to Etiler)",
+          "12:50 PM – 2:30 PM | Lunch in Etiler (Amaya, Nusr-Et, or Minoa Village)",
+          "2:30 PM – 2:45 PM | Transit: Etiler down to Arnavutköy (Uber/Taxi)",
+          "2:45 PM – 4:15 PM | Coastal Exploration: Arnavutköy (Ottoman-era wooden mansions & espresso)",
+          "4:15 PM – 4:35 PM | Transit: Arnavutköy to Bebek (Walking Bebek Sahili promenade)",
+          "4:35 PM – 6:30 PM | Golden Hour & People Watching: Bebek (Baylan or Bebek Kahvesi, Bebek Park)",
+          "6:30 PM – 7:00 PM | Transit: Bebek to Yeniköy (Uber/Taxi)",
+          "7:00 PM – 9:30 PM | Waterfront Dinner in Yeniköy (Azur, Gazebo, or Manca Yeniköy)",
+          "9:30 PM onwards | Transit: Yeniköy back to Nişantaşı (Uber/Taxi)"
         ],
         "lunchOptions": [
           {
-            "name": "Karaköy Lokantası",
-            "query": "Karakoy Lokantasi"
+            "name": "Amaya İstanbul",
+            "query": "Amaya Istanbul"
           },
           {
-            "name": "Muuto Galataport",
-            "query": "Muuto Galataport"
+            "name": "Nusr-Et Steakhouse",
+            "query": "Nusr-Et Steakhouse Etiler"
           },
           {
-            "name": "Ali Ocakbaşı (Karaköy)",
-            "query": "Ali Ocakbasi Karakoy"
+            "name": "Minoa Village",
+            "query": "Minoa Village Etiler"
           }
         ]
       },
@@ -147,32 +152,34 @@
       },
       {
         "date": "Wed 8 Jul",
-        "title": "Bosphorus Lunch, Palaces & Zeyrek Hamam",
+        "title": "Bosphorus, Karaköy & Zeyrek Hamam",
         "items": [
           "Specialty coffee crawl in Nişantaşı (e.g. Petra) (09:00 AM)",
           "Dolmabahçe Palace tour (11:00 AM)",
-          "Bosphorus lunch at Feriye Lokantası (Ortaköy) (13:00) (Backup: The House Café or Banyan)",
-          "Ortaköy & Arnavutköy Bosphorus stroll (15:00)",
+          "Waterfront stroll at Karaköy & Galataport (12:30 PM)",
+          "Karaköy Lokantası late meze lunch / early dinner (14:15) (Backup: Feriye Lokantası or Muuto)",
+          "Flagship dessert tasting at Karaköy Güllüoğlu (15:45)",
           "Zeyrek Çinili Hamam luxury bath & scrub (16:30 - 18:30)",
           "Grab healthy takeaway in Nişantaşı to eat at the hotel (19:15)",
-          "Meeting (06:00 PM London / 08:00 PM local time)"
+          "Meeting (06:00 PM London / 08:00 PM local time)",
+          "Optional drinks at Efendi Nişantaşı or Arkestra Listening Room (21:30)"
         ],
         "lunchOptions": [
+          {
+            "name": "Karaköy Lokantası",
+            "query": "Karakoy Lokantasi"
+          },
           {
             "name": "Feriye Lokantası",
             "query": "Feriye Lokantasi Ortakoy"
           },
           {
-            "name": "The House Café Ortaköy",
-            "query": "The House Cafe Ortakoy"
+            "name": "Karaköy Güllüoğlu",
+            "query": "Karakoy Gulluoglu"
           },
           {
-            "name": "Banyan Ortaköy",
-            "query": "Banyan Restaurant Ortakoy"
-          },
-          {
-            "name": "Adem Baba (Arnavutköy)",
-            "query": "Adem Baba Arnavutkoy"
+            "name": "Muuto Galataport",
+            "query": "Muuto Galataport"
           }
         ]
       },
