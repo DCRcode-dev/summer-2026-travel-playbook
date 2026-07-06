@@ -1179,6 +1179,68 @@
         .update-pill button:active {
             transform: scale(0.95);
         }
+
+        /* Attractions Guide Styles */
+        .attraction-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-ios);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .attraction-header {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            background: linear-gradient(180deg, var(--bg-card) 0%, rgba(188, 160, 96, 0.03) 100%);
+        }
+        .attraction-header h3 {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+        }
+        .attraction-header svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--gold);
+            transition: transform 0.3s ease;
+        }
+        .attraction-card.active .attraction-header svg {
+            transform: rotate(180deg);
+        }
+        .attraction-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease-out;
+            padding: 0 15px;
+            background-color: var(--bg-main);
+        }
+        .attraction-card.active .attraction-body {
+            max-height: 3500px;
+            padding: 15px;
+            border-top: 1px solid var(--border-ios);
+        }
+        .attraction-body p {
+            margin: 0 0 12px 0;
+            font-size: 0.82rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+            text-align: justify;
+        }
+        .attraction-body p:last-child {
+            margin-bottom: 0;
+        }
+        .attraction-body p::first-letter {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
     </style>
 </head>
 <body>
@@ -1568,6 +1630,8 @@
                     <div class="checklist-title">🍃 10 Local Secrets</div>
                     <div id="istanbul-local-checklist"></div>
                 </div>
+                <div class="section-header">📖 Historic Attractions Guide</div>
+                <div id="istanbul-attractions-guide" style="margin-bottom: 25px;"></div>
             </main>
 
             <!-- SCREEN 4: BUCHAREST -->
@@ -2133,7 +2197,7 @@
                 ] },
                 { date: "Tue 7 Jul", title: "Old City Tour & Palace Dining", items: [
                     "Hagia Sophia (10:30 AM - sleep in and explore at a relaxed pace)",
-                    "Basilica Cistern (11:45 AM with pre-purchased tickets)",
+                    "Basilica Cistern (12:30 PM timed entry tour) - Meeting Point: Sultanahmet Meydanı, Cankurtaran, 34149 Fatih/İstanbul. Meet at Busforus Bus Stop across the Hagia Sophia (Bus stop sign). Look for the guide holding a white Istanbul E-pass flag (be there by 12:20 PM).",
                     "Grand Bazaar & Spice Bazaar walkthrough & local lunch (13:00)",
                     "Süleymaniye Mosque for stunning Golden Horn views (15:30)",
                     "Return to Nişantaşı hotel to shower, change and relax (16:45)",
@@ -2577,6 +2641,7 @@
                 }
             }
             renderAllDestinationsData();
+            renderAttractionsGuide();
             fetchStateFromGitHub();
             renderPackingList();
             switchTab('overview');
@@ -3482,6 +3547,129 @@
         function copyText(text) {
             navigator.clipboard.writeText(text).then(() => {
                 showToast("Copied to Clipboard");
+            });
+        }
+
+        // 10-paragraph detailed guides for the 6 tourist sights
+        const istanbulAttractionsGuideData = [
+            {
+                title: "Hagia Sophia (Ayasofya)",
+                paragraphs: [
+                    "Hagia Sophia, whose name translates from the Greek as \"Holy Wisdom,\" stands as one of the most significant architectural and historical monuments in the world, spanning over fifteen centuries of religious and imperial history.",
+                    "Originally commissioned by the Byzantine Emperor Justinian I, the structure was completed in 537 AD and served as the cathedral of Constantinople, representing the absolute pinnacle of Byzantine art and engineering.",
+                    "For nearly a thousand years, it stood as the largest cathedral in Christendom, serving as the physical and spiritual heart of the Byzantine Empire and the Eastern Orthodox Church.",
+                    "The cathedral’s design revolutionized architecture, particularly through its massive central dome, which was suspended on pendentives—a pioneering technique that made the dome appear to float miraculously in the air.",
+                    "Inside, the walls were adorned with millions of pieces of gold, silver, and glass mosaic tiles, depicting religious figures, saints, and imperial portraits of breathtaking detail.",
+                    "In 1453, following the conquest of Constantinople by the Ottoman Empire, Sultan Mehmed II immediately visited the cathedral and converted it into an imperial mosque, symbolizing the rise of a new empire.",
+                    "During the Ottoman era, the building underwent structural additions, including the construction of four grand minarets, massive buttresses to reinforce the walls against earthquakes, and beautiful calligraphic medallions.",
+                    "The legendary Ottoman imperial architect Mimar Sinan spent decades studying and reinforcing the building, ensuring that its ancient structure could survive seismic activity for centuries to come.",
+                    "In 1935, as part of the secular reforms led by Mustafa Kemal Atatürk, the founder of the modern Republic of Turkey, the mosque was converted into a public museum, opening its Byzantine mosaics to the world.",
+                    "In July 2020, the status of the building was changed back to an active mosque, and today it welcomes both Muslim worshippers and millions of international travelers who come to admire its unique synthesis of Christian and Islamic heritage."
+                ]
+            },
+            {
+                title: "Basilica Cistern (Yerebatan Sarnıcı)",
+                paragraphs: [
+                    "The Basilica Cistern, known in Turkish as Yerebatan Sarnıcı (meaning \"Cistern Sinking into the Ground\"), is the largest of several hundred ancient cisterns that lie beneath the streets of Istanbul.",
+                    "Located just southwest of Hagia Sophia, this subterranean reservoir was constructed in the 6th century during the reign of Byzantine Emperor Justinian I to supply fresh water to the Great Palace of Constantinople.",
+                    "The cistern was built on the site of a grand basilica, which had been destroyed during the Nika Riots of 532 AD, using the labor of thousands of enslaved workers who carved its massive columns.",
+                    "The structure measures 138 meters long and 65 meters wide, covering an area of nearly 9,000 square meters and holding up to 80,000 cubic meters of fresh water transported from the Belgrade Forest.",
+                    "The roof is supported by a forest of 336 marble columns, each standing 9 meters tall, arranged in 12 rows of 28 columns spaced exactly 4.8 meters apart.",
+                    "Most of the columns were salvaged from ancient, ruined temples across the Roman Empire, resulting in a eclectic mix of Corinthian, Ionic, and Doric capitals.",
+                    "Among the columns, the most famous are the two Medusa heads located in the northwest corner, serving as bases under two columns.",
+                    "One Medusa head is placed completely upside down and the other is turned sideways, a configuration designed to neutralize the gorgon's petrifying gaze according to ancient mythology, or simply to match the column heights.",
+                    "Another famous column is the \"Crying Column\" or \"Weeping Column,\" which is engraved with raised tear drop designs and remains constantly damp in memory of the slaves who perished during the construction.",
+                    "Recently restored with state-of-the-art conservation techniques, the cistern now features stunning modern art installations, dynamic colorful light designs, and raised wooden pathways that let visitors walk right over the shallow water."
+                ]
+            },
+            {
+                title: "Grand Bazaar (Kapalıçarşı)",
+                paragraphs: [
+                    "The Grand Bazaar, or Kapalıçarşı in Turkish (meaning \"Covered Market\"), is one of the largest and oldest covered markets in the world, serving as a historic monument to Ottoman commerce and trade.",
+                    "Construction began in 1455 under the orders of Sultan Mehmed II shortly after the conquest of Constantinople, with the goal of creating a central trading hub to generate revenue for the Hagia Sophia mosque.",
+                    "The market initially consisted of two vaulted masonry warehouses, known as bedestens (the Cevahir Bedesteni and the Sandal Bedesteni), which housed high-value items like gems, silks, and gold.",
+                    "Over the centuries, the market expanded rapidly as merchants built covered streets and vaults around the bedestens, eventually forming a massive maze-like network of commerce.",
+                    "Today, the bazaar spans 61 covered streets and houses over 4,000 individual shops, employing tens of thousands of local traders and attracting hundreds of thousands of visitors daily.",
+                    "Historically, the bazaar was divided into distinct quarters based on the trades practiced there, such as gold jewelers, leather workers, carpet dealers, and copper smiths.",
+                    "The architecture of the bazaar is characterized by high, vaulted brick arches adorned with traditional hand-painted patterns, creating a beautiful and atmospheric shopping environment.",
+                    "The bazaar was historically gated and locked every night by a private security guard force, protecting the massive wealth stored within its thick stone walls from theft and fire.",
+                    "Despite surviving numerous fires, earthquakes, and political upheavals over its 500-year history, the bazaar has remained a vibrant, active marketplace rather than a stagnant museum.",
+                    "For the modern traveler, wandering through its historic corridors is a sensory journey of bargaining for spices, Turkish lamps, hand-woven carpets, and fine gold jewelry."
+                ]
+            },
+            {
+                title: "Spice Bazaar (Mısır Çarşısı)",
+                paragraphs: [
+                    "The Spice Bazaar, known in Turkish as Mısır Çarşısı (literally meaning \"Egyptian Bazaar\"), is Istanbul's second-oldest covered market, famous for its vibrant colors, exotic aromas, and rich history.",
+                    "Built in 1660 as part of the new imperial mosque complex (Yeni Camii), the market's construction was funded by revenues collected from the Ottoman province of Egypt, which is how it earned its name.",
+                    "Historically, the bazaar was the final stop of the Silk Road caravans traveling from Asia, serving as the primary distribution center for spices, herbs, and medicines in the Ottoman Empire.",
+                    "The building was designed in an L-shape by the architect Mustafa Ağa, featuring high vaulted stone arches and eighty-five individual shops.",
+                    "In the early days, the shops were strictly organized by specialty, with herbalists, spice merchants, and dry-goods sellers occupying specific areas of the market.",
+                    "The air inside the market is thick with the scent of crushed cumin, sweet saffron, dried rosebuds, local tea leaves, and roasted coffee beans from Kurukahveci Mehmet Efendi.",
+                    "Beyond raw spices, the market is a paradise for local foods, featuring stalls filled with Turkish delight (lokum), cured meats, dried figs, dates, olives, and local honeycombs.",
+                    "The exterior of the bazaar is equally lively, hosting a bustling garden market, flower stalls, and pet shops that cater to locals.",
+                    "The bazaar underwent major restoration in recent years to preserve its historic Ottoman brickwork and restore the vaulted ceilings to their original beauty.",
+                    "Today, it remains one of the best places in Istanbul to buy high-quality saffron, sumac, apple tea, and local sweets while experiencing the historic energy of Bosphorus trade."
+                ]
+            },
+            {
+                title: "Süleymaniye Mosque (Süleymaniye Camii)",
+                paragraphs: [
+                    "The Süleymaniye Mosque is the largest and most majestic imperial mosque in Istanbul, standing as a crowning achievement of the Golden Age of the Ottoman Empire.",
+                    "Commissioned by Sultan Suleiman the Magnificent, the mosque was constructed between 1550 and 1557 by the legendary Ottoman chief architect, Mimar Sinan.",
+                    "Standing on the Third Hill of Istanbul, the mosque dominates the city’s skyline, offering sweeping panoramic views over the Golden Horn, the Bosphorus, and the historical peninsula.",
+                    "The mosque was designed as a \"külliye\"—a massive social complex that included a soup kitchen, a hospital, primary schools, public baths, and a library.",
+                    "Architecturally, the mosque is celebrated for its perfect proportions, elegant symmetry, and innovative structural techniques that have allowed it to survive earthquakes undamaged.",
+                    "Sinan engineered a brilliant acoustic system using dozens of hollow clay pots embedded in the dome, ensuring that the imam's voice could be heard clearly throughout the vast prayer hall.",
+                    "The interior is characterized by a clean, minimalist aesthetic, featuring rare Iznik tiles, simple marble columns, and beautiful stained-glass windows designed by the master craftsman Ibrahim the Drunkard.",
+                    "The courtyard features four grand minarets, symbolizing Suleiman's status as the fourth Ottoman sultan to rule Istanbul since the conquest.",
+                    "Behind the main building lies a peaceful cemetery containing the ornate octagonal tombs of Sultan Suleiman and his beloved wife, Hürrem Sultan (known in the West as Roxelana).",
+                    "Visiting Süleymaniye offers a quiet, spiritual contrast to the crowded Sultanahmet district, letting you experience a true masterwork of Sinan in a serene environment."
+                ]
+            },
+            {
+                title: "Dolmabahçe Palace (Dolmabahçe Sarayı)",
+                paragraphs: [
+                    "Dolmabahçe Palace is a symbol of the late Ottoman Empire’s modernization, standing as a stunning monument of European-inspired architecture on the banks of the Bosphorus.",
+                    "Commissioned by Sultan Abdülmecid I, the palace was built between 1843 and 1856 to replace the medieval Topkapı Palace, which was deemed outdated and lacking modern comforts.",
+                    "Designed by the Armenian-Ottoman architect Garabet Balyan, the palace cost the equivalent of billions of dollars, contributing significantly to the financial collapse of the empire.",
+                    "The architecture is an opulent blend of European styles, combining Baroque, Rococo, and Neoclassical elements with the traditional layout of an Ottoman palace.",
+                    "The palace contains 285 rooms, 46 halls, 6 baths (hamams), and 68 toilets, making it the largest monolithic palace building in Turkey.",
+                    "The interior is decorated with fourteen tons of gold leaf, massive Baccarat crystal balustrades, and a collection of rare bear skins gifted by the Russian Tsar.",
+                    "The centerpiece of the palace is the grand Muayede Hall (Ceremonial Hall), which holds the world’s largest Bohemian crystal chandelier, featuring 750 lamps and weighing 4.5 tons.",
+                    "The palace is divided into two main sections: the Mabeyn-i Hümayun (State Apartments for official business) and the Harem-i Hümayun (the private family quarters of the Sultan).",
+                    "Following the fall of the Ottoman Empire, the palace was used as a presidential residence by Mustafa Kemal Atatürk, the founder of modern Turkey.",
+                    "Atatürk spent his final months in the palace and passed away there on November 10, 1938; to honor his memory, all clocks in the palace are stopped at his time of death, 09:05 AM."
+                ]
+            }
+        ];
+
+        function renderAttractionsGuide() {
+            const container = document.getElementById("istanbul-attractions-guide");
+            if (!container) return;
+            container.innerHTML = "";
+            istanbulAttractionsGuideData.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "attraction-card";
+                
+                const header = document.createElement("div");
+                header.className = "attraction-header";
+                header.innerHTML = `
+                    <h3>${item.title}</h3>
+                    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                `;
+                
+                const body = document.createElement("div");
+                body.className = "attraction-body";
+                body.innerHTML = item.paragraphs.map(p => `<p>${p}</p>`).join("");
+                
+                header.addEventListener("click", () => {
+                    card.classList.toggle("active");
+                });
+                
+                card.appendChild(header);
+                card.appendChild(body);
+                container.appendChild(card);
             });
         }
 
