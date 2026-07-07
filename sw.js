@@ -1,7 +1,8 @@
-const CACHE_NAME = 'dcr-travel-v27';
+const CACHE_NAME = 'dcr-travel-v28';
 const ASSETS = [
   './',
   './DCR_Travel.html',
+  './options_guide.html',
   './index.html',
   './manifest.json',
   './icon-192.png',
