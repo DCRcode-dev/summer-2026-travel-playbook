@@ -8,16 +8,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #bca060;
-            --gold-light: #d1b880;
-            --bg-main: #0b0c10;
-            --bg-card: #15181f;
-            --bg-hover: #1e222b;
-            --text-main: #f5f6f8;
-            --text-muted: #9fa4b0;
-            --border-ios: rgba(188, 160, 96, 0.15);
+            --gold: #8d702a;
+            --gold-light: #bca060;
+            --gold-bg: rgba(141, 112, 42, 0.08);
+            --bg-main: #f5f6f8;
+            --bg-card: #ffffff;
+            --bg-hover: #e9ecef;
+            --text-main: #1a1c23;
+            --text-muted: #5e6475;
+            --border-ios: rgba(141, 112, 42, 0.25);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --shadow-premium: 0 8px 30px rgba(0, 0, 0, 0.5);
+            --shadow-premium: 0 4px 20px rgba(0, 0, 0, 0.06), 0 8px 30px rgba(141, 112, 42, 0.05);
         }
 
         * {
@@ -42,7 +43,7 @@
             left: 0;
             right: 0;
             height: 70px;
-            background-color: rgba(11, 12, 16, 0.95);
+            background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border-ios);
@@ -51,7 +52,12 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        .header-title-container {
+            display: flex;
+            flex-direction: column;
         }
 
         .header-title {
@@ -59,14 +65,30 @@
             font-size: 0.95rem;
             color: var(--gold);
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             margin: 0;
+        }
+
+        .app-link {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 2px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .app-link:hover {
+            color: var(--gold);
         }
 
         /* Day Tabs */
         .day-tabs {
             display: flex;
-            background: rgba(255,255,255,0.03);
+            background: rgba(0,0,0,0.03);
             border: 1px solid var(--border-ios);
             border-radius: 20px;
             padding: 2px;
@@ -86,7 +108,7 @@
 
         .tab-btn.active {
             background-color: var(--gold);
-            color: var(--bg-main);
+            color: #ffffff;
         }
 
         /* Main Container */
@@ -94,32 +116,6 @@
             max-width: 600px;
             margin: 90px auto 40px auto;
             padding: 0 15px;
-        }
-
-        /* Page Switcher inside Cards */
-        .page-tabs {
-            display: flex;
-            margin-bottom: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .page-tab-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 0.78rem;
-            font-weight: 600;
-            padding: 8px 12px;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            transition: var(--transition);
-            flex: 1;
-            text-align: center;
-        }
-
-        .page-tab-btn.active {
-            color: var(--gold);
-            border-bottom-color: var(--gold);
         }
 
         /* Option Card */
@@ -133,11 +129,6 @@
             transition: var(--transition);
         }
 
-        .option-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(188, 160, 96, 0.3);
-        }
-
         .hero-container {
             position: relative;
             height: 180px;
@@ -148,12 +139,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.75);
+            filter: brightness(0.85);
             transition: var(--transition);
-        }
-
-        .option-card:hover .hero-img {
-            transform: scale(1.05);
         }
 
         .hero-overlay {
@@ -161,7 +148,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(0deg, rgba(21, 24, 31, 1) 0%, rgba(21, 24, 31, 0) 100%);
+            background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
             padding: 15px;
             display: flex;
             flex-direction: column;
@@ -184,15 +171,15 @@
         }
 
         .badge-primary {
-            background-color: rgba(188, 160, 96, 0.2);
+            background-color: var(--gold-bg);
             color: var(--gold);
             border: 1px solid var(--border-ios);
         }
 
         .badge-secondary {
-            background-color: rgba(255, 255, 255, 0.05);
+            background-color: rgba(0, 0, 0, 0.04);
             color: var(--text-main);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .option-title {
@@ -200,7 +187,32 @@
             font-size: 1.15rem;
             color: var(--text-main);
             margin: 0;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+        }
+
+        /* Page Tabs inside Card */
+        .page-tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .page-tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 12px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+            flex: 1;
+            text-align: center;
+        }
+
+        .page-tab-btn.active {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
         }
 
         .card-content {
@@ -221,7 +233,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Detail Elements & Typography */
         p.desc-text {
             font-size: 0.82rem;
             line-height: 1.5;
@@ -231,12 +242,52 @@
         }
 
         p.desc-text::first-letter {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: bold;
             color: var(--gold);
         }
 
-        /* 10 Visual Widgets */
+        /* Image Gallery Horizontal Scroll Widget (5 Images total per option) */
+        .gallery-title {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+            display: block;
+        }
+
+        .image-gallery {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .image-gallery::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-img {
+            width: 110px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .gallery-img:active {
+            transform: scale(0.96);
+        }
+
+        /* Visual 1: Logistics Dashboard */
         .visual-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -244,10 +295,9 @@
             margin-bottom: 15px;
         }
 
-        /* Dashboard Widget */
         .dashboard-box {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             border-radius: 10px;
             padding: 10px;
             display: flex;
@@ -270,8 +320,8 @@
 
         /* Route SVG Mini-Map */
         .map-box {
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.01);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             border-radius: 12px;
             padding: 10px;
             margin-bottom: 15px;
@@ -285,8 +335,8 @@
 
         /* Elevation Chart Widget */
         .elevation-box {
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.01);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             border-radius: 12px;
             padding: 10px;
             margin-bottom: 15px;
@@ -301,8 +351,8 @@
         }
 
         .gear-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             border-radius: 8px;
             padding: 8px;
             text-align: center;
@@ -330,8 +380,8 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             border-radius: 10px;
             padding: 10px;
         }
@@ -344,7 +394,7 @@
 
         .gauge-bg {
             fill: none;
-            stroke: rgba(255,255,255,0.05);
+            stroke: rgba(0,0,0,0.05);
             stroke-width: 4;
         }
 
@@ -367,7 +417,7 @@
             font-weight: 700;
         }
 
-        /* Photo spots & Timeline */
+        /* Photo spots & Timelines */
         .photo-list, .timeline-list {
             list-style: none;
             margin: 0;
@@ -375,7 +425,7 @@
         }
 
         .photo-spot {
-            background: rgba(255,255,255,0.01);
+            background: rgba(0,0,0,0.01);
             border-left: 2px solid var(--gold);
             padding: 8px 10px;
             margin-bottom: 8px;
@@ -385,7 +435,7 @@
 
         .photo-title {
             font-weight: 600;
-            color: var(--gold-light);
+            color: var(--gold);
             margin-bottom: 2px;
         }
 
@@ -393,7 +443,6 @@
             color: var(--text-muted);
         }
 
-        /* Timelines nodes */
         .timeline-step {
             position: relative;
             padding-left: 20px;
@@ -422,7 +471,7 @@
             top: 12px;
             bottom: -15px;
             width: 2px;
-            background-color: rgba(255,255,255,0.05);
+            background-color: rgba(0,0,0,0.05);
             z-index: 1;
         }
 
@@ -438,7 +487,7 @@
 
         /* Local Secret block */
         .secret-box {
-            background: linear-gradient(135deg, rgba(188, 160, 96, 0.05) 0%, rgba(21, 24, 31, 0.6) 100%);
+            background: linear-gradient(135deg, rgba(141, 112, 42, 0.03) 0%, rgba(255, 255, 255, 0.6) 100%);
             border: 1px dashed var(--gold);
             border-radius: 10px;
             padding: 10px 12px;
@@ -450,14 +499,14 @@
 
         .secret-title {
             font-weight: 700;
-            color: var(--gold-light);
+            color: var(--gold);
             margin-bottom: 4px;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
-        /* Ratings bars */
+        /* Rating Bars */
         .vibe-bar-container {
             margin-bottom: 8px;
         }
@@ -470,7 +519,7 @@
         }
         .vibe-track {
             height: 4px;
-            background: rgba(255,255,255,0.05);
+            background: rgba(0,0,0,0.05);
             border-radius: 2px;
             overflow: hidden;
         }
@@ -480,7 +529,7 @@
             border-radius: 2px;
         }
 
-        /* Page Toggle buttons */
+        /* Buttons & Footer */
         .nav-links {
             display: flex;
             justify-content: space-between;
@@ -500,10 +549,9 @@
         }
 
         .nav-btn:hover {
-            background-color: rgba(188, 160, 96, 0.1);
+            background-color: var(--gold-bg);
         }
 
-        /* Day display filter logic */
         .day-group {
             display: none;
         }
@@ -511,13 +559,54 @@
         .day-group.active {
             display: block;
         }
+
+        /* Footer Utilities */
+        footer {
+            margin-top: 40px;
+            padding: 20px 15px;
+            text-align: center;
+            border-top: 1px solid var(--border-ios);
+            background: rgba(0,0,0,0.01);
+        }
+
+        .footer-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .footer-link-btn {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .footer-link-btn:hover {
+            color: var(--gold);
+        }
     </style>
 </head>
 <body>
 
-    <!-- Top fixed navigation header -->
+    <!-- Header Navigation -->
     <header>
-        <h1 class="header-title">Transylvania Options</h1>
+        <div class="header-title-container">
+            <h1 class="header-title">Transylvania Options</h1>
+            <a href="./DCR_Travel.html" class="app-link">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                Back to Travel App
+            </a>
+        </div>
         <div class="day-tabs">
             <button class="tab-btn active" onclick="switchDay('mon')">Mon 13 Jul</button>
             <button class="tab-btn" onclick="switchDay('tue')">Tue 14 Jul</button>
@@ -532,7 +621,7 @@
             <!-- OPTION 1: BRAN & RASNOV -->
             <div class="option-card" id="opt-bran">
                 <div class="hero-container">
-                    <img class="hero-img" src="https://images.unsplash.com/photo-1587974928442-77ad9e2b293f?auto=format&fit=crop&w=800&q=80" alt="Bran Castle">
+                    <img class="hero-img" src="https://images.unsplash.com/photo-1587974928442-77ad9e2b293f?w=800&auto=format&fit=crop&q=80" alt="Bran Castle Hero">
                     <div class="hero-overlay">
                         <div class="badge-container">
                             <span class="badge badge-primary">Option 1</span>
@@ -542,18 +631,27 @@
                     </div>
                 </div>
 
-                <!-- Page Tabs inside Card -->
                 <div class="page-tabs">
-                    <button class="page-tab-btn active" onclick="switchCardPage('bran', 1)">Page 1: Logistics</button>
+                    <button class="page-tab-btn active" onclick="switchCardPage('bran', 1)">Page 1: Logistics & Gallery</button>
                     <button class="page-tab-btn" onclick="switchCardPage('bran', 2)">Page 2: Insider Guide</button>
                 </div>
 
                 <div class="card-content">
                     <!-- PAGE 1 -->
                     <div class="option-page active" id="bran-page1">
-                        <p class="desc-text">Journey to the dramatic gothic towers of cliffside Bran Castle, famously known as "Dracula's Castle." Perched on a rock pass, this fortress is a masterwork of winding staircases, historic chambers, and medieval armor. On the return path, you will ascend the high limestone cliffs to explore the massive 13th-century Râșnov Citadel, which served as a village sanctuary against invading armies, offering sweeping views of the entire Saxon valley.</p>
+                        <p class="desc-text">Journey to the dramatic gothic towers of cliffside Bran Castle, famously known as "Dracula's Castle." Perched on a rock pass, this fortress is a maze-like loop of narrow winding staircases, wooden timber balconies, and medieval armor. On the return path, you will explore the massive 13th-century Râșnov Citadel, which served as a hilltop village sanctuary against invading armies, offering sweeping views of the entire Saxon valley.</p>
                         
-                        <!-- Visual 1: Logistics Dashboard -->
+                        <!-- Visual Image Gallery (5 Images Total) -->
+                        <span class="gallery-title">Location Image Gallery (Swipe)</span>
+                        <div class="image-gallery">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1587974928442-77ad9e2b293f?w=400&auto=format&fit=crop&q=80" alt="Bran Castle 1">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=400&auto=format&fit=crop&q=80" alt="Bran Castle Courtyard">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1572883715102-4ee4a460b171?w=400&auto=format&fit=crop&q=80" alt="Rasnov Citadel View">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&auto=format&fit=crop&q=80" alt="Transylvanian Hills">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&auto=format&fit=crop&q=80" alt="Medieval Interior">
+                        </div>
+
+                        <!-- Visual 2: Logistics Dashboard -->
                         <div class="visual-grid">
                             <div class="dashboard-box">
                                 <span class="dash-label">Distance / Drive</span>
@@ -565,23 +663,23 @@
                             </div>
                         </div>
 
-                        <!-- Visual 2: Route mini-map -->
+                        <!-- Visual 3: Route Map -->
                         <div class="map-box">
                             <span class="dash-label">Route Visualizer</span>
                             <svg class="map-svg" viewBox="0 0 200 80">
-                                <line x1="20" y1="60" x2="100" y2="40" stroke="rgba(255,255,255,0.05)" stroke-width="3" />
-                                <line x1="100" y1="40" x2="180" y2="20" stroke="rgba(255,255,255,0.05)" stroke-width="3" />
-                                <path d="M 20 60 Q 100 40 180 20" fill="none" stroke="#bca060" stroke-width="3" />
-                                <circle cx="20" cy="60" r="4" fill="#fff" />
-                                <text x="15" y="75" fill="#9fa4b0" font-size="7">Brașov (Start)</text>
-                                <circle cx="100" cy="40" r="4" fill="#bca060" />
-                                <text x="90" y="32" fill="#bca060" font-size="7">Râșnov</text>
-                                <circle cx="180" cy="20" r="4" fill="#bca060" />
-                                <text x="165" y="12" fill="#bca060" font-size="7">Bran Castle</text>
+                                <line x1="20" y1="60" x2="100" y2="40" stroke="rgba(0,0,0,0.05)" stroke-width="3" />
+                                <line x1="100" y1="40" x2="180" y2="20" stroke="rgba(0,0,0,0.05)" stroke-width="3" />
+                                <path d="M 20 60 Q 100 40 180 20" fill="none" stroke="#8d702a" stroke-width="3" />
+                                <circle cx="20" cy="60" r="4" fill="#1a1c23" />
+                                <text x="15" y="75" fill="#5e6475" font-size="7">Brașov (Start)</text>
+                                <circle cx="100" cy="40" r="4" fill="#8d702a" />
+                                <text x="90" y="32" fill="#8d702a" font-size="7">Râșnov</text>
+                                <circle cx="180" cy="20" r="4" fill="#8d702a" />
+                                <text x="165" y="12" fill="#8d702a" font-size="7">Bran Castle</text>
                             </svg>
                         </div>
 
-                        <!-- Visual 3: Crowd / Best hours -->
+                        <!-- Visual 4: Crowd Level -->
                         <div class="gauge-container" style="margin-bottom: 15px;">
                             <svg class="gauge-svg" viewBox="0 0 36 36">
                                 <path class="gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
@@ -589,11 +687,11 @@
                             </svg>
                             <div class="gauge-text">
                                 <span class="dash-label">Crowd Capacity Factor</span><br>
-                                <span class="gauge-val">80% Peak Sunday/Monday</span>
+                                <span class="gauge-val">80% Peak Visitor Load</span>
                             </div>
                         </div>
 
-                        <!-- Visual 4: Rating Breakdown -->
+                        <!-- Ratings -->
                         <div class="vibe-bar-container">
                             <div class="vibe-label"><span>History & Legend</span><span>95%</span></div>
                             <div class="vibe-track"><div class="vibe-fill" style="width: 95%;"></div></div>
@@ -611,9 +709,9 @@
 
                     <!-- PAGE 2 -->
                     <div class="option-page" id="bran-page2">
-                        <p class="desc-text">To maximize this trip, you'll want to coordinate your arrival. Skip-the-line online tickets are essential to avoid the tour bus queues at the main gate. The castle layout is a maze-like one-way loop with narrow staircases, so carrying larger bags is prohibited (leave them in the vehicle trunk). For lunch, skip the immediate tourist cafes and head to the outdoor terrace of Club Vila Bran for traditional food with sweeping panoramic views back toward the castle walls.</p>
+                        <p class="desc-text">To maximize this trip, skip-the-line online tickets are essential to avoid the tour bus queues at the main gate. The castle layout is a maze-like one-way loop with narrow staircases, so carrying larger bags is prohibited. For lunch, skip the immediate tourist cafes and head to the outdoor terrace of Club Vila Bran for traditional food with sweeping panoramic views back toward the castle walls.</p>
                         
-                        <!-- Visual 5: Timeline Visualizer -->
+                        <!-- Visual 5: Timeline -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">Suggested Timeline Flow</span>
                         <ul class="timeline-list">
                             <li class="timeline-step"><span class="time-badge">10:00 AM</span>Depart Brașov by Uber/Taxi</li>
@@ -622,7 +720,7 @@
                             <li class="timeline-step"><span class="time-badge">02:30 PM</span>Stop at Râșnov Fortress on return leg</li>
                         </ul>
 
-                        <!-- Visual 6: Local Secret Tip -->
+                        <!-- Visual 6: Local Secret -->
                         <div class="secret-box">
                             <div class="secret-title">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -631,7 +729,7 @@
                             Do not just take photos from the entrance path. Walk past the castle ticket booths down to the royal park gardens. There is a lush grassy meadow right below the northern tower cliff that offers the absolute best dramatic angle of the castle silhouette with no tourists in your frame.
                         </div>
 
-                        <!-- Visual 7: Gear Outfit visualizer -->
+                        <!-- Visual 7: Gear -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">What to Bring & Wear</span>
                         <div class="gear-grid">
                             <div class="gear-item">
@@ -652,7 +750,7 @@
                             </div>
                         </div>
 
-                        <!-- Visual 8-10: Photo spots grid -->
+                        <!-- Visual 8-10: Photo spots -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">Top 3 Photo Spots</span>
                         <ul class="photo-list">
                             <li class="photo-spot">
@@ -680,7 +778,7 @@
             <!-- OPTION 2: MOUNT TAMPA & SEVEN LADDERS CANYON -->
             <div class="option-card" id="opt-tampa">
                 <div class="hero-container">
-                    <img class="hero-img" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80" alt="Mount Tampa">
+                    <img class="hero-img" src="https://images.unsplash.com/photo-1528127269322-539801943592?w=800&auto=format&fit=crop&q=80" alt="Mount Tampa Hero">
                     <div class="hero-overlay">
                         <div class="badge-container">
                             <span class="badge badge-primary">Option 2</span>
@@ -690,18 +788,27 @@
                     </div>
                 </div>
 
-                <!-- Page Tabs inside Card -->
                 <div class="page-tabs">
-                    <button class="page-tab-btn active" onclick="switchCardPage('tampa', 1)">Page 1: Logistics</button>
+                    <button class="page-tab-btn active" onclick="switchCardPage('tampa', 1)">Page 1: Logistics & Gallery</button>
                     <button class="page-tab-btn" onclick="switchCardPage('tampa', 2)">Page 2: Insider Guide</button>
                 </div>
 
                 <div class="card-content">
                     <!-- PAGE 1 -->
                     <div class="option-page active" id="tampa-page1">
-                        <p class="desc-text">Immerse yourself in Transylvania's mountain wilderness. You'll start by ascending Mount Tâmpa, either hiking the winding forest paths or taking the cable car up to the peak directly behind the Brașov Hollywood-style sign. In the afternoon, you'll head to the nearby Seven Ladders Canyon (Canionul Șapte Scări), a spectacular limestone gorge where you walk through narrow walls, climbing metal ladders directly alongside rushing alpine waterfalls.</p>
+                        <p class="desc-text">Immerse yourself in Transylvania's mountain wilderness. You'll start by ascending Mount Tâmpa, either hiking the winding forest paths or taking the cable car up to the peak directly behind the Brașov sign. In the afternoon, you'll head to the nearby Seven Ladders Canyon (Canionul Șapte Scări), a spectacular limestone gorge where you walk through narrow walls, climbing metal ladders directly alongside rushing alpine waterfalls.</p>
                         
-                        <!-- Visual 1: Logistics Dashboard -->
+                        <!-- Visual Image Gallery (5 Images Total) -->
+                        <span class="gallery-title">Location Image Gallery (Swipe)</span>
+                        <div class="image-gallery">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1528127269322-539801943592?w=400&auto=format&fit=crop&q=80" alt="Tampa Peak View">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&auto=format&fit=crop&q=80" alt="Forest Pathway">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&auto=format&fit=crop&q=80" alt="Waterfalls">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=400&auto=format&fit=crop&q=80" alt="Limestone Gorge">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&auto=format&fit=crop&q=80" alt="Alpine Forest">
+                        </div>
+
+                        <!-- Visual 2: Logistics Dashboard -->
                         <div class="visual-grid">
                             <div class="dashboard-box">
                                 <span class="dash-label">Distance / Drive</span>
@@ -713,32 +820,32 @@
                             </div>
                         </div>
 
-                        <!-- Visual 2: Route mini-map -->
+                        <!-- Visual 3: Route Map -->
                         <div class="map-box">
                             <span class="dash-label">Route Map & Detour</span>
                             <svg class="map-svg" viewBox="0 0 200 80">
-                                <path d="M 20 20 L 20 60 Q 100 60 180 60" fill="none" stroke="#bca060" stroke-width="3" />
-                                <circle cx="20" cy="20" r="4" fill="#fff" />
-                                <text x="28" y="24" fill="#9fa4b0" font-size="7">Mount Tâmpa (Cable Car)</text>
-                                <circle cx="20" cy="60" r="4" fill="#bca060" />
-                                <text x="28" y="64" fill="#bca060" font-size="7">Brașov Old Town</text>
-                                <circle cx="180" cy="60" r="4" fill="#bca060" />
-                                <text x="120" y="52" fill="#bca060" font-size="7">Seven Ladders Canyon</text>
+                                <path d="M 20 20 L 20 60 Q 100 60 180 60" fill="none" stroke="#8d702a" stroke-width="3" />
+                                <circle cx="20" cy="20" r="4" fill="#1a1c23" />
+                                <text x="28" y="24" fill="#5e6475" font-size="7">Mount Tâmpa (Cable Car)</text>
+                                <circle cx="20" cy="60" r="4" fill="#8d702a" />
+                                <text x="28" y="64" fill="#8d702a" font-size="7">Brașov Old Town</text>
+                                <circle cx="180" cy="60" r="4" fill="#8d702a" />
+                                <text x="120" y="52" fill="#8d702a" font-size="7">Seven Ladders Canyon</text>
                             </svg>
                         </div>
 
-                        <!-- Visual 3: Elevation Profile -->
+                        <!-- Visual 4: Elevation Chart -->
                         <div class="elevation-box">
                             <span class="dash-label">Elevation Profile (Max 960m)</span>
                             <svg class="map-svg" viewBox="0 0 200 60" style="height: 60px;">
-                                <path d="M 10 50 L 50 35 L 90 15 L 130 45 L 180 50" fill="none" stroke="#bca060" stroke-width="2" />
-                                <path d="M 10 50 L 50 35 L 90 15 L 130 45 L 180 50 L 180 55 L 10 55 Z" fill="rgba(188, 160, 96, 0.1)" stroke="none" />
-                                <text x="80" y="10" fill="#bca060" font-size="7">Mount Tâmpa Peak</text>
-                                <text x="135" y="40" fill="#9fa4b0" font-size="6">Canyon Gorge</text>
+                                <path d="M 10 50 L 50 35 L 90 15 L 130 45 L 180 50" fill="none" stroke="#8d702a" stroke-width="2" />
+                                <path d="M 10 50 L 50 35 L 90 15 L 130 45 L 180 50 L 180 55 L 10 55 Z" fill="rgba(141, 112, 42, 0.05)" stroke="none" />
+                                <text x="80" y="10" fill="#8d702a" font-size="7">Mount Tâmpa Peak</text>
+                                <text x="135" y="40" fill="#5e6475" font-size="6">Canyon Gorge</text>
                             </svg>
                         </div>
 
-                        <!-- Visual 4: Rating Breakdown -->
+                        <!-- Ratings -->
                         <div class="vibe-bar-container">
                             <div class="vibe-label"><span>Adventure & Thrill</span><span>98%</span></div>
                             <div class="vibe-track"><div class="vibe-fill" style="width: 98%;"></div></div>
@@ -756,9 +863,9 @@
 
                     <!-- PAGE 2 -->
                     <div class="option-page" id="tampa-page2">
-                        <p class="desc-text">This day requires proper preparation. The walk to the base of the canyon from the parking lot is a gentle 45-minute uphill hike through a lush forest path. Inside the canyon, the metal ladders are completely vertical and can be wet and slippery due to the mist from the waterfalls. Wear sturdy, non-slip hiking boots. A waterproof shell is also recommended, as you will climb directly next to falling cold mountain water. On the return path, you can opt to ride the forest zip-line which spans all the way back to the forest entrance.</p>
+                        <p class="desc-text">This day requires proper preparation. The walk to the base of the canyon from the parking lot is a gentle 45-minute uphill hike through a lush forest path. Inside the canyon, the metal ladders are completely vertical and can be wet and slippery due to the mist from the waterfalls. Wear sturdy, non-slip hiking boots. A waterproof shell is also recommended, as you will climb directly next to falling cold mountain water.</p>
                         
-                        <!-- Visual 5: Timeline Flow -->
+                        <!-- Visual 5: Timeline -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">Suggested Timeline Flow</span>
                         <ul class="timeline-list">
                             <li class="timeline-step"><span class="time-badge">09:00 AM</span>Cable car to Mount Tâmpa viewpoint (or hike up)</li>
@@ -767,7 +874,7 @@
                             <li class="timeline-step"><span class="time-badge">02:00 PM</span>Hike to canyon base & climb the 7 vertical ladders</li>
                         </ul>
 
-                        <!-- Visual 6: Local Secret Tip -->
+                        <!-- Visual 6: Local Secret -->
                         <div class="secret-box">
                             <div class="secret-title">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -776,7 +883,7 @@
                             The limestone walls of the canyon completely block out the sun, and the rushing waterfall water keeps the air inside incredibly cold. Even if it is a hot 28°C (82°F) summer day in Brașov, it will feel like a damp 12°C (53°F) inside the gorge. Always bring a dry jacket in your daypack.
                         </div>
 
-                        <!-- Visual 7: Gear Outfit visualizer -->
+                        <!-- Visual 7: Gear -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">What to Bring & Wear</span>
                         <div class="gear-grid">
                             <div class="gear-item">
@@ -797,7 +904,7 @@
                             </div>
                         </div>
 
-                        <!-- Visual 8-10: Photo spots grid -->
+                        <!-- Visual 8-10: Photo spots -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">Top 3 Photo Spots</span>
                         <ul class="photo-list">
                             <li class="photo-spot">
@@ -825,7 +932,7 @@
             <!-- OPTION 3: VISCRI SAXON VILLAGE -->
             <div class="option-card" id="opt-viscri">
                 <div class="hero-container">
-                    <img class="hero-img" src="https://images.unsplash.com/photo-1558244661-d248897f7bc4?auto=format&fit=crop&w=800&q=80" alt="Viscri Village">
+                    <img class="hero-img" src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&auto=format&fit=crop&q=80" alt="Viscri Village Hero">
                     <div class="hero-overlay">
                         <div class="badge-container">
                             <span class="badge badge-primary">Option 3</span>
@@ -835,18 +942,27 @@
                     </div>
                 </div>
 
-                <!-- Page Tabs inside Card -->
                 <div class="page-tabs">
-                    <button class="page-tab-btn active" onclick="switchCardPage('viscri', 1)">Page 1: Logistics</button>
+                    <button class="page-tab-btn active" onclick="switchCardPage('viscri', 1)">Page 1: Logistics & Gallery</button>
                     <button class="page-tab-btn" onclick="switchCardPage('viscri', 2)">Page 2: Insider Guide</button>
                 </div>
 
                 <div class="card-content">
                     <!-- PAGE 1 -->
                     <div class="option-page active" id="viscri-page1">
-                        <p class="desc-text">Step back in time to the idyllic Saxon heritage of Transylvania. Viscri is a beautifully preserved village of unpaved dirt streets, pastel-colored traditional homesteads, and horse-drawn carriages. The crown jewel is the white 12th-century Fortified Church, a UNESCO World Heritage site featuring historic wooden pews and thick defensive walls. King Charles III fell in love with this village in the 1990s, bought a traditional blue house here, and spearheaded its global preservation.</p>
+                        <p class="desc-text">Step back in time to the idyllic Saxon heritage of Transylvania. Viscri is a beautifully preserved village of unpaved dirt streets, pastel-colored traditional homesteads, and horse-drawn carriages. The crown jewel is the white 12th-century Fortified Church, a UNESCO World Heritage site featuring historic wooden pews and thick defensive walls. King Charles III fell in love with this village, bought a traditional blue house here, and spearheaded its global preservation.</p>
                         
-                        <!-- Visual 1: Logistics Dashboard -->
+                        <!-- Visual Image Gallery (5 Images Total) -->
+                        <span class="gallery-title">Location Image Gallery (Swipe)</span>
+                        <div class="image-gallery">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=400&auto=format&fit=crop&q=80" alt="Viscri Church">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1601918774946-25832a4be0d6?w=400&auto=format&fit=crop&q=80" alt="Blue Saxon House">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1500964757637-c85e8a162699?w=400&auto=format&fit=crop&q=80" alt="Transylvania Countryside">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&auto=format&fit=crop&q=80" alt="Traditional Barn">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=400&auto=format&fit=crop&q=80" alt="Artisan Lunch">
+                        </div>
+
+                        <!-- Visual 2: Logistics Dashboard -->
                         <div class="visual-grid">
                             <div class="dashboard-box">
                                 <span class="dash-label">Distance / Drive</span>
@@ -858,23 +974,23 @@
                             </div>
                         </div>
 
-                        <!-- Visual 2: Route mini-map -->
+                        <!-- Visual 3: Route Map -->
                         <div class="map-box">
                             <span class="dash-label">Route Visualizer</span>
                             <svg class="map-svg" viewBox="0 0 200 80">
-                                <line x1="20" y1="60" x2="110" y2="40" stroke="rgba(255,255,255,0.05)" stroke-width="3" />
-                                <line x1="110" y1="40" x2="180" y2="20" stroke="rgba(255,255,255,0.05)" stroke-width="3" />
-                                <path d="M 20 60 Q 110 40 180 20" fill="none" stroke="#bca060" stroke-width="3" />
-                                <circle cx="20" cy="60" r="4" fill="#fff" />
-                                <text x="15" y="75" fill="#9fa4b0" font-size="7">Brașov (Start)</text>
-                                <circle cx="110" cy="40" r="4" fill="#bca060" />
-                                <text x="100" y="32" fill="#bca060" font-size="7">Rupea Citadel</text>
-                                <circle cx="180" cy="20" r="4" fill="#bca060" />
-                                <text x="160" y="12" fill="#bca060" font-size="7">Viscri Village</text>
+                                <line x1="20" y1="60" x2="110" y2="40" stroke="rgba(0,0,0,0.05)" stroke-width="3" />
+                                <line x1="110" y1="40" x2="180" y2="20" stroke="rgba(0,0,0,0.05)" stroke-width="3" />
+                                <path d="M 20 60 Q 110 40 180 20" fill="none" stroke="#8d702a" stroke-width="3" />
+                                <circle cx="20" cy="60" r="4" fill="#1a1c23" />
+                                <text x="15" y="75" fill="#5e6475" font-size="7">Brașov (Start)</text>
+                                <circle cx="110" cy="40" r="4" fill="#8d702a" />
+                                <text x="100" y="32" fill="#8d702a" font-size="7">Rupea Citadel</text>
+                                <circle cx="180" cy="20" r="4" fill="#8d702a" />
+                                <text x="160" y="12" fill="#8d702a" font-size="7">Viscri Village</text>
                             </svg>
                         </div>
 
-                        <!-- Visual 3: Crowd gauge -->
+                        <!-- Visual 4: Crowd Level -->
                         <div class="gauge-container" style="margin-bottom: 15px;">
                             <svg class="gauge-svg" viewBox="0 0 36 36">
                                 <path class="gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
@@ -886,7 +1002,7 @@
                             </div>
                         </div>
 
-                        <!-- Visual 4: Rating Breakdown -->
+                        <!-- Ratings -->
                         <div class="vibe-bar-container">
                             <div class="vibe-label"><span>Authenticity</span><span>99%</span></div>
                             <div class="vibe-track"><div class="vibe-fill" style="width: 99%;"></div></div>
@@ -904,18 +1020,18 @@
 
                     <!-- PAGE 2 -->
                     <div class="option-page" id="viscri-page2">
-                        <p class="desc-text">Viscri enforces strict preservation rules: cars must park in a designated lot at the edge of the village, ensuring the dirt streets remain quiet and pedestrian-only. For lunch, the absolute highlight is dining at Viscri 32, a beautifully restored Saxon barn where local women cook traditional, seasonal recipes using organic produce from the village gardens. Booking a table in advance is highly recommended. You can also explore local artisan shops selling hand-knit wool socks and traditional felt slippers made by local women.</p>
+                        <p class="desc-text">Viscri enforces strict preservation rules: cars must park in a designated lot at the edge of the village, ensuring the dirt streets remain quiet and pedestrian-only. For lunch, the absolute highlight is dining at Viscri 32, a beautifully restored Saxon barn where local women cook traditional, seasonal recipes using organic produce from the village gardens. Booking a table in advance is highly recommended.</p>
                         
-                        <!-- Visual 5: Timeline Flow -->
+                        <!-- Visual 5: Timeline -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">Suggested Timeline Flow</span>
                         <ul class="timeline-list">
-                            <li class="timeline-step"><span class="time-badge">09:30 AM</span>Depart Brașov by hired car/driver</li>
+                            <li class="timeline-step"><span class="time-badge">09:30 AM</span>Depart Brașov by private driver</li>
                             <li class="timeline-step"><span class="time-badge">11:00 AM</span>Tour the UNESCO Fortified Church & climb the tower</li>
                             <li class="timeline-step"><span class="time-badge">12:30 PM</span>Leisurely barn lunch at Viscri 32</li>
                             <li class="timeline-step"><span class="time-badge">02:30 PM</span>Stroll village paths, visit King Charles' house</li>
                         </ul>
 
-                        <!-- Visual 6: Local Secret Tip -->
+                        <!-- Visual 6: Local Secret -->
                         <div class="secret-box">
                             <div class="secret-title">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -924,7 +1040,7 @@
                             On the drive back from Viscri, have your driver stop at the basalt hill of Rupea. The spiral stone ruins of Rupea Citadel (Cetatea Rupea) are extremely impressive and take only 30 minutes to climb. It is located directly alongside the main highway and offers a fantastic sunset photo opportunity.
                         </div>
 
-                        <!-- Visual 7: Gear Outfit visualizer -->
+                        <!-- Visual 7: Gear -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">What to Bring & Wear</span>
                         <div class="gear-grid">
                             <div class="gear-item">
@@ -945,7 +1061,7 @@
                             </div>
                         </div>
 
-                        <!-- Visual 8-10: Photo spots grid -->
+                        <!-- Visual 8-10: Photo spots -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">Top 3 Photo Spots</span>
                         <ul class="photo-list">
                             <li class="photo-spot">
@@ -978,7 +1094,7 @@
             <!-- OPTION 1: SIGHISOARA -->
             <div class="option-card" id="opt-sighisoara">
                 <div class="hero-container">
-                    <img class="hero-img" src="https://images.unsplash.com/photo-1590076212876-0b89ef94d623?auto=format&fit=crop&w=800&q=80" alt="Sighisoara">
+                    <img class="hero-img" src="https://images.unsplash.com/photo-1590076212876-0b89ef94d623?w=800&auto=format&fit=crop&q=80" alt="Sighisoara Hero">
                     <div class="hero-overlay">
                         <div class="badge-container">
                             <span class="badge badge-primary">Option 1</span>
@@ -988,18 +1104,27 @@
                     </div>
                 </div>
 
-                <!-- Page Tabs inside Card -->
                 <div class="page-tabs">
-                    <button class="page-tab-btn active" onclick="switchCardPage('sighisoara', 1)">Page 1: Logistics</button>
+                    <button class="page-tab-btn active" onclick="switchCardPage('sighisoara', 1)">Page 1: Logistics & Gallery</button>
                     <button class="page-tab-btn" onclick="switchCardPage('sighisoara', 2)">Page 2: Insider Guide</button>
                 </div>
 
                 <div class="card-content">
                     <!-- PAGE 1 -->
                     <div class="option-page active" id="sighisoara-page1">
-                        <p class="desc-text">Journey to one of Europe's most beautiful inhabited medieval citadel towns. Sighișoara is a historic monument of colorful pastel buildings, cobblestone alleys, and medieval towers. You'll climb the famous 14th-century Clock Tower to see the rotating wooden figurines and take in panoramic views of the citadel, walk the covered wooden Scholars' Stairs up to the atmospheric Church on the Hill, and visit the actual birthplace of Vlad the Impaler (Dracula).</p>
+                        <p class="desc-text">Journey to one of Europe's most beautiful inhabited medieval citadel towns. Sighișoara is a historic monument of colorful pastel buildings, cobblestone alleys, and medieval towers. You'll climb the famous 14th-century Clock Tower to see the rotating wooden figurines and take in panoramic views of the citadel, walk the covered wooden Scholars' Stairs up to the atmospheric Church on the Hill, and visit the actual birthplace of Vlad the Impaler.</p>
                         
-                        <!-- Visual 1: Logistics Dashboard -->
+                        <!-- Visual Image Gallery (5 Images Total) -->
+                        <span class="gallery-title">Location Image Gallery (Swipe)</span>
+                        <div class="image-gallery">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1590076212876-0b89ef94d623?w=400&auto=format&fit=crop&q=80" alt="Sighisoara Clock Tower">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1579294800821-694d95e86143?w=400&auto=format&fit=crop&q=80" alt="Sighisoara Streets">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1516900557573-06a1590d57a7?w=400&auto=format&fit=crop&q=80" alt="Scholars Stairs Inside">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1508849789987-4e5333c12b78?w=400&auto=format&fit=crop&q=80" alt="Orange Roof Skyline">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&auto=format&fit=crop&q=80" alt="Citadel Walls">
+                        </div>
+
+                        <!-- Visual 2: Logistics Dashboard -->
                         <div class="visual-grid">
                             <div class="dashboard-box">
                                 <span class="dash-label">Distance / Drive</span>
@@ -1011,23 +1136,23 @@
                             </div>
                         </div>
 
-                        <!-- Visual 2: Route mini-map -->
+                        <!-- Visual 3: Route Map -->
                         <div class="map-box">
                             <span class="dash-label">Route Visualizer</span>
                             <svg class="map-svg" viewBox="0 0 200 80">
-                                <line x1="20" y1="60" x2="100" y2="45" stroke="rgba(255,255,255,0.05)" stroke-width="3" />
-                                <line x1="100" y1="45" x2="180" y2="20" stroke="rgba(255,255,255,0.05)" stroke-width="3" />
-                                <path d="M 20 60 Q 100 45 180 20" fill="none" stroke="#bca060" stroke-width="3" />
-                                <circle cx="20" cy="60" r="4" fill="#fff" />
-                                <text x="15" y="75" fill="#9fa4b0" font-size="7">Brașov (Start)</text>
-                                <circle cx="100" cy="45" r="4" fill="#bca060" />
-                                <text x="90" y="36" fill="#bca060" font-size="7">Feldioara</text>
-                                <circle cx="180" cy="20" r="4" fill="#bca060" />
-                                <text x="140" y="12" fill="#bca060" font-size="7">Sighișoara Citadel</text>
+                                <line x1="20" y1="60" x2="100" y2="45" stroke="rgba(0,0,0,0.05)" stroke-width="3" />
+                                <line x1="100" y1="45" x2="180" y2="20" stroke="rgba(0,0,0,0.05)" stroke-width="3" />
+                                <path d="M 20 60 Q 100 45 180 20" fill="none" stroke="#8d702a" stroke-width="3" />
+                                <circle cx="20" cy="60" r="4" fill="#1a1c23" />
+                                <text x="15" y="75" fill="#5e6475" font-size="7">Brașov (Start)</text>
+                                <circle cx="100" cy="45" r="4" fill="#8d702a" />
+                                <text x="90" y="36" fill="#8d702a" font-size="7">Feldioara</text>
+                                <circle cx="180" cy="20" r="4" fill="#8d702a" />
+                                <text x="140" y="12" fill="#8d702a" font-size="7">Sighișoara Citadel</text>
                             </svg>
                         </div>
 
-                        <!-- Visual 3: Crowd gauge -->
+                        <!-- Visual 4: Crowd Level -->
                         <div class="gauge-container" style="margin-bottom: 15px;">
                             <svg class="gauge-svg" viewBox="0 0 36 36">
                                 <path class="gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
@@ -1035,11 +1160,11 @@
                             </svg>
                             <div class="gauge-text">
                                 <span class="dash-label">Crowd Capacity Factor</span><br>
-                                <span class="gauge-val">60% Moderate</span>
+                                <span class="gauge-val">60% Moderate Load</span>
                             </div>
                         </div>
 
-                        <!-- Visual 4: Rating Breakdown -->
+                        <!-- Ratings -->
                         <div class="vibe-bar-container">
                             <div class="vibe-label"><span>Medieval Charm</span><span>99%</span></div>
                             <div class="vibe-track"><div class="vibe-fill" style="width: 99%;"></div></div>
@@ -1057,9 +1182,9 @@
 
                     <!-- PAGE 2 -->
                     <div class="option-page" id="sighisoara-page2">
-                        <p class="desc-text">Sighișoara is fully pedestrian inside the citadel walls, so prepare for steep cobblestone walking. For lunch, avoid the tourist trap cafes next to Vlad's birthplace and head to **Medieval Cafe Sighișoara** (located in a quiet courtyard), which serves fantastic traditional local Transylvanian soups and stews inside a historic stone vaulted hall. If you want a great panoramic photo of the entire town, walk past the School Hill to the cemetery lookout on top of the hill.</p>
+                        <p class="desc-text">Sighișoara is fully pedestrian inside the citadel walls, so prepare for steep cobblestone walking. For lunch, avoid the tourist trap cafes next to Vlad's birthplace and head to **Medieval Cafe Sighișoara** (located in a quiet courtyard), which serves fantastic traditional local Transylvanian soups and stews inside a historic stone vaulted hall.</p>
                         
-                        <!-- Visual 5: Timeline Flow -->
+                        <!-- Visual 5: Timeline -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">Suggested Timeline Flow</span>
                         <ul class="timeline-list">
                             <li class="timeline-step"><span class="time-badge">09:00 AM</span>Depart Brașov by private driver</li>
@@ -1068,16 +1193,16 @@
                             <li class="timeline-step"><span class="time-badge">01:30 PM</span>Traditional Transylvanian lunch at Medieval Cafe</li>
                         </ul>
 
-                        <!-- Visual 6: Local Secret Tip -->
+                        <!-- Visual 6: Local Secret -->
                         <div class="secret-box">
                             <div class="secret-title">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                                 Local Secret: Clock Tower Figurine Rotation
                             </div>
-                            Try to be near the base of the Clock Tower right before the hour strikes (e.g. 12:00 PM). You can watch the unique medieval wooden clock mechanism rotate its hand-carved figurines (depicting pagan gods and days of the week) on the side of the tower face.
+                            Try to be near the base of the Clock Tower right before the hour strikes. You can watch the unique medieval wooden clock mechanism rotate its hand-carved figurines (depicting pagan gods and days of the week) on the side of the tower face.
                         </div>
 
-                        <!-- Visual 7: Gear Outfit visualizer -->
+                        <!-- Visual 7: Gear -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">What to Bring & Wear</span>
                         <div class="gear-grid">
                             <div class="gear-item">
@@ -1098,7 +1223,7 @@
                             </div>
                         </div>
 
-                        <!-- Visual 8-10: Photo spots grid -->
+                        <!-- Visual 8-10: Photo spots -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">Top 3 Photo Spots</span>
                         <ul class="photo-list">
                             <li class="photo-spot">
@@ -1126,7 +1251,7 @@
             <!-- OPTION 2: TRANSFAGARASAN -->
             <div class="option-card" id="opt-transfagarasan">
                 <div class="hero-container">
-                    <img class="hero-img" src="https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?auto=format&fit=crop&w=800&q=80" alt="Transfagarasan Road">
+                    <img class="hero-img" src="https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?w=800&auto=format&fit=crop&q=80" alt="Transfagarasan Hero">
                     <div class="hero-overlay">
                         <div class="badge-container">
                             <span class="badge badge-primary">Option 2</span>
@@ -1136,18 +1261,27 @@
                     </div>
                 </div>
 
-                <!-- Page Tabs inside Card -->
                 <div class="page-tabs">
-                    <button class="page-tab-btn active" onclick="switchCardPage('transfagarasan', 1)">Page 1: Logistics</button>
+                    <button class="page-tab-btn active" onclick="switchCardPage('transfagarasan', 1)">Page 1: Logistics & Gallery</button>
                     <button class="page-tab-btn" onclick="switchCardPage('transfagarasan', 2)">Page 2: Insider Guide</button>
                 </div>
 
                 <div class="card-content">
                     <!-- PAGE 1 -->
                     <div class="option-page active" id="transfagarasan-page1">
-                        <p class="desc-text">Drive the legendary Transfăgărășan, widely considered one of the most spectacular mountain highways in the world. Built as a military road in the 1970s, it cuts directly through the highest peaks of the Făgăraș Mountains in a series of sweeping hairpin turns, massive viaducts, and dark tunnels. You'll drive up to Bâlea Lake, a glacier-fed lake perched at 2,034 meters altitude, surrounded by jagged granite cliffs.</p>
+                        <p class="desc-text">Drive the legendary Transfăgărășan, widely considered one of the most spectacular mountain highways in the world. Built as a military road in the 1970s, it cuts directly through the highest peaks of the Făgăraș Mountains in a series of sweeping hairpin turns, massive viaducts, and dark tunnels. You'll drive up to Bâlea Lake, a glacier-fed lake perched at 2,034 meters altitude.</p>
                         
-                        <!-- Visual 1: Logistics Dashboard -->
+                        <!-- Visual Image Gallery (5 Images Total) -->
+                        <span class="gallery-title">Location Image Gallery (Swipe)</span>
+                        <div class="image-gallery">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?w=400&auto=format&fit=crop&q=80" alt="Transfagarasan Hairpin View">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=400&auto=format&fit=crop&q=80" alt="Balea Glacial Lake">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=400&auto=format&fit=crop&q=80" alt="High Peaks">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&auto=format&fit=crop&q=80" alt="Mountain Road Curve">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=400&auto=format&fit=crop&q=80" alt="Waterfall Cascade">
+                        </div>
+
+                        <!-- Visual 2: Logistics Dashboard -->
                         <div class="visual-grid">
                             <div class="dashboard-box">
                                 <span class="dash-label">Distance / Drive</span>
@@ -1159,34 +1293,34 @@
                             </div>
                         </div>
 
-                        <!-- Visual 2: Route mini-map -->
+                        <!-- Visual 3: Route Map -->
                         <div class="map-box">
                             <span class="dash-label">Route & Mountain Pass</span>
                             <svg class="map-svg" viewBox="0 0 200 80">
-                                <path d="M 20 60 L 100 60 L 140 25 L 180 20" fill="none" stroke="#bca060" stroke-width="3" />
-                                <circle cx="20" cy="60" r="4" fill="#fff" />
-                                <text x="15" y="73" fill="#9fa4b0" font-size="7">Brașov (Start)</text>
-                                <circle cx="100" cy="60" r="4" fill="#bca060" />
-                                <text x="80" y="52" fill="#bca060" font-size="7">Cârțișoara (Base)</text>
-                                <circle cx="140" cy="25" r="4" fill="#bca060" />
-                                <text x="148" y="29" fill="#bca060" font-size="7">Hairpin Turns</text>
-                                <circle cx="180" cy="20" r="4" fill="#bca060" />
-                                <text x="155" y="12" fill="#bca060" font-size="7">Bâlea Lake Peak</text>
+                                <path d="M 20 60 L 100 60 L 140 25 L 180 20" fill="none" stroke="#8d702a" stroke-width="3" />
+                                <circle cx="20" cy="60" r="4" fill="#1a1c23" />
+                                <text x="15" y="73" fill="#5e6475" font-size="7">Brașov (Start)</text>
+                                <circle cx="100" cy="60" r="4" fill="#8d702a" />
+                                <text x="80" y="52" fill="#8d702a" font-size="7">Cârțișoara (Base)</text>
+                                <circle cx="140" cy="25" r="4" fill="#8d702a" />
+                                <text x="148" y="29" fill="#8d702a" font-size="7">Hairpin Turns</text>
+                                <circle cx="180" cy="20" r="4" fill="#8d702a" />
+                                <text x="155" y="12" fill="#8d702a" font-size="7">Bâlea Lake Peak</text>
                             </svg>
                         </div>
 
-                        <!-- Visual 3: Elevation Profile -->
+                        <!-- Visual 4: Elevation Profile -->
                         <div class="elevation-box">
                             <span class="dash-label">Elevation Climb Profile (Max 2,034m)</span>
                             <svg class="map-svg" viewBox="0 0 200 60" style="height: 60px;">
-                                <path d="M 10 50 L 80 45 L 140 20 L 180 15" fill="none" stroke="#bca060" stroke-width="2" />
-                                <path d="M 10 50 L 80 45 L 140 20 L 180 15 L 180 55 L 10 55 Z" fill="rgba(188, 160, 96, 0.1)" stroke="none" />
-                                <text x="15" y="42" fill="#9fa4b0" font-size="6">Brașov (580m)</text>
-                                <text x="135" y="12" fill="#bca060" font-size="7">Bâlea Lake (2,034m)</text>
+                                <path d="M 10 50 L 80 45 L 140 20 L 180 15" fill="none" stroke="#8d702a" stroke-width="2" />
+                                <path d="M 10 50 L 80 45 L 140 20 L 180 15 L 180 55 L 10 55 Z" fill="rgba(141, 112, 42, 0.05)" stroke="none" />
+                                <text x="15" y="42" fill="#5e6475" font-size="6">Brașov (580m)</text>
+                                <text x="135" y="12" fill="#8d702a" font-size="7">Bâlea Lake (2,034m)</text>
                             </svg>
                         </div>
 
-                        <!-- Visual 4: Rating Breakdown -->
+                        <!-- Ratings -->
                         <div class="vibe-bar-container">
                             <div class="vibe-label"><span>Scenic Driving</span><span>100%</span></div>
                             <div class="vibe-track"><div class="vibe-fill" style="width: 100%;"></div></div>
@@ -1204,18 +1338,18 @@
 
                     <!-- PAGE 2 -->
                     <div class="option-page" id="transfagarasan-page2">
-                        <p class="desc-text">This driving route is only open during the summer months (from July to October) due to high-altitude snow. Sunday and weekend traffic can be very heavy, but a Tuesday trip is perfect for open roads. The weather at Bâlea Lake (2,034m) is typically 15°C (27°F) colder than at the base of the mountain, and winds can be very strong. Bring a warm layer and a windproof jacket. For lunch, you can eat traditional grilled meats and local cheese at **Cabana Bâlea Lac** located on a peninsula in the glacial lake.</p>
+                        <p class="desc-text">This driving route is only open during the summer months due to snow. Sunday traffic can be very heavy, but a Tuesday trip is perfect for open roads. The weather at Bâlea Lake is typically 15°C colder than at the base, and winds can be strong. Bring a warm layer and a windproof jacket. Eat traditional grilled meats at **Cabana Bâlea Lac** located on a lake peninsula.</p>
                         
-                        <!-- Visual 5: Timeline Flow -->
+                        <!-- Visual 5: Timeline -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">Suggested Timeline Flow</span>
                         <ul class="timeline-list">
                             <li class="timeline-step"><span class="time-badge">08:30 AM</span>Depart Brașov by private driver</li>
                             <li class="timeline-step"><span class="time-badge">10:30 AM</span>Reach Cârțișoara & begin the mountain climb</li>
                             <li class="timeline-step"><span class="time-badge">12:00 PM</span>Arrive Bâlea Lake, explore the glacial shores</li>
-                            <li class="timeline-step"><span class="time-badge">01:00 PM</span>Lunch at Cabana Bâlea Lac overlooking the hairpin curves</li>
+                            <li class="timeline-step"><span class="time-badge">01:00 PM</span>Lunch at Cabana Bâlea Lac overlooking the curves</li>
                         </ul>
 
-                        <!-- Visual 6: Local Secret Tip -->
+                        <!-- Visual 6: Local Secret -->
                         <div class="secret-box">
                             <div class="secret-title">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -1224,7 +1358,7 @@
                             If the road is clear but you want the absolute best view of the hairpin curves, park at the Bâlea Cascadă cable car station and take the 10-minute red cable car up to the peak. The view looking down at the highway threading through the valley is jaw-dropping and better than any viewpoint from the road.
                         </div>
 
-                        <!-- Visual 7: Gear Outfit visualizer -->
+                        <!-- Visual 7: Gear -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">What to Bring & Wear</span>
                         <div class="gear-grid">
                             <div class="gear-item">
@@ -1245,7 +1379,7 @@
                             </div>
                         </div>
 
-                        <!-- Visual 8-10: Photo spots grid -->
+                        <!-- Visual 8-10: Photo spots -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">Top 3 Photo Spots</span>
                         <ul class="photo-list">
                             <li class="photo-spot">
@@ -1273,7 +1407,7 @@
             <!-- OPTION 3: CLAY CASTLE -->
             <div class="option-card" id="opt-clay">
                 <div class="hero-container">
-                    <img class="hero-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80" alt="Clay Castle">
+                    <img class="hero-img" src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=800&auto=format&fit=crop&q=80" alt="Clay Castle Hero">
                     <div class="hero-overlay">
                         <div class="badge-container">
                             <span class="badge badge-primary">Option 3</span>
@@ -1283,18 +1417,27 @@
                     </div>
                 </div>
 
-                <!-- Page Tabs inside Card -->
                 <div class="page-tabs">
-                    <button class="page-tab-btn active" onclick="switchCardPage('clay', 1)">Page 1: Logistics</button>
+                    <button class="page-tab-btn active" onclick="switchCardPage('clay', 1)">Page 1: Logistics & Gallery</button>
                     <button class="page-tab-btn" onclick="switchCardPage('clay', 2)">Page 2: Insider Guide</button>
                 </div>
 
                 <div class="card-content">
                     <!-- PAGE 1 -->
                     <div class="option-page active" id="clay-page1">
-                        <p class="desc-text">Experience a day of whimsical fairy-tale designs and serene forest monasteries. You'll drive west along the foot of the Făgăraș Mountains to the **Clay Castle Valley of Fairies** (Castelul de Lut Valea Zânelor), a unique architectural creation built entirely of organic clay, sand, straw, and wood, featuring undulating roofs and towers resembling a Hobbit home. Afterward, you'll head deep into a nearby pine forest to visit **Sâmbăta de Sus Monastery**, a spectacular masterpiece of 17th-century Romanian Brâncovenesc art.</p>
+                        <p class="desc-text">Experience a day of whimsical designs and serene forest monasteries. You'll drive to the **Clay Castle Valley of Fairies** (Castelul de Lut Valea Zânelor), built entirely of organic clay, sand, straw, and wood, featuring undulating roofs and towers resembling a Hobbit home. Afterward, you'll head deep into a nearby forest to visit **Sâmbăta de Sus Monastery**, a spectacular masterpiece of 17th-century Brâncovenesc art.</p>
                         
-                        <!-- Visual 1: Logistics Dashboard -->
+                        <!-- Visual Image Gallery (5 Images Total) -->
+                        <span class="gallery-title">Location Image Gallery (Swipe)</span>
+                        <div class="image-gallery">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=400&auto=format&fit=crop&q=80" alt="Clay Castle Facade">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1546482503-97640e7db0ef?w=400&auto=format&fit=crop&q=80" alt="Clay Roof Towers">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1580974928484-8167f10b784a?w=400&auto=format&fit=crop&q=80" alt="Sambata de Sus Monastery">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&auto=format&fit=crop&q=80" alt="Trout Farm Lunch">
+                            <img class="gallery-img" src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&auto=format&fit=crop&q=80" alt="Whimsical Gardens">
+                        </div>
+
+                        <!-- Visual 2: Logistics Dashboard -->
                         <div class="visual-grid">
                             <div class="dashboard-box">
                                 <span class="dash-label">Distance / Drive</span>
@@ -1306,23 +1449,23 @@
                             </div>
                         </div>
 
-                        <!-- Visual 2: Route mini-map -->
+                        <!-- Visual 3: Route Map -->
                         <div class="map-box">
                             <span class="dash-label">Route Visualizer</span>
                             <svg class="map-svg" viewBox="0 0 200 80">
-                                <line x1="20" y1="60" x2="100" y2="40" stroke="rgba(255,255,255,0.05)" stroke-width="3" />
-                                <line x1="100" y1="40" x2="180" y2="20" stroke="rgba(255,255,255,0.05)" stroke-width="3" />
-                                <path d="M 20 60 Q 100 40 180 20" fill="none" stroke="#bca060" stroke-width="3" />
-                                <circle cx="20" cy="60" r="4" fill="#fff" />
-                                <text x="15" y="75" fill="#9fa4b0" font-size="7">Brașov (Start)</text>
-                                <circle cx="100" cy="40" r="4" fill="#bca060" />
-                                <text x="80" y="32" fill="#bca060" font-size="7">Clay Castle (Porumbacu)</text>
-                                <circle cx="180" cy="20" r="4" fill="#bca060" />
-                                <text x="145" y="12" fill="#bca060" font-size="7">Sâmbăta de Sus</text>
+                                <line x1="20" y1="60" x2="100" y2="40" stroke="rgba(0,0,0,0.05)" stroke-width="3" />
+                                <line x1="100" y1="40" x2="180" y2="20" stroke="rgba(0,0,0,0.05)" stroke-width="3" />
+                                <path d="M 20 60 Q 100 40 180 20" fill="none" stroke="#8d702a" stroke-width="3" />
+                                <circle cx="20" cy="60" r="4" fill="#1a1c23" />
+                                <text x="15" y="75" fill="#5e6475" font-size="7">Brașov (Start)</text>
+                                <circle cx="100" cy="40" r="4" fill="#8d702a" />
+                                <text x="80" y="32" fill="#8d702a" font-size="7">Clay Castle (Porumbacu)</text>
+                                <circle cx="180" cy="20" r="4" fill="#8d702a" />
+                                <text x="145" y="12" fill="#8d702a" font-size="7">Sâmbăta de Sus</text>
                             </svg>
                         </div>
 
-                        <!-- Visual 3: Crowd gauge -->
+                        <!-- Visual 4: Crowd Level -->
                         <div class="gauge-container" style="margin-bottom: 15px;">
                             <svg class="gauge-svg" viewBox="0 0 36 36">
                                 <path class="gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
@@ -1330,11 +1473,11 @@
                             </svg>
                             <div class="gauge-text">
                                 <span class="dash-label">Crowd Capacity Factor</span><br>
-                                <span class="gauge-val">40% Peaceful</span>
+                                <span class="gauge-val">40% Peaceful Atmosphere</span>
                             </div>
                         </div>
 
-                        <!-- Visual 4: Rating Breakdown -->
+                        <!-- Ratings -->
                         <div class="vibe-bar-container">
                             <div class="vibe-label"><span>Whimsical Vibe</span><span>95%</span></div>
                             <div class="vibe-track"><div class="vibe-fill" style="width: 95%;"></div></div>
@@ -1352,9 +1495,9 @@
 
                     <!-- PAGE 2 -->
                     <div class="option-page" id="clay-page2">
-                        <p class="desc-text">Clay Castle is located in Porumbacu de Sus, a quiet village at the foothills. The castle itself does not have furnished rooms inside, but visitors can climb its clay towers for scenic views and enjoy the beautiful outdoor riverside gardens which feature wooden chairs and picnic benches. For lunch, you can eat at the nearby **Castelul de Lut Restaurant** or head to the local trout farms (*păstrăvării*) near Sâmbăta de Sus, which serve the freshest grilled trout in Transylvania.</p>
+                        <p class="desc-text">Clay Castle is located in Porumbacu de Sus. The castle does not have furnished rooms inside, but visitors can climb its clay towers for scenic views and enjoy the beautiful outdoor riverside gardens. For lunch, you can eat at the nearby **Castelul de Lut Restaurant** or head to the local trout farms (*păstrăvării*) near Sâmbăta de Sus, which serve fresh grilled trout.</p>
                         
-                        <!-- Visual 5: Timeline Flow -->
+                        <!-- Visual 5: Timeline -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">Suggested Timeline Flow</span>
                         <ul class="timeline-list">
                             <li class="timeline-step"><span class="time-badge">09:30 AM</span>Depart Brașov by private driver</li>
@@ -1363,16 +1506,16 @@
                             <li class="timeline-step"><span class="time-badge">02:30 PM</span>Visit the peaceful Sâmbăta de Sus Monastery courtyard</li>
                         </ul>
 
-                        <!-- Visual 6: Local Secret Tip -->
+                        <!-- Visual 6: Local Secret -->
                         <div class="secret-box">
                             <div class="secret-title">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                                 Local Secret: Glass Painting Workshops
                             </div>
-                            Sâmbăta de Sus Monastery is home to a famous local school of icon painting on glass. Walk past the main church to the workshops in the rear courtyard. If the local monks are working, they will often let you step inside to see the incredible, intricate process of reverse-glass painting.
+                            Sâmbăta de Sus Monastery is home to a famous local school of icon painting on glass. Walk past the main church to the workshops in the rear courtyard. If the local monks are working, they will often let you step inside to see the incredible reverse-glass painting process.
                         </div>
 
-                        <!-- Visual 7: Gear Outfit visualizer -->
+                        <!-- Visual 7: Gear -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">What to Bring & Wear</span>
                         <div class="gear-grid">
                             <div class="gear-item">
@@ -1393,7 +1536,7 @@
                             </div>
                         </div>
 
-                        <!-- Visual 8-10: Photo spots grid -->
+                        <!-- Visual 8-10: Photo spots -->
                         <span class="dash-label" style="margin-bottom: 8px; display: block;">Top 3 Photo Spots</span>
                         <ul class="photo-list">
                             <li class="photo-spot">
@@ -1422,13 +1565,20 @@
 
     </div>
 
+    <!-- Footer with Github Link and Travel PWA link -->
+    <footer>
+        <div class="footer-logo">DCR Summer 2026</div>
+        <div class="footer-links">
+            <a class="footer-link-btn" href="./DCR_Travel.html">← Travel PWA App</a>
+            <a class="footer-link-btn" href="https://github.com/DCRcode-dev/summer-2026-travel-playbook" target="_blank">🔗 GitHub Repository</a>
+        </div>
+    </footer>
+
     <script>
         function switchDay(day) {
-            // Day tabs toggle
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            // Day groups toggle
             document.querySelectorAll('.day-group').forEach(group => group.classList.remove('active'));
             document.getElementById(day + '-group').classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1438,7 +1588,6 @@
             const card = document.getElementById('opt-' + cardId);
             if (!card) return;
 
-            // Page tabs toggle
             card.querySelectorAll('.page-tab-btn').forEach((btn, index) => {
                 if (index === (pageNum - 1)) {
                     btn.classList.add('active');
@@ -1447,7 +1596,6 @@
                 }
             });
 
-            // Pages toggle
             card.querySelectorAll('.option-page').forEach((page, index) => {
                 if (index === (pageNum - 1)) {
                     page.classList.add('active');
