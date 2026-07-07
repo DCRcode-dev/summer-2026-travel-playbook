@@ -82,7 +82,9 @@
     ]
   },
   "istanbul": {
-    "sights": [],
+    "sights": [
+      0
+    ],
     "local": [],
     "timeline": [
       {
