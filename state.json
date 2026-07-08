@@ -329,47 +329,49 @@
       },
       {
         "date": "Mon 13 Jul",
-        "title": "Braşov Sights & Bran Castle",
+        "title": "Private Sighișoara & Viscri UNESCO Tour",
         "items": [
-          "Day trip to the dramatic gothic towers of cliffside Bran Castle (12:00 PM)",
-          "Walk down Rope Street (Strada Sforii) - one of Europe's narrowest paths (03:00 PM)",
-          "Climb the medieval Black Tower & White Tower for orange-roofed skyline views (04:00 PM)",
-          "Explore historic defensive walls and Weavers' Bastion (05:00 PM)",
-          "Slow-food Transylvanian dinner inside a 16th-century hall at Bistro de l'Arte (19:30)"
+          "Private pickup from your Brașov Airbnb (08:30 AM)",
+          "Drive to Viscri UNESCO Saxon village (08:30 AM - 10:00 AM)",
+          "Tour Viscri Fortified Church & stroll the historic village (10:00 AM)",
+          "Traditional multi-course Saxon farm lunch in Viscri (12:00 PM)",
+          "Drive to Sighișoara medieval citadel (01:15 PM - 02:00 PM)",
+          "Guided walk of Sighișoara Citadel, Scholars' Stairs, and Vlad's birthplace (02:00 PM)",
+          "Free time for photography & coffee in Sighișoara (03:30 PM)",
+          "Return drive to Brașov (04:30 PM - 06:15 PM)",
+          "Dinner at Bistro de l'Arte for slow-food Transylvanian cuisine (19:30)"
         ],
         "lunchOptions": [
           {
-            "name": "Prato",
-            "query": "Prato Brasov"
+            "name": "Viscri Traditional Lunch",
+            "query": "Viscri 32 traditional lunch"
           },
           {
-            "name": "La Birou Bistro",
-            "query": "La Birou Bistro Brasov"
-          },
-          {
-            "name": "Pilvax",
-            "query": "Pilvax Brasov"
+            "name": "Medieval Cafe Sighișoara",
+            "query": "Medieval Cafe Sighisoara"
           }
         ]
       },
       {
         "date": "Tue 14 Jul",
-        "title": "Day Trip to Sighișoara UNESCO Citadel",
+        "title": "Transfăgărășan eBike Ride to Bâlea Lake",
         "items": [
-          "Depart Braşov for Sighișoara medieval walled town (09:00 AM)",
-          "Tour Sighișoara Citadel, Clock Tower, and covered stairs (11:00 AM)",
-          "Explore the birthplace of Vlad the Impaler (Dracula)",
-          "Return to Braşov in the late afternoon (04:30 PM)",
+          "Depart Brașov for Transfăgărășan highway base (08:30 AM)",
+          "Meet eBike guide & fit gear at start point (10:00 AM)",
+          "eBike climb up the Transfăgărășan pass to Bâlea Lake (10:30 AM - 01:00 PM)",
+          "Lunch at Cabana Bâlea Lac overlooking the glacial lake (01:00 PM)",
+          "Wander the glacial lake shores and enjoy alpine views (02:00 PM)",
+          "Descent & return drive to Brașov (03:00 PM - 05:30 PM)",
           "Dinner at forest-edge Sub Tâmpa at the foot of the mountain (19:30)"
         ],
         "lunchOptions": [
           {
-            "name": "Medieval Cafe Sighișoara",
-            "query": "Medieval Cafe Sighisoara"
+            "name": "Cabana Bâlea Lac",
+            "query": "Cabana Balea Lac Restaurant"
           },
           {
-            "name": "Gasthaus Alte Post Sighișoara",
-            "query": "Gasthaus Alte Post Sighisoara"
+            "name": "Sub Tâmpa",
+            "query": "Sub Tampa Brasov"
           },
           {
             "name": "Joseph T. Restaurant",

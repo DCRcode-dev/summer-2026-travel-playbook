@@ -152,7 +152,8 @@ Welcome to your bespoke Summer 2026 Grand Tour Playbook. This curated guide swee
 * **The Neighborhood:** **Strada Lungă** runs directly into the heart of Braşov's medieval old town. You are a 10-minute stroll from **Piața Sfatului** (Council Square) and the imposing Black Church. It is quiet, historic, and surrounded by forested mountains.
 * **Local Know-How:**
   * **Wednesday Train Connection:** On checkout day (Wed 15 Jul), take the **09:30 AM CFR InterRegio train** from Braşov Gara to Bucharest Gara de Nord (arriving 12:10 PM). Transfer to the direct airport train (12:30 PM departure, 20 mins) to arrive at OTP by 12:50 PM. This gives you a safe 3+ hour buffer before your 16:15 BA875 flight.
-  * **Tuesday Day Trip:** Plan a day trip to the spectacular UNESCO World Heritage medieval citadel of **Sighișoara** (approx. 1.5–2 hours north of Braşov).
+  * **Monday Day Trip:** Sighișoara & Viscri UNESCO Private Tour (08:30 AM – 06:15 PM). Includes private driver pickup, all entrance fees, and a traditional Saxon farm lunch in Viscri. 
+  * **Tuesday Day Trip:** Transfăgărășan eBike Ride to Bâlea Lake (08:30 AM – 05:30 PM). Andrei's eBike tour climbing the legendary Carpathian highway to a high glacier lake (2,034m).
 
 ### 🏋️ Recommended Gyms (Day Pass)
 * **[Belaqva Active Wellness](https://belaqva.ro/)** (Kronwell Hotel): Braşov's premier wellness center, located a short taxi ride from the old town. Offering top-tier resistance training machines, free weights, and clean, professional locker rooms. Day pass is **80 RON**.
