@@ -284,6 +284,14 @@
             text-align: right;
         }
 
+        .top-flights-container {
+            margin: 15px 15px 15px 15px;
+        }
+        .top-flights-container:empty {
+            margin: 0;
+            display: none;
+        }
+
         .pass-card {
             background: none;
             border: none;
@@ -1475,6 +1483,7 @@
                     <p>July 1 - July 5</p>
                     <h1>Bodrum, Türkiye</h1>
                 </div>
+                <div id="bodrum-top-flights" class="top-flights-container"></div>
 
                 <!-- Lodging Guest Manual -->
                 <div class="section-header">🔑 Guest & Lodging Manual</div>
@@ -1495,27 +1504,6 @@
                                 Navigate Maps
                             </button>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Gourmet Concierge -->
-                <div class="section-header">🍽️ Gourmet Concierge</div>
-                <div class="gourmet-card">
-                    <div class="gourmet-title">
-                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                        Must-Have Aegean Specialties
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">Çökertme Kebabı</div>
-                        <div class="dish-desc">Thin beef strips served over matchstick-thin crispy potatoes, topped with garlic yogurt and hot tomato-butter sauce. A Bodrum classic.</div>
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">Meyhane Mezzes (Köz Patlıcan & Muhammara)</div>
-                        <div class="dish-desc">Smoky wood-fired eggplant salad and spicy walnut-pepper paste, paired with local Aegean olive oil.</div>
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">Fresh Sea Bream (Çipura)</div>
-                        <div class="dish-desc">Grilled whole sea bream served at a waterfront fish taverna in Gümüşlük, accompanied by wild greens and olive oil.</div>
                     </div>
                 </div>
 
@@ -1553,6 +1541,27 @@
                     <div class="checklist-title">🍃 10 Local Secrets</div>
                     <div id="bodrum-local-checklist"></div>
                 </div>
+
+                <!-- Gourmet Concierge -->
+                <div class="section-header">🍽️ Gourmet Concierge</div>
+                <div class="gourmet-card">
+                    <div class="gourmet-title">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        Must-Have Aegean Specialties
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Çökertme Kebabı</div>
+                        <div class="dish-desc">Thin beef strips served over matchstick-thin crispy potatoes, topped with garlic yogurt and hot tomato-butter sauce. A Bodrum classic.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Meyhane Mezzes (Köz Patlıcan & Muhammara)</div>
+                        <div class="dish-desc">Smoky wood-fired eggplant salad and spicy walnut-pepper paste, paired with local Aegean olive oil.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Fresh Sea Bream (Çipura)</div>
+                        <div class="dish-desc">Grilled whole sea bream served at a waterfront fish taverna in Gümüşlük, accompanied by wild greens and olive oil.</div>
+                    </div>
+                </div>
             </main>
 
             <!-- SCREEN 3: ISTANBUL -->
@@ -1561,6 +1570,7 @@
                     <p>July 5 - July 9</p>
                     <h1>Istanbul, Türkiye</h1>
                 </div>
+                <div id="istanbul-top-flights" class="top-flights-container"></div>
 
                 <!-- Lodging Guest Manual -->
                 <div class="section-header">🔑 Guest & Lodging Manual</div>
@@ -1572,27 +1582,6 @@
                         <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">From 14:00</span></div>
                         <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">By 12:00</span></div>
                         <div class="manual-row"><span class="manual-label">Cost</span><span class="manual-val">€352.44</span></div>
-                    </div>
-                </div>
-
-                <!-- Gourmet Concierge -->
-                <div class="section-header">🍽️ Gourmet Concierge</div>
-                <div class="gourmet-card">
-                    <div class="gourmet-title">
-                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                        Famous Istanbul Street Food
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">Balık Ekmek (Fish Sandwich)</div>
-                        <div class="dish-desc">Freshly grilled mackerel, onions, and lettuce inside crusty Turkish bread. Best enjoyed right on the Galata Bridge waterfront.</div>
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">Lahmacun</div>
-                        <div class="dish-desc">Stone-baked thin flatbread topped with minced spiced lamb and vegetables. Roll it with fresh parsley and a squeeze of fresh lemon juice.</div>
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">İskender Kebap</div>
-                        <div class="dish-desc">Thinly sliced grilled lamb basted with hot tomato sauce over pieces of pita bread, generously slathered with melted sheep butter and yogurt.</div>
                     </div>
                 </div>
 
@@ -1632,6 +1621,27 @@
                 </div>
                 <div class="section-header">📖 Historic Attractions Guide</div>
                 <div id="istanbul-attractions-guide" style="margin-bottom: 25px;"></div>
+
+                <!-- Gourmet Concierge -->
+                <div class="section-header">🍽️ Gourmet Concierge</div>
+                <div class="gourmet-card">
+                    <div class="gourmet-title">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        Famous Istanbul Street Food
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Balık Ekmek (Fish Sandwich)</div>
+                        <div class="dish-desc">Freshly grilled mackerel, onions, and lettuce inside crusty Turkish bread. Best enjoyed right on the Galata Bridge waterfront.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Lahmacun</div>
+                        <div class="dish-desc">Stone-baked thin flatbread topped with minced spiced lamb and vegetables. Roll it with fresh parsley and a squeeze of fresh lemon juice.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">İskender Kebap</div>
+                        <div class="dish-desc">Thinly sliced grilled lamb basted with hot tomato sauce over pieces of pita bread, generously slathered with melted sheep butter and yogurt.</div>
+                    </div>
+                </div>
             </main>
 
             <!-- SCREEN 4: BUCHAREST -->
@@ -1640,6 +1650,7 @@
                     <p>July 9 - July 12</p>
                     <h1>Bucharest, Romania</h1>
                 </div>
+                <div id="bucharest-top-flights" class="top-flights-container"></div>
 
                 <!-- Lodging Guest Manual -->
                 <div class="section-header">🔑 Guest & Lodging Manual</div>
@@ -1651,27 +1662,6 @@
                         <div class="manual-row"><span class="manual-label">Check-In</span><span class="manual-val">After 15:00</span></div>
                         <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">By 11:00</span></div>
                         <div class="manual-row"><span class="manual-label">Cost</span><span class="manual-val">£193.57</span></div>
-                    </div>
-                </div>
-
-                <!-- Gourmet Concierge -->
-                <div class="section-header">🍽️ Gourmet Concierge</div>
-                <div class="gourmet-card">
-                    <div class="gourmet-title">
-                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                        Authentic Romanian Fare
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">Mici (Mititei)</div>
-                        <div class="dish-desc">Grilled garlic-heavy skinless minced meat rolls with a springy texture. Dip in yellow mustard and pair with cold draft beer at Terasa Obor.</div>
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">Papanași</div>
-                        <div class="dish-desc">Fried cottage-cheese cottage donuts smothered in sweet sour cream and topped with wild blueberry or sour cherry jam. Served steaming hot.</div>
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">Salată de Vinete</div>
-                        <div class="dish-desc">Smoky, roasted mashed eggplant dip whipped with local sunflower oil, onions, and garlic. Spread over fresh crusty bread.</div>
                     </div>
                 </div>
 
@@ -1744,6 +1734,27 @@
                     <div class="checklist-title">🍃 10 Local Secrets</div>
                     <div id="bucharest-local-checklist"></div>
                 </div>
+
+                <!-- Gourmet Concierge -->
+                <div class="section-header">🍽️ Gourmet Concierge</div>
+                <div class="gourmet-card">
+                    <div class="gourmet-title">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        Authentic Romanian Fare
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Mici (Mititei)</div>
+                        <div class="dish-desc">Grilled garlic-heavy skinless minced meat rolls with a springy texture. Dip in yellow mustard and pair with cold draft beer at Terasa Obor.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Papanași</div>
+                        <div class="dish-desc">Fried cottage-cheese cottage donuts smothered in sweet sour cream and topped with wild blueberry or sour cherry jam. Served steaming hot.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Salată de Vinete</div>
+                        <div class="dish-desc">Smoky, roasted mashed eggplant dip whipped with local sunflower oil, onions, and garlic. Spread over fresh crusty bread.</div>
+                    </div>
+                </div>
             </main>
 
             <!-- SCREEN 5: BRASOV -->
@@ -1752,6 +1763,7 @@
                     <p>July 12 - July 15</p>
                     <h1>Braşov, Transylvania</h1>
                 </div>
+                <div id="brasov-top-flights" class="top-flights-container"></div>
 
                 <!-- Lodging Guest Manual -->
                 <div class="section-header">🔑 Guest & Lodging Manual</div>
@@ -1762,27 +1774,6 @@
                         <div class="manual-row"><span class="manual-label">Host</span><span class="manual-val">Cristian</span></div>
                         <div class="manual-row"><span class="manual-label">Check-Out</span><span class="manual-val">Wed 15 Jul</span></div>
                         <div class="manual-row"><span class="manual-label">Cost</span><span class="manual-val">£185.76</span></div>
-                    </div>
-                </div>
-
-                <!-- Gourmet Concierge -->
-                <div class="section-header">🍽️ Gourmet Concierge</div>
-                <div class="gourmet-card">
-                    <div class="gourmet-title">
-                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                        Transylvanian Delicacies
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">Sarmale (Cabbage Rolls)</div>
-                        <div class="dish-desc">Slow-cooked rolls of minced pork and beef wrapped in sour pickled cabbage leaves. Served with thick sour cream and hot polenta (*mămăligă*).</div>
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">Ciorbă de Burtă (Tripe Soup)</div>
-                        <div class="dish-desc">A rich, velvety soup made with tripe, heavily seasoned with garlic, vinegar, sour cream, and served with pickled hot yellow peppers.</div>
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">Bulz Transilvănean</div>
-                        <div class="dish-desc">A traditional mountain dish of polenta balls stuffed with soft sheep's cheese (*brânză de burduf*), baked in clay ovens, and served with sour cream.</div>
                     </div>
                 </div>
 
@@ -1855,6 +1846,27 @@
                     <div class="checklist-title">🍃 10 Local Secrets</div>
                     <div id="brasov-local-checklist"></div>
                 </div>
+
+                <!-- Gourmet Concierge -->
+                <div class="section-header">🍽️ Gourmet Concierge</div>
+                <div class="gourmet-card">
+                    <div class="gourmet-title">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        Transylvanian Delicacies
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Sarmale (Cabbage Rolls)</div>
+                        <div class="dish-desc">Slow-cooked rolls of minced pork and beef wrapped in sour pickled cabbage leaves. Served with thick sour cream and hot polenta (*mămăligă*).</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Ciorbă de Burtă (Tripe Soup)</div>
+                        <div class="dish-desc">A rich, velvety soup made with tripe, heavily seasoned with garlic, vinegar, sour cream, and served with pickled hot yellow peppers.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Bulz Transilvănean</div>
+                        <div class="dish-desc">A traditional mountain dish of polenta balls stuffed with soft sheep's cheese (*brânză de burduf*), baked in clay ovens, and served with sour cream.</div>
+                    </div>
+                </div>
             </main>
 
             <!-- SCREEN 6: SPETSES -->
@@ -1863,6 +1875,7 @@
                     <p>July 22 - July 27</p>
                     <h1>Spetses, Greece</h1>
                 </div>
+                <div id="spetses-top-flights" class="top-flights-container"></div>
 
                 <div class="action-alert">
                     <h4>🚨 Action Required: Sea Passage Booking</h4>
@@ -1878,27 +1891,6 @@
                         <div class="manual-row"><span class="manual-label">Confirmation</span><span class="manual-val">1054</span></div>
                         <div class="manual-row"><span class="manual-label">Contact</span><span class="manual-val">reservations@teresa-spetses.com</span></div>
                         <div class="manual-row"><span class="manual-label">Cost</span><span class="manual-val">€445.80 (Paid in full via Amex)</span></div>
-                    </div>
-                </div>
-
-                <!-- Gourmet Concierge -->
-                <div class="section-header">🍽️ Gourmet Concierge</div>
-                <div class="gourmet-card">
-                    <div class="gourmet-title">
-                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                        Saronic Island Specialties
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">Fish à la Spetsiota (Ψάρι Σπετσιώτα)</div>
-                        <div class="dish-desc">White fish baked in a rich tomato sauce seasoned with garlic, wild oregano, olive oil, and topped with golden breadcrumbs. The ultimate island signature.</div>
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">Amygdalota Amygdalota</div>
-                        <div class="dish-desc">Flourless almond pear-shaped sweets scented with rosewater and covered in powdered sugar. Famous local Spetses confectionery.</div>
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">Charcoal-Grilled Octopus</div>
-                        <div class="dish-desc">Freshly caught octopus hung to dry in the sun, then grilled over hot charcoals and drizzled with lemon and local olive oil.</div>
                     </div>
                 </div>
 
@@ -1936,6 +1928,27 @@
                     <div class="checklist-title">🍃 10 Local Secrets</div>
                     <div id="spetses-local-checklist"></div>
                 </div>
+
+                <!-- Gourmet Concierge -->
+                <div class="section-header">🍽️ Gourmet Concierge</div>
+                <div class="gourmet-card">
+                    <div class="gourmet-title">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        Saronic Island Specialties
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Fish à la Spetsiota (Ψάρι Σπετσιώτα)</div>
+                        <div class="dish-desc">White fish baked in a rich tomato sauce seasoned with garlic, wild oregano, olive oil, and topped with golden breadcrumbs. The ultimate island signature.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Amygdalota Amygdalota</div>
+                        <div class="dish-desc">Flourless almond pear-shaped sweets scented with rosewater and covered in powdered sugar. Famous local Spetses confectionery.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Charcoal-Grilled Octopus</div>
+                        <div class="dish-desc">Freshly caught octopus hung to dry in the sun, then grilled over hot charcoals and drizzled with lemon and local olive oil.</div>
+                    </div>
+                </div>
             </main>
 
             <!-- SCREEN 7: TOKYO -->
@@ -1944,6 +1957,7 @@
                     <p>July 31 - August 20</p>
                     <h1>Tokyo, Japan</h1>
                 </div>
+                <div id="tokyo-top-flights" class="top-flights-container"></div>
 
                 <!-- Lodging Guest Manual -->
                 <div class="section-header">🔑 Guest & Lodging Manual</div>
@@ -1954,27 +1968,6 @@
                         <div class="manual-row"><span class="manual-label">Host</span><span class="manual-val">Noe</span></div>
                         <div class="manual-row"><span class="manual-label">Block I Cost</span><span class="manual-val">£891.40 (Ready on arrival Jul 31)</span></div>
                         <div class="manual-row"><span class="manual-label">Block II Cost</span><span class="manual-val">£897.45 (Checkout Aug 20)</span></div>
-                    </div>
-                </div>
-
-                <!-- Gourmet Concierge -->
-                <div class="section-header">🍽️ Gourmet Concierge</div>
-                <div class="gourmet-card">
-                    <div class="gourmet-title">
-                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                        Shibuya Gastronomy
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">Edomae Omakase Sushi</div>
-                        <div class="dish-desc">Traditional Tokyo-style aged fish cured in vinegar and sweet soy, hand-pressed over warm seasoned rice. Treat yourself to a local Shibuya counter.</div>
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">Wagyu Katsu Sando</div>
-                        <div class="dish-desc">Panko-crusted premium Wagyu beef cutlet fried until medium-rare, served between soft Japanese milk bread with tonkatsu sauce.</div>
-                    </div>
-                    <div class="gourmet-dish">
-                        <div class="dish-name">Tsukemen Ramen</div>
-                        <div class="dish-desc">Dipping ramen featuring cold, thick noodles served alongside a separate bowl of concentrated, intensely rich pork and seafood broth.</div>
                     </div>
                 </div>
 
@@ -2011,6 +2004,27 @@
                 <div class="checklist-wrapper">
                     <div class="checklist-title">🍃 10 Local Secrets</div>
                     <div id="tokyo-local-checklist"></div>
+                </div>
+
+                <!-- Gourmet Concierge -->
+                <div class="section-header">🍽️ Gourmet Concierge</div>
+                <div class="gourmet-card">
+                    <div class="gourmet-title">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        Shibuya Gastronomy
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Edomae Omakase Sushi</div>
+                        <div class="dish-desc">Traditional Tokyo-style aged fish cured in vinegar and sweet soy, hand-pressed over warm seasoned rice. Treat yourself to a local Shibuya counter.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Wagyu Katsu Sando</div>
+                        <div class="dish-desc">Panko-crusted premium Wagyu beef cutlet fried until medium-rare, served between soft Japanese milk bread with tonkatsu sauce.</div>
+                    </div>
+                    <div class="gourmet-dish">
+                        <div class="dish-name">Tsukemen Ramen</div>
+                        <div class="dish-desc">Dipping ramen featuring cold, thick noodles served alongside a separate bowl of concentrated, intensely rich pork and seafood broth.</div>
+                    </div>
                 </div>
             </main>
 
@@ -2718,16 +2732,31 @@
             const destinations = ['bodrum', 'istanbul', 'bucharest', 'brasov', 'spetses', 'tokyo'];
             
             destinations.forEach(dest => {
-                // 1. Render logistics
+                // 1. Render logistics (Separate top flights from standard lodging/transfers)
                 const logContainer = document.getElementById(`${dest}-logistics`);
-                if (logContainer) {
-                    logContainer.innerHTML = '';
-                    const passes = logisticsDb[dest] || [];
-                    passes.forEach(pass => {
-                        const card = createPassCardElement(pass);
-                        logContainer.appendChild(card);
-                    });
-                }
+                const topFlightsContainer = document.getElementById(`${dest}-top-flights`);
+                
+                if (topFlightsContainer) topFlightsContainer.innerHTML = '';
+                if (logContainer) logContainer.innerHTML = '';
+                
+                const passes = logisticsDb[dest] || [];
+                passes.forEach(pass => {
+                    if (pass.type === 'flight') {
+                        if (!isPastFlight(pass)) {
+                            // Flight is in the future, render at the top
+                            if (topFlightsContainer) {
+                                const card = createPassCardElement(pass);
+                                topFlightsContainer.appendChild(card);
+                            }
+                        }
+                    } else {
+                        // Standard lodging and land transfers
+                        if (logContainer) {
+                            const card = createPassCardElement(pass);
+                            logContainer.appendChild(card);
+                        }
+                    }
+                });
 
                 // 2. Render timeline
                 const timelineContainer = document.getElementById(`${dest}-timeline`);
@@ -2759,6 +2788,43 @@
                     }
                 }
             });
+        }
+
+        // Helper to check if flight departure has passed
+        function isPastFlight(pass) {
+            if (pass.type !== 'flight') return false;
+            try {
+                // Parse date like "Wed 1 Jul" or "Thu 9 Jul"
+                const parts = pass.date.trim().split(/\s+/);
+                if (parts.length < 3) return false;
+                
+                const day = parseInt(parts[1], 10);
+                const monthName = parts[2].substring(0, 3).toLowerCase();
+                
+                const monthMap = {
+                    'jan': 0, 'feb': 1, 'mar': 2, 'apr': 3,
+                    'may': 4, 'jun': 5, 'jul': 6, 'aug': 7,
+                    'sep': 8, 'oct': 9, 'nov': 10, 'dec': 11
+                };
+                
+                const month = monthMap[monthName];
+                if (month === undefined) return false;
+                
+                let hours = 0;
+                let minutes = 0;
+                if (pass.depTime) {
+                    const timeParts = pass.depTime.split(':');
+                    hours = parseInt(timeParts[0], 10) || 0;
+                    minutes = parseInt(timeParts[1], 10) || 0;
+                }
+                
+                // Flight date in year 2026
+                const flightDate = new Date(2026, month, day, hours, minutes);
+                return new Date() > flightDate;
+            } catch (err) {
+                console.error("Error parsing flight date:", err);
+                return false;
+            }
         }
 
         // Helper elements creation
