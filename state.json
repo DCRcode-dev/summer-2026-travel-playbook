@@ -241,40 +241,11 @@
       },
       {
         "date": "Fri 10 Jul",
-        "title": "Bucharest Sights: Palace of Parliament & Old Icons",
+        "title": "Bucharest Sights: Palaces & Parks",
         "items": [
-          "Tour the golden-leaf neoclassical hall of the Romanian Athenaeum (11:00 AM)",
-          "Browse spiral balconies at Cărturești Carusel bookshop in the Old Town (12:00 PM)",
-          "Palace of the Parliament guided tour (03:00 PM - book in advance)",
-          "Walk to the peaceful Darvari Skete hidden church courtyard & shop (04:45 PM)",
-          "Pop into Casa Mița Biciclista or Casa Capșa for pastries in a historic building (05:30 PM)",
+          "Tour Ceaușescu Mansion (Palatul Primăverii) in Bucharest's most exclusive district (04:30 PM)",
+          "Stroll through the green lakeside paths of King Mihai I Park (formerly Herăstrău Park)",
           "Fine dining dinner at The Artist modern molecular cuisine on Calea Victoriei (19:30)"
-        ],
-        "lunchOptions": [
-          {
-            "name": "Bistro Ateneu",
-            "query": "Bistro Ateneu Bucharest"
-          },
-          {
-            "name": "Simbio",
-            "query": "Simbio Bucharest"
-          },
-          {
-            "name": "Alt Shift",
-            "query": "Alt Shift Bucharest"
-          }
-        ]
-      },
-      {
-        "date": "Sat 11 Jul",
-        "title": "Local Living & Engagement Party",
-        "items": [
-          "Specialty filter coffee & breakfast at Frudisiac or Bob Coffee Lab (09:00 AM)",
-          "Tour Ceaușescu Mansion (Palatul Primăverii) in Bucharest's most exclusive district (10:30 AM)",
-          "Stroll the leafy luxury residential streets of Primăverii & Floreasca",
-          "Walk the Herăstrău Lakefront paths followed by upscale lakeside lunch (12:30 PM)",
-          "Relax and prepare for the evening event (03:00 PM)",
-          "Engagement Party - Max & Fin (07:30 PM)"
         ],
         "lunchOptions": [
           {
@@ -288,6 +259,33 @@
           {
             "name": "Pescăruș",
             "query": "Pescarus Bucharest"
+          }
+        ]
+      },
+      {
+        "date": "Sat 11 Jul",
+        "title": "Historic Bucharest & Engagement Party",
+        "items": [
+          "Specialty filter coffee & breakfast at Bob Coffee Lab or Frudisiac (09:00 AM)",
+          "Tour the golden-leaf neoclassical hall of the Romanian Athenaeum & see adjacent Revolution Square (Piața Revoluției) (10:30 AM)",
+          "Wander down Calea Victoriei to the historic Old Town (11:45 AM)",
+          "Explore the beautiful stone-carved Stavropoleos Monastery Church & browse the white spiral balconies of Cărturești Carusel bookshop (12:15 PM)",
+          "Have a traditional Romanian lunch at the legendary Caru' cu Bere (01:15 PM)",
+          "Walk back to Airbnb, relax, and prepare for the evening event (03:30 PM - 05:00 PM)",
+          "Engagement Party - Max & Fin (07:30 PM)"
+        ],
+        "lunchOptions": [
+          {
+            "name": "Caru' cu Bere",
+            "query": "Caru cu Bere Bucharest"
+          },
+          {
+            "name": "Lacrimi și Sfinți",
+            "query": "Lacrimi si Sfinti Bucharest"
+          },
+          {
+            "name": "Aubergine Restaurant",
+            "query": "Aubergine Restaurant Bucharest"
           }
         ]
       }
