@@ -306,7 +306,7 @@
           "Meet driver and drive straight from Sinaia to Brașov (04:15 PM)",
           "Arrive & check-in to Brașov Airbnb on Strada Lungă 39 (05:30 PM)",
           "Walk to Old Town: Tour the historic Black Church (Closes 07:00 PM), stroll Council Square, and see Rope Street (05:45 PM - 07:15 PM)",
-          "Dinner at Dei Frati for exceptional handmade pasta (19:30 - Reservation Recommended)"
+          "Dinner at Sergiana for authentic, hearty traditional Romanian cuisine in a historic cellar (19:30 - Reservation Recommended)"
         ],
         "lunchOptions": [
           {
@@ -314,8 +314,8 @@
             "query": "Bistro de l'Arte Brasov"
           },
           {
-            "name": "Dei Frati",
-            "query": "Dei Frati Brasov"
+            "name": "Sergiana",
+            "query": "Sergiana Brasov"
           },
           {
             "name": "Sub Tâmpa",
