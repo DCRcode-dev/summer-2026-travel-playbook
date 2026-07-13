@@ -213,23 +213,51 @@
 
         /* --- DESTINATION VIEWS --- */
         .dest-cover {
+            position: relative;
+            height: 180px;
+            border-radius: 14px;
+            overflow: hidden;
             margin-bottom: 25px;
-            padding: 5px 2px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(42, 36, 33, 0.08);
+        }
+
+        .dest-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(42, 36, 33, 0) 20%, rgba(42, 36, 33, 0.85) 100%);
+            z-index: 1;
         }
 
         .dest-cover h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
             line-height: 1.1;
+            color: #FFFFFF;
+            z-index: 2;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
         }
 
         .dest-cover p {
-            font-size: 0.82rem;
-            color: var(--text-muted);
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.85);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
             font-weight: 600;
+            margin-bottom: 4px;
+            z-index: 2;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
         }
 
         /* --- NON-BOXY GUEST MANUALS & PASSES --- */
@@ -1249,6 +1277,29 @@
             font-weight: bold;
             color: var(--gold);
         }
+
+        /* Attraction Image Card styles */
+        .attraction-image-container {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-ios);
+            box-shadow: 0 2px 8px rgba(42, 36, 33, 0.04);
+            aspect-ratio: 16 / 9;
+            background-color: var(--bg-ios);
+        }
+        .attraction-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: sepia(0.1) contrast(1.02);
+            transition: transform 0.5s ease;
+        }
+        .attraction-card:hover .attraction-img {
+            transform: scale(1.03);
+        }
     </style>
 </head>
 <body>
@@ -1479,7 +1530,7 @@
 
             <!-- SCREEN 2: BODRUM -->
             <main id="screen-bodrum" class="screen">
-                <div class="dest-cover">
+                <div class="dest-cover" style="background-image: url('./turkey_sepia_cover.jpg');">
                     <p>July 1 - July 5</p>
                     <h1>Bodrum, Türkiye</h1>
                 </div>
@@ -1569,7 +1620,7 @@
 
             <!-- SCREEN 3: ISTANBUL -->
             <main id="screen-istanbul" class="screen">
-                <div class="dest-cover">
+                <div class="dest-cover" style="background-image: url('./turkey_sepia_cover.jpg');">
                     <p>July 5 - July 9</p>
                     <h1>Istanbul, Türkiye</h1>
                 </div>
@@ -1649,7 +1700,7 @@
 
             <!-- SCREEN 4: BUCHAREST -->
             <main id="screen-bucharest" class="screen">
-                <div class="dest-cover">
+                <div class="dest-cover" style="background-image: url('./romania_sepia_cover.jpg');">
                     <p>July 9 - July 12</p>
                     <h1>Bucharest, Romania</h1>
                 </div>
@@ -1856,7 +1907,7 @@
 
             <!-- SCREEN 5: BRASOV -->
             <main id="screen-brasov" class="screen">
-                <div class="dest-cover">
+                <div class="dest-cover" style="background-image: url('./romania_sepia_cover.jpg');">
                     <p>July 12 - July 15</p>
                     <h1>Braşov, Transylvania</h1>
                 </div>
@@ -1971,7 +2022,7 @@
 
             <!-- SCREEN 6: SPETSES -->
             <main id="screen-spetses" class="screen">
-                <div class="dest-cover">
+                <div class="dest-cover" style="background-image: url('./greece_sepia_cover.jpg');">
                     <p>July 22 - July 27</p>
                     <h1>Spetses, Greece</h1>
                 </div>
@@ -2056,7 +2107,7 @@
 
             <!-- SCREEN 7: TOKYO -->
             <main id="screen-tokyo" class="screen">
-                <div class="dest-cover">
+                <div class="dest-cover" style="background-image: url('./japan_sepia_cover.jpg');">
                     <p>July 31 - August 20</p>
                     <h1>Tokyo, Japan</h1>
                 </div>
@@ -3718,6 +3769,7 @@
         const attractionsGuideDb = {
             bodrum: [
                 {
+                    image: "./bodrum_castle.jpg",
                     title: "Bodrum Castle (Castle of St. Peter)",
                     paragraphs: [
                         "Bodrum Castle was built in the early 15th century by the Knights Hospitaller of St. John, serving as a powerful military stronghold for Christian forces in the Aegean Sea.",
@@ -3746,6 +3798,7 @@
             ],
             istanbul: [
                 {
+                    image: "./hagia_sophia.jpg",
                     title: "Hagia Sophia (Ayasofya)",
                     paragraphs: [
                         "Hagia Sophia, whose name translates from the Greek as \"Holy Wisdom,\" stands as one of the most significant architectural and historical monuments in the world, spanning over fifteen centuries of religious and imperial history.",
@@ -3818,6 +3871,7 @@
                     ]
                 },
                 {
+                    image: "./romanian_athenaeum.jpg",
                     title: "Romanian Athenaeum (Ateneul Român)",
                     paragraphs: [
                         "The Romanian Athenaeum is Bucharest’s most prestigious concert hall and a symbol of national culture, built in neoclassical style with romantic flourishes and opened in 1888.",
@@ -3856,6 +3910,7 @@
                     ]
                 },
                 {
+                    image: "./peles_castle.jpg",
                     title: "Peleș Castle (Sinaia)",
                     paragraphs: [
                         "Peleș Castle is a breathtaking Neo-Renaissance royal palace commissioned by King Carol I in 1873 as a summer residence, set amidst the forests and peaks of the Carpathian Mountains.",
@@ -3894,6 +3949,7 @@
                     ]
                 },
                 {
+                    image: "./poseidonion_hotel.jpg",
                     title: "Poseidonion Grand Hotel",
                     paragraphs: [
                         "The Poseidonion Grand Hotel is an iconic monument of Spetses, built in 1914 in the Belle Époque style, inspired by the grand hotels of the French Riviera (like the Carlton in Cannes).",
@@ -3914,6 +3970,7 @@
                     ]
                 },
                 {
+                    image: "./sensoji_temple.jpg",
                     title: "Senso-ji Temple",
                     paragraphs: [
                         "Senso-ji is Tokyo’s oldest and most famous Buddhist temple, founded in 645 AD in the historic Asakusa district, dedicated to Kannon, the Buddhist Goddess of Mercy.",
@@ -3945,7 +4002,16 @@
                     
                     const body = document.createElement("div");
                     body.className = "attraction-body";
-                    body.innerHTML = item.paragraphs.map(p => `<p>${p}</p>`).join("");
+                    
+                    let imageHtml = "";
+                    if (item.image) {
+                        imageHtml = `
+                            <div class="attraction-image-container">
+                                <img src="${item.image}" alt="${item.title}" class="attraction-img">
+                            </div>
+                        `;
+                    }
+                    body.innerHTML = imageHtml + item.paragraphs.map(p => `<p>${p}</p>`).join("");
                     
                     header.addEventListener("click", () => {
                         card.classList.toggle("active");
