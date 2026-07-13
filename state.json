@@ -292,7 +292,9 @@
     ]
   },
   "brasov": {
-    "sights": [],
+    "sights": [
+      0
+    ],
     "local": [
       8,
       0
