@@ -2333,7 +2333,9 @@
             ],
             spetses: [
                 { type: "flight", carrier: "British Airways", code: "BA626", departure: "London Heathrow (LHR) T5", arrival: "Athens (ATH)", depTime: "07:25", arrTime: "13:10", date: "Wed 22 Jul", conf: "YWX37V", branding: "ba" },
-                { type: "lodging", name: "Teresa Spetses", host: "Suite Manager", address: "Spetses Island, Greece", checkin: "Wed 22 Jul", checkout: "Mon 27 Jul", conf: "1054", cost: "€445.80 (Paid via Amex)", branding: "hotel" },
+                { type: "transfer", carrier: "Hellenic Seaways or Alpha Lines", code: "Outbound Ferry (Piraeus to Spetses)", departure: "Piraeus Port (Gate E8)", arrival: "Spetses (Dapia)", depTime: "TBD", arrTime: "TBD", date: "Wed 22 Jul", conf: "🚨 ACTION REQUIRED: Need to book ferry passage (15:30-17:00 sailing suggested).", branding: "hotel" },
+                { type: "lodging", name: "Teresa Spetses", host: "Suite Manager", address: "Spetses Island, Greece", checkin: "Wed 22 Jul", checkout: "Mon 27 Jul (by 11:00)", conf: "1054", cost: "€445.80 (Paid via Amex)", branding: "hotel" },
+                { type: "transfer", carrier: "Alpha Lines (Speed Cat I)", code: "Return Ferry (Spetses to Piraeus)", departure: "Spetses (Dapia)", arrival: "Piraeus Port (Gate E8)", depTime: "12:30", arrTime: "14:25", date: "Mon 27 Jul", conf: "Planned (Cost: €50.00). Walk 5 min to Piraeus Metro Station to take Line 3 (Blue) direct to ATH Airport (55m) or take a 45m taxi.", branding: "hotel" },
                 { type: "flight", carrier: "British Airways", code: "BA631", departure: "Athens (ATH)", arrival: "London Heathrow (LHR) T5", depTime: "19:30", arrTime: "21:25", date: "Mon 27 Jul", conf: "YWX37V", branding: "ba" }
             ],
             tokyo: [
@@ -2455,7 +2457,12 @@
                     { name: "Spetsiotiko Grill", query: "Spetsiotiko Spetses" },
                     { name: "Bouboulina Tavern", query: "Bouboulina Spetses" }
                 ] },
-                { date: "Mon 27 Jul", title: "Spetses ➔ Athens ➔ London", items: ["Sail from Spetses by 14:00", "British Airways BA631 ATH ➔ LHR (19:30)"], lunchOptions: [] }
+                { date: "Mon 27 Jul", title: "Spetses ➔ Athens ➔ London", items: [
+                    "Ferry: Spetses ➔ Piraeus (Alpha Lines, Speed Cat I, 12:30 – 14:25)",
+                    "Direct Metro (Line 3, Blue Line, 55m) or Taxi (45m) from Piraeus to Athens Airport",
+                    "Arrive at ATH Airport by 16:30 (with comfortable buffer)",
+                    "British Airways BA631 ATH ➔ LHR (19:30 departure)"
+                ], lunchOptions: [] }
             ],
             tokyo: [
                 { date: "Thu 30 Jul", title: "LHR ➔ HND Flight", items: ["BA007 London Heathrow departure (09:25)", "Overnight international flight in the air"], lunchOptions: [] },

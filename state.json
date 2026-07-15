@@ -464,8 +464,10 @@
         "date": "Mon 27 Jul",
         "title": "Spetses ➔ Athens ➔ London",
         "items": [
-          "Sail from Spetses by 14:00",
-          "British Airways BA631 ATH ➔ LHR (19:30)"
+          "Ferry: Spetses ➔ Piraeus (Alpha Lines, Speed Cat I, 12:30 – 14:25)",
+          "Direct Metro (Line 3, Blue Line, 55m) or Taxi (45m) to Athens Airport",
+          "Arrive at ATH Airport by 16:30 (with comfortable buffer)",
+          "British Airways BA631 ATH ➔ LHR (19:30 departure)"
         ],
         "lunchOptions": []
       }
